@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import { Link, useLocation, useOutlet } from 'react-router-dom'
 import logo from '../assets/icons/panda.svg'
 
-const linkMap = {
+const linkMap: Record<string, string> = {
   '/welcome/1': '/welcome/2',
   '/welcome/2': '/welcome/3',
   '/welcome/3': '/welcome/4',
@@ -12,7 +12,7 @@ const linkMap = {
 }
 
 export const WelcomeLayout: React.FC = () => {
-  const [extraStyle, setExtraStyle] = useState({ position: 'relative' })
+  const [extraStyle, setExtraStyle] = useState<{ position: 'relative' | 'absolute' }>({ position: 'relative' })
   const map = useRef<Record<string, ReactNode>>({})
   const location = useLocation()
   const outlet = useOutlet()
