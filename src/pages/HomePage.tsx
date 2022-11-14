@@ -1,7 +1,16 @@
 import pig from '../assets/icons/welcome1.svg'
 import add from '../assets/icons/add.svg'
+import useSWR from 'swr'
+import axios from 'axios'
 
 export const HomePage: React.FC = () => {
+  const { data: meData, error: meError } = useSWR('/api/v1/me', (path) => {
+    return axios.get(path)
+  })
+  const { data: itemsData, error: itemsError } = useSWR(meData ? '/api/v1/items' : null, (path) => {
+    return axios.get(path)
+  })
+  console.log(meData, meError, itemsData, itemsError)
   return (
     <div>
       <div flex justify-center items-center>
