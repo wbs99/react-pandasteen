@@ -21,6 +21,5 @@ export const router = createBrowserRouter([
       { path: '4', element: <Welcome4 /> },
     ]
   },
-  { path: '/items', element: <Items />, },
-
+  { path: '/items', element: <Items /> },
 ])
