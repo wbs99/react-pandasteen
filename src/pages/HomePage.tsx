@@ -24,7 +24,7 @@ export const HomePage: React.FC<Props> = (props) => {
   const isLoadingItem = !isLoadingMe && !itemsData && !itemsError
 
   if (isLoadingMe || isLoadingItem) {
-    return <Loading />
+    return <Loading className="h-screen" />
   }
   if (itemsData?.resources[0]) {
     return <Navigate to='/items' />
