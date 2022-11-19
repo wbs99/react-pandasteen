@@ -1,6 +1,0 @@
-// 这里写 icon 的默认样式，使用 where 是降低 css 优先级，是的使用组件时，传入 width height 等属性，可以覆盖这里的默认属性
-:where(.icon){
-  fill: currentColor;
-  width: 1.2em;
-  height: 1.2em;
-}
