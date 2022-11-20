@@ -4,7 +4,9 @@ import {
 
 export default defineConfig({
   theme: {},
-  shortcuts: {},
+  shortcuts: {
+    'p-btn': 'h-48px w-100% bg-#5C33BE b-none text-white rounded-8px'
+  },
   safelist: [],
   presets: [
     presetUno(),
