@@ -22,4 +22,9 @@ export const router = createBrowserRouter([
     ]
   },
   { path: '/items', element: <ItemsPage /> },
+  { path: '/sign_in', element: <div>sign_in</div> },
+  { path: '/chart', element: <div>图表</div> },
+  { path: '/export', element: <div>敬请期待</div> },
+  { path: '/tags', element: <div>标签</div> },
+  { path: '/remind', element: <div>敬请期待</div> },
 ])
