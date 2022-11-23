@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const TopMenu: React.FC<Props> = ({ onClickMask, visible }) => {
-  const [maskVisible, setMaskVisible] = useState(false)
+  const [maskVisible, setMaskVisible] = useState(visible)
   const markStyle = useSpring({
     opacity: visible ? 1 : 0,
     onStart: ({ value }) => {
@@ -20,14 +20,14 @@ export const TopMenu: React.FC<Props> = ({ onClickMask, visible }) => {
       if (value.opacity < 0.1) { setMaskVisible(false) }
     }
   })
-  const menuStyles = useSpring({
-    opacity: visible ? 1 : 0,
-    transform: visible ? 'translateX(0%)' : 'translateX(-100%)',
-  })
   const markStyles = {
     ...markStyle,
     visibility: (maskVisible ? 'visible' : 'hidden') as 'visible' | 'hidden'
   }
+  const menuStyles = useSpring({
+    opacity: visible ? 1 : 0,
+    transform: visible ? 'translateX(0%)' : 'translateX(-100%)',
+  })
 
   return (
     <>
