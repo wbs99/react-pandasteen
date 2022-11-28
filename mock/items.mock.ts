@@ -5,7 +5,7 @@ export const MockItems: MockMethod = {
   url: '/api/v1/items',
   method: 'get',
   statusCode: 200,
-  timeout: 3000,
+  timeout: 500,
   response: ({ query }: ResponseParams): Resources<Item> =>
     createResponse({ count: 30, perPage: 10, page: parseInt(query.page) })
 }

@@ -28,6 +28,7 @@ export const ItemsList: React.FC<Props> = () => {
       const response = await ajax.get<Resources<Item>>(path)
       return response.data
     },
+    { revalidateFirstPage: false }
   )
   const onLoadMore = () => {
     setSize(size + 1)
