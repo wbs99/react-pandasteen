@@ -7,7 +7,7 @@ export const MockItems: MockMethod = {
   statusCode: 200,
   timeout: 100,
   response: ({ query }: ResponseParams): Resources<Item> =>
-    createResponse({ count: 100, perPage: 10, page: parseInt(query.page) })
+    createResponse({ count: 30, perPage: 10, page: parseInt(query.page) })
 }
 
 let id = 0
@@ -34,8 +34,10 @@ const createList = (n: number, attrs?: Partial<Item>): Item[] => Array.from({ le
 
 
 const createResponse = ({ count = 10, page = 1, perPage = 10 }, attrs?: Partial<Item>): Resources<Item> => {
+  const sendCount = (page - 1) * perPage
+  const left = count - sendCount
   return {
-    resources: createList(perPage, attrs),
+    resources: left > 0 ? createList(Math.min(left, perPage), attrs) : [],
     pager: {
       page,
       per_page: perPage,
