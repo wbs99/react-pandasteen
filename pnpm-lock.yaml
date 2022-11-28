@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@faker-js/faker': 7.6.0
   '@react-spring/web': 9.5.5
   '@types/react': 18.0.25
   '@types/react-dom': 18.0.8
@@ -37,6 +38,7 @@ dependencies:
   zustand: registry.npmmirror.com/zustand/4.1.4_react@18.2.0
 
 devDependencies:
+  '@faker-js/faker': registry.npmmirror.com/@faker-js/faker/7.6.0
   '@types/react': registry.npmmirror.com/@types/react/18.0.25
   '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.8
   '@types/styled-components': registry.npmmirror.com/@types/styled-components/5.1.26
@@ -450,6 +452,13 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  registry.npmmirror.com/@faker-js/faker/7.6.0:
+    resolution: {integrity: sha512-XK6BTq1NDMo9Xqw/YkYyGjSsg44fbNwYRx7QK2CuoQgyy+f1rrTDHoExVM5PsyXCtfl2vs2vVJ0MN0yN6LppRw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@faker-js/faker/-/faker-7.6.0.tgz}
+    name: '@faker-js/faker'
+    version: 7.6.0
+    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
+    dev: true
 
   registry.npmmirror.com/@iconify/types/2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@iconify/types/-/types-2.0.0.tgz}
