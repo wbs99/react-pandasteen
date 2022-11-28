@@ -1,9 +1,15 @@
 import { ajax } from "../lib/ajax"
 import useSWRInfinite from 'swr/infinite'
+import styled from "styled-components"
 
 
 interface Props {
 }
+
+const CenterDiv = styled.div`
+  padding:16px;
+  text-align:center;
+`
 
 const getKey = (pageIndex: number, prev: Resources<Item>) => {
   if (prev) {
@@ -27,7 +33,9 @@ export const ItemsList: React.FC<Props> = () => {
     setSize(size + 1)
   }
   if (!data) {
-    return <span>没有数据</span>
+    return <div>
+      {error && <CenterDiv>数据加载失败，请刷新页面</CenterDiv>}
+    </div>
   } else {
     const last = data[data.length - 1]
     const { page, per_page, count } = last.pager
@@ -54,10 +62,10 @@ export const ItemsList: React.FC<Props> = () => {
           </li>)
         })}
       </ol>
-
+      {error && <CenterDiv>数据加载失败，请刷新页面</CenterDiv>}
       {hasMore
-        ? <div p-16px><button p-btn onClick={onLoadMore}>加载更多</button></div>
-        : <div p-16px text-center>没有更多数据了</div>
+        ? <CenterDiv><button p-btn onClick={onLoadMore}>加载更多</button></CenterDiv>
+        : <CenterDiv>没有更多数据了</CenterDiv>
       }
     </>
   }
