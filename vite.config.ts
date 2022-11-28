@@ -16,6 +16,6 @@ export default defineConfig(({ command }) => ({
     react(),
     viteMockServe(),
     // 在  noOptimizeList 数组中的 svg 的 fill 属性不会被删除
-    svgsprites({ noOptimizeList: ['chart', 'category', 'export', 'remind'] })
+    svgsprites({ noOptimizeList: ['panda', 'chart', 'category', 'export', 'remind'] })
   ]
 }))
