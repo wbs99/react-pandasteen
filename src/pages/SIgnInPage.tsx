@@ -35,16 +35,22 @@ export const SignInPage: React.FC<Props> = () => {
       </div>
       <form p-form onSubmit={onSubmit}>
         <div>
-          <span p-form-label>邮箱地址  {error && <span>{error.email}</span>}   </span>
+          <span p-form-label>邮箱地址</span>
           <input p-input-text type="text" placeholder='请输入邮箱，然后点击发送验证码'
             value={data.email} onChange={e => setData({ email: e.target.value })} />
+          <div pt-6px>
+            {error.email ? <span text-red>{error.email}</span> : <span>&nbsp;</span>}
+          </div>
         </div>
         <div>
-          <span p-form-label>验证码 {error && <span>{error.code}</span>}</span>
+          <span p-form-label>验证码</span>
           <div flex gap-x-16px>
             <input p-input-text type="text" placeholder='六位数字'
               value={data.code} onChange={e => setData({ code: e.target.value })} />
             <button p-btn >发送验证码</button>
+          </div>
+          <div pt-6px>
+            {error.code ? <span text-red>{error.code}</span> : <span>&nbsp;</span>}
           </div>
         </div>
         <div mt-100px>
