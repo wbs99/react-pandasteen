@@ -1,16 +1,13 @@
 import { FormEventHandler } from "react"
 import { useNavigate } from "react-router-dom"
+import { fetchSessionApi } from "../apis"
 import { Gradient } from "../components/Gradient"
 import { Icon } from "../components/Icon"
 import { TopNav } from "../components/TopNav"
-import { ajax } from "../lib/ajax"
 import { hasError, validate } from "../lib/validate"
 import { useSignInStore } from "../stores/useSIgnInStore"
 
-interface Props {
-
-}
-export const SignInPage: React.FC<Props> = () => {
+export const SignInPage = () => {
   const { data, setData, error, setError } = useSignInStore()
   const nav = useNavigate()
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
@@ -24,7 +21,7 @@ export const SignInPage: React.FC<Props> = () => {
     ])
     setError(error)
     if (!hasError(error)) {
-      const response = await ajax.post('/api/v1/session', data)
+      const response = await fetchSessionApi(data)
       nav('/home')
     }
   }

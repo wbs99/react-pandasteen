@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom'
 import { useTitle } from '../hooks/useTitle'
 import { Loading } from '../components/Loading'
 import { AddItemFloatButton } from '../components/AddItemFloatButton'
+import { fetchItemsApi, fetchMeApi } from '../apis'
 
 interface Props {
   title: string
@@ -13,11 +14,11 @@ interface Props {
 export const HomePage: React.FC<Props> = (props) => {
   useTitle(props.title)
   const { data: meData, error: meError } = useSWR('/api/v1/me', async (path) => {
-    const response = await ajax.get<Resource<User>>(path)
+    const response = await fetchMeApi(path)
     return response.data.resource
   })
   const { data: itemsData, error: itemsError } = useSWR(meData ? '/api/v1/items' : null, async (path) => {
-    const response = await ajax.get<Resources<Item>>(path)
+    const response = await fetchItemsApi(path)
     return response.data
   })
   const isLoadingMe = !meData && !meError
