@@ -1,8 +1,10 @@
 import { FormEventHandler } from "react"
+import { useNavigate } from "react-router-dom"
 import { Gradient } from "../components/Gradient"
 import { Icon } from "../components/Icon"
 import { TopNav } from "../components/TopNav"
-import { validate } from "../lib/validate"
+import { ajax } from "../lib/ajax"
+import { hasError, validate } from "../lib/validate"
 import { useSignInStore } from "../stores/useSIgnInStore"
 
 interface Props {
@@ -10,7 +12,8 @@ interface Props {
 }
 export const SignInPage: React.FC<Props> = () => {
   const { data, setData, error, setError } = useSignInStore()
-  const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+  const nav = useNavigate()
+  const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
     const error = validate(data, [
       { key: "email", type: "required", message: "请输入邮箱地址" },
@@ -20,6 +23,10 @@ export const SignInPage: React.FC<Props> = () => {
 
     ])
     setError(error)
+    if (!hasError(error)) {
+      const response = await ajax.post('/api/v1/session', data)
+      nav('/home')
+    }
   }
   return (
     <div>
