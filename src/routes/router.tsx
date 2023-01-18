@@ -10,7 +10,7 @@ import { Welcome3 } from '../pages/Welcome3'
 import { Welcome4 } from '../pages/Welcome4'
 
 export const router = createBrowserRouter([
-  { path: '/', element: <Root />, },
+  { path: '/', element: <Root /> },
   { path: '/home', element: <HomePage title='首页' /> },
   {
     path: '/welcome',

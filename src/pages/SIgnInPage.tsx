@@ -16,8 +16,7 @@ export const SignInPage = () => {
       { key: "email", type: "required", message: "请输入邮箱地址" },
       { key: "email", type: 'pattern', regex: /[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}/, message: '邮箱地址不合法' },
       { key: "code", type: "required", message: "请输入验证码" },
-      { key: "code", type: 'length', min: 6, max: 6, message: "验证码必须是6位数字" },
-
+      { key: "code", type: 'length', min: 6, max: 6, message: "验证码必须是6位数字" }
     ])
     setError(error)
     if (!hasError(error)) {

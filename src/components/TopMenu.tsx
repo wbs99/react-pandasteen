@@ -26,7 +26,7 @@ export const TopMenu: React.FC<Props> = ({ onClickMask, visible }) => {
   }
   const menuStyles = useSpring({
     opacity: visible ? 1 : 0,
-    transform: visible ? 'translateX(0%)' : 'translateX(-100%)',
+    transform: visible ? 'translateX(0%)' : 'translateX(-100%)'
   })
 
   return (

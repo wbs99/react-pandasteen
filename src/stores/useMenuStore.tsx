@@ -10,6 +10,6 @@ export const useMenuStore = create<Menu>((set, get) => (
     visible: false,
     setVisible: (visible: boolean) => {
       set({ visible })
-    },
+    }
   }
 ))

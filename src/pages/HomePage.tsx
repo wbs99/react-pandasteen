@@ -11,7 +11,7 @@ interface Props {
   title: string
 }
 
-export const HomePage: React.FC<Props> = (props) => {
+export const HomePage = (props: Props) => {
   useTitle(props.title)
   const { data: meData, error: meError } = useSWR('/api/v1/me', async (path) => {
     const response = await fetchMeApi(path)

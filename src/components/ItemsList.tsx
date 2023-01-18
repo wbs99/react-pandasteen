@@ -13,6 +13,7 @@ const CenterDiv = styled.div`
 
 const getKey = (pageIndex: number, prev: Resources<Item>) => {
   if (prev) {
+    // 上一页之前的所有数据加上上一页的数据 -- 即已经获取到的所有数据
     const sendCount = (prev.pager.page - 1) * prev.pager.per_page + prev.resources.length
     const count = prev.pager.count
     return sendCount < count ? `api/v1/items?page=${pageIndex + 1}` : null

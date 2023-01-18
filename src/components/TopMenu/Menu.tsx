@@ -16,7 +16,7 @@ const items = [
   { key: 'chart', icon: 'chart', text: '统计图表', to: '/chart' },
   { key: 'export', icon: 'export', text: '导出数据', to: '/export' },
   { key: 'tags', icon: 'category', text: '自定义标签', to: '/tags' },
-  { key: 'remind', icon: 'remind', text: '记账提醒', to: '/remind' },
+  { key: 'remind', icon: 'remind', text: '记账提醒', to: '/remind' }
 ]
 
 export const Menu: React.FC<Props> = ({ className }) => {

@@ -35,9 +35,9 @@ const createList = (n: number, attrs?: Partial<Item>): Item[] => Array.from({ le
 
 const createResponse = ({ count = 10, page = 1, perPage = 10 }, attrs?: Partial<Item>): Resources<Item> => {
   const sendCount = (page - 1) * perPage
-  const left = count - sendCount
+  const restCount = count - sendCount
   return {
-    resources: left > 0 ? createList(Math.min(left, perPage), attrs) : [],
+    resources: restCount > 0 ? createList(Math.min(restCount, perPage), attrs) : [],
     pager: {
       page,
       per_page: perPage,

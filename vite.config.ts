@@ -9,7 +9,7 @@ import { svgsprites } from './vite_plugins/svgsprites'
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
   define: {
-    isDev: command === 'serve'  // 在 global.d.ts 声明 isDev， server 说明在开发环境
+    isDev: command === 'serve'  // 在 global.d.ts 声明 isDev， serve 说明在开发环境
   },
   plugins: [
     Unocss(),

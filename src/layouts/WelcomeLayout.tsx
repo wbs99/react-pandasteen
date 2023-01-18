@@ -1,7 +1,7 @@
 import { animated, useTransition } from '@react-spring/web'
 import { ReactNode, useEffect, useState } from 'react'
 import { useRef } from 'react'
-import { Link, useLocation, useNavigate, useOutlet } from 'react-router-dom'
+import { Link, Outlet, useLocation, useNavigate, useOutlet } from 'react-router-dom'
 import logo from '../assets/icons/panda.svg'
 import { useSwiper } from '../hooks/useSwiper'
 import { useLocalStore } from '../stores/useLocalStore'
