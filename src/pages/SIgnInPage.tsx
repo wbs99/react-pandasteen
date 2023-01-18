@@ -48,9 +48,9 @@ export const SignInPage = () => {
         <div>
           <span p-form-label>验证码</span>
           <div flex gap-x-16px>
-            <input p-input-text type="text" placeholder='六位数字'
+            <input max-w='[calc(40%-8px)]' p-input-text type="text" placeholder='六位数字'
               value={data.code} onChange={e => setData({ code: e.target.value })} />
-            <button p-btn >发送验证码</button>
+            <button max-w='[calc(60%-8px)]' p-btn >发送验证码</button>
           </div>
           <div pt-6px>
             {error.code ? <span text-red>{error.code}</span> : <span>&nbsp;</span>}
