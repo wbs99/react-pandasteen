@@ -46,11 +46,12 @@ export const WelcomeLayout: React.FC = () => {
   const { setHadReadWelcome } = useLocalStore()
   const onSkip = () => {
     setHadReadWelcome(true)
+    nav('/home')
   }
 
   return (
     <div className="bg-#5f34bf" h-screen flex flex-col items-stretch pb-16px>
-      <Link fixed text-white top-16px right-16px text-32px to="/welcome/xxx">跳过</Link>
+      <span fixed text-white top-16px right-16px text-32px onClick={onSkip}>跳过</span>
       <header shrink-0 text-center pt-64px>
         <img src={logo} w-64px />
         <h1 text="#D4D4EE" text-32px>熊猫记账</h1>
