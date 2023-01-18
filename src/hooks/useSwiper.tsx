@@ -10,11 +10,11 @@ export const useSwiper = (elementRef: RefObject<HTMLElement>) => {
   const [direction, setDirection] = useState<'' | 'left' | 'right' | 'up' | 'down'>('')
 
   const onTouchStart = (e: TouchEvent) => {
-    e.preventDefault()
+    //e.preventDefault()
     point.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
   }
   const onMoving = (e: TouchEvent) => {
-    e.preventDefault()
+    //e.preventDefault()
     const newPoint = { x: e.touches[0].clientX, y: e.touches[0].clientY }
     const d = { x: newPoint.x - point.current.x, y: newPoint.y - point.current.y }
     const { x, y } = d
@@ -26,7 +26,7 @@ export const useSwiper = (elementRef: RefObject<HTMLElement>) => {
     }
   }
   const onTouchEnd = (e: TouchEvent) => {
-    e.preventDefault()
+    //e.preventDefault()
     setDirection('')
   }
 
