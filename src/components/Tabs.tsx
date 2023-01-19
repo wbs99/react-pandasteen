@@ -6,7 +6,7 @@ type Props<T> = {
   tabItems: {
     key: T
     text: string
-    element: ReactNode
+    element?: ReactNode
   }[]
   value: T
   onChange: (key: T) => void

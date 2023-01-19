@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import { Root } from '../components/Root'
 import { WelcomeLayout } from '../layouts/WelcomeLayout'
 import { HomePage } from '../pages/HomePage'
+import { ItemsNewPage } from '../pages/ItemsNewPage'
 import { ItemsPage } from '../pages/ItemsPage'
 import { SignInPage } from '../pages/SIgnInPage'
 import { Welcome1 } from '../pages/Welcome1'
@@ -23,9 +24,10 @@ export const router = createBrowserRouter([
     ]
   },
   { path: '/items', element: <ItemsPage /> },
+  { path: '/items/new', element: <ItemsNewPage /> },
   { path: '/sign_in', element: <SignInPage /> },
   { path: '/chart', element: <div>图表</div> },
   { path: '/export', element: <div>敬请期待</div> },
   { path: '/tags', element: <div>标签</div> },
-  { path: '/remind', element: <div>敬请期待</div> },
+  { path: '/remind', element: <div>敬请期待</div> }
 ])
