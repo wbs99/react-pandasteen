@@ -1,9 +1,9 @@
-import { useState } from "react"
+import { ReactNode, useState } from "react"
 import { Popup } from "../components/Popup"
 
-export const usePopup = () => {
-  const [visible, setVisible] = useState(false)
-  const popup = <Popup visible={visible} onClickMask={() => setVisible(false)} />
+export const usePopup = (initVisible = false, children: ReactNode) => {
+  const [visible, setVisible] = useState(initVisible)
+  const popup = <Popup visible={visible} onClickMask={() => setVisible(false)} >{children}</Popup>
   const show = () => setVisible(true)
   const hide = () => setVisible(false)
   const toggle = () => setVisible(!visible)
