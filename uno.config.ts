@@ -4,6 +4,9 @@ import {
 
 export default defineConfig({
   theme: {},
+  rules: [
+    ['h-screen', { height: 'calc(100vh - var(--vh-offset, 0px))' }]
+  ],
   shortcuts: {
     'p-btn': 'h-48px w-100% bg-#5C33BE b-none text-white text-18px rounded-8px',
     'p-input-text': 'h-48px pl-16px leading-32px py-8px b-#5C33BE b-1 focus:shadow focus:shadow-inset rounded-8px text-18px',
