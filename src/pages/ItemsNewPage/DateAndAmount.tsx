@@ -59,11 +59,36 @@ export const YearSelect = () => {
           setLastY(y)
         }
       }}
+      // onTouchEnd={() => {
+      //   const yushu = translateY % 36
+      //   if (yushu > 0) {
+      //     if (yushu < 18) {
+      //       setTranslateY(translateY - yushu)
+      //     } else {
+      //       setTranslateY(translateY + (36 - yushu))
+      //     }
+      //   } else {
+      //     if (yushu < -18) {
+      //       setTranslateY(translateY - (36 + yushu))
+      //     } else {
+      //       setTranslateY(translateY - yushu)
+      //     }
+      //   }
+      //   setIsTouching(false)
+      // }}
+
+      // 等价于上面的写法
       onTouchEnd={() => {
+        const yushu = translateY % 36
+        let y = translateY - yushu
+        if (Math.abs(yushu) > 18) {
+          y += 36 * (yushu > 0 ? 1 : -1)
+        }
+        setTranslateY(y)
         setIsTouching(false)
       }}
     >
-      <div b-1 b-red h-36px absolute top="[calc(50%-18px)]" w-full />
+      {/* <div b-1 b-red h-36px absolute top="[calc(50%-18px)]" w-full /> */}
       <div b-1 b-red h-36px absolute top="[calc(50%-18px)]" w-full>
         <ol style={{ transform: `translateY(${translateY}px)` }}
           children-h-36px text-center children-leading-36px>
