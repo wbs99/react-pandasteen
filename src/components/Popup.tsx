@@ -32,7 +32,7 @@ export const Popup = (props: Props) => {
     <div touch-none>
       <animated.div style={markStyles} fixed top-0 left-0 h-full w-full className="bg-black:75" z="[calc(var(--z-popup)-1)]" onClick={onClickMask}>
       </animated.div>
-      <animated.div style={menuStyles} fixed bottom-0 left-0 w-full min-h-100px bg-white
+      <animated.div style={menuStyles} rounded-t-8px overflow-hidden fixed bottom-0 left-0 w-full min-h-100px bg-white
         z="[calc(var(--z-popup))]">
         {children}
       </animated.div>

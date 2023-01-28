@@ -1,20 +1,28 @@
 import { useState } from 'react'
+import { DatePicker } from '../../components/DatePicker'
 import { Icon } from '../../components/Icon'
 import { usePopup } from '../../hooks/usePopup'
+import { time } from '../../lib/time'
 
 type Props = {
   className?: string
 }
 export const DateAndAmount: React.FC<Props> = (props) => {
   const { className } = props
-  const { popup, toggle } = usePopup(true, YearSelect())
+  const [date, setDate] = useState(new Date())
+  const { popup, toggle, hide } = usePopup(
+    true,
+    <DatePicker
+      onConfirm={d => { setDate(d); hide() }}
+      onCancel={() => hide()} />
+  )
 
   return (
     <div className={className}>
       <div flex p-t-15px p-b-16px px-16px border-t-1px border-t="#ddd" gap-x-8px items-center>
         <span flex gap-x-8px items-center onClick={toggle}>
           <Icon name="calendar" className="w-24px h-24px grow-0 shrink-0" />
-          <span grow-0 shrink-0 text-12px color="#999">2001-02-03</span>
+          <span grow-0 shrink-0 text-12px color="#999"> {time(date).format()} </span>
         </span>
         <code grow-1 shrink-1 text-right color="#53A867">123456789.01</code>
       </div>
@@ -35,87 +43,6 @@ export const DateAndAmount: React.FC<Props> = (props) => {
         <button row-start-3 col-start-4 row-end-5 col-end-5>清空</button>
       </div>
       {popup}
-    </div>
-  )
-}
-
-
-export const YearSelect = () => {
-  const [translateY, setTranslateY] = useState(0)
-  const [isTouching, setIsTouching] = useState(false)
-  const [lastY, setLastY] = useState(-1)
-
-  return (
-    <div h="50vh" overflow-hidden relative
-      onTouchStart={(e) => {
-        setIsTouching(true)
-        setLastY(e.touches[0].clientY)
-      }}
-      onTouchMove={(e) => {
-        if (isTouching) {
-          const y = e.touches[0].clientY
-          const dy = y - lastY
-          setTranslateY(translateY + dy)
-          setLastY(y)
-        }
-      }}
-      // onTouchEnd={() => {
-      //   const yushu = translateY % 36
-      //   if (yushu > 0) {
-      //     if (yushu < 18) {
-      //       setTranslateY(translateY - yushu)
-      //     } else {
-      //       setTranslateY(translateY + (36 - yushu))
-      //     }
-      //   } else {
-      //     if (yushu < -18) {
-      //       setTranslateY(translateY - (36 + yushu))
-      //     } else {
-      //       setTranslateY(translateY - yushu)
-      //     }
-      //   }
-      //   setIsTouching(false)
-      // }}
-
-      // 等价于上面的写法
-      onTouchEnd={() => {
-        const yushu = translateY % 36
-        let y = translateY - yushu
-        if (Math.abs(yushu) > 18) {
-          y += 36 * (yushu > 0 ? 1 : -1)
-        }
-        setTranslateY(y)
-        setIsTouching(false)
-      }}
-    >
-      {/* <div b-1 b-red h-36px absolute top="[calc(50%-18px)]" w-full /> */}
-      <div b-1 b-red h-36px absolute top="[calc(50%-18px)]" w-full>
-        <ol style={{ transform: `translateY(${translateY}px)` }}
-          children-h-36px text-center children-leading-36px>
-          <li>2000</li>
-          <li>2001</li>
-          <li>2002</li>
-          <li>2003</li>
-          <li>2004</li>
-          <li>2005</li>
-          <li>2006</li>
-          <li>2007</li>
-          <li>2008</li>
-          <li>2009</li>
-          <li>2010</li>
-          <li>2000</li>
-          <li>2001</li>
-          <li>2002</li>
-          <li>2003</li>
-          <li>2004</li>
-          <li>2005</li>
-          <li>2006</li>
-          <li>2007</li>
-          <li>2008</li>
-          <li>2009</li>
-          <li>2010</li>
-        </ol>
-      </div>
     </div>
   )
 }
