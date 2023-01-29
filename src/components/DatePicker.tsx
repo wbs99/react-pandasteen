@@ -51,7 +51,7 @@ type ColumnProps = {
 }
 export const Column = (props: ColumnProps) => {
   const { dateList, itemHeight = 36, className, value, onChange } = props
-  // value 改变是改变 translateY
+  // value 改变时改变 translateY
   useEffect(() => {
     const index = dateList.indexOf(value)
     setTranslateY(index * -itemHeight)
@@ -100,6 +100,7 @@ export const Column = (props: ColumnProps) => {
       //   setIsTouching(false)
       // }}
 
+      // 根据滑动距离判断选中上一个还是下一个日期
       // 等价于上面的写法
       onTouchEnd={() => {
         const yushu = translateY % itemHeight
