@@ -64,8 +64,8 @@ export const DateAndAmount: React.FC<Props> = (props) => {
         <button row-start-3 col-start-3 row-end-4 col-end-4 onClick={() => append('9')}>9</button>
         <button row-start-4 col-start-1 row-end-5 col-end-3 onClick={() => append('0')}>0</button>
         <button row-start-4 col-start-3 row-end-5 col-end-4 onClick={() => append('.')}>.</button>
-        <button row-start-1 col-start-4 row-end-3 col-end-5 >确定</button>
-        <button row-start-3 col-start-4 row-end-5 col-end-5 onClick={clear}>清空</button>
+        <button row-start-1 col-start-4 row-end-3 col-end-5 onClick={clear}>清空</button>
+        <button bg="#5C33BE" text-white row-start-3 col-start-4 row-end-5 col-end-5  >确定</button>
       </div>
       {popup}
     </div>
