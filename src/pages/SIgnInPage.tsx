@@ -38,19 +38,10 @@ export const SignInPage = () => {
         <h1 text-32px text="#7878FF" font-bold>熊猫记账</h1>
       </div>
       <form p-form onSubmit={onSubmit}>
-        <Input label="邮箱地址" placeholder="请输入邮箱，然后点击发送验证码" value={data.email}
+        <Input label="邮箱地址" placeholder="六位数字" value={data.email}
           onChange={(value) => setData({ email: value })} errorMessage={error.email?.[0]} />
-        <div>
-          <span p-form-label>验证码</span>
-          <div flex gap-x-16px>
-            <input max-w='[calc(40%-8px)]' p-input-text type="text" placeholder='六位数字'
-              value={data.code} onChange={e => setData({ code: e.target.value })} />
-            <button max-w='[calc(60%-8px)]' p-btn >发送验证码</button>
-          </div>
-          <div pt-6px>
-            {error.code ? <span text-red>{error.code}</span> : <span>&nbsp;</span>}
-          </div>
-        </div>
+        <Input type='sms_code' label="验证码" value={data.code}
+          onChange={value => setData({ code: value })} errorMessage={error.code?.[0]} />
         <div mt-100px>
           <button p-btn type="submit">登录</button>
         </div>
