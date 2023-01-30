@@ -22,4 +22,5 @@ button,input{font: inherit}
 :focus {
   outline: none;
 }
+::-webkit-scrollbar { display: none; }
 code{font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;}
