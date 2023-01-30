@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { fetchSessionApi } from "../apis"
 import { Gradient } from "../components/Gradient"
 import { Icon } from "../components/Icon"
+import { Input } from "../components/Input"
 import { TopNav } from "../components/TopNav"
 import { hasError, validate } from "../lib/validate"
 import { useSignInStore } from "../stores/useSIgnInStore"
@@ -37,14 +38,8 @@ export const SignInPage = () => {
         <h1 text-32px text="#7878FF" font-bold>熊猫记账</h1>
       </div>
       <form p-form onSubmit={onSubmit}>
-        <div>
-          <span p-form-label>邮箱地址</span>
-          <input p-input-text type="text" placeholder='请输入邮箱，然后点击发送验证码'
-            value={data.email} onChange={e => setData({ email: e.target.value })} />
-          <div pt-6px>
-            {error.email ? <span text-red>{error.email}</span> : <span>&nbsp;</span>}
-          </div>
-        </div>
+        <Input label="邮箱地址" placeholder="请输入邮箱，然后点击发送验证码" value={data.email}
+          onChange={(value) => setData({ email: value })} errorMessage={error.email?.[0]} />
         <div>
           <span p-form-label>验证码</span>
           <div flex gap-x-16px>
