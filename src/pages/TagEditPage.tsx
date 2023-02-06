@@ -6,13 +6,16 @@ import { TagForm } from "./TagsNewPage/TagForm"
 type Props = {
 
 }
-export const TagsNewPage = (props: Props) => {
+export const TagEditPage = (props: Props) => {
   return (
     <>
       <Gradient className="grow-0 shrink-0">
-        <TopNav title="新建标签" icon={<Icon name="back" />} />
+        <TopNav title="查看标签" icon={<Icon name="back" />} />
       </Gradient>
-      <TagForm type="create" />
+      <TagForm type="edit" />
+      <div px-16px p-b-32px>
+        <button p-btn bg='#E10505'>删除</button>
+      </div>
     </>
   )
 }

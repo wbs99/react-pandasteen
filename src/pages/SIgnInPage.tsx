@@ -13,14 +13,14 @@ export const SignInPage = () => {
   const nav = useNavigate()
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
-    const error = validate(data, [
+    const newError = validate(data, [
       { key: "email", type: "required", message: "请输入邮箱地址" },
       { key: "email", type: 'pattern', regex: /[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}/, message: '邮箱地址不合法' },
       { key: "code", type: "required", message: "请输入验证码" },
       { key: "code", type: 'length', min: 6, max: 6, message: "验证码必须是6位数字" }
     ])
-    setError(error)
-    if (!hasError(error)) {
+    setError(newError)
+    if (!hasError(newError)) {
       const response = await fetchSessionApi(data)
       nav('/home')
     }
@@ -39,9 +39,9 @@ export const SignInPage = () => {
       </div>
       <form p-form onSubmit={onSubmit}>
         <Input label="邮箱地址" placeholder="六位数字" value={data.email}
-          onChange={(value) => setData({ email: value })} errorMessage={error.email?.[0]} />
+          onChange={email => setData({ email })} errorMessage={error.email?.[0]} />
         <Input type='sms_code' label="验证码" value={data.code}
-          onChange={value => setData({ code: value })} errorMessage={error.code?.[0]} />
+          onChange={code => setData({ code })} errorMessage={error.code?.[0]} />
         <div mt-100px>
           <button p-btn type="submit">登录</button>
         </div>

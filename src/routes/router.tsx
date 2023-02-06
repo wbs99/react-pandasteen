@@ -5,6 +5,7 @@ import { HomePage } from '../pages/HomePage'
 import { ItemsNewPage } from '../pages/ItemsNewPage'
 import { ItemsPage } from '../pages/ItemsPage'
 import { SignInPage } from '../pages/SIgnInPage'
+import { TagEditPage } from '../pages/TagEditPage'
 import { TagsNewPage } from '../pages/TagsNewPage'
 import { Welcome1 } from '../pages/Welcome1'
 import { Welcome2 } from '../pages/Welcome2'
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
   { path: '/chart', element: <div>图表</div> },
   { path: '/export', element: <div>敬请期待</div> },
   { path: '/tags', element: <div>标签</div> },
+  { path: '/tags/:id', element: <TagEditPage /> },
   { path: '/tags/new', element: <TagsNewPage /> },
   { path: '/remind', element: <div>敬请期待</div> }
 ])
