@@ -9,9 +9,12 @@ type Props = {
 export const PieChart = (props: Props) => {
   const { className, items } = props
   const div = useRef<HTMLDivElement>(null)
+  const initialized = useRef(false)
   useEffect(() => {
     if (!div.current) { return }
+    if (initialized.current) { return }
     const myChart = echarts.init(div.current)
+    initialized.current = true
     const option: EChartsOption = {
       tooltip: { trigger: 'item' },
       grid: { top: 0, left: 0, bottom: 0, right: 0 },
@@ -21,7 +24,6 @@ export const PieChart = (props: Props) => {
         data: items?.map(item => ({ value: item.y, name: item.x })),
       }]
     }
-
     myChart.setOption(option)
   }, [])
   return (

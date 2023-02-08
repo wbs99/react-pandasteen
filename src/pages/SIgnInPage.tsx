@@ -38,7 +38,7 @@ export const SignInPage = () => {
         <h1 text-32px text="#7878FF" font-bold>熊猫记账</h1>
       </div>
       <form p-form onSubmit={onSubmit}>
-        <Input label="邮箱地址" placeholder="六位数字" value={data.email}
+        <Input type='text' label="邮箱地址" placeholder="六位数字" value={data.email}
           onChange={email => setData({ email })} errorMessage={error.email?.[0]} />
         <Input type='sms_code' label="验证码" value={data.code}
           onChange={code => setData({ code })} errorMessage={error.code?.[0]} />
