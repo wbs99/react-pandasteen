@@ -11,6 +11,7 @@ type Props = {
 
 export const DatePicker = (props: Props) => {
   const { start, end, currentDate, onCancel, onConfirm } = props
+  const [, update] = useState({}) // 配合 useRef 实现强制更新
   const startTime = start ? time(start) : time().add(-10, 'years')
   const endTime = end ? time(end) : time().add(10, 'years')
   const selectedTime = useRef(currentDate ? time(currentDate) : time())
@@ -31,11 +32,11 @@ export const DatePicker = (props: Props) => {
       </div>
       <div flex >
         <Column dateList={yearList} value={selectedTime.current.year}
-          onChange={year => { selectedTime.current.year = year }} className="grow-1" />
+          onChange={year => { selectedTime.current.year = year; update({}) }} className="grow-1" />
         <Column dateList={monthList} value={selectedTime.current.month}
-          onChange={month => { selectedTime.current.month = month }} className="grow-1" />
+          onChange={month => { selectedTime.current.month = month; update({}) }} className="grow-1" />
         <Column dateList={dayList} value={selectedTime.current.day}
-          onChange={day => { selectedTime.current.day = day }} className="grow-1" />
+          onChange={day => { selectedTime.current.day = day; update({}) }} className="grow-1" />
       </div>
     </>
   )
