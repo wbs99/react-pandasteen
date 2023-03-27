@@ -18,9 +18,9 @@ export const DatePicker = (props: Props) => {
     throw new Error('结束时间必须晚于开始时间')
   }
   const yearList = Array.from({ length: endTime.year - startTime.year + 1 })
-    .map((item, index) => startTime.year + index)
-  const monthList = Array.from({ length: 12 }).map((item, index) => index + 1)
-  const dayList = Array.from({ length: selectedTime.current.lastDayOfMonth.day }).map((item, index) => index + 1)
+    .map((_, index) => startTime.year + index)
+  const monthList = Array.from({ length: 12 }).map((_, index) => index + 1)
+  const dayList = Array.from({ length: selectedTime.current.lastDayOfMonth.day }).map((_, index) => index + 1)
 
   return (
     <>
@@ -30,12 +30,12 @@ export const DatePicker = (props: Props) => {
         <span onClick={() => onConfirm?.(selectedTime.current.date)}>确定</span>
       </div>
       <div flex >
-        <Column className="grow-1" dateList={yearList} value={selectedTime.current.year}
-          onChange={year => { selectedTime.current.year = year }} />
-        <Column className="grow-1" dateList={monthList} value={selectedTime.current.month}
-          onChange={month => { selectedTime.current.month = month }} />
-        <Column className="grow-1" dateList={dayList} value={selectedTime.current.day}
-          onChange={day => { selectedTime.current.day = day }} />
+        <Column dateList={yearList} value={selectedTime.current.year}
+          onChange={year => { selectedTime.current.year = year }} className="grow-1" />
+        <Column dateList={monthList} value={selectedTime.current.month}
+          onChange={month => { selectedTime.current.month = month }} className="grow-1" />
+        <Column dateList={dayList} value={selectedTime.current.day}
+          onChange={day => { selectedTime.current.day = day }} className="grow-1" />
       </div>
     </>
   )
@@ -82,27 +82,8 @@ export const Column = (props: ColumnProps) => {
           setLastY(y)
         }
       }}
-      // onTouchEnd={() => {
-      //   const yushu = translateY % itemHeight
-      //   if (yushu > 0) {
-      //     if (yushu < itemHeight/2) {
-      //       setTranslateY(translateY - yushu)
-      //     } else {
-      //       setTranslateY(translateY + (itemHeight - yushu))
-      //     }
-      //   } else {
-      //     if (yushu < -itemHeight/2) {
-      //       setTranslateY(translateY - (itemHeight + yushu))
-      //     } else {
-      //       setTranslateY(translateY - yushu)
-      //     }
-      //   }
-      //   setIsTouching(false)
-      // }}
-
-      // 根据滑动距离判断选中上一个还是下一个日期
-      // 等价于上面的写法
       onTouchEnd={() => {
+        // 根据余数判断滑动结束时是定位到上一个时间还是下一个时间
         const yushu = translateY % itemHeight
         let y = translateY - yushu
         if (Math.abs(yushu) > itemHeight / 2) {
@@ -112,6 +93,24 @@ export const Column = (props: ColumnProps) => {
         setIsTouching(false)
         onChange(dateList[Math.abs(y / itemHeight)])
       }}
+    // onTouchEnd={() => {
+    // 等价于上面的写法
+    //   const yushu = translateY % itemHeight
+    //   if (yushu > 0) {
+    //     if (yushu < itemHeight/2) {
+    //       setTranslateY(translateY - yushu)
+    //     } else {
+    //       setTranslateY(translateY + (itemHeight - yushu))
+    //     }
+    //   } else {
+    //     if (yushu < -itemHeight/2) {
+    //       setTranslateY(translateY - (itemHeight + yushu))
+    //     } else {
+    //       setTranslateY(translateY - yushu)
+    //     }
+    //   }
+    //   setIsTouching(false)
+    // }}
     >
       <div b-1 b-red absolute top="50%" w-full
         style={{ height: itemHeight, transform: `transLateY(${itemHeight / 2}px)` }} />

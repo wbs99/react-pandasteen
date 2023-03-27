@@ -11,6 +11,8 @@ interface Props {
 
 export const TopMenu: React.FC<Props> = ({ onClickMask, visible }) => {
   const [maskVisible, setMaskVisible] = useState(visible)
+  // 打开动画 0 => 1 
+  // 关闭动画 1 => 0
   const markStyle = useSpring({
     opacity: visible ? 1 : 0,
     onStart: ({ value }) => {

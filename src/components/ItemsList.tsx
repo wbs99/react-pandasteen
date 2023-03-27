@@ -13,6 +13,7 @@ const CenterDiv = styled.div`
 
 const getKey = (pageIndex: number, prev: Resources<Item>) => {
   if (prev) {
+    // pageIndex 是从 0 开始
     // 上一页之前的所有数据加上上一页的数据 -- 即已经获取到的所有数据
     const sendCount = (prev.pager.page - 1) * prev.pager.per_page + prev.resources.length
     const count = prev.pager.count
@@ -23,6 +24,7 @@ const getKey = (pageIndex: number, prev: Resources<Item>) => {
 }
 
 export const ItemsList: React.FC<Props> = () => {
+  // data: [{ resources: {}, pager: {} }, { resources: {}, pager: {} }, { resources: {}, pager: {} }]
   const { data, error, size, setSize } = useSWRInfinite(
     getKey,
     async (path) => {
@@ -50,24 +52,23 @@ export const ItemsList: React.FC<Props> = () => {
 
     return <>
       <ol>
-        {data.map(({ resources }) => {
-          return resources.map(item => <li key={item.id} grid grid-cols="[auto_1fr_auto]" grid-rows-2 px-16px py-8px gap-x-12px
-            border-b-1 b="#EEE">
-            <div row-start-1 col-start-1 row-end-3 col-end-2 text-24px w-48px h-48px
-              bg="#D8D8D8" rounded="50%" flex justify-center items-center>
-              😘
-            </div>
-            <div row-start-1 col-start-2 row-end-2 col-end-3>
-              旅行
-            </div>
-            <div row-start-2 col-start-2 row-end-3 col-end-4 text="#999999">
-              2011年1月1日
-            </div>
-            <div row-start-1 col-start-3 row-end-2 col-end-4 text="#53A867">
-              ￥{item.amount / 100}
-            </div>
-          </li>)
-        })}
+        {data.map(({ resources }) => resources.map(item => <li key={item.id} grid grid-cols="[auto_1fr_auto]" grid-rows-2 px-16px py-8px gap-x-12px
+          border-b-1 b="#EEE">
+          <div row-start-1 col-start-1 row-end-3 col-end-2 text-24px w-48px h-48px
+            bg="#D8D8D8" rounded="50%" flex justify-center items-center>
+            😘
+          </div>
+          <div row-start-1 col-start-2 row-end-2 col-end-3>
+            旅行
+          </div>
+          <div row-start-2 col-start-2 row-end-3 col-end-4 text="#999999">
+            2011年1月1日
+          </div>
+          <div row-start-1 col-start-3 row-end-2 col-end-4 text="#53A867">
+            ￥{item.amount / 100}
+          </div>
+        </li>)
+        )}
       </ol>
       {error && <CenterDiv>数据加载失败，请刷新页面</CenterDiv>}
       {!hasMore

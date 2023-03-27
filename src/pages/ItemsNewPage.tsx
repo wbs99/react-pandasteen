@@ -17,6 +17,9 @@ export const ItemsNewPage: React.FC<Props> = () => {
     { key: 'income', text: '收入', element: <Tags kind="income" /> }
   ]
   const [tabItem, setTabItem] = useState<Item['kind']>('expenses')
+  // flex 布局之后
+  // 高度固定的区域可以写  grow-0 shrink-0
+  // 高度不固定的区域可以写  grow-1 shrink-1 配合 overflow
   return (
     <div className={s.wrapper} h-screen flex flex-col>
       <Gradient className="grow-0 shrink-0">

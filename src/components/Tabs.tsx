@@ -35,6 +35,6 @@ export const Tabs = <T extends string>(props: Props<T>) => {
       <div grow-1 shrink-1 overflow-auto className={classPrefix ? `${classPrefix}-pane` : ''}>
         {tabItems.find(item => item.key === value)?.element}
       </div>
-    </div >
+    </div>
   )
 }
