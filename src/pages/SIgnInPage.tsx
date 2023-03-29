@@ -53,7 +53,7 @@ export const SignInPage = () => {
       <form p-form onSubmit={onSubmit}>
         <Input type='text' label="邮箱地址" placeholder="请输入" value={data.email}
           onChange={email => setData({ email })} errorMessage={error.email?.[0]} />
-        <Input onClick={onClickCode} type='sms_code' label="验证码" value={data.code}
+        <Input onClick={onClickCode} type='sms_code' label="验证码" placeholder="六位数字" value={data.code}
           onChange={code => setData({ code })} errorMessage={error.code?.[0]} />
         <div mt-100px>
           <button p-btn type="submit" >登录</button>

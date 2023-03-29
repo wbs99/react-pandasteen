@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
 import { EmojiInput } from "./Input/EmojiInput"
+import { SmsCodeInput } from "./Input/SmsCodeInput"
 
 type Props = {
   label?: string | ReactNode
@@ -32,11 +33,7 @@ export const Input = (props: Props) => {
           }
         </select>
       case 'sms_code':
-        return <div flex gap-x-16px>
-          <input max-w='[calc(40%-8px)]' p-input-text type="text" placeholder='六位数字'
-            value={value} onChange={e => onChange?.(e.target.value)} />
-          <button type='button' max-w='[calc(60%-8px)]' p-btn onClick={props.onClick}>发送验证码</button>
-        </div>
+        return <SmsCodeInput placeholder={placeholder} value={value} onChange={onChange} onClick={props.onClick} />
       default:
         return null
     }
