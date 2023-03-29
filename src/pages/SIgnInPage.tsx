@@ -1,3 +1,4 @@
+import axios from "axios"
 import { FormEventHandler } from "react"
 import { useNavigate } from "react-router-dom"
 import { fetchSessionApi } from "../apis"
@@ -25,6 +26,18 @@ export const SignInPage = () => {
       nav('/home')
     }
   }
+  const onClickCode = async () => {
+    console.log(data.email)
+    const newError = validate({ email: data.email }, [
+      { key: "email", type: "required", message: "请输入邮箱地址" },
+      { key: "email", type: 'pattern', regex: /[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}/, message: '邮箱地址不合法' },
+    ])
+    setError(newError)
+    if (!hasError(newError)) {
+      console.log('没错')
+      const response = await axios.post('http://121.196.236.94:8080/api/v1/validation_codes', { email: data.email })
+    }
+  }
   return (
     <div>
       <Gradient>
@@ -38,12 +51,12 @@ export const SignInPage = () => {
         <h1 text-32px text="#7878FF" font-bold>熊猫记账</h1>
       </div>
       <form p-form onSubmit={onSubmit}>
-        <Input type='text' label="邮箱地址" placeholder="六位数字" value={data.email}
+        <Input type='text' label="邮箱地址" placeholder="请输入" value={data.email}
           onChange={email => setData({ email })} errorMessage={error.email?.[0]} />
-        <Input type='sms_code' label="验证码" value={data.code}
+        <Input onClick={onClickCode} type='sms_code' label="验证码" value={data.code}
           onChange={code => setData({ code })} errorMessage={error.code?.[0]} />
         <div mt-100px>
-          <button p-btn type="submit">登录</button>
+          <button p-btn type="submit" >登录</button>
         </div>
       </form>
     </div>

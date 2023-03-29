@@ -7,11 +7,11 @@ type Props = {
   value?: string
   onChange?: (value: string) => void
   errorMessage?: string
-  disableError?: boolean
+  disableError?: boolean // 是否需要显示 error
 } & (
     | { type: 'text' }
     | { type: 'emoji' }
-    | { type: 'sms_code' }
+    | { type: 'sms_code', onClick: () => void }
     | { type: 'select'; options: { value: string; text: string }[] }
   )
 export const Input = (props: Props) => {
@@ -35,7 +35,7 @@ export const Input = (props: Props) => {
         return <div flex gap-x-16px>
           <input max-w='[calc(40%-8px)]' p-input-text type="text" placeholder='六位数字'
             value={value} onChange={e => onChange?.(e.target.value)} />
-          <button max-w='[calc(60%-8px)]' p-btn >发送验证码</button>
+          <button type='button' max-w='[calc(60%-8px)]' p-btn onClick={props.onClick}>发送验证码</button>
         </div>
       default:
         return null
