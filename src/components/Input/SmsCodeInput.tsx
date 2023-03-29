@@ -2,11 +2,16 @@ type Props = {
   value?: string
   placeholder?: string
   onChange?: (value: string) => void
-  onClick: () => void
+  request: () => Promise<unknown>
 }
 
 export const SmsCodeInput = (props: Props) => {
-  const { value, placeholder, onChange, onClick } = props
+  const { value, placeholder, onChange, request } = props
+  const onClick = async () => {
+    if (!request) { return }
+    await request()
+  }
+
   return (
     <div flex gap-x-16px>
       <input max-w='[calc(40%-8px)]' p-input-text type="text" placeholder={placeholder}

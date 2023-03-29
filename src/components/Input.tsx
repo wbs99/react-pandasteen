@@ -12,7 +12,7 @@ type Props = {
 } & (
     | { type: 'text' }
     | { type: 'emoji' }
-    | { type: 'sms_code', onClick: () => void }
+    | { type: 'sms_code', request: () => Promise<unknown> }
     | { type: 'select'; options: { value: string; text: string }[] }
   )
 export const Input = (props: Props) => {
@@ -33,7 +33,7 @@ export const Input = (props: Props) => {
           }
         </select>
       case 'sms_code':
-        return <SmsCodeInput placeholder={placeholder} value={value} onChange={onChange} onClick={props.onClick} />
+        return <SmsCodeInput placeholder={placeholder} value={value} onChange={onChange} request={props.request} />
       default:
         return null
     }

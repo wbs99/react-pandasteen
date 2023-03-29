@@ -26,7 +26,7 @@ export const SignInPage = () => {
       nav('/home')
     }
   }
-  const onClickCode = async () => {
+  const sendSmsCode = async () => {
     console.log(data.email)
     const newError = validate({ email: data.email }, [
       { key: "email", type: "required", message: "请输入邮箱地址" },
@@ -36,6 +36,7 @@ export const SignInPage = () => {
     if (!hasError(newError)) {
       console.log('没错')
       const response = await axios.post('http://121.196.236.94:8080/api/v1/validation_codes', { email: data.email })
+      return response
     }
   }
   return (
@@ -53,7 +54,7 @@ export const SignInPage = () => {
       <form p-form onSubmit={onSubmit}>
         <Input type='text' label="邮箱地址" placeholder="请输入" value={data.email}
           onChange={email => setData({ email })} errorMessage={error.email?.[0]} />
-        <Input onClick={onClickCode} type='sms_code' label="验证码" placeholder="六位数字" value={data.code}
+        <Input request={sendSmsCode} type='sms_code' label="验证码" placeholder="六位数字" value={data.code}
           onChange={code => setData({ code })} errorMessage={error.code?.[0]} />
         <div mt-100px>
           <button p-btn type="submit" >登录</button>
