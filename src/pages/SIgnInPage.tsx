@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 import { FormEventHandler } from "react"
 import { useNavigate } from "react-router-dom"
 import { fetchSessionApi } from "../apis"
@@ -6,7 +6,8 @@ import { Gradient } from "../components/Gradient"
 import { Icon } from "../components/Icon"
 import { Input } from "../components/Input"
 import { TopNav } from "../components/TopNav"
-import { hasError, validate } from "../lib/validate"
+import { ajax } from "../lib/ajax"
+import { FormError, hasError, validate } from "../lib/validate"
 import { useSignInStore } from "../stores/useSIgnInStore"
 
 export const SignInPage = () => {
@@ -22,9 +23,16 @@ export const SignInPage = () => {
     ])
     setError(newError)
     if (!hasError(newError)) {
-      const response = await fetchSessionApi(data)
+      const response = await ajax.post<{ jwt: string }>('http://121.196.236.94:8080/api/v1/session', data).catch(onSubmitError)
+      const jwt = response.data.jwt
+      console.log('jwt', jwt)
+      localStorage.setItem('jwt', jwt)
       nav('/home')
     }
+  }
+  const onSubmitError = (err: AxiosError<{ errors: FormError<typeof data> }>) => {
+    setError(err.response?.data?.errors ?? {})
+    throw error
   }
   const sendSmsCode = async () => {
     console.log(data.email)
