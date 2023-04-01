@@ -15,6 +15,7 @@ import { Welcome4 } from '../pages/Welcome4'
 import axios, { AxiosError } from 'axios'
 import { ErrorUnauthorized, ErrorEmptyData } from '../errors'
 import { ItemsPageError } from '../pages/ItemsPageError'
+import { preload } from 'swr'
 
 export const router = createBrowserRouter([
   { path: '/', element: <Root /> },
@@ -38,12 +39,14 @@ export const router = createBrowserRouter([
         if (error.response?.status === 401) { throw new ErrorUnauthorized() }
         throw error
       }
-      const response = await axios.get<Resources<Item>>('/api/v1/items?page=1').catch(onError)
-      if (response.data.resources.length > 0) {
-        return response.data
-      } else {
-        throw new ErrorEmptyData()
-      }
+      return preload('/api/v1/items', async (path) => {
+        const response = await axios.get<Resources<Item>>(path).catch(onError)
+        if (response.data.resources.length > 0) {
+          return response.data
+        } else {
+          throw new ErrorEmptyData()
+        }
+      })
     }
   },
   { path: '/items/new', element: <ItemsNewPage /> },
