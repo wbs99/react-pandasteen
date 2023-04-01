@@ -28,7 +28,7 @@ export const SignInPage = () => {
       const jwt = response.data.jwt
       console.log('jwt', jwt)
       localStorage.setItem('jwt', jwt)
-      nav('/home')
+      nav('/items')
     }
   }
 
