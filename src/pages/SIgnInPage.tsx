@@ -10,6 +10,7 @@ import { ajax } from "../lib/ajax"
 import { FormError, hasError, validate } from "../lib/validate"
 import { useSignInStore } from "../stores/useSIgnInStore"
 import { usePopup } from "../hooks/usePopup"
+import { Loading } from "../components/Loading"
 
 export const SignInPage = () => {
   const { data, setData, error, setError } = useSignInStore()
@@ -35,7 +36,10 @@ export const SignInPage = () => {
     setError(err.response?.data?.errors ?? {})
     throw error
   }
-  const { popup, hide, show } = usePopup({ children: <div>加载中</div>, position: 'center' })
+  const { popup, hide, show } = usePopup({
+    children: <div p-16px><Loading /></div>,
+    position: 'center'
+  })
   const sendSmsCode = async () => {
     const newError = validate({ email: data.email }, [
       { key: "email", type: "required", message: "请输入邮箱地址" },
