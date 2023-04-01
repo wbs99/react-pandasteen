@@ -1,5 +1,5 @@
 import { useRouteError, Navigate, useLocation } from "react-router-dom"
-import { ErrorUnauthorized, ErrorEmptyData } from "../errors"
+import { ErrorUnauthorized, ErrorEmptyData } from "."
 
 
 export const ItemsPageError = () => {

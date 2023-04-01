@@ -1,5 +1,5 @@
 import { Navigate, useLocation, useRouteError } from 'react-router-dom'
-import { ErrorUnauthorized } from '../errors'
+import { ErrorUnauthorized } from '.'
 
 export const ErrorPage = () => {
   const error = useRouteError() as Error

@@ -13,10 +13,10 @@ import { Welcome2 } from '../pages/Welcome2'
 import { Welcome3 } from '../pages/Welcome3'
 import { Welcome4 } from '../pages/Welcome4'
 import axios, { AxiosError } from 'axios'
-import { ErrorUnauthorized, ErrorEmptyData } from '../errors'
-import { ItemsPageError } from '../pages/ItemsPageError'
+import { ErrorUnauthorized, ErrorEmptyData } from '../pages/Errors'
+import { ItemsPageError } from '../pages/Errors/ItemsPageError'
 import { preload } from 'swr'
-import { ErrorPage } from '../pages/ErrorPage'
+import { ErrorPage } from '../pages/Errors/ErrorPage'
 
 export const router = createBrowserRouter([
   // 访问 / 路径，在 Root 中判断跳转哪个页面
