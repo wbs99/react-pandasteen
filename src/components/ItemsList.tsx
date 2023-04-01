@@ -1,4 +1,4 @@
-import { ajax } from "../lib/ajax"
+import { useAjax } from "../lib/ajax"
 import useSWRInfinite from 'swr/infinite'
 import styled from "styled-components"
 
@@ -24,11 +24,12 @@ const getKey = (pageIndex: number, prev: Resources<Item>) => {
 }
 
 export const ItemsList: React.FC<Props> = () => {
+  const { get } = useAjax({ showLoading: true })
   // data: [{ resources: {}, pager: {} }, { resources: {}, pager: {} }, { resources: {}, pager: {} }]
   const { data, error, size, setSize } = useSWRInfinite(
     getKey,
     async (path) => {
-      const response = await ajax.get<Resources<Item>>(path)
+      const response = await get<Resources<Item>>(path)
       return response.data
     },
     { revalidateFirstPage: false }

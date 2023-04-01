@@ -1,11 +1,10 @@
 import pig from '../assets/icons/welcome1.svg'
 import useSWR from 'swr'
-import { ajax } from '../lib/ajax'
 import { Navigate } from 'react-router-dom'
 import { useTitle } from '../hooks/useTitle'
 import { Loading } from '../components/Loading'
 import { AddItemFloatButton } from '../components/AddItemFloatButton'
-import { fetchItemsApi, fetchMeApi } from '../apis'
+import { useAjax } from '../lib/ajax'
 
 interface Props {
   title: string
@@ -13,12 +12,13 @@ interface Props {
 
 export const HomePage = (props: Props) => {
   useTitle(props.title)
+  const { get } = useAjax({ showLoading: true })
   const { data: meData, error: meError } = useSWR('/api/v1/me', async (path) => {
-    const response = await fetchMeApi(path)
+    const response = await get<Resource<User>>(path)
     return response.data.resource
   })
   const { data: itemsData, error: itemsError } = useSWR(meData ? '/api/v1/items' : null, async (path) => {
-    const response = await fetchItemsApi(path)
+    const response = await get<Resources<Item>>(path)
     return response.data
   })
   const isLoadingMe = !meData && !meError

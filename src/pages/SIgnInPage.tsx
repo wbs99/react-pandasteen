@@ -1,20 +1,19 @@
-import axios, { AxiosError } from "axios"
+import { AxiosError } from "axios"
 import { FormEventHandler } from "react"
 import { useNavigate } from "react-router-dom"
-import { fetchSessionApi } from "../apis"
 import { Gradient } from "../components/Gradient"
 import { Icon } from "../components/Icon"
 import { Input } from "../components/Input"
 import { TopNav } from "../components/TopNav"
-import { ajax } from "../lib/ajax"
+import { useAjax } from "../lib/ajax"
 import { FormError, hasError, validate } from "../lib/validate"
 import { useSignInStore } from "../stores/useSIgnInStore"
-import { usePopup } from "../hooks/usePopup"
-import { Loading } from "../components/Loading"
 
 export const SignInPage = () => {
   const { data, setData, error, setError } = useSignInStore()
   const nav = useNavigate()
+  const { post } = useAjax({ showLoading: true })
+
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
     const newError = validate(data, [
@@ -25,21 +24,19 @@ export const SignInPage = () => {
     ])
     setError(newError)
     if (!hasError(newError)) {
-      const response = await ajax.post<{ jwt: string }>('http://121.196.236.94:8080/api/v1/session', data).catch(onSubmitError)
+      const response = await post<{ jwt: string }>('http://121.196.236.94:8080/api/v1/session', data).catch(onSubmitError)
       const jwt = response.data.jwt
       console.log('jwt', jwt)
       localStorage.setItem('jwt', jwt)
       nav('/home')
     }
   }
+
   const onSubmitError = (err: AxiosError<{ errors: FormError<typeof data> }>) => {
     setError(err.response?.data?.errors ?? {})
     throw error
   }
-  const { popup, hide, show } = usePopup({
-    children: <div p-16px><Loading /></div>,
-    position: 'center'
-  })
+
   const sendSmsCode = async () => {
     const newError = validate({ email: data.email }, [
       { key: "email", type: "required", message: "请输入邮箱地址" },
@@ -47,14 +44,12 @@ export const SignInPage = () => {
     ])
     setError(newError)
     if (!hasError(newError)) {
-      show()
-      // const response = await axios.post('http://121.196.236.94:8080/api/v1/validation_codes', { email: data.email }).finally(() => { hide() })
-      // return response
+      const response = await post('http://121.196.236.94:8080/api/v1/validation_codes', { email: data.email })
+      return response
     }
   }
   return (
     <div>
-      {popup}
       <Gradient>
         <TopNav
           title="登录"
