@@ -12,7 +12,7 @@ interface Props {
 
 export const HomePage = (props: Props) => {
   useTitle(props.title)
-  const { get } = useAjax({ showLoading: true })
+  const { get } = useAjax({ showLoading: true, handleError: true })
   const { data: meData, error: meError } = useSWR('/api/v1/me', async (path) => {
     const response = await get<Resource<User>>(path)
     return response.data.resource
