@@ -9,6 +9,7 @@ import { TopNav } from "../components/TopNav"
 import { ajax } from "../lib/ajax"
 import { FormError, hasError, validate } from "../lib/validate"
 import { useSignInStore } from "../stores/useSIgnInStore"
+import { usePopup } from "../hooks/usePopup"
 
 export const SignInPage = () => {
   const { data, setData, error, setError } = useSignInStore()
@@ -34,21 +35,22 @@ export const SignInPage = () => {
     setError(err.response?.data?.errors ?? {})
     throw error
   }
+  const { popup, hide, show } = usePopup({ children: <div>加载中</div>, position: 'center' })
   const sendSmsCode = async () => {
-    console.log(data.email)
     const newError = validate({ email: data.email }, [
       { key: "email", type: "required", message: "请输入邮箱地址" },
       { key: "email", type: 'pattern', regex: /[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}/, message: '邮箱地址不合法' },
     ])
     setError(newError)
     if (!hasError(newError)) {
-      console.log('没错')
-      const response = await axios.post('http://121.196.236.94:8080/api/v1/validation_codes', { email: data.email })
-      return response
+      show()
+      // const response = await axios.post('http://121.196.236.94:8080/api/v1/validation_codes', { email: data.email }).finally(() => { hide() })
+      // return response
     }
   }
   return (
     <div>
+      {popup}
       <Gradient>
         <TopNav
           title="登录"

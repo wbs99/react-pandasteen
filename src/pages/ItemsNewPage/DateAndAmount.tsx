@@ -10,12 +10,11 @@ type Props = {
 export const DateAndAmount: React.FC<Props> = (props) => {
   const { className } = props
   const [date, setDate] = useState(new Date())
-  const { popup, toggle, hide } = usePopup(
-    false,
-    <DatePicker
+  const { toggle, popup, hide } = usePopup({
+    children: <DatePicker
       onConfirm={d => { setDate(d); hide() }}
       onCancel={() => hide()} />
-  )
+  })
 
   const [output, _setOutput] = useState('0')
   const setOutput = (str: string) => {
