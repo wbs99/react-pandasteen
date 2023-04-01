@@ -4,9 +4,9 @@ import { ErrorUnauthorized } from '.'
 export const ErrorPage = () => {
   const error = useRouteError() as Error
   const loc = useLocation()
-  const from = encodeURIComponent(`${loc.pathname}${loc.search}`)
+  const return_to = encodeURIComponent(`${loc.pathname}${loc.search}`)
   if (error instanceof ErrorUnauthorized) {
-    return <Navigate to={`/sign_in?from=${from}`} />
+    return <Navigate to={`/sign_in?return_to=${return_to}`} />
   } else {
     return <div>未知错误</div>
   }
