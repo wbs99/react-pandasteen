@@ -11,17 +11,18 @@ type Props = {
   onChange?: (ids: Item['tag_ids']) => void
 }
 
-const getKey = (pageIndex: number, prev: Resources<Item>) => {
-  if (prev) {
-    const sendCount = (prev.pager.page - 1) * prev.pager.per_page + prev.resources.length
-    const count = prev.pager.count
-    if (sendCount >= count) { return null }
-  }
-  return `/api/v1/tags?page=${pageIndex + 1}`
-}
+
 
 export const Tags = (props: Props) => {
   const { kind } = props
+  const getKey = (pageIndex: number, prev: Resources<Item>) => {
+    if (prev) {
+      const sendCount = (prev.pager.page - 1) * prev.pager.per_page + prev.resources.length
+      const count = prev.pager.count
+      if (sendCount >= count) { return null }
+    }
+    return `/api/v1/tags?page=${pageIndex + 1}&kind=${kind}`
+  }
   const { get } = useAjax({ showLoading: true, handleError: true })
   const { data, error, size, setSize } = useSWRInfinite(
     getKey,
