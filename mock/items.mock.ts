@@ -1,14 +1,14 @@
 import { MockMethod } from 'vite-plugin-mock';
 import { faker } from '@faker-js/faker';
 
-export const MockItems: MockMethod = {
+export const MockItems: MockMethod[] = [{
   url: '/api/v1/items',
   method: 'get',
   statusCode: 200,
   timeout: 500,
   response: ({ query }: ResponseParams): Resources<Item> =>
     createResponse({ count: 30, perPage: 10, page: parseInt(query.page) || 1 })
-}
+}]
 
 let id = 0
 const createId = () => {

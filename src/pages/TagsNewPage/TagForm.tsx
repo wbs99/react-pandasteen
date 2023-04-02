@@ -1,8 +1,10 @@
 import { useEffect, FormEventHandler } from "react"
-import { useParams, useSearchParams } from "react-router-dom"
+import { useNavigate, useParams, useSearchParams } from "react-router-dom"
 import { Input } from "../../components/Input"
-import { validate, hasError } from "../../lib/validate"
+import { validate, hasError, FormError } from "../../lib/validate"
 import { useCreateStore } from "../../stores/useCreateTagStore"
+import { useAjax } from "../../lib/ajax"
+import { AxiosError } from "axios"
 
 type Props = {
   type: 'create' | 'edit'
@@ -10,8 +12,12 @@ type Props = {
 export const TagForm = (props: Props) => {
   const { type } = props
   const params = useParams()
+  const nav = useNavigate()
   const [searchParams] = useSearchParams()
+  const kind = searchParams.get('kind') ?? ''
   const { data, setData, error, setError } = useCreateStore()
+  const { post } = useAjax({ showLoading: true, handleError: true })
+
   useEffect(() => {
     if (type !== 'create') { return }
     const kind = searchParams.get('kind')
@@ -30,7 +36,7 @@ export const TagForm = (props: Props) => {
 
   }, [])
 
-  const onSubmit: FormEventHandler = (e) => {
+  const onSubmit: FormEventHandler = async (e) => {
     e.preventDefault()
     const newError = validate(data, [
       { key: 'kind', type: 'required', message: '标签类型必填' },
@@ -38,12 +44,24 @@ export const TagForm = (props: Props) => {
       { key: 'name', type: 'length', max: 4, message: '标签名最多四个字符' },
       { key: 'sign', type: 'required', message: '符号必填' },
     ])
-    console.log(data)
     setError(newError)
     if (!hasError(newError)) {
-      // 请求
+      const response = await post<Resource<Tag>>('/api/v1/tags', data).catch(onSubmitError)
+      setData(response.data.resource)
+      nav(`/items/new?kind=${encodeURIComponent(kind)}`)
     }
   }
+  const onSubmitError = (error: AxiosError<{ errors: FormError<typeof data> }>) => {
+    if (error.response) {
+      const { status } = error.response
+      if (status === 422) {
+        const { errors } = error.response.data
+        setError(errors)
+      }
+    }
+    throw error
+  }
+
 
   return (
     <form onSubmit={onSubmit} p-16px p-t-32px flex flex-col gap-y-8px>

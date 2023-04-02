@@ -1,6 +1,6 @@
 import { MockMethod } from "vite-plugin-mock"
 
-export const MockSession: MockMethod = {
+export const MockSession: MockMethod[] = [{
   url: '/api/v1/session',
   method: 'post',
   timeout: 100,
@@ -8,5 +8,5 @@ export const MockSession: MockMethod = {
     return {
       jwt: 'xxxxxxx'
     }
-  },
-}
+  }
+}]
