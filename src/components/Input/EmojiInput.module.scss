@@ -2,8 +2,9 @@
   .selected{
     border-color: var(--color-blue);
   }
-  .selectedTag {
-    color: #5C33BE;
+  .selectedTab {
+    color: var(--color-blue);
+    font-weight: bold;
   }
 }
 
