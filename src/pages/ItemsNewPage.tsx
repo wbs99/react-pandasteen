@@ -10,6 +10,7 @@ import { ItemDate } from "./ItemsNewPage/ItemDate"
 import { ReactNode } from "react"
 import { hasError, validate } from "../lib/validate"
 import { useAjax } from "../lib/ajax"
+import { BackIcon } from "../components/BackIcon"
 
 
 type Props = {
@@ -52,7 +53,7 @@ export const ItemsNewPage: React.FC<Props> = () => {
   return (
     <div className={s.wrapper} h-screen flex flex-col onSubmit={onSubmit}>
       <Gradient className="grow-0 shrink-0">
-        <TopNav title="记一笔" icon={<Icon name='back' className="w-24px h-24px" />} />
+        <TopNav title="记一笔" icon={<BackIcon />} />
       </Gradient>
       <Tabs value={data.kind!} onChange={tabItem => setData({ kind: tabItem })} tabItems={tabItems} className='text-center grow-1 shrink-1 overflow-hidden' classPrefix="items-new-page" />
       <ItemAmount className="grow-0 shrink-0" itemDate={
