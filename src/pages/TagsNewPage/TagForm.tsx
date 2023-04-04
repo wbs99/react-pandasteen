@@ -5,6 +5,7 @@ import { validate, hasError, FormError } from "../../lib/validate"
 import { useCreateStore } from "../../stores/useCreateTagStore"
 import { useAjax } from "../../lib/ajax"
 import { AxiosError } from "axios"
+import useSWR from 'swr'
 
 type Props = {
   type: 'create' | 'edit'
@@ -12,12 +13,16 @@ type Props = {
 export const TagForm = (props: Props) => {
   const { type } = props
   const params = useParams()
+
   const nav = useNavigate()
   const [searchParams] = useSearchParams()
   const kind = searchParams.get('kind') ?? ''
   const { data, setData, error, setError } = useCreateStore()
-  const { post } = useAjax({ showLoading: true, handleError: true })
-
+  const { post, patch, get } = useAjax({ showLoading: true, handleError: true })
+  const id = params.id
+  const { data: tag } = useSWR(id ? `/api/v1/tags/${id}` : null, async (path) =>
+    (await get<Resource<Tag>>(path)).data.resource
+  )
   useEffect(() => {
     if (type !== 'create') { return }
     const kind = searchParams.get('kind')
@@ -30,11 +35,10 @@ export const TagForm = (props: Props) => {
     setData({ kind })
   }, [searchParams])
   useEffect(() => {
-    if (type !== 'edit') { return }
-    const id = params.id
-    if (!id) { throw new Error('id 必填') }
-
-  }, [])
+    if (tag) {
+      setData(tag)
+    }
+  }, [tag])
 
   const onSubmit: FormEventHandler = async (e) => {
     e.preventDefault()
@@ -46,7 +50,10 @@ export const TagForm = (props: Props) => {
     ])
     setError(newError)
     if (!hasError(newError)) {
-      const response = await post<Resource<Tag>>('/api/v1/tags', data).catch(onSubmitError)
+      const promise = type === 'create'
+        ? post<Resource<Tag>>('/api/v1/tags', data)
+        : patch<Resource<Tag>>(`/api/v1/tags/${id}`, data)
+      const response = await promise.catch(onSubmitError)
       setData(response.data.resource)
       nav(`/items/new?kind=${encodeURIComponent(kind)}`)
     }
