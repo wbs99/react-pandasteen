@@ -5,16 +5,12 @@ import { TopNav } from "../components/TopNav"
 import { TagForm } from "./TagsNewPage/TagForm"
 import { useAjax } from "../lib/ajax"
 import { BackIcon } from "../components/BackIcon"
+import { comfirmable } from "../lib/comfirmable"
 
 type Props = {
 
 }
 export const TagEditPage = (props: Props) => {
-  const comfirmable = (fn: () => void) => () => {
-    const result = window.confirm('确定要删除吗？')
-    if (result) { fn() }
-  }
-
   const { id } = useParams()
   const { destroy } = useAjax({ showLoading: true, handleError: true })
   const nav = useNavigate()
