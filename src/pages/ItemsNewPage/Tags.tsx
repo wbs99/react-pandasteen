@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Icon } from "../../components/Icon"
 import { useAjax } from "../../lib/ajax"
 import useSWRInfinite from 'swr/infinite'
 import styled from "styled-components"
+import { LongPressable } from "../../components/LongPressable"
 
 
 type Props = {
@@ -15,6 +16,7 @@ type Props = {
 
 export const Tags = (props: Props) => {
   const { kind } = props
+  const nav = useNavigate()
   const getKey = (pageIndex: number, prev: Resources<Item>) => {
     if (prev) {
       const sendCount = (prev.pager.page - 1) * prev.pager.per_page + prev.resources.length
@@ -55,15 +57,17 @@ export const Tags = (props: Props) => {
           {
             data.map(({ resources }, index) => {
               return resources.map((tag, index) =>
-                <li key={index} w-48px flex justify-center items-center flex-col gap-y-8px
+                <li key={index}
                   onClick={() => { props.onChange?.([tag.id]) }}>
-                  {props.value?.includes(tag.id)
-                    ? <span block w-48px h-48px rounded="24px" bg="#EFEFEF"
-                      flex justify-center items-center text-24px b-1 b="#8F4CD7">{tag.sign}</span>
-                    : <span block w-48px h-48px rounded="24px" bg="#EFEFEF"
-                      flex justify-center items-center text-24px b-1 b-transparent>{tag.sign}</span>
-                  }
-                  <span text-12px text="#666">{tag.name}</span>
+                  <LongPressable onEnd={() => { nav(`/tags/${tag.id}`) }} className="w-48px flex justify-center items-center flex-col gap-y-8px">
+                    {props.value?.includes(tag.id)
+                      ? <span block w-48px h-48px rounded="24px" bg="#EFEFEF"
+                        flex justify-center items-center text-24px b-1 b="#8F4CD7">{tag.sign}</span>
+                      : <span block w-48px h-48px rounded="24px" bg="#EFEFEF"
+                        flex justify-center items-center text-24px b-1 b-transparent>{tag.sign}</span>
+                    }
+                    <span text-12px text="#666">{tag.name}</span>
+                  </LongPressable>
                 </li>
               )
             })
