@@ -9,9 +9,14 @@ import { TopMenu } from "../components/TopMenu"
 import { TopNav } from "../components/TopNav"
 import { useMenuStore } from "../stores/useMenuStore"
 import { timeRangeToStartAndEnd } from "../lib/timeRangeToStartAndEnd"
+import { time } from "../lib/time"
 
 export const ItemsPage: React.FC = () => {
-  const [timeRange, setTimeRange] = useState<TimeRange>('thisMonth')
+  const [timeRange, setTimeRange] = useState<TimeRange>({
+    name: 'thisMonth',
+    start: time().firstDayOfMonth,
+    end: time().lastDayOfMonth.add(1, 'day')
+  })
   const { visible, setVisible } = useMenuStore()
   const onClick = () => {
     setVisible(!visible)

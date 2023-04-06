@@ -14,7 +14,17 @@ type Props<T> = {
   classPrefix?: string
 }
 
-export const Tabs = <T extends string>(props: Props<T>) => {
+const compareKey = <T extends (string | { name: string })>(a: T, c: T) => {
+  if (typeof a === 'string' && typeof c === 'string') {
+    return a === c
+  } else if (a instanceof Object && c instanceof Object) {
+    return a.name === c.name
+  } else {
+    return false
+  }
+}
+
+export const Tabs = <T extends string | { name: string }>(props: Props<T>) => {
   const { tabItems, value, onChange, className, classPrefix } = props
 
   return (
@@ -22,9 +32,10 @@ export const Tabs = <T extends string>(props: Props<T>) => {
       <ol flex text-white children-px-24px children-py-12px bg='[rgb(143,76,215)]'
         grow-0 shrink-0 className={classPrefix ? `${classPrefix}-tabs` : ''} >
         {
-          tabItems.map(item => <li key={item.key} className={
-            cs(item.key === value ? s.selected : '',
-              classPrefix ? `${classPrefix}-tabs-item` : ''
+          tabItems.map(item => <li key={typeof item.key === 'string' ? item.key : item.key.name} className={
+            cs(
+              compareKey(item.key, value) ? s.selected : '',
+              classPrefix ? `${classPrefix}-menu-item` : ''
             )
           }
             onClick={() => onChange(item.key)}>
@@ -33,7 +44,7 @@ export const Tabs = <T extends string>(props: Props<T>) => {
         }
       </ol>
       <div grow-1 shrink-1 overflow-auto className={classPrefix ? `${classPrefix}-pane` : ''}>
-        {tabItems.find(item => item.key === value)?.element}
+        {tabItems.find(item => compareKey(item.key, value))?.element}
       </div>
     </div>
   )
