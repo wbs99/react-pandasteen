@@ -10,7 +10,7 @@ type Props = {
   errorMessage?: string
   disableError?: boolean // 是否需要显示 error
 } & (
-    | { type: 'text' }
+    | { type?: 'text' }
     | { type: 'emoji' }
     | { type: 'sms_code', request: () => Promise<unknown> }
     | { type: 'select'; options: { value: string; text: string }[] }

@@ -1,9 +1,12 @@
 import { useAjax } from "../lib/ajax"
 import useSWRInfinite from 'swr/infinite'
 import styled from "styled-components"
+import { Time } from "../lib/time"
 
 
 interface Props {
+  start: Time
+  end: Time
 }
 
 const CenterDiv = styled.div`
@@ -11,20 +14,18 @@ const CenterDiv = styled.div`
   text-align:center;
 `
 
-const getKey = (pageIndex: number, prev: Resources<Item>) => {
-  if (prev) {
-    // pageIndex 是从 0 开始
-    // 上一页之前的所有数据加上上一页的数据 -- 即已经获取到的所有数据
-    const sendCount = (prev.pager.page - 1) * prev.pager.per_page + prev.resources.length
-    const count = prev.pager.count
-    return sendCount < count ? `api/v1/items?page=${pageIndex + 1}` : null
-  } else {
-    return `api/v1/items?page=${pageIndex + 1}`
-  }
-}
+export const ItemsList = (props: Props) => {
+  const { start, end } = props
 
-export const ItemsList: React.FC<Props> = () => {
   const { get } = useAjax({ showLoading: true })
+  const getKey = (pageIndex: number, prev: Resources<Item>) => {
+    if (prev) {
+      const sendCount = (prev.pager.page - 1) * prev.pager.per_page + prev.resources.length
+      const count = prev.pager.count
+      if (sendCount >= count) { return null }
+    }
+    return `/api/v1/items?page=${pageIndex + 1}&happened_after=${start.format('YYYY-MM-DD')}&happened_before=${end.format('YYYY-MM-DD')}`
+  }
   // data: [{ resources: {}, pager: {} }, { resources: {}, pager: {} }, { resources: {}, pager: {} }]
   const { data, error, size, setSize } = useSWRInfinite(
     getKey,
