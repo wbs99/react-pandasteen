@@ -7,36 +7,40 @@ type Props = {
   currentDate?: Date
   onCancel?: () => void
   onConfirm?: (value: Date) => void
+  value?: Date
 }
 
+const getNow = () => time().set({ hours: 0, minutes: 0, seconds: 0, ms: 0 })
+
 export const DatePicker = (props: Props) => {
-  const { start, end, currentDate, onCancel, onConfirm } = props
+  const { start, end, currentDate, onCancel, onConfirm, value } = props
   const [, update] = useState({}) // 配合 useRef 实现强制更新
-  const startTime = start ? time(start) : time().add(-10, 'years')
-  const endTime = end ? time(end) : time().add(10, 'years')
-  const selectedTime = useRef(currentDate ? time(currentDate) : time())
+  const startTime = start ? time(start) : getNow().add(-10, 'years')
+  const endTime = end ? time(end) : getNow().add(10, 'year')
   if (endTime.timestamp <= startTime.timestamp) {
     throw new Error('结束时间必须晚于开始时间')
   }
+  const valueTime = useRef(value ? time(value).set({ hours: 0, minutes: 0, seconds: 0, ms: 0 }) : getNow())
+
   const yearList = Array.from({ length: endTime.year - startTime.year + 1 })
     .map((_, index) => startTime.year + index)
   const monthList = Array.from({ length: 12 }).map((_, index) => index + 1)
-  const dayList = Array.from({ length: selectedTime.current.lastDayOfMonth.day }).map((_, index) => index + 1)
+  const dayList = Array.from({ length: valueTime.current.lastDayOfMonth.day }).map((_, index) => index + 1)
 
   return (
     <>
       <div flex justify-between p-8px border-b-1 b="#f3f3f3" children-p-8px>
         <span onClick={onCancel}>取消</span>
         <span>时间选择</span>
-        <span onClick={() => onConfirm?.(selectedTime.current.date)}>确定</span>
+        <span onClick={() => onConfirm?.(valueTime.current.date)}>确定</span>
       </div>
       <div flex >
-        <Column dateList={yearList} value={selectedTime.current.year}
-          onChange={year => { selectedTime.current.year = year; update({}) }} className="grow-1" />
-        <Column dateList={monthList} value={selectedTime.current.month}
-          onChange={month => { selectedTime.current.month = month; update({}) }} className="grow-1" />
-        <Column dateList={dayList} value={selectedTime.current.day}
-          onChange={day => { selectedTime.current.day = day; update({}) }} className="grow-1" />
+        <Column dateList={yearList} value={valueTime.current.year}
+          onChange={year => { valueTime.current.year = year; update({}) }} className="grow-1" />
+        <Column dateList={monthList} value={valueTime.current.month}
+          onChange={month => { valueTime.current.month = month; update({}) }} className="grow-1" />
+        <Column dateList={dayList} value={valueTime.current.day}
+          onChange={day => { valueTime.current.day = day; update({}) }} className="grow-1" />
       </div>
     </>
   )

@@ -24,7 +24,9 @@ export const ItemsList = (props: Props) => {
       const count = prev.pager.count
       if (sendCount >= count) { return null }
     }
-    return `/api/v1/items?page=${pageIndex + 1}&happened_after=${start.format('YYYY-MM-DD')}&happened_before=${end.format('YYYY-MM-DD')}`
+    return `/api/v1/items?page=${pageIndex + 1}&`
+      + `happened_after=${start.removeTime().isoString}&`
+      + `happened_before=${end.removeTime().isoString}`
   }
   // data: [{ resources: {}, pager: {} }, { resources: {}, pager: {} }, { resources: {}, pager: {} }]
   const { data, error, size, setSize } = useSWRInfinite(

@@ -16,14 +16,12 @@ export const DateInput = (props: Props) => {
       onConfirm={d => { onChange?.(time(d).isoString); hide() }}
       onCancel={() => hide()} />
   })
-  const onClick = () => {
-    toggle()
-  }
+
   return (
     <>
       {popup}
       <input className={className} p-input-text type='text' readOnly placeholder={placeholder}
-        value={value} onChange={(e) => onChange?.(e.target.value)} onClick={onClick} />
+        value={time(value).format()} onChange={(e) => onChange?.(e.target.value)} onClick={toggle} />
     </>
   )
 }

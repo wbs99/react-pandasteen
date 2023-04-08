@@ -43,13 +43,13 @@ export const TimeRangePicker = (props: Props) => {
   const onConfirm = () => {
     _onSelect({
       name: 'custom',
-      start: time(),
-      end: time()
+      start: time(start),
+      end: time(end).add(1, 'day')
     })
   }
   const { popup, show } = usePopup({
     zIndex: 'var(--dialog)',
-    children: <div onClick={onConfirm}>
+    children: <div>
       <header text-18px bg="[var(--color-purple)]" text-white py-13px p-l-16px>请选择时间</header>
       <main p-16px>
         <Input type='date' disableError label="开始时间" value={start} onChange={d => setStart(d)} />
@@ -57,7 +57,7 @@ export const TimeRangePicker = (props: Props) => {
       </main>
       <footer text-right>
         <button border-none bg-transparent px-16px py-8px>取消</button>
-        <button border-none bg-transparent px-16px py-8px>确认</button>
+        <button border-none bg-transparent px-16px py-8px onClick={onConfirm}>确认</button>
       </footer>
     </div>,
     position: 'center'

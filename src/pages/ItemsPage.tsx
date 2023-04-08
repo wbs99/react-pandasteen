@@ -22,7 +22,7 @@ export const ItemsPage: React.FC = () => {
     setVisible(!visible)
   }
 
-  const { start, end } = timeRangeToStartAndEnd(timeRange)
+  const { start, end } = timeRange
 
 
   return (
@@ -34,6 +34,9 @@ export const ItemsPage: React.FC = () => {
         />
       </Gradient>
       <TimeRangePicker selected={timeRange} onSelect={setTimeRange} />
+      <div>
+        {start.isoString} | {end.isoString}
+      </div>
       <ItemsSummary />
       <ItemsList start={start} end={end} />
       <AddItemFloatButton />
