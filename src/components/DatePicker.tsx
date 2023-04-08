@@ -29,7 +29,7 @@ export const DatePicker = (props: Props) => {
 
   return (
     <>
-      <div flex justify-between p-8px border-b-1 b="#f3f3f3" children-p-8px>
+      <div flex justify-between p-8px border-b-1 b-b-solid b="#f3f3f3" children-p-8px>
         <span onClick={onCancel}>取消</span>
         <span>时间选择</span>
         <span onClick={() => onConfirm?.(valueTime.current.date)}>确定</span>
@@ -117,7 +117,7 @@ export const Column = (props: ColumnProps) => {
     //   setIsTouching(false)
     // }}
     >
-      <div b-1 b-red absolute top="50%" w-full
+      <div border-b-1 border-t-1 b-t-solid b-b-solid b="red" absolute top="50%" w-full
         style={{ height: itemHeight, transform: `transLateY(${itemHeight / 2}px)` }} />
       <div absolute top="50%" w-full style={{ transform: `transLateY(${itemHeight / 2}px)` }}>
         <ol children-flex children-justify-center children-items-center text-center

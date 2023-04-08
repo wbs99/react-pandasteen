@@ -1,6 +1,7 @@
 import {
-  defineConfig, presetAttributify, presetIcons, presetTypography, presetUno, transformerAttributifyJsx
+  defineConfig, presetAttributify, presetIcons, presetTypography, presetUno
 } from 'unocss'
+import transformerAttributifyJsx from './transformerAttributifyJsx'
 
 export default defineConfig({
   theme: {},
