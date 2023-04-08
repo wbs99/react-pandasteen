@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosRequestConfig } from 'axios'
 import { useLoadingStore } from '../stores/useLoadingStore'
 import { useNavigate } from 'react-router-dom'
 
-axios.defaults.baseURL = isDev ? '/' : 'http://121.196.236.94:8080/api/v1'
+axios.defaults.baseURL = isDev ? '/' : 'http://121.196.236.94:8080/'
 axios.defaults.headers.post['Content-Type'] = 'application/json'
 axios.defaults.timeout = 10000
 
