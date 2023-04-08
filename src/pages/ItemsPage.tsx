@@ -24,6 +24,8 @@ export const ItemsPage: React.FC = () => {
     }
     if (t.end.timestamp - t.start.timestamp > Time.DAY * 365) {
       setOutOfRange(true)
+    } else {
+      setOutOfRange(false)
     }
     _setTimeRange(t)
   }
@@ -49,7 +51,7 @@ export const ItemsPage: React.FC = () => {
           自定义时间跨度不能超过 365 天
         </div>
         : <>
-          <ItemsSummary />
+          <ItemsSummary start={start} end={end} />
           <ItemsList start={start} end={end} />
         </>
       }
