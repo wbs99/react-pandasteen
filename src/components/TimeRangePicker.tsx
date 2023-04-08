@@ -46,8 +46,9 @@ export const TimeRangePicker = (props: Props) => {
       start: time(start),
       end: time(end).add(1, 'day')
     })
+    hide()
   }
-  const { popup, show } = usePopup({
+  const { popup, show, hide } = usePopup({
     zIndex: 'var(--dialog)',
     children: <div>
       <header text-18px bg="[var(--color-purple)]" text-white py-13px p-l-16px>请选择时间</header>
@@ -56,7 +57,7 @@ export const TimeRangePicker = (props: Props) => {
         <Input type='date' className='mt-8px' disableError label="结束时间" value={end} onChange={d => setEnd(d)} />
       </main>
       <footer text-right>
-        <button border-none bg-transparent px-16px py-8px>取消</button>
+        <button border-none bg-transparent px-16px py-8px onClick={() => hide()}>取消</button>
         <button border-none bg-transparent px-16px py-8px onClick={onConfirm}>确认</button>
       </footer>
     </div>,
