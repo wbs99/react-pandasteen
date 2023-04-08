@@ -1,6 +1,6 @@
 import pig from '../assets/icons/welcome1.svg'
 import useSWR from 'swr'
-import { Navigate } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useTitle } from '../hooks/useTitle'
 import { Loading } from '../components/Loading'
 import { AddItemFloatButton } from '../components/AddItemFloatButton'
@@ -38,7 +38,9 @@ export const HomePage = (props: Props) => {
         <img mt-20vh mb-20vh width="128" height="130" src={pig} />
       </div>
       <div px-16px>
-        <button p-btn>开始记账</button>
+        <Link to="/items/new">
+          <button j-btn>开始记账</button>
+        </Link>
       </div>
       <AddItemFloatButton />
     </div>

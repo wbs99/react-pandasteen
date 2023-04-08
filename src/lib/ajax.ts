@@ -2,17 +2,23 @@ import axios, { AxiosError, AxiosRequestConfig } from 'axios'
 import { useLoadingStore } from '../stores/useLoadingStore'
 import { useNavigate } from 'react-router-dom'
 
-axios.defaults.baseURL = isDev ? '/' : 'http://121.196.236.94:8080/'
-axios.defaults.headers.post['Content-Type'] = 'application/json'
-axios.defaults.timeout = 10000
+let hasSetup = false
 
-
-axios.interceptors.request.use((config) => {
-  const jwt = localStorage.getItem('jwt') || ''
-  config.headers = config.headers || {}
-  if (jwt) { config.headers.Authorization = `Bearer ${jwt}` }
-  return config
-})
+export const setup = () => {
+  console.log(11111)
+  if (hasSetup) { return }
+  console.log(22222)
+  hasSetup = true
+  axios.defaults.baseURL = isDev ? '/' : 'http://121.196.236.94:8080/'
+  axios.defaults.headers.post['Content-Type'] = 'application/json'
+  axios.defaults.timeout = 10000
+  axios.interceptors.request.use((config) => {
+    const jwt = localStorage.getItem('jwt') || ''
+    config.headers = config.headers || {}
+    if (jwt) { config.headers.Authorization = `Bearer ${jwt}` }
+    return config
+  })
+}
 
 
 type Options = {

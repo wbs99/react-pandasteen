@@ -68,7 +68,7 @@ export const SignInPage = () => {
         <Input request={sendSmsCode} type='sms_code' label="验证码" placeholder="六位数字" value={data.code}
           onChange={code => setData({ code })} errorMessage={error.code?.[0]} />
         <div mt-100px>
-          <button p-btn type="submit" >登录</button>
+          <button p-btn type="submit">登录</button>
         </div>
       </form>
     </div>
