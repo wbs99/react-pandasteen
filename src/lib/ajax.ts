@@ -1,35 +1,27 @@
-import axios, { AxiosError, AxiosRequestConfig } from 'axios'
-import { useLoadingStore } from '../stores/useLoadingStore'
+import type { AxiosError, AxiosRequestConfig } from 'axios'
+import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { useLoadingStore } from '../stores/useLoadingStore'
 
-let hasSetup = false
-
-export const setup = () => {
-  console.log(11111)
-  if (hasSetup) { return }
-  console.log(22222)
-  hasSetup = true
-  axios.defaults.baseURL = isDev ? '/' : 'http://121.196.236.94:8080/'
-  axios.defaults.headers.post['Content-Type'] = 'application/json'
-  axios.defaults.timeout = 10000
-  axios.interceptors.request.use((config) => {
-    const jwt = localStorage.getItem('jwt') || ''
-    config.headers = config.headers || {}
-    if (jwt) { config.headers.Authorization = `Bearer ${jwt}` }
-    return config
-  })
-}
-
+export const ajax = axios.create({
+  baseURL: isDev ? '/' : 'http://121.196.236.94:8080/',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  timeout: 10000
+})
+ajax.interceptors.request.use((config) => {
+  const jwt = localStorage.getItem('jwt') || ''
+  config.headers = config.headers || {}
+  if (jwt) { config.headers.Authorization = `Bearer ${jwt}` }
+  return config
+})
 
 type Options = {
   showLoading?: boolean
   handleError?: boolean
 }
 export const useAjax = (options?: Options) => {
-  const nav = useNavigate()
-  const showLoading = options?.showLoading || false
-  const handleError = options?.handleError ?? true
-  const { setVisible } = useLoadingStore()
   const table: Record<string, undefined | (() => void)> = {
     401: () => {
       nav('/sign_in')
@@ -41,6 +33,10 @@ export const useAjax = (options?: Options) => {
       window.alert('没有权限')
     }
   }
+  const showLoading = options?.showLoading || false
+  const handleError = options?.handleError ?? true
+  const { setVisible } = useLoadingStore()
+  const nav = useNavigate()
   const onError = (error: AxiosError) => {
     if (error.response) {
       if (handleError) {
@@ -51,32 +47,30 @@ export const useAjax = (options?: Options) => {
     }
     throw error
   }
-
-  const ajax = {
+  return {
     get: <T>(path: string, config?: AxiosRequestConfig<any>) => {
       if (showLoading) { setVisible(true) }
-      return axios.get<T>(path, config).catch(onError).finally(() => {
+      return ajax.get<T>(path, config).catch(onError).finally(() => {
         if (showLoading) { setVisible(false) }
       })
     },
     post: <T>(path: string, data: JSONValue) => {
       if (showLoading) { setVisible(true) }
-      return axios.post<T>(path, data).catch(onError).finally(() => {
+      return ajax.post<T>(path, data).catch(onError).finally(() => {
         if (showLoading) { setVisible(false) }
       })
     },
     patch: <T>(path: string, data: JSONValue) => {
       if (showLoading) { setVisible(true) }
-      return axios.patch<T>(path, data).catch(onError).finally(() => {
+      return ajax.patch<T>(path, data).catch(onError).finally(() => {
         if (showLoading) { setVisible(false) }
       })
     },
     destroy: <T>(path: string) => {
       if (showLoading) { setVisible(true) }
-      return axios.delete<T>(path).catch(onError).finally(() => {
+      return ajax.delete<T>(path).catch(onError).finally(() => {
         if (showLoading) { setVisible(false) }
       })
     },
   }
-  return ajax
 }

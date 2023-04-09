@@ -11,11 +11,10 @@ export default defineConfig(({ mode, command }) => {
   return {
     server: {
       proxy: {
-        '/api': {
-          target: 'http://117.149.226.194:29504/',
-          changeOrigin: command === 'serve',
-          rewrite: path => path.replace(/\/api/, '')
-        }
+        '/api/': {
+          target: 'http://121.196.236.94:8080/',
+          changeOrigin: false,
+        },
       }
     },
     define: {

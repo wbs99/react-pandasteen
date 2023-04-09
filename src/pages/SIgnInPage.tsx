@@ -5,7 +5,7 @@ import { Gradient } from "../components/Gradient"
 import { Icon } from "../components/Icon"
 import { Input } from "../components/Input"
 import { TopNav } from "../components/TopNav"
-import { useAjax } from "../lib/ajax"
+import { ajax, useAjax } from "../lib/ajax"
 import { FormError, hasError, validate } from "../lib/validate"
 import { useSignInStore } from "../stores/useSIgnInStore"
 
@@ -26,7 +26,8 @@ export const SignInPage = () => {
     ])
     setError(newError)
     if (!hasError(newError)) {
-      const response = await post<{ jwt: string }>('http://121.196.236.94:8080/api/v1/session', data).catch(onSubmitError)
+      const response = await post<{ jwt: string }>('http://121.196.236.94:8080/api/v1/session', data)
+        .catch(onSubmitError)
       const jwt = response.data.jwt
       localStorage.setItem('jwt', jwt)
       const return_to = search.get('return_to') || '/items'
@@ -46,7 +47,9 @@ export const SignInPage = () => {
     ])
     setError(newError)
     if (!hasError(newError)) {
-      const response = await post('http://121.196.236.94:8080/api/v1/validation_codes', { email: data.email })
+      const response = await post('http://121.196.236.94:8080/api/v1/validation_codes', {
+        email: data.email
+      })
       return response
     }
   }
