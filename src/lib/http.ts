@@ -24,7 +24,9 @@ export class Http {
   }
 }
 
-export const http = new Http(import.meta.env.VITE_APP_API_BASEURL)
+
+const baseURL = import.meta.env.VITE_MODE === 'development' ? '/' : 'http://121.196.236.94:8080/'
+export const http = new Http(baseURL)
 
 // set header
 http.instance.interceptors.request.use(config => {
@@ -46,14 +48,14 @@ http.instance.interceptors.request.use(config => {
 http.instance.interceptors.response.use(
   response => {
     if (response.config._autoLoading === true) {
-      console.log('cancel loading')
+      console.log('request success')
       // closeToast()
     }
     return response
   },
   (error: AxiosError) => {
     if (error.response?.config._autoLoading === true) {
-      console.log('cancel loading')
+      console.log('request error')
       // closeToast()
     }
     throw error

@@ -5,16 +5,15 @@ import { Gradient } from "../components/Gradient"
 import { Icon } from "../components/Icon"
 import { Input } from "../components/Input"
 import { TopNav } from "../components/TopNav"
-import { ajax, useAjax } from "../lib/ajax"
 import { FormError, hasError, validate } from "../lib/validate"
 import { useSignInStore } from "../stores/useSIgnInStore"
+import { loginApi, sendSmsCodeApi } from "../apis"
+import { BackIcon } from "../components/BackIcon"
 
 export const LoginPage = () => {
   const { data, setData, error, setError } = useSignInStore()
   const nav = useNavigate()
   const [search] = useSearchParams()
-
-  const { post } = useAjax({ showLoading: true })
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
@@ -26,8 +25,7 @@ export const LoginPage = () => {
     ])
     setError(newError)
     if (!hasError(newError)) {
-      const response = await post<{ jwt: string }>('http://121.196.236.94:8080/api/v1/session', data)
-        .catch(onSubmitError)
+      const response = await loginApi(data).catch(onSubmitError)
       const jwt = response.data.jwt
       localStorage.setItem('jwt', jwt)
       const return_to = search.get('return_to') || '/items'
@@ -47,19 +45,15 @@ export const LoginPage = () => {
     ])
     setError(newError)
     if (!hasError(newError)) {
-      const response = await post('http://121.196.236.94:8080/api/v1/validation_codes', {
-        email: data.email
-      })
+      const response = await sendSmsCodeApi({ email: data.email })
       return response
     }
   }
+
   return (
     <div>
       <Gradient>
-        <TopNav
-          title="登录"
-          icon={<Icon name='back' className="w-24px h-24px" />}
-        />
+        <TopNav title="登录" icon={<BackIcon />} />
       </Gradient>
       <div text-center pt-40px pb-16px>
         <Icon name="panda" className='w-64px h-68px' />
@@ -68,8 +62,8 @@ export const LoginPage = () => {
       <form p-form onSubmit={onSubmit}>
         <Input type='text' label="邮箱地址" placeholder="请输入" value={data.email}
           onChange={email => setData({ email })} errorMessage={error.email?.[0]} />
-        <Input request={sendSmsCode} type='sms_code' label="验证码" placeholder="六位数字" value={data.code}
-          onChange={code => setData({ code })} errorMessage={error.code?.[0]} />
+        <Input type='sms_code' label="验证码" placeholder="六位数字" value={data.code}
+          onChange={code => setData({ code })} errorMessage={error.code?.[0]} request={sendSmsCode} />
         <div mt-100px>
           <button p-btn type="submit">登录</button>
         </div>
