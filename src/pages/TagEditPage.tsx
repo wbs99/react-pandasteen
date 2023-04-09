@@ -14,7 +14,7 @@ export const TagEditPage = (props: Props) => {
   const { id } = useParams()
   const { destroy } = useAjax({ showLoading: true, handleError: true })
   const nav = useNavigate()
-  const onDelete = comfirmable(async () => {
+  const onDelete = comfirmable('确定要删除吗', async () => {
     if (!id) { throw new Error('id 不能为空') }
     await destroy(`/api/v1/tags/${id}`).catch(onDeleteError)
     window.alert('删除成功')
