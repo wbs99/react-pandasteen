@@ -1,24 +1,24 @@
 import useSWR from 'swr'
 import { Link, Navigate } from 'react-router-dom'
 import { useTitle } from '../hooks/useTitle'
-import { Loading } from '../components/Loading'
 import { AddItemFloatButton } from '../components/AddItemFloatButton'
 import { useAjax } from '../lib/ajax'
 import { Icon } from '../components/Icon'
+import { getItemsApi, getMeApi } from '../apis'
 
-interface Props {
+type Props = {
   title: string
 }
 
 export const HomePage = (props: Props) => {
   useTitle(props.title)
   const { get } = useAjax({ showLoading: true, handleError: true })
-  const { data: meData, error: meError } = useSWR('/api/v1/me', async (path) => {
-    const response = await get<Resource<User>>(path)
+  const { data: meData, error: meError } = useSWR('/api/v1/me', async () => {
+    const response = await getMeApi()
     return response.data.resource
   })
-  const { data: itemsData, error: itemsError } = useSWR(meData ? '/api/v1/items' : null, async (path) => {
-    const response = await get<Resources<Item>>(path)
+  const { data: itemsData, error: itemsError } = useSWR(meData ? '/api/v1/items' : null, async () => {
+    const response = await getItemsApi()
     return response.data
   })
   const isLoadingMe = !meData && !meError
@@ -39,7 +39,7 @@ export const HomePage = (props: Props) => {
       </div>
       <div px-16px>
         <Link to="/items/new">
-          <button j-btn>开始记账</button>
+          <button p-btn>开始记账</button>
         </Link>
       </div>
       <AddItemFloatButton />

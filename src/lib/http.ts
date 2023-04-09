@@ -1,9 +1,29 @@
+import { router } from './../routes/router';
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios"
 
 type GetConfig = Omit<AxiosRequestConfig, 'params' | 'url' | 'method'>
 type PostConfig = Omit<AxiosRequestConfig, 'url' | 'data' | 'method'>
 type PatchConfig = Omit<AxiosRequestConfig, 'url' | 'data'>
 type DeleteConfig = Omit<AxiosRequestConfig, 'params'>
+
+
+const table: Record<string, undefined | (() => void)> = {
+  401: () => {
+    router.navigate('/login')
+  },
+  402: () => {
+    window.alert('请付费后观看')
+  },
+  403: () => {
+    window.alert('没有权限')
+  },
+  429: () => {
+    window.alert('请求过于频繁')
+  },
+  500: () => {
+    window.alert('服务器错误')
+  }
+}
 
 export class Http {
   instance: AxiosInstance
@@ -65,20 +85,13 @@ http.instance.interceptors.response.use(
 // errors
 http.instance.interceptors.response.use(
   response => {
-    if (response.data.success !== false) {
-      return response
-    } else {
-      return Promise.reject('请求失败')
-    }
+    return response
   },
   (error: AxiosError) => {
-    const errorCode = error.response?.status
-    if (errorCode === 401) {
-      console.log('登录状态过期，请重新登录')
-    } else if (errorCode === 429) {
-      console.log('请求太频繁')
-    } else if (errorCode === 500) {
-      console.log('服务器繁忙')
+    if (error.response) {
+      const { status } = error.response
+      const fn = table[status]
+      fn?.()
     }
     throw error
   }

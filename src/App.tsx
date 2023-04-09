@@ -9,10 +9,8 @@ import { useLoadingStore } from './stores/useLoadingStore'
 import { useEffect } from 'react'
 import styled from 'styled-components'
 import { Icon } from './components/Icon'
-type Props = {
 
-}
-export const App = (props: Props) => {
+export const App = () => {
   const { visible } = useLoadingStore()
   const { popup, hide, show } = usePopup({
     children: <div p-16px>
