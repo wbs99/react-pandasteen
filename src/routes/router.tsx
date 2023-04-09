@@ -1,4 +1,4 @@
-import { Outlet, createBrowserRouter } from 'react-router-dom'
+import { Outlet, createBrowserRouter, createHashRouter } from 'react-router-dom'
 import { Root } from '../components/Root'
 import { WelcomeLayout } from '../layouts/WelcomeLayout'
 import { HomePage } from '../pages/HomePage'
@@ -20,7 +20,7 @@ import { ErrorPage } from '../pages/Errors/ErrorPage'
 import { ajax } from '../lib/ajax'
 import { ComingSoonPage } from '../pages/ComingSoonPage'
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   // 访问 / 路径，在 Root 中判断跳转哪个页面
   { path: '/', element: <Root /> },
   { path: '/home', element: <HomePage title='首页' /> },
