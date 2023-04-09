@@ -4,7 +4,6 @@ import {
 import transformerAttributifyJsx from './transformerAttributifyJsx'
 
 export default defineConfig({
-  theme: {},
   rules: [
     ['h-screen', { height: 'calc(100vh - var(--vh-offset, 0px))' }]
   ],
