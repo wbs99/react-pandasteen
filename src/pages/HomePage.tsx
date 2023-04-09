@@ -1,10 +1,10 @@
-import pig from '../assets/icons/welcome1.svg'
 import useSWR from 'swr'
 import { Link, Navigate } from 'react-router-dom'
 import { useTitle } from '../hooks/useTitle'
 import { Loading } from '../components/Loading'
 import { AddItemFloatButton } from '../components/AddItemFloatButton'
 import { useAjax } from '../lib/ajax'
+import { Icon } from '../components/Icon'
 
 interface Props {
   title: string
@@ -35,7 +35,7 @@ export const HomePage = (props: Props) => {
   return (
     <div>
       <div flex justify-center items-center>
-        <img mt-20vh mb-20vh width="128" height="130" src={pig} />
+        <Icon className="mt-20vh mb-20vh w-128px h-128px" name="panda" />
       </div>
       <div px-16px>
         <Link to="/items/new">

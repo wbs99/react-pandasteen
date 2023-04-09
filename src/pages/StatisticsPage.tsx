@@ -13,6 +13,7 @@ import { time } from '../lib/time'
 import useSWR from 'swr'
 import type { Time } from '../lib/time'
 import { timeRangeToStartAndEnd } from '../lib/timeRangeToStartAndEnd'
+import { BackIcon } from '../components/BackIcon'
 
 type Groups = { happen_at: string; amount: number }[]
 type Groups2 = { tag_id: number; tag: Tag; amount: number }[]
@@ -66,7 +67,7 @@ export const StatisticsPage: React.FC = () => {
   return (
     <div>
       <Gradient>
-        <TopNav title="统计图表" icon={<Icon name="back" />} />
+        <TopNav title="统计图表" icon={<BackIcon />} />
       </Gradient>
       <TimeRangePicker selected={timeRange} onSelect={setTimeRange}
         timeRanges={[

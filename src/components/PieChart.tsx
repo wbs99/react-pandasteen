@@ -43,6 +43,8 @@ export const PieChart = (props: Props) => {
   }, [items])
 
   return (
-    <div ref={div} className={className}></div>
+    <>
+      <div ref={div} className={className}></div>
+    </>
   )
 }

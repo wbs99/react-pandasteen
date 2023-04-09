@@ -18,6 +18,7 @@ import { ItemsPageError } from '../pages/Errors/ItemsPageError'
 import { preload } from 'swr'
 import { ErrorPage } from '../pages/Errors/ErrorPage'
 import { ajax } from '../lib/ajax'
+import { ComingSoonPage } from '../pages/ComingSoonPage'
 
 export const router = createBrowserRouter([
   // 访问 / 路径，在 Root 中判断跳转哪个页面
@@ -65,11 +66,10 @@ export const router = createBrowserRouter([
       },
       { path: '/items/new', element: <ItemsNewPage /> },
       { path: '/statistics', element: <StatisticsPage /> },
-      { path: '/export', element: <div>敬请期待</div> },
-      { path: '/tags', element: <div>标签</div> },
+      { path: '/export', element: <ComingSoonPage /> },
       { path: '/tags/:id', element: <TagEditPage /> },
       { path: '/tags/new', element: <TagsNewPage /> },
-      { path: '/remind', element: <div>敬请期待</div> }
+      { path: '/remind', element: <ComingSoonPage /> }
     ]
   }
 ])
