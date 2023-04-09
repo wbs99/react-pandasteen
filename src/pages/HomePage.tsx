@@ -25,7 +25,7 @@ export const HomePage = (props: Props) => {
   const isLoadingItem = !isLoadingMe && !itemsData && !itemsError
 
   if (isLoadingMe || isLoadingItem) {
-    return <Loading className="h-screen" />
+    return <div text-center p-16px>加载中……</div>
   }
   if (itemsData?.resources[0]) {
     return <Navigate to='/items' />

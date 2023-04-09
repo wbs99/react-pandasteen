@@ -1,24 +1,28 @@
-import { Outlet, createBrowserRouter, createHashRouter } from 'react-router-dom'
+import { Outlet, createHashRouter } from 'react-router-dom'
 import { Root } from '../components/Root'
 import { WelcomeLayout } from '../layouts/WelcomeLayout'
 import { HomePage } from '../pages/HomePage'
 import { ItemsNewPage } from '../pages/ItemsNewPage'
 import { ItemsPage } from '../pages/ItemsPage'
 import { SignInPage } from '../pages/SIgnInPage'
-import { StatisticsPage } from '../pages/StatisticsPage'
 import { TagEditPage } from '../pages/TagEditPage'
 import { TagsNewPage } from '../pages/TagsNewPage'
 import { Welcome1 } from '../pages/Welcome1'
 import { Welcome2 } from '../pages/Welcome2'
 import { Welcome3 } from '../pages/Welcome3'
 import { Welcome4 } from '../pages/Welcome4'
-import axios, { AxiosError } from 'axios'
+import { AxiosError } from 'axios'
 import { ErrorUnauthorized, ErrorEmptyData } from '../pages/Errors'
 import { ItemsPageError } from '../pages/Errors/ItemsPageError'
-import { preload } from 'swr'
 import { ErrorPage } from '../pages/Errors/ErrorPage'
 import { ajax } from '../lib/ajax'
 import { ComingSoonPage } from '../pages/ComingSoonPage'
+import { Suspense, lazy } from 'react'
+import { Loading } from '../components/Loading'
+
+// 页面资源较大时，使用 lazy import 即可
+const StatisticsPage = lazy(() => import('../pages/StatisticsPage'))
+
 
 export const router = createHashRouter([
   // 访问 / 路径，在 Root 中判断跳转哪个页面
@@ -65,7 +69,7 @@ export const router = createHashRouter([
         }
       },
       { path: '/items/new', element: <ItemsNewPage /> },
-      { path: '/statistics', element: <StatisticsPage /> },
+      { path: '/statistics', element: <Suspense fallback={<Loading />}><StatisticsPage /></Suspense> },
       { path: '/export', element: <ComingSoonPage /> },
       { path: '/tags/:id', element: <TagEditPage /> },
       { path: '/tags/new', element: <TagsNewPage /> },
