@@ -26,7 +26,7 @@ export const CurrentUser: React.FC<Props> = ({ className }) => {
       px-16px>
       {error
         ? (
-          <Link to={`/sign_in?return=${return_to}`} >
+          <Link to={`/login?return=${return_to}`} >
             <h2 text-24px>未登录用户</h2>
             <div text="#CEA1FF">点击这里登录</div>
           </Link>

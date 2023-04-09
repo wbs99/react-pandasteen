@@ -24,7 +24,7 @@ type Options = {
 export const useAjax = (options?: Options) => {
   const table: Record<string, undefined | (() => void)> = {
     401: () => {
-      nav('/sign_in')
+      nav('/login')
     },
     402: () => {
       window.alert('请付费后观看')

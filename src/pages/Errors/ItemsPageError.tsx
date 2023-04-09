@@ -8,7 +8,7 @@ export const ItemsPageError = () => {
   const loc = useLocation()
   if (e instanceof ErrorUnauthorized) {
     const return_to = encodeURIComponent(`${loc.pathname}${loc.search}`)
-    return <Navigate to={`/sign_in?return_to=${return_to}`} />
+    return <Navigate to={`/login?return_to=${return_to}`} />
   } else if (e instanceof ErrorEmptyData) {
     return <Navigate to="/home" replace />
   } else {

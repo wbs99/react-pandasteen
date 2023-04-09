@@ -4,7 +4,7 @@ import { WelcomeLayout } from '../layouts/WelcomeLayout'
 import { HomePage } from '../pages/HomePage'
 import { ItemsNewPage } from '../pages/ItemsNewPage'
 import { ItemsPage } from '../pages/ItemsPage'
-import { SignInPage } from '../pages/SIgnInPage'
+import { LoginPage } from '../pages/Login'
 import { TagEditPage } from '../pages/TagEditPage'
 import { TagsNewPage } from '../pages/TagsNewPage'
 import { Welcome1 } from '../pages/Welcome1'
@@ -28,7 +28,7 @@ export const router = createHashRouter([
   // 访问 / 路径，在 Root 中判断跳转哪个页面
   { path: '/', element: <Root /> },
   { path: '/home', element: <HomePage title='首页' /> },
-  { path: '/sign_in', element: <SignInPage /> },
+  { path: '/login', element: <LoginPage /> },
   {
     path: '/welcome',
     element: <WelcomeLayout />,

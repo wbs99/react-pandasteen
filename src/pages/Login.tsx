@@ -9,7 +9,7 @@ import { ajax, useAjax } from "../lib/ajax"
 import { FormError, hasError, validate } from "../lib/validate"
 import { useSignInStore } from "../stores/useSIgnInStore"
 
-export const SignInPage = () => {
+export const LoginPage = () => {
   const { data, setData, error, setError } = useSignInStore()
   const nav = useNavigate()
   const [search] = useSearchParams()
