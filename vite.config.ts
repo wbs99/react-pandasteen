@@ -13,7 +13,8 @@ export default defineConfig(({ mode, command }) => {
       proxy: {
         '/api/': {
           target: 'http://121.196.236.94:8080/',
-          changeOrigin: false,
+          changeOrigin: command === 'serve',
+          rewrite: (path) => path.replace(/^\/api/, 'api'),
         },
       }
     },

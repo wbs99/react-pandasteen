@@ -26,6 +26,8 @@ export const DatePicker = (props: Props) => {
     .map((_, index) => startTime.year + index)
   const monthList = Array.from({ length: 12 }).map((_, index) => index + 1)
   const dayList = Array.from({ length: valueTime.current.lastDayOfMonth.day }).map((_, index) => index + 1)
+  const hoursList = Array.from({ length: 24 }).map((_, index) => index)
+  const minutesList = Array.from({ length: 60 }).map((_, index) => index)
 
   return (
     <>
@@ -34,18 +36,28 @@ export const DatePicker = (props: Props) => {
         <span>时间选择</span>
         <span onClick={() => onConfirm?.(valueTime.current.date)}>确定</span>
       </div>
+      <div flex children-grow-1 text-center children-p-16px>
+        <span>年</span>
+        <span>月</span>
+        <span>日</span>
+        <span>时</span>
+        <span>分</span>
+      </div>
       <div flex >
         <Column dateList={yearList} value={valueTime.current.year}
-          onChange={year => { valueTime.current.year = year; update({}) }} className="grow-1" />
+          onChange={v => { valueTime.current.year = v; update({}) }} className="grow-1" />
         <Column dateList={monthList} value={valueTime.current.month}
-          onChange={month => { valueTime.current.month = month; update({}) }} className="grow-1" />
+          onChange={v => { valueTime.current.month = v; update({}) }} className="grow-1" />
         <Column dateList={dayList} value={valueTime.current.day}
-          onChange={day => { valueTime.current.day = day; update({}) }} className="grow-1" />
+          onChange={v => { valueTime.current.day = v; update({}) }} className="grow-1" />
+        <Column dateList={hoursList} value={valueTime.current.hours}
+          onChange={v => { valueTime.current.hours = v; update({}) }} className="grow-1" />
+        <Column dateList={minutesList} value={valueTime.current.minutes}
+          onChange={v => { valueTime.current.minutes = v; update({}) }} className="grow-1" />
       </div>
     </>
   )
 }
-
 
 type ColumnProps = {
   className?: string
