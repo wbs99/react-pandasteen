@@ -26,6 +26,20 @@ export default defineConfig(({ mode, command }) => {
       react(),
       viteMockServe(),
       svgsprites({ noOptimizeList: ['panda', 'chart', 'category', 'export', 'remind', 'calendar'] })
-    ]
+    ],
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id: any) {
+            if (id.includes('echarts')) {
+              return 'echarts'
+            }
+            if (id.includes('node_modules')) {
+              return 'vendor'
+            }
+          }
+        }
+      }
+    },
   }
 })
