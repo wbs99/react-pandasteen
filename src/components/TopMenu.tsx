@@ -9,7 +9,8 @@ interface Props {
   visible?: boolean
 }
 
-export const TopMenu: React.FC<Props> = ({ onClickMask, visible }) => {
+export const TopMenu = (props: Props) => {
+  const { onClickMask, visible } = props
   const [maskVisible, setMaskVisible] = useState(visible)
   // 打开动画 0 => 1 
   // 关闭动画 1 => 0

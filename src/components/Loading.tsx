@@ -21,7 +21,8 @@ interface Props {
   loadingText?: string
 }
 
-export const Loading: React.FC<Props> = ({ className, loadingText }) => {
+export const Loading = (props: Props) => {
+  const { className, loadingText } = props
   return (
     <Div className={c('flex flex-col justify-center items-center', className)}>
       <Icon name="loading" className='w-96px h-96px' />

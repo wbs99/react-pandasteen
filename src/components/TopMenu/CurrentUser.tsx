@@ -6,7 +6,8 @@ import useSWR from 'swr'
 interface Props {
   className?: string
 }
-export const CurrentUser: React.FC<Props> = ({ className }) => {
+export const CurrentUser = (props: Props) => {
+  const { className } = props
   const { get } = useAjax({ showLoading: false, handleError: false })
   const { data: me, error } = useSWR('/api/v1/me', async (path) => {
     const response = await get<Resource<User>>(path)

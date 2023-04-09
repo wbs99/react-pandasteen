@@ -30,7 +30,7 @@ const getKey = ({ start, end, kind, group_by }: GetKeyParams) => {
 }
 
 
-export const StatisticsPage: React.FC = () => {
+export const StatisticsPage = () => {
   const [timeRange, setTimeRange] = useState<TimeRange>({
     name: 'thisMonth',
     start: time().firstDayOfMonth,

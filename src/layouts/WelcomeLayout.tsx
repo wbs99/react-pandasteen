@@ -13,7 +13,7 @@ const linkMap: Record<string, string> = {
   '/welcome/4': '/home'
 }
 
-export const WelcomeLayout: React.FC = () => {
+export const WelcomeLayout = () => {
   const animating = useRef(false)
   const nav = useNavigate()
   const [extraStyle, setExtraStyle] = useState<{ position: 'relative' | 'absolute' }>({ position: 'relative' })

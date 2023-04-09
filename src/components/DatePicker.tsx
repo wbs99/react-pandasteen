@@ -13,7 +13,7 @@ type Props = {
 const getNow = () => time().set({ hours: 0, minutes: 0, seconds: 0, ms: 0 })
 
 export const DatePicker = (props: Props) => {
-  const { start, end, currentDate, onCancel, onConfirm, value } = props
+  const { start, end, onCancel, onConfirm, value } = props
   const [, update] = useState({}) // 配合 useRef 实现强制更新
   const startTime = start ? time(start) : getNow().add(-10, 'years')
   const endTime = end ? time(end) : getNow().add(10, 'year')

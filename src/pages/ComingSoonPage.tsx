@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { Icon } from '../components/Icon'
 
-export const ComingSoonPage: React.FC = () => {
+export const ComingSoonPage = () => {
   const nav = useNavigate()
   return (
     <div flex justify-center items-center flex-col gap-y-24px py-48px h-screen px-48px>

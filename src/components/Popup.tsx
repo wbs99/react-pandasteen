@@ -9,7 +9,7 @@ type Props = {
   position?: 'bottom' | 'center'
   zIndex?: string
 }
-export const Popup: React.FC<Props> = (props) => {
+export const Popup = (props: Props) => {
   const { visible, onClickMask, children, position = 'bottom', zIndex = 'var(--z-popup)' } = props
   const [maskVisible, setMaskVisible] = useState(visible)
   const maskStyles = useSpring({

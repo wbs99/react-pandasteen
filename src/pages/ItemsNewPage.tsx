@@ -14,11 +14,8 @@ import { useNavigate } from "react-router-dom"
 import { time } from "../lib/time"
 
 
-type Props = {
-
-}
-export const ItemsNewPage: React.FC<Props> = () => {
-  const { data, setData, error, setError } = useCreateItemStore()
+export const ItemsNewPage = () => {
+  const { data, setData, setError } = useCreateItemStore()
   const tabItems: { key: Item['kind']; text: string; element?: ReactNode }[] = [
     { // JetBrains Mono
       key: 'expenses', text: '支出', element:

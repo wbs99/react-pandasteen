@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import p from '../assets/icons/welcome3.svg'
 
-export const Welcome3: React.FC = () => {
+export const Welcome3 = () => {
   return (
     <div text-center>
       <img src={p} w-130px h-108px />

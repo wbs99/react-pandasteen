@@ -6,7 +6,7 @@ type Props = {
   className?: string
   onEnd?: () => void
 }
-export const LongPressable: React.FC<Props> = (props) => {
+export const LongPressable = (props: Props) => {
   const { children, className, onEnd } = props
   const touchTimer = useRef<number>()
   const touchPosition = useRef<{ x?: number; y?: number }>({ x: undefined, y: undefined })

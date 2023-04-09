@@ -19,7 +19,8 @@ const items = [
   { icon: 'remind', text: '记账提醒', to: '/remind' }
 ]
 
-export const Menu: React.FC<Props> = ({ className }) => {
+export const Menu = (props: Props) => {
+  const { className } = props
   return (
     <ul className={className} bg-white text-20px py-16px >
       {

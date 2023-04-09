@@ -1,8 +1,8 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import p from '../assets/icons/welcome4.svg'
 import { useLocalStore } from '../stores/useLocalStore'
 
-export const Welcome4: React.FC = () => {
+export const Welcome4 = () => {
   const { setHadReadWelcome } = useLocalStore()
   const nav = useNavigate()
   const onSkip = () => {

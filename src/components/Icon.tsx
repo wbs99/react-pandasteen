@@ -7,7 +7,8 @@ interface Props {
   onClick?: (e: React.MouseEvent) => void
 }
 
-export const Icon: React.FC<Props> = ({ name, className, onClick }) => {
+export const Icon = (props: Props) => {
+  const { className, name, onClick } = props
   return (
     <svg className={c(className, 'p-icon')} onClick={onClick}>
       <use xlinkHref={`#${name}`}></use>
