@@ -1,5 +1,4 @@
 import { Gradient } from "../components/Gradient"
-import { Icon } from "../components/Icon"
 import { Tabs } from "../components/Tabs"
 import { TopNav } from "../components/TopNav"
 import s from './ItemsNewPage.module.scss'
@@ -12,6 +11,7 @@ import { hasError, validate } from "../lib/validate"
 import { useAjax } from "../lib/ajax"
 import { BackIcon } from "../components/BackIcon"
 import { useNavigate } from "react-router-dom"
+import { time } from "../lib/time"
 
 
 type Props = {
@@ -45,6 +45,7 @@ export const ItemsNewPage: React.FC<Props> = () => {
       window.alert(message)
     } else {
       await post<Resource<Item>>('/api/v1/items', data)
+      setData({ amount: 0, happen_at: time().isoString })
       nav('/items')
     }
   }

@@ -35,7 +35,7 @@ export const ItemsList = (props: Props) => {
       const response = await get<Resources<Item>>(path)
       return response.data
     },
-    { revalidateFirstPage: false }
+    { revalidateAll: true }
   )
   const onLoadMore = () => {
     setSize(size + 1)
