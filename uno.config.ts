@@ -1,7 +1,7 @@
 import {
   defineConfig, presetAttributify, presetIcons, presetTypography, presetUno
 } from 'unocss'
-import transformerAttributifyJsx from './transformerAttributifyJsx'
+import transformerAttributifyJsx from '@unocss/transformer-attributify-jsx-babel'
 
 export default defineConfig({
   rules: [
@@ -24,5 +24,5 @@ export default defineConfig({
   ],
   transformers: [
     transformerAttributifyJsx()
-  ],
+  ]
 })
