@@ -27,7 +27,7 @@ export default defineConfig(({ mode, command }) => {
       Unocss(),
       react(),
       viteMockServe(),
-      svgsprites({ noOptimizeList: ['panda', 'chart', 'category', 'export', 'remind', 'calendar'] })
+      svgsprites({ noOptimizeList: ['panda', 'chart', 'category', 'export', 'remind', 'calendar', 'welcome2', 'welcome3', 'welcome4'] })
     ],
     build: {
       rollupOptions: {

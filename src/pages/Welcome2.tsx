@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import p from '../assets/icons/welcome2.svg'
+import { Icon } from '../components/Icon'
 
 export const Welcome2 = () => {
   return (
     <div text-center>
-      <img w-128px h-150px src={p} />
+      <Icon name='welcome2' className='w-128px h-150px' />
       <h2 text-32px mt-48px >
         每日提醒 <br />
         不会遗漏每一笔账单

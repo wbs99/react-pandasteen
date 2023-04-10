@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import p from '../assets/icons/welcome3.svg'
+import { Icon } from '../components/Icon'
 
 export const Welcome3 = () => {
   return (
     <div text-center>
-      <img src={p} w-130px h-108px />
+      <Icon name='welcome3' className='w-130px h-108px' />
       <h2 text-32px mt-48px >
         数据可视化 <br />
         收支一目了然

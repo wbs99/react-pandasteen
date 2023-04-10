@@ -2,7 +2,6 @@ import useSWR from 'swr'
 import { Link, Navigate } from 'react-router-dom'
 import { useTitle } from '../hooks/useTitle'
 import { AddItemFloatButton } from '../components/AddItemFloatButton'
-import { useAjax } from '../lib/ajax'
 import { Icon } from '../components/Icon'
 import { getItemsApi, getMeApi } from '../apis'
 
@@ -11,8 +10,9 @@ type Props = {
 }
 
 export const HomePage = (props: Props) => {
-  useTitle(props.title)
-  const { get } = useAjax({ showLoading: true, handleError: true })
+  const { title } = props
+  useTitle(title)
+
   const { data: meData, error: meError } = useSWR('/api/v1/me', async () => {
     const response = await getMeApi()
     return response.data.resource

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import p from '../assets/icons/welcome4.svg'
 import { useLocalStore } from '../stores/useLocalStore'
+import { Icon } from '../components/Icon'
 
 export const Welcome4 = () => {
   const { setHadReadWelcome } = useLocalStore()
@@ -12,7 +12,7 @@ export const Welcome4 = () => {
 
   return (
     <div text-center>
-      <img src={p} w-129px h-83px />
+      <Icon name='welcome4' className='w-129px h-83px' />
       <h2 text-32px mt-48px >
         云备份 <br />
         再也不怕数据丢失
