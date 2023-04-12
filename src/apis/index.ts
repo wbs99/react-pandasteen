@@ -9,3 +9,15 @@ export const sendSmsCodeApi = (data: { email: string }) => http.post('/api/v1/va
 export const getMeApi = () => http.get<Resource<User>>('/api/v1/me')
 
 export const getItemsApi = () => http.get<Resources<Item>>('/api/v1/items')
+
+
+export const getTagApi = (url: string) => http.get<Resource<Tag>>(url)
+
+export const getTagsApi = (url: string) => http.get<Resources<Tag>>(url)
+
+export const createTagApi = (data: Partial<Tag>) => http.post<Resource<Tag>>('/api/v1/tags', data)
+
+export const updateTagApi = (tagId: string, data: Partial<Tag>) =>
+  http.patch<Resource<Tag>>(`/api/v1/tags/${tagId}`, data)
+
+export const deleteTagApi = (tagId: string) => http.delete(`/api/v1/tags/${tagId}`)

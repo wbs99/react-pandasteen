@@ -1,28 +1,25 @@
-import { useEffect, FormEventHandler } from "react"
+import { useEffect, FormEventHandler, useState } from "react"
 import { useNavigate, useParams, useSearchParams } from "react-router-dom"
 import { Input } from "../../components/Input"
 import { validate, hasError, FormError } from "../../lib/validate"
 import { useCreateStore } from "../../stores/useCreateTagStore"
-import { useAjax } from "../../lib/ajax"
 import { AxiosError } from "axios"
 import useSWR from 'swr'
+import { createTagApi, getTagApi, updateTagApi } from "../../apis"
 
 type Props = {
   type: 'create' | 'edit'
 }
+
 export const TagForm = (props: Props) => {
   const { type } = props
   const params = useParams()
-
   const nav = useNavigate()
   const [searchParams] = useSearchParams()
+
   const kind = searchParams.get('kind') ?? ''
   const { data, setData, error, setError } = useCreateStore()
-  const { post, patch, get } = useAjax({ showLoading: true, handleError: true })
-  const id = params.id
-  const { data: tag } = useSWR(id ? `/api/v1/tags/${id}` : null, async (path) =>
-    (await get<Resource<Tag>>(path)).data.resource
-  )
+
   useEffect(() => {
     if (type !== 'create') { return }
     const kind = searchParams.get('kind')
@@ -34,7 +31,15 @@ export const TagForm = (props: Props) => {
     }
     setData({ kind })
   }, [searchParams])
+
+
+  const [tagId, setTagId] = useState('')
+  const { data: tag } = useSWR(tagId ? `/api/v1/tags/${tagId}` : null, async (path) => {
+    const response = await getTagApi(path)
+    return response.data.resource
+  })
   useEffect(() => {
+    params.id && setTagId(params.id)
     if (tag) {
       setData(tag)
     }
@@ -51,8 +56,8 @@ export const TagForm = (props: Props) => {
     setError(newError)
     if (!hasError(newError)) {
       const promise = type === 'create'
-        ? post<Resource<Tag>>('/api/v1/tags', data)
-        : patch<Resource<Tag>>(`/api/v1/tags/${id}`, data)
+        ? createTagApi(data)
+        : updateTagApi(tagId, data)
       const response = await promise.catch(onSubmitError)
       setData(response.data.resource)
       nav(`/items/new?kind=${encodeURIComponent(kind)}`)

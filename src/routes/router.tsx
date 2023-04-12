@@ -45,9 +45,9 @@ export const router = createHashRouter([
     element: <Outlet />,
     errorElement: <ErrorPage />,
     loader: async () => {
-      return await ajax.get<Resource<User>>('/api/v1/me').catch(e => {
-        if (e.response?.status === 401) { throw new ErrorUnauthorized }
-        throw e
+      return await ajax.get<Resource<User>>('/api/v1/me').catch(error => {
+        if (error.response?.status === 401) { throw new ErrorUnauthorized }
+        throw error
       })
     },
     children: [
@@ -75,9 +75,9 @@ export const router = createHashRouter([
           <StatisticsPage />
         </Suspense>
       },
-      { path: '/export', element: <ComingSoonPage /> },
       { path: '/tags/:id', element: <TagEditPage /> },
       { path: '/tags/new', element: <TagsNewPage /> },
+      { path: '/export', element: <ComingSoonPage /> },
       { path: '/remind', element: <ComingSoonPage /> }
     ]
   }

@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Gradient } from '../components/Gradient'
-import { Icon } from '../components/Icon'
 import { Input } from '../components/Input'
 import { LineChart } from '../components/LineChart'
 import { PieChart } from '../components/PieChart'
@@ -12,7 +11,6 @@ import { useAjax } from '../lib/ajax'
 import { time } from '../lib/time'
 import useSWR from 'swr'
 import type { Time } from '../lib/time'
-import { timeRangeToStartAndEnd } from '../lib/timeRangeToStartAndEnd'
 import { BackIcon } from '../components/BackIcon'
 
 type Groups = { happen_at: string; amount: number }[]
