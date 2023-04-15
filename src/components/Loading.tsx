@@ -1,32 +1,57 @@
 import styled from 'styled-components'
-import c from 'classnames'
-import { Icon } from './Icon'
+import { CenterDiv } from './CenterDiv'
 
 const Div = styled.div`
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .spinner {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    border: 4.5px solid #0000;
+    border-radius: 50%;
+    border-color: #dbdcef #0000;
+    animation: spinner-e04l1k 1s infinite linear;
   }
-  svg {
-    animation: spin 1.25s linear infinite;
+  .spinner::before,
+  .spinner::after {
+    content: "";
+    grid-area: 1/1;
+    margin: 2.2px;
+    border: inherit;
+    border-radius: 50%;
+  }
+  .spinner::before {
+    border-color: #474bff #0000;
+    animation: inherit;
+    animation-duration: 0.5s;
+    animation-direction: reverse;
+  }
+  .spinner::after {
+    margin: 8.9px;
+  }
+  @keyframes spinner-e04l1k {
+    100% {
+      transform: rotate(1turn);
+    }
   }
 `
-
-interface Props {
+type Props = {
   className?: string
-  loadingText?: string
+  message?: string
 }
 
 export const Loading = (props: Props) => {
-  const { className, loadingText } = props
+  const { message } = props
+
   return (
-    <Div className={c('flex flex-col justify-center items-center', className)}>
-      <Icon name="loading" className='w-96px h-96px' />
-      <p p-24px text-lg>{loadingText || '加载中……'}</p>
-    </Div>
+    <CenterDiv>
+      <Div>
+        <div className="spinner"></div>
+        <p p-t-16px text-lg>{message || '加载中……'}</p>
+      </Div>
+    </CenterDiv>
   )
 }
