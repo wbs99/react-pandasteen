@@ -47,19 +47,23 @@ export const StatisticsPage = () => {
   const { start, end } = timeRange
   const defaultItems = generateDefaultItems(start)
   const { data: items } = useSWR(getKey({ start, end, kind, group_by: 'happen_at' }),
-    async (path) =>
-      (await get<{ groups: Groups; total: number }>(path)).data.groups
+    async (path) => {
+      const response = await get<{ groups: Groups; total: number }>(path)
+      return response.data.groups
         .map(({ happen_at, amount }) => ({ x: happen_at, y: (amount / 100).toFixed(2) }))
+    }
   )
   const normalizedItems = defaultItems?.map((defaultItem, index) =>
     items?.find((item) => item.x === defaultItem.x) || defaultItem
   )
 
   const { data: items2 } = useSWR(getKey({ start, end, kind, group_by: 'tag_id' }),
-    async (path) =>
-      (await get<{ groups: Groups2; total: number }>(path)).data.groups
+    async (path) => {
+      const response = await get<{ groups: Groups2; total: number }>(path)
+      return response.data.groups
         .map(({ tag_id, tag, amount }) =>
           ({ name: tag.name, value: (amount / 100).toFixed(2), sign: tag.sign }))
+    }
   )
 
   return (

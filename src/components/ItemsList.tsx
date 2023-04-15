@@ -1,8 +1,8 @@
-import { useAjax } from "../lib/ajax"
-import useSWRInfinite from 'swr/infinite'
 import styled from "styled-components"
 import { Time, time } from "../lib/time"
 import { getItemListApi } from "../apis"
+import { Loading } from "./Loading"
+import { LoadMoreLoading } from "./LoadMoreLoading"
 
 
 interface Props {
@@ -17,38 +17,19 @@ const CenterDiv = styled.div`
 
 export const ItemsList = (props: Props) => {
   const { start, end } = props
-
-  const { get } = useAjax({ showLoading: true })
-  const getKey = (pageIndex: number, prev: Resources<Item>) => {
-    if (prev) {
-      const sendCount = (prev.pager.page - 1) * prev.pager.per_page + prev.resources.length
-      const count = prev.pager.count
-      if (sendCount >= count) { return null }
-    }
-    return `/api/v1/items?page=${pageIndex + 1}&`
-      + `happened_after=${start.removeTime().isoString}&`
-      + `happened_before=${end.removeTime().isoString}`
-  }
   // data: [{ resources: {}, pager: {} }, { resources: {}, pager: {} }, { resources: {}, pager: {} }]
-  const { data, error, isLoading, size, setSize } = useSWRInfinite(
-    getKey,
-    async (path) => {
-      const response = await getItemListApi(path)
-      return response.data
-    },
-    { revalidateAll: true }
-  )
+  const { data, error, size, setSize } = getItemListApi(start, end)
   const onLoadMore = () => {
     setSize(size + 1)
   }
-  // const isLoadingInitialData = !data && !error
-  // const isLoadingMore = data?.[size - 1] === undefined && !error
-  // const isLoading = isLoadingInitialData || isLoadingMore
+  const isLoadingInitialData = !data && !error
+  const isLoadingMore = data?.[size - 1] === undefined && !error
+  const isLoading = isLoadingInitialData || isLoadingMore
 
   if (!data) {
     return <div>
       {error && <CenterDiv>数据加载失败，请刷新页面</CenterDiv>}
-      {isLoading && <CenterDiv>数据加载中......</CenterDiv>}
+      {isLoading && <CenterDiv><Loading /></CenterDiv>}
     </div>
   } else {
     const last = data[data.length - 1]
@@ -79,7 +60,7 @@ export const ItemsList = (props: Props) => {
       {!hasMore
         ? <CenterDiv>没有更多数据了</CenterDiv>
         : isLoading
-          ? <CenterDiv>数据加载中......</CenterDiv>
+          ? <CenterDiv><LoadMoreLoading /></CenterDiv>
           : <CenterDiv><button p-btn onClick={onLoadMore}>加载更多</button></CenterDiv>
       }
     </>

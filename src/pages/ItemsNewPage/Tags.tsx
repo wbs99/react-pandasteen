@@ -1,10 +1,8 @@
 import { Link, useNavigate } from "react-router-dom"
 import { Icon } from "../../components/Icon"
-import useSWRInfinite from 'swr/infinite'
 import styled from "styled-components"
 import { LongPressable } from "../../components/LongPressable"
 import { getTagsApi } from "../../apis"
-
 
 type Props = {
   kind: Item['kind']
@@ -15,22 +13,7 @@ type Props = {
 export const Tags = (props: Props) => {
   const { kind } = props
   const nav = useNavigate()
-  const getKey = (pageIndex: number, prev: Resources<Item>) => {
-    if (prev) {
-      const sendCount = (prev.pager.page - 1) * prev.pager.per_page + prev.resources.length
-      const count = prev.pager.count
-      if (sendCount >= count) { return null }
-    }
-    return `/api/v1/tags?page=${pageIndex + 1}&kind=${kind}`
-  }
-  const { data, error, size, setSize } = useSWRInfinite(
-    getKey,
-    async path => {
-      const response = await getTagsApi(path)
-      return response.data
-    },
-    { revalidateAll: true }
-  )
+  const { data, error, size, setSize } = getTagsApi(kind)
   const isLoadingInitialData = !data && !error
   const isLoadingMore = data?.[size - 1] === undefined && !error
   const isLoading = isLoadingInitialData || isLoadingMore

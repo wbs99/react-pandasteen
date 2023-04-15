@@ -1,9 +1,10 @@
-import useSWR from 'swr'
 import { Link, Navigate } from 'react-router-dom'
 import { useTitle } from '../hooks/useTitle'
 import { AddItemFloatButton } from '../components/AddItemFloatButton'
 import { Icon } from '../components/Icon'
 import { getItemsApi, getMeApi } from '../apis'
+import { Loading } from '../components/Loading'
+import { CenterDiv } from '../components/CenterDiv'
 
 type Props = {
   title: string
@@ -13,24 +14,16 @@ export const HomePage = (props: Props) => {
   const { title } = props
   useTitle(title)
 
-  const { data: meData, error: meError } = useSWR('/api/v1/me', async () => {
-    const response = await getMeApi()
-    return response.data.resource
-  })
-  const { data: itemsData, error: itemsError } = useSWR(meData ? '/api/v1/items' : null, async () => {
-    const response = await getItemsApi()
-    return response.data
-  })
+  const { data: meData, error: meError } = getMeApi()
+  const { data: itemsData, error: itemsError } = getItemsApi(meData)
   const isLoadingMe = !meData && !meError
   const isLoadingItem = !isLoadingMe && !itemsData && !itemsError
-
   if (isLoadingMe || isLoadingItem) {
-    return <div text-center p-16px>加载中……</div>
+    return <CenterDiv><Loading /></CenterDiv>
   }
   if (itemsData?.resources[0]) {
     return <Navigate to='/items' />
   }
-
 
   return (
     <div>

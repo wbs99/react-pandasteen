@@ -1,7 +1,6 @@
-import { useAjax } from "../lib/ajax"
 import { Time } from "../lib/time"
-import useSWR from 'swr'
 import { Money } from "./Money"
+import { getItemsBalanceApi } from "../apis"
 
 type Props = {
   start: Time
@@ -10,11 +9,7 @@ type Props = {
 
 export const ItemsSummary = (props: Props) => {
   const { start, end } = props
-  const { get } = useAjax({ showLoading: false, handleError: false })
-  const { data } = useSWR(start && end && `/api/v1/items/balance?happened_after=${start.isoString}&happened_before=${end.isoString}`, async (path) => {
-    const response = await get<{ balance: number; expenses: number; income: number }>(path)
-    return response.data
-  })
+  const { data } = getItemsBalanceApi(start, end)
   const { balance, expenses, income } = data ?? { balance: 0, expenses: 0, income: 0 }
 
   return (

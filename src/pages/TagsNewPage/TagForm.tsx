@@ -4,7 +4,6 @@ import { Input } from "../../components/Input"
 import { validate, hasError, FormError } from "../../lib/validate"
 import { useCreateStore } from "../../stores/useCreateTagStore"
 import { AxiosError } from "axios"
-import useSWR from 'swr'
 import { createTagApi, getTagApi, updateTagApi } from "../../apis"
 
 type Props = {
@@ -34,10 +33,7 @@ export const TagForm = (props: Props) => {
 
 
   const [tagId, setTagId] = useState('')
-  const { data: tag } = useSWR(tagId ? `/api/v1/tags/${tagId}` : null, async (path) => {
-    const response = await getTagApi(path)
-    return response.data.resource
-  })
+  const { data: tag } = getTagApi(tagId)
   useEffect(() => {
     params.id && setTagId(params.id)
     if (tag) {

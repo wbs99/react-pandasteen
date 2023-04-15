@@ -46,6 +46,7 @@ export class Http {
 
 
 const baseURL = import.meta.env.VITE_MODE === 'development' ? '/' : 'http://121.196.236.94:8080/'
+// const baseURL = 'http://121.196.236.94:8080/'
 export const http = new Http(baseURL)
 
 // set header

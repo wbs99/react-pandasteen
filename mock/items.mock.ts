@@ -33,6 +33,17 @@ const createItem = (attrs?: Partial<Item>): Item => {
     id: createId(),
     user_id: 1,
     amount: faker.datatype.number({ min: 99, max: 1000_00 }),
+    tags: [{
+      id: 1,
+      name: faker.lorem.word(),
+      sign: faker.internet.emoji(),
+      user_id: 1,
+      deleted_at: null,
+      created_at: faker.date.past().toISOString(),
+      updated_at: faker.date.past().toISOString(),
+      kind: 'expenses',
+      ...attrs
+    }],
     tag_ids: [1, 2],
     happen_at: faker.date.past().toISOString(),
     created_at: faker.date.past().toISOString(),

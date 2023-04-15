@@ -1,19 +1,13 @@
 import { Link, useLocation } from "react-router-dom"
-import { useAjax } from "../../lib/ajax"
 import { comfirmable } from "../../lib/comfirmable"
-import useSWR from 'swr'
+import { getMeApi } from "../../apis"
 
 interface Props {
   className?: string
 }
 export const CurrentUser = (props: Props) => {
   const { className } = props
-  const { get } = useAjax({ showLoading: false, handleError: false })
-  const { data: me, error } = useSWR('/api/v1/me', async (path) => {
-    const response = await get<Resource<User>>(path)
-    return response.data.resource
-    // (await get<Resource<User>>(path)).data.resource
-  })
+  const { data: me, error } = getMeApi()
   const name = me?.name ?? me?.email
   const loc = useLocation()
   const return_to = encodeURIComponent(`${loc.pathname}${loc.search}`)
