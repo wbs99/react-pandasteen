@@ -1,6 +1,6 @@
-import create from "zustand"
 import { FormError } from "../lib/validate"
 import { LoginData } from "../apis/types"
+import { create } from "zustand"
 
 
 interface SignIn {

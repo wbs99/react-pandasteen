@@ -2,6 +2,7 @@ import { useAjax } from "../lib/ajax"
 import useSWRInfinite from 'swr/infinite'
 import styled from "styled-components"
 import { Time, time } from "../lib/time"
+import { getItemListApi } from "../apis"
 
 
 interface Props {
@@ -29,10 +30,10 @@ export const ItemsList = (props: Props) => {
       + `happened_before=${end.removeTime().isoString}`
   }
   // data: [{ resources: {}, pager: {} }, { resources: {}, pager: {} }, { resources: {}, pager: {} }]
-  const { data, error, size, setSize } = useSWRInfinite(
+  const { data, error, isLoading, size, setSize } = useSWRInfinite(
     getKey,
     async (path) => {
-      const response = await get<Resources<Item>>(path)
+      const response = await getItemListApi(path)
       return response.data
     },
     { revalidateAll: true }
@@ -40,9 +41,9 @@ export const ItemsList = (props: Props) => {
   const onLoadMore = () => {
     setSize(size + 1)
   }
-  const isLoadingInitialData = !data && !error
-  const isLoadingMore = data?.[size - 1] === undefined && !error
-  const isLoading = isLoadingInitialData || isLoadingMore
+  // const isLoadingInitialData = !data && !error
+  // const isLoadingMore = data?.[size - 1] === undefined && !error
+  // const isLoading = isLoadingInitialData || isLoadingMore
 
   if (!data) {
     return <div>
@@ -66,7 +67,7 @@ export const ItemsList = (props: Props) => {
             {item.tags?.[0].name}
           </div>
           <div row-start-2 col-start-2 row-end-3 col-end-4 text="#999999">
-            {time(item.happen_at).format('yyyy-MM-dd HH:mm')}
+            {time(item.happen_at).format('YYYY-MM-DD HH:mm')}
           </div>
           <div row-start-1 col-start-3 row-end-2 col-end-4 text="#53A867">
             ￥{item.amount / 100}

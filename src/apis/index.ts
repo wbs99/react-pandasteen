@@ -10,6 +10,8 @@ export const getMeApi = () => http.get<Resource<User>>('/api/v1/me')
 
 export const getItemsApi = () => http.get<Resources<Item>>('/api/v1/items')
 
+export const getItemListApi = (url: string) => http.get<Resources<Item>>(url)
+
 
 export const getTagApi = (url: string) => http.get<Resource<Tag>>(url)
 
