@@ -19,6 +19,7 @@ import { ajax } from '../lib/ajax'
 import { ComingSoonPage } from '../pages/ComingSoonPage'
 import { Suspense, lazy } from 'react'
 import { Loading } from '../components/Loading'
+import { fetchMe, getMeApi } from '../api'
 
 // 页面资源较大时，使用 lazy import 即可
 const StatisticsPage = lazy(() => import('../pages/StatisticsPage'))
@@ -45,7 +46,7 @@ export const router = createHashRouter([
     element: <Outlet />,
     errorElement: <ErrorPage />,
     loader: async () => {
-      return await ajax.get<Resource<User>>('/api/v1/me').catch(error => {
+      return await fetchMe().catch(error => {
         if (error.response?.status === 401) { throw new ErrorUnauthorized }
         throw error
       })
@@ -71,7 +72,7 @@ export const router = createHashRouter([
       { path: '/items/new', element: <ItemsNewPage /> },
       {
         path: '/statistics',
-        element: <Suspense fallback={<Loading className='h-screen' />}>
+        element: <Suspense fallback={<Loading />}>
           <StatisticsPage />
         </Suspense>
       },

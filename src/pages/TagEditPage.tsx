@@ -4,7 +4,7 @@ import { TopNav } from "../components/TopNav"
 import { TagForm } from "./TagsNewPage/TagForm"
 import { BackIcon } from "../components/BackIcon"
 import { comfirmable } from "../lib/comfirmable"
-import { deleteTagApi } from "../apis"
+import { deleteTagApi } from "../api"
 
 
 export const TagEditPage = () => {

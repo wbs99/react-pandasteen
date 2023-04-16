@@ -20,9 +20,6 @@ export default defineConfig(({ mode, command }) => {
         },
       }
     },
-    define: {
-      isDev: command === 'serve'
-    },
     plugins: [
       Unocss(),
       react(),

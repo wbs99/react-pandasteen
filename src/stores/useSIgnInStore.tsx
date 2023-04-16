@@ -1,5 +1,5 @@
 import { FormError } from "../lib/validate"
-import { LoginData } from "../apis/types"
+import { LoginData } from "../api/types"
 import { create } from "zustand"
 
 

@@ -7,7 +7,7 @@ import { Input } from "../components/Input"
 import { TopNav } from "../components/TopNav"
 import { FormError, hasError, validate } from "../lib/validate"
 import { useSignInStore } from "../stores/useSIgnInStore"
-import { loginApi, sendSmsCodeApi } from "../apis"
+import { loginApi, sendSmsCodeApi } from "../api"
 import { BackIcon } from "../components/BackIcon"
 
 export const LoginPage = () => {

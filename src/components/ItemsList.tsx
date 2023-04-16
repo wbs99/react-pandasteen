@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { Time, time } from "../lib/time"
-import { getItemListApi } from "../apis"
+import { getItemListApi } from "../api"
 import { Loading } from "./Loading"
 import { LoadMoreLoading } from "./LoadMoreLoading"
 
@@ -51,7 +51,7 @@ export const ItemsList = (props: Props) => {
             {time(item.happen_at).format('YYYY-MM-DD HH:mm')}
           </div>
           <div row-start-1 col-start-3 row-end-2 col-end-4 text="#53A867">
-            ￥{item.amount / 100}
+            <span>￥{item.kind === 'expenses' ? '-' : ''} {item.amount / 100}</span>
           </div>
         </li>)
         )}

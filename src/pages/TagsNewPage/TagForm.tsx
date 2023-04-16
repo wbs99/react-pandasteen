@@ -4,7 +4,7 @@ import { Input } from "../../components/Input"
 import { validate, hasError, FormError } from "../../lib/validate"
 import { useCreateStore } from "../../stores/useCreateTagStore"
 import { AxiosError } from "axios"
-import { createTagApi, getTagApi, updateTagApi } from "../../apis"
+import { createTagApi, getTagApi, updateTagApi } from "../../api"
 
 type Props = {
   type: 'create' | 'edit'
@@ -54,8 +54,12 @@ export const TagForm = (props: Props) => {
       const promise = type === 'create'
         ? createTagApi(data)
         : updateTagApi(tagId, data)
-      const response = await promise.catch(onSubmitError)
-      setData(response.data.resource)
+      await promise.catch(onSubmitError)
+      setData({
+        kind: 'expenses',
+        sign: '',
+        name: ''
+      })
       nav(`/items/new?kind=${encodeURIComponent(kind)}`)
     }
   }

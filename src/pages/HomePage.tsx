@@ -2,7 +2,7 @@ import { Link, Navigate } from 'react-router-dom'
 import { useTitle } from '../hooks/useTitle'
 import { AddItemFloatButton } from '../components/AddItemFloatButton'
 import { Icon } from '../components/Icon'
-import { getItemsApi, getMeApi } from '../apis'
+import { getItemsApi, getMeApi } from '../api'
 import { Loading } from '../components/Loading'
 import { CenterDiv } from '../components/CenterDiv'
 

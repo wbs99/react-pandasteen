@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { Icon } from "../../components/Icon"
 import styled from "styled-components"
 import { LongPressable } from "../../components/LongPressable"
-import { getTagsApi } from "../../apis"
+import { getTagsApi } from "../../api"
 
 type Props = {
   kind: Item['kind']
