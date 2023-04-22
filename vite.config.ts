@@ -12,11 +12,9 @@ export default defineConfig(({ mode, command }) => {
     server: {
       proxy: {
         '/api/': {
-          open: true,
-          port: 5173,
           target: 'http://121.196.236.94:8080/',
           changeOrigin: command === 'serve',
-          // rewrite: (path) => path.replace(/^\/api/, 'api'),
+          rewrite: (path) => path.replace(/^\/api/, 'api'),
         },
       }
     },
