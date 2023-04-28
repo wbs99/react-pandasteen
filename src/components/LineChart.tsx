@@ -3,13 +3,13 @@ import * as echarts from 'echarts'
 
 type Props = {
   className?: string
-  items?: { x: number | string; y: number | string }[]
+  dataSource?: { x: number | string; y: number | string }[]
 }
 export const LineChart = (props: Props) => {
-  const { className, items } = props
+  const { className, dataSource } = props
   const div = useRef<HTMLDivElement>(null)
-  const xItems = items?.map(item => item.x)
-  const yItems = items?.map(item => item.y)
+  const xItems = dataSource?.map(item => item.x)
+  const yItems = dataSource?.map(item => item.y)
   const initialized = useRef(false)
   const myChart = useRef<echarts.ECharts>()
   useEffect(() => {
@@ -69,7 +69,7 @@ export const LineChart = (props: Props) => {
       series: [{ data: yItems, }]
     }
     myChart.current?.setOption(option)
-  }, [items])
+  }, [dataSource])
   return (
     <div ref={div} className={className}></div>
   )

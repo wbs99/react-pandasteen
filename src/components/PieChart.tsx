@@ -4,10 +4,10 @@ import { useEffect, useRef } from 'react'
 
 type Props = {
   className?: string
-  items?: { name: number | string; value: number | string }[]
+  dataSource?: { name: number | string; value: number | string }[]
 }
 export const PieChart = (props: Props) => {
-  const { className, items = [] } = props
+  const { className, dataSource = [] } = props
   const div = useRef<HTMLDivElement>(null)
   const initialized = useRef(false)
   const myChart = useRef<echarts.ECharts>()
@@ -28,7 +28,7 @@ export const PieChart = (props: Props) => {
       series: [{
         type: 'pie',
         radius: '90%',
-        data: items.map((item, index) => ({ ...item, value: parseFloat(item.value.toString()) }))
+        data: dataSource.map((item, index) => ({ ...item, value: parseFloat(item.value.toString()) }))
       }]
     }
     myChart.current.setOption(option)
@@ -36,11 +36,11 @@ export const PieChart = (props: Props) => {
   useEffect(() => {
     const option: EChartsOption = {
       series: [{
-        data: items
+        data: dataSource
       }]
     }
     myChart.current?.setOption(option)
-  }, [items])
+  }, [dataSource])
 
   return (
     <>

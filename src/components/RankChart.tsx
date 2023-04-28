@@ -1,19 +1,17 @@
-import { Money } from "./Money";
-
 type Props = {
   className?: string
-  items?: { name: string; value: number | string; sign: string }[]
+  dataSource?: { name: string; value: number | string; sign: string }[]
 }
 const colors = ['#5470c6', '#ffbab0', '#ffa750', '#8748d3', '#53a867', '#eba953', '#91cc75', '#fac858', '#ee6666', '#73c0de']
 
 export const RankChart = (props: Props) => {
-  const { className, items } = props
-  const total = items?.reduce((result, item) => result + parseFloat(item.value.toString()), 0) ?? 0
-  const max = items?.reduce((prev, item) => Math.max(prev, parseFloat(item.value.toString())), 0) ?? 0
+  const { className, dataSource } = props
+  const total = dataSource?.reduce((result, item) => result + parseFloat(item.value.toString()), 0) ?? 0
+  const max = dataSource?.reduce((prev, item) => Math.max(prev, parseFloat(item.value.toString())), 0) ?? 0
 
   const renderItems = () => {
     return (
-      items?.map((item, index) =>
+      dataSource?.map((item, index) =>
         <div key={item.name} grid grid-cols="[48px_1fr_1fr]" grid-rows="[repeat(2,1fr)]"
           text-12px items-center gap-y-6px gap-x-8px px-16px my-8px>
           <div row-start-1 col-start-1 row-end-3 col-end-2
@@ -36,7 +34,7 @@ export const RankChart = (props: Props) => {
 
   return (
     <div className={className}>{
-      items?.[0]
+      dataSource?.[0]
         ? renderItems()
         : <div text-center>暂无数据</div>
     }</div>

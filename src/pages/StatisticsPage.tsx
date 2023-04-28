@@ -99,9 +99,9 @@ export const StatisticsPage = () => {
           ]} value={kind} onChange={value => setKind(value)} disableError />
         </div>
       </div>
-      <LineChart className="h-120px" items={normalizedItems} />
-      <PieChart className="h-260px m-t-16px" items={items2} />
-      <RankChart className="m-t-8px" items={items2} />
+      <LineChart className="h-120px" dataSource={normalizedItems} />
+      <PieChart className="h-260px m-t-16px" dataSource={items2} />
+      <RankChart className="m-t-8px" dataSource={items2} />
     </div>
   )
 }
