@@ -14,3 +14,6 @@ bin/deploy_to_github.sh
 #或
 sh bin/deploy_to_github.sh
 ```
+# mock 
+
+如需使用 `开启 mock` ，只需将 `src\mock\index.ts` 对应的 `mock` 路径开启即可 

@@ -21,7 +21,9 @@ export default defineConfig(({ mode, command }) => {
     plugins: [
       Unocss(),
       react(),
-      viteMockServe(),
+      viteMockServe({
+        mockPath: 'src/mock',
+      }),
       svgsprites({ noOptimizeList: ['panda', 'chart', 'category', 'export', 'remind', 'calendar', 'welcome2', 'welcome3', 'welcome4'] })
     ],
     build: {
