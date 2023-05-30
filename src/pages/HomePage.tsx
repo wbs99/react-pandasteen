@@ -27,12 +27,12 @@ export const HomePage = (props: Props) => {
 
   return (
     <div>
-      <div flex justify-center items-center>
+      <div className='flex justify-center items-center'>
         <Icon className="mt-20vh mb-20vh w-128px h-128px" name="panda" />
       </div>
-      <div px-16px>
+      <div className='px-16px'>
         <Link to="/items/new">
-          <button p-btn>开始记账</button>
+          <button className='p-btn'>开始记账</button>
         </Link>
       </div>
       <AddItemFloatButton />

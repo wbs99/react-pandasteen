@@ -12,6 +12,7 @@ import { useAjax } from "../lib/ajax"
 import { BackIcon } from "../components/BackIcon"
 import { useNavigate } from "react-router-dom"
 import { time } from "../lib/time"
+import c from 'classnames'
 
 
 export const ItemsNewPage = () => {
@@ -50,7 +51,7 @@ export const ItemsNewPage = () => {
   // 高度固定的区域可以写  grow-0 shrink-0
   // 高度不固定的区域可以写  grow-1 shrink-1 配合 overflow
   return (
-    <div className={s.wrapper} h-screen flex flex-col onSubmit={onSubmit}>
+    <div className={c(s.wrapper, 'h-screen flex flex-col')} onSubmit={onSubmit}>
       <Gradient className="grow-0 shrink-0">
         <TopNav title="记一笔" icon={<BackIcon />} />
       </Gradient>

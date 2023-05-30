@@ -11,14 +11,14 @@ export const Welcome4 = () => {
   }
 
   return (
-    <div text-center>
+    <div className='text-center'>
       <Icon name='welcome4' className='w-129px h-83px' />
-      <h2 text-32px mt-48px >
+      <h2 className='text-32px mt-48px' >
         云备份 <br />
         再也不怕数据丢失
       </h2>
-      <div mt-64px>
-        <span text-32px color="#6035BF" font-bold onClick={onSkip}>开启应用</span>
+      <div className='mt-64px'>
+        <span className='text-32px color-#6035BF font-bold' onClick={onSkip}>开启应用</span>
       </div>
     </div>
   )

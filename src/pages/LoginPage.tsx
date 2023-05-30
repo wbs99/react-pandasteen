@@ -55,17 +55,17 @@ export const LoginPage = () => {
       <Gradient>
         <TopNav title="登录" icon={<BackIcon />} />
       </Gradient>
-      <div text-center pt-40px pb-16px>
+      <div className="text-center pt-40px pb-16px">
         <Icon name="panda" className='w-64px h-68px' />
-        <h1 text-32px text="#7878FF" font-bold>熊猫记账</h1>
+        <h1 className="text-32px text-#7878FF font-bold">熊猫记账</h1>
       </div>
-      <form p-form onSubmit={onSubmit}>
+      <form className="p-form" onSubmit={onSubmit}>
         <Input type='text' label="邮箱地址" placeholder="请输入" value={data.email}
           onChange={email => setData({ email })} errorMessage={error.email?.[0]} />
         <Input type='sms_code' label="验证码" placeholder="六位数字" value={data.code}
           onChange={code => setData({ code })} errorMessage={error.code?.[0]} request={sendSmsCode} />
-        <div mt-100px>
-          <button p-btn type="submit">登录</button>
+        <div className="mt-100px">
+          <button className="p-btn" type="submit">登录</button>
         </div>
       </form>
     </div>

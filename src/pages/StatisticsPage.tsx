@@ -90,9 +90,9 @@ export const StatisticsPage = () => {
             key: { name: 'threeMonthsAgo', start: time().add(-3, 'month').firstDayOfMonth, end: time().add(-3, 'month').lastDayOfMonth.add(1, 'day') },
           },
         ]} />
-      <div flex p-16px items-center gap-x-16px>
-        <span grow-0 shrink-0>类型</span>
-        <div grow-1 shrink-1>
+      <div className='flex p-16px items-center gap-x-16px'>
+        <span className='grow-0 shrink-0'>类型</span>
+        <div className='grow-1 shrink-1'>
           <Input type="select" options={[
             { text: '支出', value: 'expenses' },
             { text: '收入', value: 'income' },

@@ -46,7 +46,7 @@ export const ItemsPage = () => {
       </Gradient>
       <TimeRangePicker selected={timeRange} onSelect={setTimeRange} />
       {outOfRange
-        ? <div text-center p-32px>
+        ? <div className="text-center p-32px">
           自定义时间跨度不能超过 365 天
         </div>
         : <>
