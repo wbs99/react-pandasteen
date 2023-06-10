@@ -21,10 +21,10 @@ type GetKeyParams = {
   kind: Item['kind']
   group_by: 'happen_at' | 'tag_id'
 }
-const format = 'YYYY-MM-DD'
+const format = 'yyyy-MM-DD'
 
 const getKey = ({ start, end, kind, group_by }: GetKeyParams) => {
-  return `/api/v1/items/summary?happened_after=${start.format('YYYY-MM-DD')}&happened_before=${end.format('YYYY-MM-DD')}&kind=${kind}&group_by=${group_by}`
+  return `/api/v1/items/summary?happened_after=${start.format('yyyy-MM-DD')}&happened_before=${end.format('yyyy-MM-DD')}&kind=${kind}&group_by=${group_by}`
 }
 
 

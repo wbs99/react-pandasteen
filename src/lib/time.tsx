@@ -37,11 +37,11 @@ export class Time {
   }
   /**
    * 格式化输出
-   * @param pattern 目前只支持 YYYY MM DD HH mm ss fff
+   * @param pattern 目前只支持 yyyy MM DD HH mm ss fff
    */
-  format(pattern = 'YYYY-MM-DD') {
+  format(pattern = 'yyyy-MM-DD') {
     return pattern
-      .replace(/YYYY/g, this.year.toString())
+      .replace(/yyyy/g, this.year.toString())
       .replace(/MM/g, this.month.toString().padStart(2, '0'))
       .replace(/DD/g, this.day.toString().padStart(2, '0'))
       .replace(/HH/g, this.hours.toString().padStart(2, '0'))
@@ -158,6 +158,6 @@ export class Time {
     const absolute = Math.abs(timezone)
     const sign = timezone > 0 ? '+' : '-'
     const pad = absolute.toString().padStart(2, '0')
-    return `${this.format('YYYY-MM-DDTHH:mm:ss.fff') + sign + pad}:00`
+    return `${this.format('yyyy-MM-DDTHH:mm:ss.fff') + sign + pad}:00`
   }
 }

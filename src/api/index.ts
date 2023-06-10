@@ -75,7 +75,7 @@ export const getItemsBalanceApi = (start: Time, end: Time) => {
 //   group_by: 'happen_at' | 'tag_id'
 // }
 // export const getItemsSummaryApi = <T>({ start, end, kind, group_by }: GetKeyParams) => {
-//   const { data } = useSWR(`/api/v1/items/summary?happened_after=${start.format('YYYY-MM-DD')}&happened_before=${end.format('YYYY-MM-DD')}&kind=${kind}&group_by=${group_by}`,
+//   const { data } = useSWR(`/api/v1/items/summary?happened_after=${start.format('yyyy-MM-DD')}&happened_before=${end.format('yyyy-MM-DD')}&kind=${kind}&group_by=${group_by}`,
 //     async (path) => {
 //       const response = await http.get<{ groups: T; total: number }>(path)
 //       return response.data

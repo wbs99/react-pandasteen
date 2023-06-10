@@ -56,18 +56,18 @@ export const router = createHashRouter([
         path: '/items',
         element: <ItemsPage />,
         errorElement: <ItemsPageError />,
-        loader: async () => {
-          const onError = (error: AxiosError) => {
-            if (error.response?.status === 401) { throw new ErrorUnauthorized() }
-            throw error
-          }
-          const response = await ajax.get<Resources<Item>>('/api/v1/items?page=1').catch(onError)
-          if (response.data.resources.length > 0) {
-            return response.data
-          } else {
-            throw new ErrorEmptyData()
-          }
-        }
+        // loader: async () => {
+        //   const onError = (error: AxiosError) => {
+        //     if (error.response?.status === 401) { throw new ErrorUnauthorized() }
+        //     throw error
+        //   }
+        //   const response = await ajax.get<Resources<Item>>('/api/v1/items?page=1').catch(onError)
+        //   if (response.data.resources.length > 0) {
+        //     return response.data
+        //   } else {
+        //     throw new ErrorEmptyData()
+        //   }
+        // }
       },
       { path: '/items/new', element: <ItemsNewPage /> },
       {

@@ -6,5 +6,5 @@ import { tagsMock } from './tags.mock';
 import { summaryMock } from './summary.mock';
 
 export default [
-  // ...MockMe, ...MockItems, ...MockSession, ...tagsMock, ...summaryMock
+  ...MockMe, ...MockItems, ...MockSession, ...tagsMock, ...summaryMock
 ] as MockMethod[]
