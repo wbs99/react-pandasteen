@@ -48,7 +48,7 @@ export const ItemsList = (props: Props) => {
             {item.tags?.[0].name}
           </div>
           <div row-start-2 col-start-2 row-end-3 col-end-4 text="#999999">
-            {time(item.happen_at).format('yyyy-MM-DD HH:mm')}
+            {time(item.happen_at).format('yyyy-MM-dd HH:mm')}
           </div>
           <div row-start-1 col-start-3 row-end-2 col-end-4 text="#53A867">
             <span>￥{item.kind === 'expenses' ? '-' : ''} {item.amount / 100}</span>

@@ -37,13 +37,13 @@ export class Time {
   }
   /**
    * 格式化输出
-   * @param pattern 目前只支持 yyyy MM DD HH mm ss fff
+   * @param pattern 目前只支持 yyyy MM dd HH mm ss fff
    */
-  format(pattern = 'yyyy-MM-DD') {
+  format(pattern = 'yyyy-MM-dd') {
     return pattern
       .replace(/yyyy/g, this.year.toString())
       .replace(/MM/g, this.month.toString().padStart(2, '0'))
-      .replace(/DD/g, this.day.toString().padStart(2, '0'))
+      .replace(/dd/g, this.day.toString().padStart(2, '0'))
       .replace(/HH/g, this.hours.toString().padStart(2, '0'))
       .replace(/mm/g, this.minutes.toString().padStart(2, '0'))
       .replace(/ss/g, this.seconds.toString().padStart(2, '0'))
