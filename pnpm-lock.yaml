@@ -58,8 +58,8 @@ devDependencies:
     specifier: 0.50.4
     version: 0.50.4
   '@unocss/transformer-attributify-jsx-babel':
-    specifier: 0.51.2
-    version: 0.51.2
+    specifier: 0.51.4
+    version: 0.51.4
   '@vitejs/plugin-react':
     specifier: 3.1.0
     version: 3.1.0(vite@4.1.3)
@@ -971,10 +971,6 @@ packages:
     resolution: {integrity: sha512-k/8CdnO4w7f+QdvCpS3U5y6xApC4odiErkBKCCaGgBqOWkuTSL92TiBnffSEA2WepGm1+Mv4urIk20ocKYxbUQ==}
     dev: true
 
-  /@unocss/core@0.51.2:
-    resolution: {integrity: sha512-P/XYiahNbBD3KyuOW78MLo0brcSLZ6xaLPNPzeSDXloJlIZHeP/JnMpoZz/Evk2mC7xFqE+pjraPZTnIDHdjpw==}
-    dev: true
-
   /@unocss/core@0.51.4:
     resolution: {integrity: sha512-glPBN989gJNNVzjulH6NlLAekBLuZbsFRIDqwZ1ZaoWY6teu8Z6uo3pqFCy+ibjxZSEha77BcnKfDzd2Hccsdw==}
     dev: true
@@ -1070,12 +1066,6 @@ packages:
 
   /@unocss/scope@0.51.4:
     resolution: {integrity: sha512-EIp1AHyTQhzNiIK/jM3Gg1m4MctuvZGSHVsEgBDisAi//Lxpn0rBx0BHczTgakcx2aUq1R2I6h9xjSHwDJhhVw==}
-    dev: true
-
-  /@unocss/transformer-attributify-jsx-babel@0.51.2:
-    resolution: {integrity: sha512-6kkYxduSfKdz6bnG1nvuzvUCksIEdHNaUr3V1KkyiHkgG0r84wUB/C+BB3DlS+FRn/yVTGz4TG9FksLGIFVT5A==}
-    dependencies:
-      '@unocss/core': 0.51.2
     dev: true
 
   /@unocss/transformer-attributify-jsx-babel@0.51.4:
