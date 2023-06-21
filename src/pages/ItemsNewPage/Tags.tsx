@@ -3,6 +3,8 @@ import { Icon } from "../../components/Icon"
 import styled from "styled-components"
 import { LongPressable } from "../../components/LongPressable"
 import { getTagsApi } from "../../api"
+import { Loading } from "../../components/Loading"
+import { LoadMoreLoading } from "../../components/LoadMoreLoading"
 
 type Props = {
   kind: Item['kind']
@@ -13,15 +15,17 @@ type Props = {
 export const Tags = (props: Props) => {
   const { kind } = props
   const nav = useNavigate()
-  const { data, error, size, setSize } = getTagsApi(kind)
-  const isLoadingInitialData = !data && !error
+  const { data, error, size, setSize, isLoading } = getTagsApi(kind)
   const isLoadingMore = data?.[size - 1] === undefined && !error
-  const isLoading = isLoadingInitialData || isLoadingMore
   const onLoadMore = () => {
     setSize(size + 1)
   }
+
   if (!data) {
-    return <div>空</div>
+    return <div>
+      {error && <CenterDiv>数据加载失败，请刷新页面</CenterDiv>}
+      {isLoading && <CenterDiv><Loading /></CenterDiv>}
+    </div>
   } else {
     const last = data[data.length - 1]
     const { page, per_page, count } = last.pager
@@ -55,18 +59,18 @@ export const Tags = (props: Props) => {
             )
           })}
         </ol>
-        {error && <Div>数据加载失败，请刷新页面</Div>}
+        {error && <CenterDiv>数据加载失败，请刷新页面</CenterDiv>}
         {!hasMore
-          ? page === 1 && last.resources.length === 0 ? <Div>点击加号，创建新标签</Div> : <Div>没有更多数据了</Div>
-          : isLoading
-            ? <Div>数据加载中...</Div>
-            : <Div><button className="p-btn" onClick={onLoadMore}>加载更多</button></Div>}
+          ? page === 1 && last.resources.length === 0 ? <CenterDiv>点击加号，创建新标签</CenterDiv> : <CenterDiv>没有更多数据了</CenterDiv>
+          : isLoadingMore
+            ? <CenterDiv><LoadMoreLoading /></CenterDiv>
+            : <CenterDiv><button className="p-btn" onClick={onLoadMore}>加载更多</button></CenterDiv>}
       </div>
     )
   }
 }
 
-const Div = styled.div`
+const CenterDiv = styled.div`
   padding: 16px;
   text-align: center;
 `

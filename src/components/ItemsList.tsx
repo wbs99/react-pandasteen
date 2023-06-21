@@ -18,13 +18,11 @@ const CenterDiv = styled.div`
 export const ItemsList = (props: Props) => {
   const { start, end } = props
   // data: [{ resources: {}, pager: {} }, { resources: {}, pager: {} }, { resources: {}, pager: {} }]
-  const { data, error, size, setSize } = getItemListApi(start, end)
+  const { data, error, size, setSize, isLoading } = getItemListApi(start, end)
   const onLoadMore = () => {
     setSize(size + 1)
   }
-  const isLoadingInitialData = !data && !error
   const isLoadingMore = data?.[size - 1] === undefined && !error
-  const isLoading = isLoadingInitialData || isLoadingMore
 
   if (!data) {
     return <div>
@@ -59,7 +57,7 @@ export const ItemsList = (props: Props) => {
       {error && <CenterDiv>数据加载失败，请刷新页面</CenterDiv>}
       {!hasMore
         ? <CenterDiv>没有更多数据了</CenterDiv>
-        : isLoading
+        : isLoadingMore
           ? <CenterDiv><LoadMoreLoading /></CenterDiv>
           : <CenterDiv><button p-btn onClick={onLoadMore}>加载更多</button></CenterDiv>
       }

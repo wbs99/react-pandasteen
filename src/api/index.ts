@@ -43,7 +43,7 @@ export const getItemListApi = (start: Time, end: Time) => {
     }
     return `api/v1/items?page=${pageIndex + 1}&happened_after=${start.removeTime().isoString}&happened_before=${end.removeTime().isoString}`
   }
-  const { data, error, size, setSize } = useSWRInfinite(
+  const { data, error, size, setSize, isLoading } = useSWRInfinite(
     getKey,
     async (path) => {
       const response = await http.get<Resources<Item>>(path)
@@ -52,7 +52,7 @@ export const getItemListApi = (start: Time, end: Time) => {
     { revalidateAll: true }
   )
   return {
-    data, error, size, setSize
+    data, error, size, setSize, isLoading
   }
 }
 
@@ -105,7 +105,7 @@ export const getTagsApi = (tagKind: string) => {
     }
     return `/api/v1/tags?page=${pageIndex + 1}&kind=${tagKind}`
   }
-  const { data, error, size, setSize } = useSWRInfinite(
+  const { data, error, size, setSize, isLoading } = useSWRInfinite(
     getKey,
     async path => {
       const response = await http.get<Resources<Tag>>(path)
@@ -114,7 +114,7 @@ export const getTagsApi = (tagKind: string) => {
     { revalidateAll: true }
   )
   return {
-    data, error, size, setSize
+    data, error, size, setSize, isLoading
   }
 }
 
