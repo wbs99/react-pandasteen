@@ -11,15 +11,13 @@ import { Welcome1 } from '../pages/Welcome1'
 import { Welcome2 } from '../pages/Welcome2'
 import { Welcome3 } from '../pages/Welcome3'
 import { Welcome4 } from '../pages/Welcome4'
-import { AxiosError } from 'axios'
-import { ErrorUnauthorized, ErrorEmptyData } from '../pages/Errors'
+import { ErrorUnauthorized } from '../pages/Errors'
 import { ItemsPageError } from '../pages/Errors/ItemsPageError'
 import { ErrorPage } from '../pages/Errors/ErrorPage'
-import { ajax } from '../lib/ajax'
 import { ComingSoonPage } from '../pages/ComingSoonPage'
 import { Suspense, lazy } from 'react'
 import { Loading } from '../components/Loading'
-import { fetchMe, getMeApi } from '../api'
+import { fetchMe } from '../api'
 
 // 页面资源较大时，使用 lazy import 即可
 const StatisticsPage = lazy(() => import('../pages/StatisticsPage'))

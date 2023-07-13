@@ -14,22 +14,22 @@ export const sendSmsCodeApi = (data: { email: string }) => http.post('/api/v1/va
 export const fetchMe = () => http.get<Resource<User>>('/api/v1/me')
 
 export const getMeApi = () => {
-  const { data, error } = useSWR('/api/v1/me', async (path) => {
+  const { data, error, isLoading } = useSWR('/api/v1/me', async (path) => {
     const response = await http.get<Resource<User>>(path)
     return response.data.resource
   })
   return {
-    data, error
+    data, error, isLoading
   }
 }
 
 export const getItemsApi = (meData?: User) => {
-  const { data, error } = useSWR(meData ? '/api/v1/items' : null, async (path) => {
+  const { data, error, isLoading } = useSWR(meData ? '/api/v1/items' : null, async (path) => {
     const response = await http.get<Resources<Item>>(path)
     return response.data
   })
   return {
-    data, error
+    data, error, isLoading
   }
 }
 

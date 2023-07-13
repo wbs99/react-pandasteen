@@ -14,11 +14,9 @@ export const HomePage = (props: Props) => {
   const { title } = props
   useTitle(title)
 
-  const { data: meData, error: meError } = getMeApi()
-  const { data: itemsData, error: itemsError } = getItemsApi(meData)
-  const isLoadingMe = !meData && !meError
-  const isLoadingItem = !isLoadingMe && !itemsData && !itemsError
-  if (isLoadingMe || isLoadingItem) {
+  const { data: meData, isLoading: isLoadingMe } = getMeApi()
+  const { data: itemsData, isLoading: isLoadingItems } = getItemsApi(meData)
+  if (isLoadingMe || isLoadingItems) {
     return <CenterDiv><Loading /></CenterDiv>
   }
   if (itemsData?.resources[0]) {
