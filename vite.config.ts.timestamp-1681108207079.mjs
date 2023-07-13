@@ -117,7 +117,7 @@ var vite_config_default = defineConfig(({ mode, command }) => {
         "/api/": {
           open: true,
           port: 5173,
-          target: "http://121.196.236.94:8080/",
+          target: "http://121.5.55.95:8080/",
           changeOrigin: command === "serve",
           rewrite: (path2) => path2.replace(/^\/api/, "api")
         }

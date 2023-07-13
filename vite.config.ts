@@ -10,12 +10,10 @@ export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd())
   return {
     server: {
-      port: 3001,
       proxy: {
-        '/api/': {
-          target: 'http://121.196.236.94:8080/',
+        '/api/v1': {
+          target: 'http://121.5.55.95:3000/',
           changeOrigin: command === 'serve',
-          rewrite: (path) => path.replace(/^\/api/, 'api'),
         },
       }
     },
