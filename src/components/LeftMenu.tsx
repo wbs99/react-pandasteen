@@ -1,4 +1,3 @@
-
 import { animated, useSpring } from "@react-spring/web"
 import { useState } from "react"
 import { CurrentUser } from "./TopMenu/CurrentUser"
@@ -9,7 +8,7 @@ interface Props {
   visible?: boolean
 }
 
-export const TopMenu = (props: Props) => {
+export const LeftMenu = (props: Props) => {
   const { onClickMask, visible } = props
   const [maskVisible, setMaskVisible] = useState(visible)
   // 打开动画 0 => 1 

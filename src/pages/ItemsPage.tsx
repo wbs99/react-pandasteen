@@ -5,7 +5,7 @@ import { Icon } from "../components/Icon"
 import { ItemsList } from "../components/ItemsList"
 import { ItemsSummary } from "../components/ItemsSummary"
 import { TimeRange, TimeRangePicker } from "../components/TimeRangePicker"
-import { TopMenu } from "../components/TopMenu"
+import { LeftMenu } from "../components/LeftMenu"
 import { TopNav } from "../components/TopNav"
 import { useMenuStore } from "../stores/useMenuStore"
 import { Time, time } from "../lib/time"
@@ -55,7 +55,7 @@ export const ItemsPage = () => {
         </>
       }
       <AddItemFloatButton />
-      <TopMenu visible={visible} onClickMask={() => setVisible(false)} />
+      <LeftMenu visible={visible} onClickMask={() => setVisible(false)} />
     </div>
   )
 }
