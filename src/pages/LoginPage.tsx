@@ -6,12 +6,12 @@ import { Icon } from "../components/Icon"
 import { Input } from "../components/Input"
 import { TopNav } from "../components/TopNav"
 import { FormError, hasError, validate } from "../lib/validate"
-import { useSignInStore } from "../stores/useSIgnInStore"
+import { useLoginStore } from "../stores/useLoginStore"
 import { loginApi, sendSmsCodeApi } from "../api"
 import { BackIcon } from "../components/BackIcon"
 
 export const LoginPage = () => {
-  const { data, setData, error, setError } = useSignInStore()
+  const { data, setData, error, setError } = useLoginStore()
   const nav = useNavigate()
   const [search] = useSearchParams()
 

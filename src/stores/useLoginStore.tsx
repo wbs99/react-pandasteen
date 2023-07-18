@@ -3,14 +3,14 @@ import { LoginData } from "../api/types"
 import { create } from "zustand"
 
 
-interface SignIn {
+interface Login {
   data: LoginData
   error: FormError<LoginData>
   setData: (data: Partial<LoginData>) => void
   setError: (error: Partial<FormError<LoginData>>) => void
 }
 
-export const useSignInStore = create<SignIn>((set, get) => (
+export const useLoginStore = create<Login>((set, get) => (
   {
     data: {
       email: '1134954328@qq.com',
