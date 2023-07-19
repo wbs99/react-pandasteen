@@ -5,9 +5,7 @@ interface Loading {
   setVisible: (visible: boolean) => void
 }
 
-export const useLoadingStore = create<Loading>((set, get) => (
-  {
-    visible: false,
-    setVisible: (visible: boolean) => set({ visible })
-  }
-))
+export const useLoadingStore = create<Loading>((set) => ({
+  visible: false,
+  setVisible: (visible: boolean) => set({ visible })
+}))

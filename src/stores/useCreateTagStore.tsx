@@ -9,29 +9,27 @@ interface CreateTag {
   setError: (error: Partial<FormError<Data>>) => void
 }
 
-export const useCreateStore = create<CreateTag>((set, get) => (
-  {
-    data: {
-      kind: 'expenses',
-      sign: '',
-      name: ''
-    },
-    error: {
-      kind: [],
-      sign: [],
-      name: []
-    },
-    setData: (data: Partial<Data>) => {
-      set(state => ({
-        ...state,
-        data: { ...state.data, ...data }
-      }))
-    },
-    setError: (error: Partial<FormError<Data>>) => {
-      set(state => ({
-        ...state,
-        error
-      }))
-    }
+export const useCreateStore = create<CreateTag>((set) => ({
+  data: {
+    kind: 'expenses',
+    sign: '',
+    name: ''
+  },
+  error: {
+    kind: [],
+    sign: [],
+    name: []
+  },
+  setData: (data: Partial<Data>) => {
+    set(state => ({
+      ...state,
+      data: { ...state.data, ...data }
+    }))
+  },
+  setError: (error: Partial<FormError<Data>>) => {
+    set(state => ({
+      ...state,
+      error
+    }))
   }
-))
+}))

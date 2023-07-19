@@ -5,11 +5,9 @@ interface Menu {
   setVisible: (visible: boolean) => void
 }
 
-export const useMenuStore = create<Menu>((set, get) => (
-  {
-    visible: false,
-    setVisible: (visible: boolean) => {
-      set({ visible })
-    }
+export const useMenuStore = create<Menu>((set) => ({
+  visible: false,
+  setVisible: (visible: boolean) => {
+    set({ visible })
   }
-))
+}))
