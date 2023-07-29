@@ -18,11 +18,7 @@ const CenterDiv = styled.div`
 export const ItemsList = (props: Props) => {
   const { start, end } = props
   // data: [{ resources: {}, pager: {} }, { resources: {}, pager: {} }, { resources: {}, pager: {} }]
-  const { data, error, size, setSize, isLoading } = getItemListApi(start, end)
-  const onLoadMore = () => {
-    setSize(size + 1)
-  }
-  const isLoadingMore = data?.[size - 1] === undefined && !error
+  const { data, error, isLoading, onLoadMore, isLoadingMore,hasMore } = getItemListApi(start, end)
 
   if (!data) {
     return <div>
@@ -30,10 +26,6 @@ export const ItemsList = (props: Props) => {
       {isLoading && <CenterDiv><Loading /></CenterDiv>}
     </div>
   } else {
-    const last = data[data.length - 1]
-    const { page, per_page, count } = last.pager
-    const hasMore = (page - 1) * per_page + last.resources.length < count
-
     return <>
       <ol>
         {data.map(({ resources }) => resources.map(item => <li key={item.id} grid grid-cols="[auto_1fr_auto]" grid-rows-2 px-16px py-8px gap-x-12px

@@ -15,11 +15,8 @@ type Props = {
 export const Tags = (props: Props) => {
   const { kind } = props
   const nav = useNavigate()
-  const { data, error, size, setSize, isLoading } = getTagsApi(kind)
-  const isLoadingMore = data?.[size - 1] === undefined && !error
-  const onLoadMore = () => {
-    setSize(size + 1)
-  }
+  const { data, error, isLoading, onLoadMore, isLoadingMore,hasMore,last } = getTagsApi(kind)
+
 
   if (!data) {
     return <div>
@@ -27,9 +24,6 @@ export const Tags = (props: Props) => {
       {isLoading && <CenterDiv><Loading /></CenterDiv>}
     </div>
   } else {
-    const last = data[data.length - 1]
-    const { page, per_page, count } = last.pager
-    const hasMore = (page - 1) * per_page + last.resources.length < count
     return (
       <div>
         <ol className="grid grid-cols-[repeat(auto-fit,48px)] justify-center gap-x-32px
@@ -61,7 +55,7 @@ export const Tags = (props: Props) => {
         </ol>
         {error && <CenterDiv>数据加载失败，请刷新页面</CenterDiv>}
         {!hasMore
-          ? page === 1 && last.resources.length === 0 ? <CenterDiv>点击加号，创建新标签</CenterDiv> : <CenterDiv>没有更多数据了</CenterDiv>
+          ? last.pager.page === 1 && last.resources.length === 0 ? <CenterDiv>点击加号，创建新标签</CenterDiv> : <CenterDiv>没有更多数据了</CenterDiv>
           : isLoadingMore
             ? <CenterDiv><LoadMoreLoading /></CenterDiv>
             : <CenterDiv><button className="p-btn" onClick={onLoadMore}>加载更多</button></CenterDiv>}

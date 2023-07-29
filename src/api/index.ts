@@ -33,14 +33,11 @@ export const getItemsApi = (meData?: User) => {
   }
 }
 
-
 export const getItemListApi = (start: Time, end: Time) => {
   const getKey = (pageIndex: number, prev: Resources<Item>) => {
-    if (prev) {
-      const sendCount = (prev.pager.page - 1) * prev.pager.per_page + prev.resources.length
-      const count = prev.pager.count
-      if (sendCount >= count) { return null }
-    }
+    const { pager, resources } = prev || {}
+    if (pager && (pager.page - 1) * pager.per_page + resources.length >= pager.count) {return null}
+
     return `api/v1/items?page=${pageIndex + 1}&happened_after=${start.removeTime().isoString}&happened_before=${end.removeTime().isoString}`
   }
   const { data, error, size, setSize, isLoading } = useSWRInfinite(
@@ -51,8 +48,17 @@ export const getItemListApi = (start: Time, end: Time) => {
     },
     { revalidateAll: true }
   )
+  let hasMore 
+  const onLoadMore = () => setSize(size + 1)
+  const isLoadingMore = data?.[size - 1] === undefined && !error
+  if(data){
+    const last = data[data.length - 1]
+    const { page, per_page, count } = last.pager
+    hasMore = (page - 1) * per_page + last.resources.length < count
+  }
+
   return {
-    data, error, size, setSize, isLoading
+    data, error,isLoading, onLoadMore, isLoadingMore, hasMore
   }
 }
 
@@ -98,11 +104,8 @@ export const getTagApi = (tagId: string) => {
 
 export const getTagsApi = (tagKind: string) => {
   const getKey = (pageIndex: number, prev: Resources<Item>) => {
-    if (prev) {
-      const sendCount = (prev.pager.page - 1) * prev.pager.per_page + prev.resources.length
-      const count = prev.pager.count
-      if (sendCount >= count) { return null }
-    }
+    const { pager, resources } = prev || {}
+    if (pager && (pager.page - 1) * pager.per_page + resources.length >= pager.count) { return null }
     return `/api/v1/tags?page=${pageIndex + 1}&kind=${tagKind}`
   }
   const { data, error, size, setSize, isLoading } = useSWRInfinite(
@@ -113,8 +116,20 @@ export const getTagsApi = (tagKind: string) => {
     },
     { revalidateAll: true }
   )
+
+  let hasMore
+  let last: Resources<Tag> = { resources:[], pager:{page:0,per_page:0,count:0} }
+  const onLoadMore = () => setSize(size + 1)
+  const isLoadingMore = data?.[size - 1] === undefined && !error
+  
+  if (data) {
+    last = data[data.length - 1]
+    const { page, per_page, count } = last.pager
+    hasMore = (page - 1) * per_page + last.resources.length < count
+  }
+  
   return {
-    data, error, size, setSize, isLoading
+    data, error, isLoading, onLoadMore, isLoadingMore,hasMore,last
   }
 }
 
