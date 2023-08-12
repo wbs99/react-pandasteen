@@ -1,14 +1,12 @@
-import { http } from "../lib/http";
-import { Time } from "../lib/time";
-import { LoginData } from "./types";
 import useSWR from 'swr'
 import useSWRInfinite from 'swr/infinite'
-
+import { http } from '../lib/http'
+import type { Time } from '../lib/time'
+import type { LoginData } from './types'
 
 export const loginApi = (data: LoginData) => http.post<{ jwt: string }>('/api/v1/session', data)
 
 export const sendSmsCodeApi = (data: { email: string }) => http.post('/api/v1/validation_codes', data)
-
 
 // 用来在 router 中判断是否已登录
 export const fetchMe = () => http.get<Resource<User>>('/api/v1/me')
@@ -18,9 +16,8 @@ export const getMeApi = () => {
     const response = await http.get<Resource<User>>(path)
     return response.data.resource
   })
-  return {
-    data, error, isLoading
-  }
+
+  return { data, error, isLoading }
 }
 
 export const getItemsApi = (meData?: User) => {
@@ -28,15 +25,16 @@ export const getItemsApi = (meData?: User) => {
     const response = await http.get<Resources<Item>>(path)
     return response.data
   })
-  return {
-    data, error, isLoading
-  }
+
+  return { data, error, isLoading }
 }
 
 export const getItemListApi = (start: Time, end: Time) => {
   const getKey = (pageIndex: number, prev: Resources<Item>) => {
     const { pager, resources } = prev || {}
-    if (pager && (pager.page - 1) * pager.per_page + resources.length >= pager.count) {return null}
+    if (pager && (pager.page - 1) * pager.per_page + resources.length >= pager.count) {
+      return null
+    }
 
     return `api/v1/items?page=${pageIndex + 1}&happened_after=${start.removeTime().isoString}&happened_before=${end.removeTime().isoString}`
   }
@@ -48,17 +46,17 @@ export const getItemListApi = (start: Time, end: Time) => {
     },
     { revalidateAll: true }
   )
-  let hasMore 
+  let hasMore
   const onLoadMore = () => setSize(size + 1)
   const isLoadingMore = data?.[size - 1] === undefined && !error
-  if(data){
+  if (data) {
     const last = data[data.length - 1]
     const { page, per_page, count } = last.pager
     hasMore = (page - 1) * per_page + last.resources.length < count
   }
 
   return {
-    data, error,isLoading, onLoadMore, isLoadingMore, hasMore
+    data, error, isLoading, onLoadMore, isLoadingMore, hasMore
   }
 }
 
@@ -69,9 +67,8 @@ export const getItemsBalanceApi = (start: Time, end: Time) => {
       const response = await http.get<{ balance: number; expenses: number; income: number }>(path)
       return response.data
     })
-  return {
-    data
-  }
+
+  return { data }
 }
 
 // type GetKeyParams = {
@@ -90,22 +87,20 @@ export const getItemsBalanceApi = (start: Time, end: Time) => {
 //     data
 //   }
 // }
-
-
 export const getTagApi = (tagId: string) => {
   const { data } = useSWR(tagId ? `/api/v1/tags/${tagId}` : null, async (path) => {
     const response = await http.get<Resource<Tag>>(path)
     return response.data.resource
   })
-  return {
-    data
-  }
+  return { data }
 }
 
 export const getTagsApi = (tagKind: string) => {
   const getKey = (pageIndex: number, prev: Resources<Item>) => {
     const { pager, resources } = prev || {}
-    if (pager && (pager.page - 1) * pager.per_page + resources.length >= pager.count) { return null }
+    if (pager && (pager.page - 1) * pager.per_page + resources.length >= pager.count) {
+      return null
+    }
     return `/api/v1/tags?page=${pageIndex + 1}&kind=${tagKind}`
   }
   const { data, error, size, setSize, isLoading } = useSWRInfinite(
@@ -118,18 +113,18 @@ export const getTagsApi = (tagKind: string) => {
   )
 
   let hasMore
-  let last: Resources<Tag> = { resources:[], pager:{page:0,per_page:0,count:0} }
+  let last: Resources<Tag> = { resources: [], pager: { page: 0, per_page: 0, count: 0 } }
   const onLoadMore = () => setSize(size + 1)
   const isLoadingMore = data?.[size - 1] === undefined && !error
-  
+
   if (data) {
     last = data[data.length - 1]
     const { page, per_page, count } = last.pager
     hasMore = (page - 1) * per_page + last.resources.length < count
   }
-  
+
   return {
-    data, error, isLoading, onLoadMore, isLoadingMore,hasMore,last
+    data, error, isLoading, onLoadMore, isLoadingMore, hasMore, last
   }
 }
 

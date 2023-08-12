@@ -1,5 +1,5 @@
-import { MockMethod } from 'vite-plugin-mock';
-import { faker } from '@faker-js/faker';
+import type { MockMethod } from 'vite-plugin-mock'
+import { faker } from '@faker-js/faker'
 
 export const MockItems: MockMethod[] = [
   {
@@ -54,7 +54,6 @@ const createItem = (attrs?: Partial<Item>): Item => {
 }
 
 const createList = (n: number, attrs?: Partial<Item>): Item[] => Array.from({ length: n }).map(() => createItem(attrs))
-
 
 const createResponse = ({ count = 10, page = 1, perPage = 10 }, attrs?: Partial<Item>): Resources<Item> => {
   const sendCount = (page - 1) * perPage

@@ -1,7 +1,6 @@
-import { useState } from "react"
-import { emojis } from "../../lib/emojis"
+import { useState } from 'react'
+import { emojis } from '../../lib/emojis'
 import s from './EmojiInput.module.scss'
-
 
 type Props = {
   value?: string

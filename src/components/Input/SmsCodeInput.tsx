@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from 'react'
 
 type Props = {
   value?: string
@@ -15,7 +15,9 @@ export const SmsCodeInput = (props: Props) => {
   const timer = useRef<number>()
 
   const onClick = async () => {
-    if (!request) { return }
+    if (!request) {
+      return
+    }
     await request()
     setStarted(new Date())
   }
@@ -33,7 +35,9 @@ export const SmsCodeInput = (props: Props) => {
     timer.current = window.setInterval(() => {
       const seconds = Math.round((new Date().getTime() - started.getTime()) / 1000)
       const count = maxCount - seconds
-      if (count < 0) { setStarted(undefined) }
+      if (count < 0) {
+        setStarted(undefined)
+      }
       setCount(count)
     }, 1000)
     return clearTimer

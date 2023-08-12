@@ -1,5 +1,5 @@
-import { create } from "zustand"
-import { FormError } from "../lib/validate"
+import { create } from 'zustand'
+import type { FormError } from '../lib/validate'
 
 type Data = Tag
 interface CreateTag {
@@ -9,7 +9,7 @@ interface CreateTag {
   setError: (error: Partial<FormError<Data>>) => void
 }
 
-export const useCreateStore = create<CreateTag>((set) => ({
+export const useCreateStore = create<CreateTag>(set => ({
   data: {
     kind: 'expenses',
     sign: '',

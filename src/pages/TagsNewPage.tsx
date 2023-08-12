@@ -1,8 +1,7 @@
-import { BackIcon } from "../components/BackIcon"
-import { Gradient } from "../components/Gradient"
-import { TopNav } from "../components/TopNav"
-import { TagForm } from "./TagsNewPage/TagForm"
-
+import { BackIcon } from '../components/BackIcon'
+import { Gradient } from '../components/Gradient'
+import { TopNav } from '../components/TopNav'
+import { TagForm } from './TagsNewPage/TagForm'
 
 export const TagsNewPage = () => {
   return (

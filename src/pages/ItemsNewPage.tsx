@@ -1,19 +1,18 @@
-import { Gradient } from "../components/Gradient"
-import { Tabs } from "../components/Tabs"
-import { TopNav } from "../components/TopNav"
-import s from './ItemsNewPage.module.scss'
-import { ItemAmount } from "./ItemsNewPage/ItemAmount"
-import { Tags } from "./ItemsNewPage/Tags"
-import { useCreateItemStore } from "../stores/useCreateItemStore"
-import { ItemDate } from "./ItemsNewPage/ItemDate"
-import { ReactNode } from "react"
-import { hasError, validate } from "../lib/validate"
-import { useAjax } from "../lib/ajax"
-import { BackIcon } from "../components/BackIcon"
-import { useNavigate } from "react-router-dom"
-import { time } from "../lib/time"
+import type { ReactNode } from 'react'
+import { useNavigate } from 'react-router-dom'
 import c from 'classnames'
-
+import { Gradient } from '../components/Gradient'
+import { Tabs } from '../components/Tabs'
+import { TopNav } from '../components/TopNav'
+import { useCreateItemStore } from '../stores/useCreateItemStore'
+import { hasError, validate } from '../lib/validate'
+import { useAjax } from '../lib/ajax'
+import { BackIcon } from '../components/BackIcon'
+import { time } from '../lib/time'
+import { ItemDate } from './ItemsNewPage/ItemDate'
+import { Tags } from './ItemsNewPage/Tags'
+import { ItemAmount } from './ItemsNewPage/ItemAmount'
+import s from './ItemsNewPage.module.scss'
 
 export const ItemsNewPage = () => {
   const { data, setData, setError } = useCreateItemStore()

@@ -1,7 +1,7 @@
-import { ChangeEvent, ReactNode } from "react"
-import { EmojiInput } from "./Input/EmojiInput"
-import { SmsCodeInput } from "./Input/SmsCodeInput"
-import { DateInput } from "./Input/DateInput"
+import type { ChangeEvent, ReactNode } from 'react'
+import { EmojiInput } from './Input/EmojiInput'
+import { SmsCodeInput } from './Input/SmsCodeInput'
+import { DateInput } from './Input/DateInput'
 
 type Props<T> = {
   label?: string | ReactNode
@@ -15,7 +15,7 @@ type Props<T> = {
     | { type?: 'text' }
     | { type: 'emoji' }
     | { type: 'date' }
-    | { type: 'sms_code', request: () => Promise<unknown> }
+    | { type: 'sms_code'; request: () => Promise<unknown> }
     | { type: 'select'; options: { value: string; text: string }[] }
   )
 export const Input = <T extends string>(props: Props<T>) => {

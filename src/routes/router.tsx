@@ -1,4 +1,5 @@
 import { Outlet, createHashRouter } from 'react-router-dom'
+import { Suspense, lazy } from 'react'
 import { Root } from '../components/Root'
 import { WelcomeLayout } from '../layouts/WelcomeLayout'
 import { HomePage } from '../pages/HomePage'
@@ -15,13 +16,11 @@ import { ErrorUnauthorized } from '../pages/Errors'
 import { ItemsPageError } from '../pages/Errors/ItemsPageError'
 import { ErrorPage } from '../pages/Errors/ErrorPage'
 import { ComingSoonPage } from '../pages/ComingSoonPage'
-import { Suspense, lazy } from 'react'
 import { Loading } from '../components/Loading'
 import { fetchMe } from '../api'
 
 // 页面资源较大时，使用 lazy import 即可
 const StatisticsPage = lazy(() => import('../pages/StatisticsPage'))
-
 
 export const router = createHashRouter([
   // 访问 / 路径，在 Root 中判断跳转哪个页面

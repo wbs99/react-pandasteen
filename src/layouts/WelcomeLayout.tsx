@@ -1,6 +1,6 @@
 import { animated, useTransition } from '@react-spring/web'
-import { ReactNode, useEffect, useState } from 'react'
-import { useRef } from 'react'
+import type { ReactNode } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate, useOutlet } from 'react-router-dom'
 import { useSwiper } from '../hooks/useSwiper'
 import { useLocalStore } from '../stores/useLocalStore'

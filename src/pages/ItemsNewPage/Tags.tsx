@@ -1,10 +1,10 @@
-import { Link, useNavigate } from "react-router-dom"
-import { Icon } from "../../components/Icon"
-import styled from "styled-components"
-import { LongPressable } from "../../components/LongPressable"
-import { getTagsApi } from "../../api"
-import { Loading } from "../../components/Loading"
-import { LoadMoreLoading } from "../../components/LoadMoreLoading"
+import { Link, useNavigate } from 'react-router-dom'
+import styled from 'styled-components'
+import { Icon } from '../../components/Icon'
+import { LongPressable } from '../../components/LongPressable'
+import { getTagsApi } from '../../api'
+import { Loading } from '../../components/Loading'
+import { LoadMoreLoading } from '../../components/LoadMoreLoading'
 
 type Props = {
   kind: Item['kind']
@@ -15,8 +15,7 @@ type Props = {
 export const Tags = (props: Props) => {
   const { kind } = props
   const nav = useNavigate()
-  const { data, error, isLoading, onLoadMore, isLoadingMore,hasMore,last } = getTagsApi(kind)
-
+  const { data, error, isLoading, onLoadMore, isLoadingMore, hasMore, last } = getTagsApi(kind)
 
   if (!data) {
     return <div>

@@ -1,6 +1,6 @@
-import { ReactNode } from 'react'
-import s from './Tabs.module.scss'
+import type { ReactNode } from 'react'
 import cs from 'classnames'
+import s from './Tabs.module.scss'
 
 type Props<T> = {
   tabItems: {

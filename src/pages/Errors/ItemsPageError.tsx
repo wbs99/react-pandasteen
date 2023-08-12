@@ -1,6 +1,5 @@
-import { useRouteError, Navigate, useLocation } from "react-router-dom"
-import { ErrorUnauthorized, ErrorEmptyData } from "."
-
+import { Navigate, useLocation, useRouteError } from 'react-router-dom'
+import { ErrorEmptyData, ErrorUnauthorized } from '.'
 
 export const ItemsPageError = () => {
   const error = useRouteError() as Error

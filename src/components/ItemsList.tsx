@@ -1,9 +1,9 @@
-import styled from "styled-components"
-import { Time, time } from "../lib/time"
-import { getItemListApi } from "../api"
-import { Loading } from "./Loading"
-import { LoadMoreLoading } from "./LoadMoreLoading"
-
+import styled from 'styled-components'
+import type { Time } from '../lib/time'
+import { time } from '../lib/time'
+import { getItemListApi } from '../api'
+import { Loading } from './Loading'
+import { LoadMoreLoading } from './LoadMoreLoading'
 
 interface Props {
   start: Time
@@ -18,7 +18,7 @@ const CenterDiv = styled.div`
 export const ItemsList = (props: Props) => {
   const { start, end } = props
   // data: [{ resources: {}, pager: {} }, { resources: {}, pager: {} }, { resources: {}, pager: {} }]
-  const { data, error, isLoading, onLoadMore, isLoadingMore,hasMore } = getItemListApi(start, end)
+  const { data, error, isLoading, onLoadMore, isLoadingMore, hasMore } = getItemListApi(start, end)
 
   if (!data) {
     return <div>

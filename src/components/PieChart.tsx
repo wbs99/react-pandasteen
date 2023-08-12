@@ -28,7 +28,7 @@ export const PieChart = (props: Props) => {
       series: [{
         type: 'pie',
         radius: '90%',
-        data: dataSource.map((item, index) => ({ ...item, value: parseFloat(item.value.toString()) }))
+        data: dataSource.map((item, index) => ({ ...item, value: Number.parseFloat(item.value.toString()) }))
       }]
     }
     myChart.current.setOption(option)

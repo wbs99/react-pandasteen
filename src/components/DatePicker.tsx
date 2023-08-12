@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react"
-import { time } from "../lib/time"
+import { useEffect, useRef, useState } from 'react'
+import { time } from '../lib/time'
 
 type Props = {
   start?: Date
@@ -45,15 +45,35 @@ export const DatePicker = (props: Props) => {
       </div>
       <div flex >
         <Column dateList={yearList} value={valueTime.current.year}
-          onChange={v => { valueTime.current.year = v; update({}) }} className="grow-1" />
+          onChange={v => {
+            valueTime.current.year = v
+            update({})
+          }}
+          className="grow-1" />
         <Column dateList={monthList} value={valueTime.current.month}
-          onChange={v => { valueTime.current.month = v; update({}) }} className="grow-1" />
+          onChange={v => {
+            valueTime.current.month = v
+            update({})
+          }}
+          className="grow-1" />
         <Column dateList={dayList} value={valueTime.current.day}
-          onChange={v => { valueTime.current.day = v; update({}) }} className="grow-1" />
+          onChange={v => {
+            valueTime.current.day = v
+            update({})
+          }}
+          className="grow-1" />
         <Column dateList={hoursList} value={valueTime.current.hours}
-          onChange={v => { valueTime.current.hours = v; update({}) }} className="grow-1" />
+          onChange={v => {
+            valueTime.current.hours = v
+            update({})
+          }}
+          className="grow-1" />
         <Column dateList={minutesList} value={valueTime.current.minutes}
-          onChange={v => { valueTime.current.minutes = v; update({}) }} className="grow-1" />
+          onChange={v => {
+            valueTime.current.minutes = v
+            update({})
+          }}
+          className="grow-1" />
       </div>
     </>
   )

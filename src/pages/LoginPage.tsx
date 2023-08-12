@@ -1,14 +1,15 @@
-import { AxiosError } from "axios"
-import { FormEventHandler } from "react"
-import { useNavigate, useSearchParams } from "react-router-dom"
-import { Gradient } from "../components/Gradient"
-import { Icon } from "../components/Icon"
-import { Input } from "../components/Input"
-import { TopNav } from "../components/TopNav"
-import { FormError, hasError, validate } from "../lib/validate"
-import { useLoginStore } from "../stores/useLoginStore"
-import { loginApi, sendSmsCodeApi } from "../api"
-import { BackIcon } from "../components/BackIcon"
+import type { AxiosError } from 'axios'
+import type { FormEventHandler } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { Gradient } from '../components/Gradient'
+import { Icon } from '../components/Icon'
+import { Input } from '../components/Input'
+import { TopNav } from '../components/TopNav'
+import type { FormError } from '../lib/validate'
+import { hasError, validate } from '../lib/validate'
+import { useLoginStore } from '../stores/useLoginStore'
+import { loginApi, sendSmsCodeApi } from '../api'
+import { BackIcon } from '../components/BackIcon'
 
 export const LoginPage = () => {
   const { data, setData, error, setError } = useLoginStore()
@@ -18,10 +19,10 @@ export const LoginPage = () => {
   const onSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
     const newError = validate(data, [
-      { key: "email", type: "required", message: "请输入邮箱地址" },
-      { key: "email", type: 'pattern', regex: /[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}/, message: '邮箱地址不合法' },
-      { key: "code", type: "required", message: "请输入验证码" },
-      { key: "code", type: 'length', min: 6, max: 6, message: "验证码必须是6位数字" }
+      { key: 'email', type: 'required', message: '请输入邮箱地址' },
+      { key: 'email', type: 'pattern', regex: /[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}/, message: '邮箱地址不合法' },
+      { key: 'code', type: 'required', message: '请输入验证码' },
+      { key: 'code', type: 'length', min: 6, max: 6, message: '验证码必须是6位数字' }
     ])
     setError(newError)
     if (!hasError(newError)) {
@@ -40,8 +41,8 @@ export const LoginPage = () => {
 
   const sendSmsCode = async () => {
     const newError = validate({ email: data.email }, [
-      { key: "email", type: "required", message: "请输入邮箱地址" },
-      { key: "email", type: 'pattern', regex: /[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}/, message: '邮箱地址不合法' },
+      { key: 'email', type: 'required', message: '请输入邮箱地址' },
+      { key: 'email', type: 'pattern', regex: /[a-zA-Z0-9_.]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}/, message: '邮箱地址不合法' },
     ])
     setError(newError)
     if (!hasError(newError)) {

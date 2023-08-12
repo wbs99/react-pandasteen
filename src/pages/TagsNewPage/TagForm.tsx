@@ -1,10 +1,12 @@
-import { useEffect, FormEventHandler, useState } from "react"
-import { useNavigate, useParams, useSearchParams } from "react-router-dom"
-import { Input } from "../../components/Input"
-import { validate, hasError, FormError } from "../../lib/validate"
-import { useCreateStore } from "../../stores/useCreateTagStore"
-import { AxiosError } from "axios"
-import { createTagApi, getTagApi, updateTagApi } from "../../api"
+import type { FormEventHandler } from 'react'
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import type { AxiosError } from 'axios'
+import { Input } from '../../components/Input'
+import type { FormError } from '../../lib/validate'
+import { hasError, validate } from '../../lib/validate'
+import { useCreateStore } from '../../stores/useCreateTagStore'
+import { createTagApi, getTagApi, updateTagApi } from '../../api'
 
 type Props = {
   type: 'create' | 'edit'
@@ -30,7 +32,6 @@ export const TagForm = (props: Props) => {
     }
     setData({ kind })
   }, [searchParams])
-
 
   const [tagId, setTagId] = useState('')
   const { data: tag } = getTagApi(tagId)
@@ -73,7 +74,6 @@ export const TagForm = (props: Props) => {
     }
     throw error
   }
-
 
   return (
     <form onSubmit={onSubmit} className="p-16px p-t-32px flex flex-col gap-y-8px">

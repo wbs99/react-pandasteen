@@ -27,7 +27,7 @@ export const LongPressable = (props: Props) => {
       touchTimer.current = undefined
     }
   }
-  const onTouchEnd = (e: TouchEvent) => {
+  const onTouchEnd = () => {
     if (touchTimer.current) {
       window.clearTimeout(touchTimer.current)
       touchTimer.current = undefined

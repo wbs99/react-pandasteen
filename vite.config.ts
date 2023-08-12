@@ -1,13 +1,11 @@
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import Unocss from 'unocss/vite'
 import { viteMockServe } from 'vite-plugin-mock'
 import { svgsprites } from './vite_plugins/svgsprites'
 
-
 // https://vitejs.dev/config/
-export default defineConfig(({ mode, command }) => {
-  const env = loadEnv(mode, process.cwd())
+export default defineConfig(({ command }) => {
   return {
     server: {
       proxy: {
@@ -29,12 +27,8 @@ export default defineConfig(({ mode, command }) => {
       rollupOptions: {
         output: {
           manualChunks(id: any) {
-            if (id.includes('echarts')) {
-              return 'echarts'
-            }
-            if (id.includes('node_modules')) {
-              return 'vendor'
-            }
+            if (id.includes('echarts')) { return 'echarts' }
+            if (id.includes('node_modules')) { return 'vendor' }
           }
         }
       }

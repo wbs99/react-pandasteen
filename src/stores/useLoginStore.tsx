@@ -1,7 +1,6 @@
-import { FormError } from "../lib/validate"
-import { LoginData } from "../api/types"
-import { create } from "zustand"
-
+import { create } from 'zustand'
+import type { FormError } from '../lib/validate'
+import type { LoginData } from '../api/types'
 
 interface Login {
   data: LoginData

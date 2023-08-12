@@ -1,11 +1,10 @@
-import { useNavigate, useParams } from "react-router-dom"
-import { Gradient } from "../components/Gradient"
-import { TopNav } from "../components/TopNav"
-import { TagForm } from "./TagsNewPage/TagForm"
-import { BackIcon } from "../components/BackIcon"
-import { comfirmable } from "../lib/comfirmable"
-import { deleteTagApi } from "../api"
-
+import { useNavigate, useParams } from 'react-router-dom'
+import { Gradient } from '../components/Gradient'
+import { TopNav } from '../components/TopNav'
+import { BackIcon } from '../components/BackIcon'
+import { comfirmable } from '../lib/comfirmable'
+import { deleteTagApi } from '../api'
+import { TagForm } from './TagsNewPage/TagForm'
 
 export const TagEditPage = () => {
   const { id } = useParams()
@@ -13,11 +12,11 @@ export const TagEditPage = () => {
   const onDelete = comfirmable('确定要删除吗', async () => {
     if (!id) { throw new Error('id 不能为空') }
     await deleteTagApi(id).catch(onDeleteError)
-    window.alert('删除成功')
+    console.log('删除成功')
     nav('/items/new')
   })
   const onDeleteError = (error: any) => {
-    window.alert('删除失败')
+    console.log('删除失败')
     throw error
   }
 

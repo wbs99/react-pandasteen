@@ -1,7 +1,8 @@
-import { ReactNode, useState } from "react"
-import ReactDOM, { createPortal } from "react-dom"
-import { Popup } from "../components/Popup"
-import { rootDiv } from "../main"
+import type { ReactNode } from 'react'
+import { useState } from 'react'
+import ReactDOM from 'react-dom'
+import { Popup } from '../components/Popup'
+import { rootDiv } from '../main'
 
 type Options = {
   initVisible?: boolean

@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { usePopup } from '../hooks/usePopup'
-import { Time, time } from '../lib/time'
+import type { Time } from '../lib/time'
+import { time } from '../lib/time'
 import { Tabs } from './Tabs'
 import { Input } from './Input'
+
 export type TimeRange = {
   start: Time
   end: Time

@@ -1,4 +1,4 @@
-import { MockMethod } from "vite-plugin-mock"
+import type { MockMethod } from 'vite-plugin-mock'
 
 export const MockSession: MockMethod[] = [{
   url: '/api/v1/session',

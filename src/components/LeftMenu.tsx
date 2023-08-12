@@ -1,7 +1,7 @@
-import { animated, useSpring } from "@react-spring/web"
-import { useState } from "react"
-import { CurrentUser } from "./TopMenu/CurrentUser"
-import { Menu } from "./TopMenu/Menu"
+import { animated, useSpring } from '@react-spring/web'
+import { useState } from 'react'
+import { CurrentUser } from './TopMenu/CurrentUser'
+import { Menu } from './TopMenu/Menu'
 
 interface Props {
   onClickMask?: () => void
@@ -11,16 +11,20 @@ interface Props {
 export const LeftMenu = (props: Props) => {
   const { onClickMask, visible } = props
   const [maskVisible, setMaskVisible] = useState(visible)
-  // 打开动画 0 => 1 
+  // 打开动画 0 => 1
   // 关闭动画 1 => 0
   const markStyle = useSpring({
     visibility: (maskVisible ? 'visible' : 'hidden') as 'visible' | 'hidden',
     opacity: visible ? 1 : 0,
     onStart: ({ value }) => {
-      if (value.opacity < 0.1) { setMaskVisible(true) }
+      if (value.opacity < 0.1) {
+        setMaskVisible(true)
+      }
     },
     onRest: ({ value }) => {
-      if (value.opacity < 0.1) { setMaskVisible(false) }
+      if (value.opacity < 0.1) {
+        setMaskVisible(false)
+      }
     }
   })
   const menuStyle = useSpring({

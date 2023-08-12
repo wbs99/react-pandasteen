@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import useSWR from 'swr'
 import { Gradient } from '../components/Gradient'
 import { Input } from '../components/Input'
 import { LineChart } from '../components/LineChart'
@@ -9,7 +10,6 @@ import { TimeRangePicker } from '../components/TimeRangePicker'
 import { TopNav } from '../components/TopNav'
 import { useAjax } from '../lib/ajax'
 import { time } from '../lib/time'
-import useSWR from 'swr'
 import type { Time } from '../lib/time'
 import { BackIcon } from '../components/BackIcon'
 
@@ -27,7 +27,6 @@ const getKey = ({ start, end, kind, group_by }: GetKeyParams) => {
   return `/api/v1/items/summary?happened_after=${start.format('yyyy-MM-dd')}&happened_before=${end.format('yyyy-MM-dd')}&kind=${kind}&group_by=${group_by}`
 }
 
-
 export const StatisticsPage = () => {
   const [timeRange, setTimeRange] = useState<TimeRange>({
     name: 'thisMonth',
@@ -37,15 +36,14 @@ export const StatisticsPage = () => {
   const [kind, setKind] = useState<Item['kind']>('expenses')
   const { get } = useAjax({ showLoading: false, handleError: true })
 
-
-  const generateDefaultItems = (time: Time) => {
+  const generateDefaultItems = () => {
     return Array.from({ length: start.dayCountOfMonth }).map((_, i) => {
       const x = start.clone.add(i, 'day').format(format)
       return { x, y: 0 }
     })
   }
   const { start, end } = timeRange
-  const defaultItems = generateDefaultItems(start)
+  const defaultItems = generateDefaultItems()
   const { data: items } = useSWR(getKey({ start, end, kind, group_by: 'happen_at' }),
     async (path) => {
       const response = await get<{ groups: Groups; total: number }>(path)
@@ -61,7 +59,7 @@ export const StatisticsPage = () => {
     async (path) => {
       const response = await get<{ groups: Groups2; total: number }>(path)
       return response.data.groups
-        .map(({ tag_id, tag, amount }) =>
+        .map(({ tag, amount }) =>
           ({ name: tag.name, value: (amount / 100).toFixed(2), sign: tag.sign }))
     }
   )

@@ -1,5 +1,5 @@
-import { faker } from "@faker-js/faker"
-import { MockMethod } from "vite-plugin-mock"
+import { faker } from '@faker-js/faker'
+import type { MockMethod } from 'vite-plugin-mock'
 
 let id = 0
 const createId = () => {
@@ -49,7 +49,7 @@ export const tagsMock: MockMethod[] = [
     url: '/api/v1/tags',
     method: 'post',
     statusCode: 200,
-    response: ({ query }: ResponseParams): Resource<Tag> => {
+    response: (): Resource<Tag> => {
       return {
         resource: create()
       }
@@ -59,7 +59,7 @@ export const tagsMock: MockMethod[] = [
     url: '/api/v1/tags/:id',
     method: 'patch',
     statusCode: 200,
-    response: ({ query }: ResponseParams): Resource<Tag> => {
+    response: (): Resource<Tag> => {
       return {
         resource: create()
       }

@@ -27,10 +27,10 @@ export const useAjax = (options?: Options) => {
       nav('/login')
     },
     402: () => {
-      window.alert('请付费后观看')
+      console.log('请付费后观看')
     },
     403: () => {
-      window.alert('没有权限')
+      console.log('没有权限')
     }
   }
   const showLoading = options?.showLoading || false

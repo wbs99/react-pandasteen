@@ -6,8 +6,8 @@ const colors = ['#5470c6', '#ffbab0', '#ffa750', '#8748d3', '#53a867', '#eba953'
 
 export const RankChart = (props: Props) => {
   const { className, dataSource } = props
-  const total = dataSource?.reduce((result, item) => result + parseFloat(item.value.toString()), 0) ?? 0
-  const max = dataSource?.reduce((prev, item) => Math.max(prev, parseFloat(item.value.toString())), 0) ?? 0
+  const total = dataSource?.reduce((result, item) => result + Number.parseFloat(item.value.toString()), 0) ?? 0
+  const max = dataSource?.reduce((prev, item) => Math.max(prev, Number.parseFloat(item.value.toString())), 0) ?? 0
 
   const renderItems = () => {
     return (
@@ -26,7 +26,7 @@ export const RankChart = (props: Props) => {
           <div row-start-2 col-start-2 row-end-3 col-end-4 h-8px self-start
             rounded-4px overflow-hidden bg="#CCC" relative>
             <div absolute h-full rounded-4px
-              style={{ background: colors[index], width: `${parseFloat(item.value.toString()) / max * 100}%` }} />
+              style={{ background: colors[index], width: `${Number.parseFloat(item.value.toString()) / max * 100}%` }} />
           </div>
         </div>)
     )
