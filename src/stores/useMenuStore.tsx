@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-interface Menu {
+type Menu = {
   visible: boolean
   setVisible: (visible: boolean) => void
 }

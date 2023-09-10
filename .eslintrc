@@ -38,6 +38,35 @@
         "caughtErrors": "none"
       }
     ],
-    "@typescript-eslint/comma-dangle": "off"
+    "@typescript-eslint/comma-dangle": "off",
+    "vue/component-tags-order": [
+      "error",
+      {
+        "order": [
+          [
+            "template",
+            "script"
+          ],
+          "style"
+        ]
+      }
+    ],
+    "vue/first-attribute-linebreak": [
+      "off",
+      {
+        "singleline": "ignore",
+        "multiline": "ignore"
+      }
+    ],
+    "vue/html-closing-bracket-newline": [
+      "off",
+      {
+        "singleline": "never",
+        "multiline": "always"
+      }
+    ],
+    "vue/html-indent": [
+      "off"
+    ]
   }
 }

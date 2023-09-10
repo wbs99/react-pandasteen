@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-interface Local {
+type Local = {
   hasReadWelcomes: boolean
   setHadReadWelcome: (read: boolean) => void
 }

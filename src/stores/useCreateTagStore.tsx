@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import type { FormError } from '../lib/validate'
 
 type Data = Tag
-interface CreateTag {
+type CreateTag = {
   data: Partial<Data>
   error: FormError<Data>
   setData: (data: Partial<Data>) => void

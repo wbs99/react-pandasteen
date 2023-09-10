@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-interface Loading {
+type Loading = {
   visible: boolean
   setVisible: (visible: boolean) => void
 }

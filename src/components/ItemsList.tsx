@@ -17,7 +17,7 @@ const CenterDiv = styled.div`
 
 export const ItemsList = (props: Props) => {
   const { start, end } = props
-  // data: [{ resources: {}, pager: {} }, { resources: {}, pager: {} }, { resources: {}, pager: {} }]
+  // data: [{ resources: [], pager: {} }, { resources: [], pager: {} }, { resources: [], pager: {} }]
   const { data, error, isLoading, onLoadMore, isLoadingMore, hasMore } = getItemListApi(start, end)
 
   if (!data) {

@@ -3,13 +3,13 @@ import type { FormError } from '../lib/validate'
 import { time } from '../lib/time'
 
 type Data = Item
-
 type CreateItem = {
   data: Partial<Data>
   error: FormError<Data>
   setData: (data: Partial<Data>) => void
   setError: (error: Partial<FormError<Data>>) => void
 }
+
 export const useCreateItemStore = create<CreateItem>(set => ({
   data: {
     kind: 'expenses',

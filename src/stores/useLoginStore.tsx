@@ -2,11 +2,12 @@ import { create } from 'zustand'
 import type { FormError } from '../lib/validate'
 import type { LoginData } from '../api/types'
 
-interface Login {
-  data: LoginData
-  error: FormError<LoginData>
-  setData: (data: Partial<LoginData>) => void
-  setError: (error: Partial<FormError<LoginData>>) => void
+type Data = LoginData
+type Login = {
+  data: Data
+  error: FormError<Data>
+  setData: (data: Partial<Data>) => void
+  setError: (error: Partial<FormError<Data>>) => void
 }
 
 export const useLoginStore = create<Login>((set) => ({
