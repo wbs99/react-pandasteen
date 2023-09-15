@@ -10,8 +10,10 @@ import { hasError, validate } from '../lib/validate'
 import { useLoginStore } from '../stores/useLoginStore'
 import { loginApi, sendSmsCodeApi } from '../api'
 import { BackIcon } from '../components/BackIcon'
+import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
 
 export const LoginPage = () => {
+  const { buttonLoading } = useButtonLoadingStore()
   const { data, setData, error, setError } = useLoginStore()
   const nav = useNavigate()
   const [search] = useSearchParams()
@@ -66,7 +68,10 @@ export const LoginPage = () => {
         <Input type='sms_code' label="验证码" placeholder="六位数字" value={data.code}
           onChange={code => setData({ code })} errorMessage={error.code?.[0]} request={sendSmsCode} />
         <div className="mt-100px">
-          <button className="p-btn" type="submit">登录</button>
+          <button disabled={buttonLoading} className='p-btn' type="submit">
+            {buttonLoading && <Icon name='loading' className='animate-spin animate-1s mr-12px' />}
+            登录
+          </button>
         </div>
       </form>
     </div>

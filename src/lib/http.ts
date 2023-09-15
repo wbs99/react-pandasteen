@@ -1,5 +1,6 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
 import axios from 'axios'
+import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
 import { router } from './../routes/router'
 
 type GetConfig = Omit<AxiosRequestConfig, 'params' | 'url' | 'method'>
@@ -52,13 +53,9 @@ http.instance.interceptors.request.use(config => {
   const jwt = localStorage.getItem('jwt') || ''
   config.headers = config.headers || {}
   if (jwt) { config.headers.Authorization = `Bearer ${jwt}` }
-  if (config._autoLoading === true) {
-    console.log('loading')
-    // showLoadingToast({
-    //   message: config._loadingText || '加载中...',
-    //   forbidClick: true,
-    //   duration: 0
-    // })
+  if (config._buttonLoading === true) {
+    console.log(555)
+    useButtonLoadingStore.getState().starButtonLoading()
   }
   return config
 })
@@ -66,16 +63,14 @@ http.instance.interceptors.request.use(config => {
 // loading
 http.instance.interceptors.response.use(
   response => {
-    if (response.config._autoLoading === true) {
-      console.log('request success')
-      // closeToast()
+    if (response.config._buttonLoading === true) {
+      useButtonLoadingStore.getState().closeButtonLoading()
     }
     return response
   },
   (error: AxiosError) => {
-    if (error.response?.config._autoLoading === true) {
-      console.log('request error')
-      // closeToast()
+    if (error.response?.config._buttonLoading === true) {
+      useButtonLoadingStore.getState().closeButtonLoading()
     }
     throw error
   }
