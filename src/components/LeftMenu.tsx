@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { CurrentUser } from './TopMenu/CurrentUser'
 import { Menu } from './TopMenu/Menu'
 
-interface Props {
+type Props = {
   onClickMask?: () => void
   visible?: boolean
 }

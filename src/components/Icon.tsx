@@ -1,7 +1,7 @@
 import c from 'classnames'
 import React from 'react'
 
-interface Props {
+type Props = {
   className?: string
   name: string
   onClick?: (e: React.MouseEvent) => void

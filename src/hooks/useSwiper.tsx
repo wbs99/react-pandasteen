@@ -1,7 +1,7 @@
 import type { RefObject } from 'react'
 import { useEffect, useRef, useState } from 'react'
 
-interface Point {
+type Point = {
   x: number
   y: number
 }
