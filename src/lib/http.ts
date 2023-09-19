@@ -1,7 +1,7 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
 import axios from 'axios'
 import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
-import { router } from './../routes/router'
+import { ErrorUnauthorized } from '../pages/Errors'
 
 type GetConfig = Omit<AxiosRequestConfig, 'params' | 'url' | 'method'>
 type PostConfig = Omit<AxiosRequestConfig, 'url' | 'data' | 'method'>
@@ -10,7 +10,7 @@ type DeleteConfig = Omit<AxiosRequestConfig, 'params'>
 
 const table: Record<string, undefined | (() => void)> = {
   401: () => {
-    router.navigate('/login')
+    throw new ErrorUnauthorized
   },
   402: () => {
     console.log('请付费后观看')

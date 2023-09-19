@@ -6,7 +6,7 @@ export const ErrorPage = () => {
   const loc = useLocation()
   const return_to = encodeURIComponent(`${loc.pathname}${loc.search}`)
   if (error instanceof ErrorUnauthorized) {
-    return <Navigate replace to={`/login?return_to=${return_to}`} />
+    return <Navigate to={`/login?return_to=${return_to}`} replace />
   } else {
     return <div>未知错误</div>
   }

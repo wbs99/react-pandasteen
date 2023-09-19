@@ -12,7 +12,6 @@ import { Welcome1 } from '../pages/Welcome1'
 import { Welcome2 } from '../pages/Welcome2'
 import { Welcome3 } from '../pages/Welcome3'
 import { Welcome4 } from '../pages/Welcome4'
-import { ErrorUnauthorized } from '../pages/Errors'
 import { ItemsPageError } from '../pages/Errors/ItemsPageError'
 import { ErrorPage } from '../pages/Errors/ErrorPage'
 import { ComingSoonPage } from '../pages/ComingSoonPage'
@@ -42,12 +41,7 @@ export const router = createHashRouter([
     path: '/',
     element: <Outlet />,
     errorElement: <ErrorPage />,
-    loader: async () => {
-      return await fetchMe().catch(error => {
-        if (error.response?.status === 401) { throw new ErrorUnauthorized }
-        throw error
-      })
-    },
+    loader: async () => await fetchMe(),
     children: [
       {
         path: '/items',
