@@ -4,7 +4,5 @@ declare module 'axios' {
   export interface AxiosRequestConfig {
     _buttonLoading?: boolean
     _autoLoading?: boolean
-    _loadingText?: string
-    _mock?: string
   }
 }
