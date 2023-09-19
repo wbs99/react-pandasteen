@@ -1,4 +1,4 @@
-import { Outlet, createHashRouter } from 'react-router-dom'
+import { Outlet, createBrowserRouter } from 'react-router-dom'
 import { Suspense, lazy } from 'react'
 import { Root } from '../components/Root'
 import { WelcomeLayout } from '../layouts/WelcomeLayout'
@@ -21,7 +21,7 @@ import { fetchMe } from '../api'
 // 页面资源较大时，使用 lazy import 即可
 const StatisticsPage = lazy(() => import('../pages/StatisticsPage'))
 
-export const router = createHashRouter([
+export const router = createBrowserRouter([
   // 访问 / 路径，在 Root 中判断跳转哪个页面
   { path: '/', element: <Root /> },
   { path: '/home', element: <HomePage title='首页' /> },
