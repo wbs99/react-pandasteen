@@ -12,7 +12,7 @@ export default defineConfig({
     'p-input-text': 'h-48px pl-16px leading-32px py-8px b-#5C33BE b-1 focus:shadow focus:shadow-inset rounded-8px text-18px',
     'p-form': 'px-16px flex flex-col gap-y-16px children-flex children-flex-col',
     'p-form-label': 'text-18px mb-8px',
-    'p-icon': 'fill-current w-1.2em h-1.2em'
+    'p-icon': 'fill-current w-1.2em h-1.2em',
   },
   safelist: [],
   presets: [

@@ -58,7 +58,7 @@ export const LoginPage = () => {
       <Gradient>
         <TopNav title="登录" icon={<BackIcon />} />
       </Gradient>
-      <div className="text-center pt-40px pb-16px">
+      <div className="pt-40px pb-16px flex flex-col items-center">
         <Icon name="panda" className='w-64px h-68px' />
         <h1 className="text-32px text-#7878FF font-bold">熊猫记账</h1>
       </div>
