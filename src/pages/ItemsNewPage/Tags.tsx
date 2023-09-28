@@ -1,10 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import { Icon } from '../../components/Icon'
-import { LongPressable } from '../../components/LongPressable'
 import { getTagsApi } from '../../api'
-import { Loading } from '../../components/Loading'
+import { Icon } from '../../components/Icon'
 import { LoadMoreLoading } from '../../components/LoadMoreLoading'
+import { Loading } from '../../components/Loading'
+import { LongPressable } from '../../components/LongPressable'
 
 type Props = {
   kind: Item['kind']
@@ -22,7 +22,8 @@ export const Tags = (props: Props) => {
       {error && <CenterDiv>数据加载失败，请刷新页面</CenterDiv>}
       {isLoading && <CenterDiv><Loading /></CenterDiv>}
     </div>
-  } else {
+  }
+  else {
     return (
       <div>
         <ol className="grid grid-cols-[repeat(auto-fit,48px)] justify-center gap-x-32px

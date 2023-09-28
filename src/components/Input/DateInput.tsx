@@ -13,7 +13,7 @@ export const DateInput = (props: Props) => {
   const { value, onChange, className, placeholder } = props
   const { toggle, popup, hide } = usePopup({
     children: <DatePicker
-      onConfirm={d => {
+      onConfirm={(d) => {
         onChange?.(time(d).isoString)
         hide()
       }}
@@ -24,7 +24,7 @@ export const DateInput = (props: Props) => {
     <>
       {popup}
       <input className={className} p-input-text type='text' readOnly placeholder={placeholder}
-        value={time(value).format()} onChange={(e) => onChange?.(e.target.value)} onClick={toggle} />
+        value={time(value).format()} onChange={e => onChange?.(e.target.value)} onClick={toggle} />
     </>
   )
 }

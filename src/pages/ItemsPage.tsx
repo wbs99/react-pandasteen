@@ -4,12 +4,12 @@ import { Gradient } from '../components/Gradient'
 import { Icon } from '../components/Icon'
 import { ItemsList } from '../components/ItemsList'
 import { ItemsSummary } from '../components/ItemsSummary'
+import { LeftMenu } from '../components/LeftMenu'
 import type { TimeRange } from '../components/TimeRangePicker'
 import { TimeRangePicker } from '../components/TimeRangePicker'
-import { LeftMenu } from '../components/LeftMenu'
 import { TopNav } from '../components/TopNav'
-import { useMenuStore } from '../stores/useMenuStore'
 import { Time, time } from '../lib/time'
+import { useMenuStore } from '../stores/useMenuStore'
 
 export const ItemsPage = () => {
   const [timeRange, _setTimeRange] = useState<TimeRange>({
@@ -24,7 +24,8 @@ export const ItemsPage = () => {
     }
     if (t.end.timestamp - t.start.timestamp > Time.DAY * 365) {
       setOutOfRange(true)
-    } else {
+    }
+    else {
       setOutOfRange(false)
     }
     _setTimeRange(t)

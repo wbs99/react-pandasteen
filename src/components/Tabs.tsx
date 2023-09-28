@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react'
 import cs from 'classnames'
+import type { ReactNode } from 'react'
 import s from './Tabs.module.scss'
 
 type Props<T> = {
@@ -17,9 +17,11 @@ type Props<T> = {
 const compareKey = <T extends (string | { name: string })>(a: T, c: T) => {
   if (typeof a === 'string' && typeof c === 'string') {
     return a === c
-  } else if (a instanceof Object && c instanceof Object) {
+  }
+  else if (a instanceof Object && c instanceof Object) {
     return a.name === c.name
-  } else {
+  }
+  else {
     return false
   }
 }

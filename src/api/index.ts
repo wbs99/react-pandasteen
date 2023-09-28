@@ -105,7 +105,7 @@ export const getTagsApi = (tagKind: string) => {
   }
   const { data, error, size, setSize, isLoading } = useSWRInfinite(
     getKey,
-    async path => {
+    async (path) => {
       const response = await http.get<Resources<Tag>>(path)
       return response.data
     },

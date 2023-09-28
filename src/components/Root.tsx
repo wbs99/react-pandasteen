@@ -5,7 +5,8 @@ export const Root = () => {
   const { hasReadWelcomes } = useLocalStore()
   if (hasReadWelcomes) {
     return <Navigate to="/home" />
-  } else {
+  }
+  else {
     return <Navigate to="/welcome/1" />
   }
 }

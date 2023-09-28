@@ -20,7 +20,9 @@ export const LongPressable = (props: Props) => {
   const onTouchMove = (e: TouchEvent) => {
     const { clientX: newX, clientY: newY } = e.touches[0]
     const { x, y } = touchPosition.current
-    if (x === undefined || y === undefined) { return }
+    if (x === undefined || y === undefined) {
+      return
+    }
     const distance = Math.sqrt((newX - x) ** 2 + (newY - y) ** 2)
     if (distance > 10) {
       window.clearTimeout(touchTimer.current)

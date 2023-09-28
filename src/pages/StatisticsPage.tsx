@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import useSWR from 'swr'
+import { BackIcon } from '../components/BackIcon'
 import { Gradient } from '../components/Gradient'
 import { Input } from '../components/Input'
 import { LineChart } from '../components/LineChart'
@@ -9,9 +10,8 @@ import type { TimeRange } from '../components/TimeRangePicker'
 import { TimeRangePicker } from '../components/TimeRangePicker'
 import { TopNav } from '../components/TopNav'
 import { useAjax } from '../lib/ajax'
-import { time } from '../lib/time'
 import type { Time } from '../lib/time'
-import { BackIcon } from '../components/BackIcon'
+import { time } from '../lib/time'
 
 type Groups = { happen_at: string; amount: number }[]
 type Groups2 = { tag_id: number; tag: Tag; amount: number }[]
@@ -51,8 +51,8 @@ export const StatisticsPage = () => {
         .map(({ happen_at, amount }) => ({ x: happen_at, y: (amount / 100).toFixed(2) }))
     }
   )
-  const normalizedItems = defaultItems?.map((defaultItem, index) =>
-    items?.find((item) => item.x === defaultItem.x) || defaultItem
+  const normalizedItems = defaultItems?.map(defaultItem =>
+    items?.find(item => item.x === defaultItem.x) || defaultItem
   )
 
   const { data: items2 } = useSWR(getKey({ start, end, kind, group_by: 'tag_id' }),

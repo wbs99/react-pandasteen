@@ -45,31 +45,31 @@ export const DatePicker = (props: Props) => {
       </div>
       <div flex >
         <Column dateList={yearList} value={valueTime.current.year}
-          onChange={v => {
+          onChange={(v) => {
             valueTime.current.year = v
             update({})
           }}
           className="grow-1" />
         <Column dateList={monthList} value={valueTime.current.month}
-          onChange={v => {
+          onChange={(v) => {
             valueTime.current.month = v
             update({})
           }}
           className="grow-1" />
         <Column dateList={dayList} value={valueTime.current.day}
-          onChange={v => {
+          onChange={(v) => {
             valueTime.current.day = v
             update({})
           }}
           className="grow-1" />
         <Column dateList={hoursList} value={valueTime.current.hours}
-          onChange={v => {
+          onChange={(v) => {
             valueTime.current.hours = v
             update({})
           }}
           className="grow-1" />
         <Column dateList={minutesList} value={valueTime.current.minutes}
-          onChange={v => {
+          onChange={(v) => {
             valueTime.current.minutes = v
             update({})
           }}

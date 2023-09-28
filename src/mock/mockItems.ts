@@ -1,5 +1,5 @@
-import type { MockMethod } from 'vite-plugin-mock'
 import { faker } from '@faker-js/faker'
+import type { MockMethod } from 'vite-plugin-mock'
 
 export const MockItems: MockMethod[] = [
   {

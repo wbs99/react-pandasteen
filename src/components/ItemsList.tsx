@@ -1,9 +1,9 @@
 import styled from 'styled-components'
+import { getItemListApi } from '../api'
 import type { Time } from '../lib/time'
 import { time } from '../lib/time'
-import { getItemListApi } from '../api'
-import { Loading } from './Loading'
 import { LoadMoreLoading } from './LoadMoreLoading'
+import { Loading } from './Loading'
 
 type Props = {
   start: Time
@@ -25,7 +25,8 @@ export const ItemsList = (props: Props) => {
       {error && <CenterDiv>数据加载失败，请刷新页面</CenterDiv>}
       {isLoading && <CenterDiv><Loading /></CenterDiv>}
     </div>
-  } else {
+  }
+  else {
     return <>
       <ol>
         {data.map(({ resources }) => resources.map(item => <li key={item.id}

@@ -5,7 +5,7 @@ type Menu = {
   setVisible: (visible: boolean) => void
 }
 
-export const useMenuStore = create<Menu>((set) => ({
+export const useMenuStore = create<Menu>(set => ({
   visible: false,
   setVisible: (visible: boolean) => {
     set({ visible })

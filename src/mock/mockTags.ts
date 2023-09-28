@@ -69,7 +69,7 @@ export const tagsMock: MockMethod[] = [
     url: '/api/v1/tags/:id',
     method: 'get',
     statusCode: 200,
-    response: ({ query }: ResponseParams): Resource<Tag> => {
+    response: (): Resource<Tag> => {
       return {
         resource: create()
       }

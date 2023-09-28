@@ -1,6 +1,6 @@
+import c from 'classnames'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import c from 'classnames'
 import { Icon } from '../Icon'
 
 type Props = {

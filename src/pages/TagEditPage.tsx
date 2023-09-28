@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from 'react-router-dom'
+import { deleteTagApi } from '../api'
+import { BackIcon } from '../components/BackIcon'
 import { Gradient } from '../components/Gradient'
 import { TopNav } from '../components/TopNav'
-import { BackIcon } from '../components/BackIcon'
 import { comfirmable } from '../lib/comfirmable'
-import { deleteTagApi } from '../api'
 import { TagForm } from './TagsNewPage/TagForm'
 
 export const TagEditPage = () => {

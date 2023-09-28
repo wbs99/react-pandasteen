@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import { useLocalStore } from '../stores/useLocalStore'
 import { Icon } from '../components/Icon'
+import { useLocalStore } from '../stores/useLocalStore'
 
 export const Welcome4 = () => {
   const { setHadReadWelcome } = useLocalStore()

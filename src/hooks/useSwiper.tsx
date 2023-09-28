@@ -19,10 +19,13 @@ export const useSwiper = (elementRef: RefObject<HTMLElement>) => {
     const newPoint = { x: e.touches[0].clientX, y: e.touches[0].clientY }
     const d = { x: newPoint.x - point.current.x, y: newPoint.y - point.current.y }
     const { x, y } = d
-    if (Math.abs(x) < 3 || Math.abs(y) < 3) { setDirection('') }
+    if (Math.abs(x) < 3 || Math.abs(y) < 3) {
+      setDirection('')
+    }
     else if (Math.abs(x) > Math.abs(y)) {
       return x > 0 ? setDirection('right') : setDirection('left')
-    } else {
+    }
+    else {
       return y > 0 ? setDirection('down') : setDirection('up')
     }
   }
@@ -32,12 +35,16 @@ export const useSwiper = (elementRef: RefObject<HTMLElement>) => {
   }
 
   useEffect(() => {
-    if (!elementRef.current) { return }
+    if (!elementRef.current) {
+      return
+    }
     elementRef.current.addEventListener('touchstart', onTouchStart)
     elementRef.current.addEventListener('touchmove', onMoving)
     elementRef.current.addEventListener('touchend', onTouchEnd)
     return () => {
-      if (!elementRef.current) { return }
+      if (!elementRef.current) {
+        return
+      }
       elementRef.current.removeEventListener('touchstart', onTouchStart)
       elementRef.current.removeEventListener('touchmove', onMoving)
       elementRef.current.removeEventListener('touchend', onTouchEnd)

@@ -1,7 +1,7 @@
+import { DatePicker } from '../../components/DatePicker'
 import { Icon } from '../../components/Icon'
 import { usePopup } from '../../hooks/usePopup'
 import { time } from '../../lib/time'
-import { DatePicker } from '../../components/DatePicker'
 
 type Props = {
   value?: string | Date
@@ -12,7 +12,7 @@ export const ItemDate = (props: Props) => {
   const { value, onChange } = props
   const { toggle, popup, hide } = usePopup({
     children: <DatePicker
-      onConfirm={d => { onChange?.(time(d).isoString); hide() }}
+      onConfirm={(d) => { onChange?.(time(d).isoString); hide() }}
       onCancel={() => hide()} />
   })
   return (

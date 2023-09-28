@@ -13,7 +13,9 @@ export const ajax = axios.create({
 ajax.interceptors.request.use((config) => {
   const jwt = localStorage.getItem('jwt') || ''
   config.headers = config.headers || {}
-  if (jwt) { config.headers.Authorization = `Bearer ${jwt}` }
+  if (jwt) {
+    config.headers.Authorization = `Bearer ${jwt}`
+  }
   return config
 })
 

@@ -14,7 +14,8 @@ export const summaryMock: MockMethod[] = [{
         ],
         total: 900
       }
-    } else if (query.group_by === 'tag_id') {
+    }
+    else if (query.group_by === 'tag_id') {
       return {
         groups: [
           {

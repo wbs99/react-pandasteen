@@ -15,7 +15,7 @@ const useCountdown = ({ initialSeconds, onCountdownComplete }: CountdownProps) =
     }
 
     const intervalId = setInterval(() => {
-      setSecondsRemaining((prevSeconds) => prevSeconds - 1)
+      setSecondsRemaining(prevSeconds => prevSeconds - 1)
     }, 1000)
 
     return () => clearInterval(intervalId)

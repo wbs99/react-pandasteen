@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { usePopup } from '../hooks/usePopup'
 import type { Time } from '../lib/time'
 import { time } from '../lib/time'
-import { Tabs } from './Tabs'
 import { Input } from './Input'
+import { Tabs } from './Tabs'
 
 export type TimeRange = {
   start: Time
@@ -69,7 +69,8 @@ export const TimeRangePicker = (props: Props) => {
     if (timeRange.name === 'custom') {
       // 弹框
       show()
-    } else {
+    }
+    else {
       _onSelect(timeRange)
     }
   }

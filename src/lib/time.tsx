@@ -22,19 +22,24 @@ export class Time {
   constructor(p?: number | string | Date) {
     this.#date = p ? new Date(p) : new Date()
   }
+
   set(parts: Partial<Parts>) {
     this.parts = parts
     return this
   }
+
   get lastDayOfMonth() {
     return new Time(new Date(this.year, this.month - 1 + 1, 0))
   }
+
   get firstDayOfMonth() {
     return new Time(new Date(this.year, this.month - 1, 1))
   }
+
   get dayCountOfMonth() {
     return this.lastDayOfMonth.day
   }
+
   /**
    * 格式化输出
    * @param pattern 目前只支持 yyyy MM dd HH mm ss fff
@@ -49,6 +54,7 @@ export class Time {
       .replace(/ss/g, this.seconds.toString().padStart(2, '0'))
       .replace(/fff/g, this.ms.toString().padStart(3, '0'))
   }
+
   add(n: number, unit: Unit) {
     const table = {
       year: 'year',
@@ -68,12 +74,15 @@ export class Time {
     this[table[unit]] += n
     return this
   }
+
   get date() {
     return new Date(this.#date)
   }
+
   get timestamp() {
     return this.#date.getTime()
   }
+
   get parts(): Parts {
     const year = this.#date.getFullYear()
     const month = this.#date.getMonth() + 1
@@ -86,6 +95,7 @@ export class Time {
       year, month, day, hours, minutes, seconds, ms
     }
   }
+
   set parts(p: Partial<Parts>) {
     const table = {
       year: 'setFullYear',
@@ -103,55 +113,72 @@ export class Time {
       this.#date[methodName](value)
     })
   }
+
   removeTime() {
     this.set({ hours: 0, minutes: 0, seconds: 0, ms: 0 })
     return this
   }
+
   get year() {
     return this.parts.year
   }
+
   set year(v) {
     this.parts = { year: v }
   }
+
   get month() {
     return this.parts.month
   }
+
   set month(v) {
     this.parts = { month: v }
   }
+
   get day() {
     return this.parts.day
   }
+
   set day(v) {
     this.parts = { day: v }
   }
+
   get hours() {
     return this.parts.hours
   }
+
   set hours(v) {
     this.parts = { hours: v }
   }
+
   get minutes() {
     return this.parts.minutes
   }
+
   set minutes(v) {
     this.parts = { minutes: v }
   }
+
   get seconds() {
     return this.parts.seconds
   }
+
   set seconds(v) {
     this.parts = { seconds: v }
   }
+
   get ms() {
     return this.parts.ms
   }
+
   set ms(v) {
     this.parts = { ms: v }
   }
+
   get clone() {
     return new Time(this.#date)
   }
+
   get isoString() {
     // FIXME: 时区获取有问题，只能获取整数时区，如 +08:00；不能获取非整数时区，如 -07:30
     const timezone = Math.round(-this.#date.getTimezoneOffset() / 60)

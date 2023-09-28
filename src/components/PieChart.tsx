@@ -13,8 +13,12 @@ export const PieChart = (props: Props) => {
   const myChart = useRef<echarts.ECharts>()
 
   useEffect(() => {
-    if (!div.current) { return }
-    if (initialized.current) { return }
+    if (!div.current) {
+      return
+    }
+    if (initialized.current) {
+      return
+    }
     myChart.current = echarts.init(div.current)
     initialized.current = true
     const option: EChartsOption = {
@@ -28,7 +32,7 @@ export const PieChart = (props: Props) => {
       series: [{
         type: 'pie',
         radius: '90%',
-        data: dataSource.map((item, index) => ({ ...item, value: Number.parseFloat(item.value.toString()) }))
+        data: dataSource.map(item => ({ ...item, value: Number.parseFloat(item.value.toString()) }))
       }]
     }
     myChart.current.setOption(option)

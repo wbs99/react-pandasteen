@@ -2,9 +2,9 @@ import { animated, useTransition } from '@react-spring/web'
 import type { ReactNode } from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate, useOutlet } from 'react-router-dom'
+import { Icon } from '../components/Icon'
 import { useSwiper } from '../hooks/useSwiper'
 import { useLocalStore } from '../stores/useLocalStore'
-import { Icon } from '../components/Icon'
 
 const linkMap: Record<string, string> = {
   '/welcome/1': '/welcome/2',
@@ -40,7 +40,9 @@ export const WelcomeLayout = () => {
   const { direction } = useSwiper(mainRef)
   useEffect(() => {
     if (direction === 'left') {
-      if (animating.current) { return }
+      if (animating.current) {
+        return
+      }
       animating.current = true
       nav(linkMap[location.pathname])
     }

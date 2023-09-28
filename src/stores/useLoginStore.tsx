@@ -1,6 +1,6 @@
 import { create } from 'zustand'
-import type { FormError } from '../lib/validate'
 import type { LoginData } from '../api/types'
+import type { FormError } from '../lib/validate'
 
 type Data = LoginData
 type Login = {
@@ -10,7 +10,7 @@ type Login = {
   setError: (error: Partial<FormError<Data>>) => void
 }
 
-export const useLoginStore = create<Login>((set) => ({
+export const useLoginStore = create<Login>(set => ({
   data: {
     email: '1134954328@qq.com',
     code: '123456',

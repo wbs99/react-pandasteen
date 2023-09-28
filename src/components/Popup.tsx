@@ -16,10 +16,14 @@ export const Popup = (props: Props) => {
     visibility: maskVisible ? 'visible' : 'hidden' as 'visible' | 'hidden',
     opacity: visible ? 1 : 0,
     onStart: ({ value }) => {
-      if (value.opacity < 0.1) { setMaskVisible(true) }
+      if (value.opacity < 0.1) {
+        setMaskVisible(true)
+      }
     },
     onRest: ({ value }) => {
-      if (value.opacity < 0.1) { setMaskVisible(false) }
+      if (value.opacity < 0.1) {
+        setMaskVisible(false)
+      }
     }
   })
   const wrapperStyles = useSpring({
@@ -40,14 +44,14 @@ export const Popup = (props: Props) => {
             style={{ ...wrapperStyles, zIndex }} rounded-t-8px overflow-hidden>
             {children}
           </animated.div>
-        )
+          )
         : (
           <animated.div fixed bg-white left="[50%]" top="[50%]"
             translate-x="-50%" translate-y="-50%"
             style={{ ...wrapperStyles, zIndex }} rounded-8px overflow-hidden>
             {children}
           </animated.div>
-        )
+          )
       }
     </div>
   )

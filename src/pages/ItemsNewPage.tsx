@@ -1,29 +1,33 @@
+import c from 'classnames'
 import type { ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
-import c from 'classnames'
+import { BackIcon } from '../components/BackIcon'
 import { Gradient } from '../components/Gradient'
 import { Tabs } from '../components/Tabs'
 import { TopNav } from '../components/TopNav'
-import { useCreateItemStore } from '../stores/useCreateItemStore'
-import { hasError, validate } from '../lib/validate'
 import { useAjax } from '../lib/ajax'
-import { BackIcon } from '../components/BackIcon'
 import { time } from '../lib/time'
+import { hasError, validate } from '../lib/validate'
+import { useCreateItemStore } from '../stores/useCreateItemStore'
+import s from './ItemsNewPage.module.scss'
+import { ItemAmount } from './ItemsNewPage/ItemAmount'
 import { ItemDate } from './ItemsNewPage/ItemDate'
 import { Tags } from './ItemsNewPage/Tags'
-import { ItemAmount } from './ItemsNewPage/ItemAmount'
-import s from './ItemsNewPage.module.scss'
 
 export const ItemsNewPage = () => {
   const { data, setData, setError } = useCreateItemStore()
   const tabItems: { key: Item['kind']; text: string; element?: ReactNode }[] = [
     {
-      key: 'expenses', text: '支出', element:
-        <Tags kind="expenses" value={data.tag_ids} onChange={(ids) => setData({ tag_ids: ids })} />
+      key: 'expenses',
+      text: '支出',
+      element:
+        <Tags kind="expenses" value={data.tag_ids} onChange={ids => setData({ tag_ids: ids })} />
     },
     {
-      key: 'income', text: '收入', element:
-        <Tags kind="income" value={data.tag_ids} onChange={(ids) => setData({ tag_ids: ids })} />
+      key: 'income',
+      text: '收入',
+      element:
+        <Tags kind="income" value={data.tag_ids} onChange={ids => setData({ tag_ids: ids })} />
     }
   ]
   const { post } = useAjax({ showLoading: true, handleError: true })
@@ -40,7 +44,8 @@ export const ItemsNewPage = () => {
     if (hasError(error)) {
       const message = Object.values(error).flat().join('\n')
       window.alert(message)
-    } else {
+    }
+    else {
       await post<Resource<Item>>('/api/v1/items', data)
       setData({ amount: 0, happen_at: time().isoString })
       nav('/items')
@@ -56,7 +61,7 @@ export const ItemsNewPage = () => {
       </Gradient>
       <Tabs value={data.kind!} onChange={tabItem => setData({ kind: tabItem })} tabItems={tabItems} className='text-center grow-1 shrink-1 overflow-hidden' classPrefix="items-new-page" />
       <ItemAmount className="grow-0 shrink-0" itemDate={
-        <ItemDate value={data.happen_at} onChange={(happen_at) => setData({ happen_at })} />
+        <ItemDate value={data.happen_at} onChange={happen_at => setData({ happen_at })} />
       } value={data.amount} onChange={amount => setData({ amount })} onSubmit={onSubmit} />
     </div>
   )

@@ -1,7 +1,7 @@
-import { Link, useLocation } from 'react-router-dom'
 import c from 'classnames'
-import { comfirmable } from '../../lib/comfirmable'
+import { Link, useLocation } from 'react-router-dom'
 import { getMeApi } from '../../api'
+import { comfirmable } from '../../lib/comfirmable'
 
 type Props = {
   className?: string
@@ -25,13 +25,13 @@ export const CurrentUser = (props: Props) => {
             <h2 className='text-24px'>未登录用户</h2>
             <div className='text-#CEA1FF'>点击这里登录</div>
           </Link>
-        )
+          )
         : (
           <div onClick={signOut}>
             <h2 title={name} className='text-24px truncate'>{name}</h2>
             <div className='text-#CEA1FF'>点击这里退出登录</div>
           </div>
-        )
+          )
       }
     </div >
   )

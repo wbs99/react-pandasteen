@@ -1,7 +1,7 @@
 import type { ChangeEvent, ReactNode } from 'react'
+import { DateInput } from './Input/DateInput'
 import { EmojiInput } from './Input/EmojiInput'
 import { SmsCodeInput } from './Input/SmsCodeInput'
-import { DateInput } from './Input/DateInput'
 
 type Props<T> = {
   label?: string | ReactNode
@@ -12,12 +12,12 @@ type Props<T> = {
   disableError?: boolean // 是否需要显示 error
   className?: string
 } & (
-    | { type?: 'text' }
-    | { type: 'emoji' }
-    | { type: 'date' }
-    | { type: 'sms_code'; request: () => Promise<unknown> }
-    | { type: 'select'; options: { value: string; text: string }[] }
-  )
+  | { type?: 'text' }
+  | { type: 'emoji' }
+  | { type: 'date' }
+  | { type: 'sms_code'; request: () => Promise<unknown> }
+  | { type: 'select'; options: { value: string; text: string }[] }
+)
 export const Input = <T extends string>(props: Props<T>) => {
   const { label, placeholder, value, onChange: _onChange, errorMessage, disableError, className } = props
   const onChange = (e: string | ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {

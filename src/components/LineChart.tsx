@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react'
 import * as echarts from 'echarts'
+import { useEffect, useRef } from 'react'
 
 type Props = {
   className?: string
@@ -13,8 +13,12 @@ export const LineChart = (props: Props) => {
   const initialized = useRef(false)
   const myChart = useRef<echarts.ECharts>()
   useEffect(() => {
-    if (!div.current) { return }
-    if (initialized.current) { return }
+    if (!div.current) {
+      return
+    }
+    if (initialized.current) {
+      return
+    }
     myChart.current = echarts.init(div.current)
     initialized.current = true
     const option: echarts.EChartsOption = {
