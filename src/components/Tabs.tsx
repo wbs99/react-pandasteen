@@ -31,8 +31,9 @@ export const Tabs = <T extends string | { name: string }>(props: Props<T>) => {
 
   return (
     <div className={cs(className, classPrefix)} flex flex-col>
-      <ol flex text-white children-px-24px children-py-12px bg='[rgb(143,76,215)]'
-        grow-0 shrink-0 className={classPrefix ? `${classPrefix}-tabs` : ''} >
+      <ol
+        className={cs('flex text-white children-px-24px children-py-12px grow-0 shrink-0 bg-[rgb(143,76,215)]', classPrefix ? `${classPrefix}-tabs` : '')}
+        >
         {
           tabItems.map(item => <li key={typeof item.key === 'string' ? item.key : item.key.name} className={
             cs(
@@ -45,7 +46,8 @@ export const Tabs = <T extends string | { name: string }>(props: Props<T>) => {
           </li>)
         }
       </ol>
-      <div grow-1 shrink-1 overflow-auto className={classPrefix ? `${classPrefix}-pane` : ''}>
+      <div className={cs('grow-1 shrink-1 overflow-auto', classPrefix ? `${classPrefix}-pane` : '')}
+      >
         {tabItems.find(item => compareKey(item.key, value))?.element}
       </div>
     </div>
