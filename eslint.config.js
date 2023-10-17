@@ -2,16 +2,7 @@
 import antfu from '@antfu/eslint-config'
 
 export default antfu(
-  { vue: true, typescript: true },
-  {
-    files: ['**/*.vue'],
-    rules: {
-      'vue/operator-linebreak': ['error', 'before'],
-      'vue/block-order': ['error', {
-        order: [['script', 'template'], 'style'],
-      }],
-    },
-  },
+  { typescript: true },
   {
     rules: {
       'style/semi': ['error', 'never'],
@@ -20,8 +11,8 @@ export default antfu(
       'antfu/consistent-list-newline': 'off',
       'antfu/top-level-function': 'off',
       'no-alert': 'off',
-      'no-console':'off',
-      'max-statements-per-line':'off',
+      'no-console': 'off',
+      'max-statements-per-line': 'off',
       'unicorn/prefer-number-properties': 'off',
       'ts/indent': 'off',
       'ts/no-use-before-define': 'off',
