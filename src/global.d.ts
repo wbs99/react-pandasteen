@@ -40,3 +40,7 @@ type Tag = {
   updated_at: string
   deleted_at: string | null
 }
+type LoginForm = {
+  email: string
+  code: string
+}

@@ -2,11 +2,10 @@ import useSWR from 'swr'
 import useSWRInfinite from 'swr/infinite'
 import { http } from '../lib/http'
 import type { Time } from '../lib/time'
-import type { LoginData } from './types'
 
 export const sendSmsCodeApi = (data: { email: string }) => http.post('/api/v1/validation_codes', data)
 
-export const loginApi = (data: LoginData) => http.post<{ jwt: string }>('/api/v1/session', data, { _buttonLoading: true })
+export const loginApi = (data: LoginForm) => http.post<{ jwt: string }>('/api/v1/session', data, { _buttonLoading: true })
 
 // 用来在 router 中判断是否已登录
 export const fetchMe = () => http.get<Resource<User>>('/api/v1/me')
