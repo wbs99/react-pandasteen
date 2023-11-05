@@ -9,6 +9,7 @@ export default defineConfig(({ command }) => {
   return {
     server: {
       host: true,
+      open: true,
       proxy: {
         '/api/v1': {
           target: 'http://121.5.55.95:3000/',

@@ -6,7 +6,7 @@ import { createTagApi, getTagApi, updateTagApi } from '../../api'
 import { Input } from '../../components/Input'
 import type { FormError } from '../../lib/validate'
 import { hasError, validate } from '../../lib/validate'
-import { useCreateStore } from '../../stores/useCreateTagStore'
+import { useCreateTagStore } from '../../stores/createTagStore'
 
 type Props = {
   type: 'create' | 'edit'
@@ -17,9 +17,8 @@ export const TagForm = (props: Props) => {
   const params = useParams()
   const nav = useNavigate()
   const [searchParams] = useSearchParams()
-
   const kind = searchParams.get('kind') ?? ''
-  const { data, setData, error, setError } = useCreateStore()
+  const { data, setData, error, setError } = useCreateTagStore()
 
   useEffect(() => {
     if (type !== 'create') { return }

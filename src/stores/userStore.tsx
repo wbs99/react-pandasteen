@@ -3,7 +3,6 @@ import { createImmerStore } from './createImmerStore'
 type UserStore = {
   user: User
   updateUser: (user: Partial<User>) => void
-
 }
 
 export const useUserStore = createImmerStore<UserStore>(set => ({
