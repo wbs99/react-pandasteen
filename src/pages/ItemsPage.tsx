@@ -9,7 +9,7 @@ import type { TimeRange } from '../components/TimeRangePicker'
 import { TimeRangePicker } from '../components/TimeRangePicker'
 import { TopNav } from '../components/TopNav'
 import { Time, time } from '../lib/time'
-import { useMenuStore } from '../stores/useMenuStore'
+import { useMenuStore } from '../stores/menuStore'
 
 export const ItemsPage = () => {
   const [timeRange, _setTimeRange] = useState<TimeRange>({
