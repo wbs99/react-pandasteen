@@ -1,7 +1,7 @@
+import transformerAttributifyJsx from '@unocss/transformer-attributify-jsx-babel'
 import {
   defineConfig, presetAttributify, presetIcons, presetTypography, presetUno
 } from 'unocss'
-import transformerAttributifyJsx from '@unocss/transformer-attributify-jsx-babel'
 
 export default defineConfig({
   rules: [
@@ -14,7 +14,6 @@ export default defineConfig({
     'p-form-label': 'text-18px mb-8px',
     'p-icon': 'fill-current w-1.2em h-1.2em',
   },
-  safelist: [],
   presets: [
     presetUno(),
     presetAttributify(),
@@ -25,5 +24,5 @@ export default defineConfig({
   ],
   transformers: [
     transformerAttributifyJsx()
-  ]
+  ],
 })
