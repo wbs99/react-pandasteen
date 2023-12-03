@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import Unocss from 'unocss/vite'
+import { defineConfig } from 'vite'
 import { viteMockServe } from 'vite-plugin-mock'
 import { svgsprites } from './vite_plugins/svgsprites'
 
@@ -12,7 +12,7 @@ export default defineConfig(({ command }) => {
       open: true,
       proxy: {
         '/api/v1': {
-          target: 'http://121.5.55.95:3000/',
+          target: 'http://118.31.32.176:3000/',
           changeOrigin: command === 'serve',
         },
       }
