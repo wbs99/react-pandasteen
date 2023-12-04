@@ -72,5 +72,6 @@ export const router = createBrowserRouter([
       { path: '/export', element: <ComingSoonPage /> },
       { path: '/remind', element: <ComingSoonPage /> }
     ]
-  }
+  },
+  { path: '*', element: <Root /> }
 ])
