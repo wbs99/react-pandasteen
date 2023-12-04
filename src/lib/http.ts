@@ -1,5 +1,6 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
 
 type GetConfig = Omit<AxiosRequestConfig, 'params' | 'url' | 'method'>
@@ -77,7 +78,8 @@ http.instance.interceptors.response.use(
 
 const table: Record<string, undefined | (() => void)> = {
   401: () => {
-    console.log('登录超时')
+    const nav = useNavigate()
+    nav('/login')
   },
   402: () => {
     console.log('请付费后观看')
