@@ -2,6 +2,7 @@ import type { AxiosError, AxiosRequestConfig } from 'axios'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useLoadingStore } from '../stores/useLoadingStore'
+import { getJwt } from './storage'
 
 export const ajax = axios.create({
   baseURL: import.meta.env.VITE_APP_API_BASEURL,
@@ -11,10 +12,9 @@ export const ajax = axios.create({
   timeout: 10000
 })
 ajax.interceptors.request.use((config) => {
-  const jwt = localStorage.getItem('jwt') || ''
   config.headers = config.headers || {}
-  if (jwt) {
-    config.headers.Authorization = `Bearer ${jwt}`
+  if (getJwt()) {
+    config.headers.Authorization = `Bearer ${getJwt()}`
   }
   return config
 })

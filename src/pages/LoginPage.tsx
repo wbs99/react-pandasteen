@@ -7,10 +7,11 @@ import { Gradient } from '../components/Gradient'
 import { Icon } from '../components/Icon'
 import { Input } from '../components/Input'
 import { TopNav } from '../components/TopNav'
+import { setJwt, setRefreshJwt } from '../lib/storage'
 import type { FormError } from '../lib/validate'
 import { hasError, validate } from '../lib/validate'
-import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
 import { useLoginStore } from '../stores/loginStore'
+import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
 
 export const LoginPage = () => {
   const { buttonLoading } = useButtonLoadingStore()
@@ -29,8 +30,8 @@ export const LoginPage = () => {
     setLoginError(newError)
     if (!hasError(newError)) {
       const response = await loginApi(loginForm).catch(onSubmitError)
-      const jwt = response.data.jwt
-      localStorage.setItem('jwt', jwt)
+      setJwt(response.data.jwt)
+      setRefreshJwt(response.data.refresh_jwt)
       const return_to = search.get('return_to') || '/items'
       nav(return_to)
     }
@@ -60,7 +61,7 @@ export const LoginPage = () => {
       </Gradient>
       <div className="pt-40px pb-16px flex flex-col items-center">
         <Icon name="panda" className='w-64px h-68px' />
-        <h1 className="text-32px text-#7878FF font-bold">熊猫记账</h1>
+        <h1 className="text-32px text-#7878FF font-bold">熊猫</h1>
       </div>
       <form className="p-form" onSubmit={onSubmit}>
         <Input type='text' label="邮箱地址" placeholder="请输入" value={loginForm.email}

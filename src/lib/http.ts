@@ -1,7 +1,7 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
 import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
+import { getJwt, getRefreshJwt } from './storage'
 
 type GetConfig = Omit<AxiosRequestConfig, 'params' | 'url' | 'method'>
 type PostConfig = Omit<AxiosRequestConfig, 'url' | 'data' | 'method'>
@@ -36,9 +36,13 @@ export const http = new Http(baseURL)
 
 // set header
 http.instance.interceptors.request.use((config) => {
-  const jwt = localStorage.getItem('jwt') || ''
+  const isUrlIncludeRefreshJwt = config.url?.includes('/refresh_jwt')
   config.headers = config.headers || {}
-  if (jwt) { config.headers.Authorization = `Bearer ${jwt}` }
+  if (getJwt() || getRefreshJwt()) {
+    isUrlIncludeRefreshJwt
+      ? config.headers.Authorization = `Bearer ${getRefreshJwt()}`
+      : config.headers.Authorization = `Bearer ${getJwt()}`
+  }
   if (config._buttonLoading === true) {
     useButtonLoadingStore.getState().starButtonLoading()
   }
@@ -78,8 +82,7 @@ http.instance.interceptors.response.use(
 
 const table: Record<string, undefined | (() => void)> = {
   401: () => {
-    const nav = useNavigate()
-    nav('/login')
+    console.log('http 401')
   },
   402: () => {
     console.log('请付费后观看')
