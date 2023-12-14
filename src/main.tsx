@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
 import 'virtual:svgsprites'
 import 'virtual:uno.css'
-import './assets/styles/app.scss'
+import './assets/styles/global.scss'
 import { router } from './routes/router'
 
 const div = document.getElementById('root') as HTMLElement
