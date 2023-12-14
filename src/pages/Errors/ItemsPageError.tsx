@@ -9,7 +9,7 @@ export const ItemsPageError = () => {
     return <Navigate to={`/login?return_to=${return_to}`} />
   }
   else if (error instanceof ErrorEmptyData) {
-    return <Navigate to="/home" replace />
+    return <Navigate to='/home' replace />
   }
   else {
     return <div>出错了</div>

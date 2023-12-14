@@ -56,7 +56,7 @@ export const ItemAmount = (props: Props) => {
         <button type='button' className='row-start-4 col-start-1 row-end-5 col-end-3' onClick={() => append('0')}>0</button>
         <button type='button' className='row-start-4 col-start-3 row-end-5 col-end-4' onClick={() => append('.')}>.</button>
         <button type='button' className='row-start-1 col-start-4 row-end-3 col-end-5' onClick={clear}>清空</button>
-        <button onClick={onSubmit} type="submit" className='bg-#5C33BE text-#5C33BE row-start-3 col-start-4 row-end-5 col-end-5 ' >确定</button>
+        <button onClick={onSubmit} type='submit' className='bg-#5C33BE text-#5C33BE row-start-3 col-start-4 row-end-5 col-end-5 ' >确定</button>
       </div>
     </div>
   )

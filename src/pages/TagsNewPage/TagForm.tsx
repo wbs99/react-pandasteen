@@ -75,13 +75,25 @@ export const TagForm = (props: Props) => {
   }
 
   return (
-    <form onSubmit={onSubmit} className="p-16px p-t-32px flex flex-col gap-y-8px">
-      <Input type='text' label="标签名" placeholder="请输入标签名" errorMessage={error.name?.[0]} value={data.name} onChange={name => setData({ name })} />
-      <Input type='emoji' errorMessage={error.sign?.[0]} value={data.sign} onChange={sign => setData({ sign })}
-        label={<span>图标 <span text-20px>{data.sign}</span> </span>} />
-      <p className="text-center p-b-24px">记账时长按标签，即可进行编辑</p>
+    <form onSubmit={onSubmit} className='p-16px p-t-32px flex flex-col gap-y-8px'>
+      <Input
+        type='text'
+        label='标签名'
+        placeholder='请输入标签名'
+        errorMessage={error.name?.[0]}
+        value={data.name}
+        onChange={name => setData({ name })}
+        />
+      <Input
+        type='emoji'
+        errorMessage={error.sign?.[0]}
+        value={data.sign}
+        onChange={sign => setData({ sign })}
+        label={<span>图标 <span text-20px>{data.sign}</span> </span>}
+        />
+      <p className='text-center p-b-24px'>记账时长按标签，即可进行编辑</p>
       <div>
-        <button className="p-btn">确定</button>
+        <button className='p-btn'>确定</button>
       </div>
     </form>
   )

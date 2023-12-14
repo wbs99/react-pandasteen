@@ -41,13 +41,13 @@ export const ItemsPage = () => {
     <div>
       <Gradient>
         <TopNav
-          title="账目列表"
-          icon={<Icon name='menu' className="w-24px h-24px" onClick={onClick} />}
+          title='账目列表'
+          icon={<Icon name='menu' className='w-24px h-24px' onClick={onClick} />}
         />
       </Gradient>
       <TimeRangePicker selected={timeRange} onSelect={setTimeRange} />
       {outOfRange
-        ? <div className="text-center p-32px">
+        ? <div className='text-center p-32px'>
           自定义时间跨度不能超过 365 天
         </div>
         : <>

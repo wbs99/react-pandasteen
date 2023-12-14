@@ -7,6 +7,6 @@ export const BackIcon = () => {
     nav(-1)
   }
   return (
-    <Icon name="back" onClick={onBack} />
+    <Icon name='back' onClick={onBack} />
   )
 }

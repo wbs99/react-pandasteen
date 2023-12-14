@@ -31,7 +31,7 @@ export const DatePicker = (props: Props) => {
 
   return (
     <>
-      <div flex justify-between p-8px border-b-1 b-b-solid b="#f3f3f3" children-p-8px>
+      <div flex justify-between p-8px border-b-1 b-b-solid b='#f3f3f3' children-p-8px>
         <span onClick={onCancel}>取消</span>
         <span>时间选择</span>
         <span onClick={() => onConfirm?.(valueTime.current.date)}>确定</span>
@@ -49,31 +49,31 @@ export const DatePicker = (props: Props) => {
             valueTime.current.year = v
             update({})
           }}
-          className="grow-1" />
+          className='grow-1' />
         <Column dateList={monthList} value={valueTime.current.month}
           onChange={(v) => {
             valueTime.current.month = v
             update({})
           }}
-          className="grow-1" />
+          className='grow-1' />
         <Column dateList={dayList} value={valueTime.current.day}
           onChange={(v) => {
             valueTime.current.day = v
             update({})
           }}
-          className="grow-1" />
+          className='grow-1' />
         <Column dateList={hoursList} value={valueTime.current.hours}
           onChange={(v) => {
             valueTime.current.hours = v
             update({})
           }}
-          className="grow-1" />
+          className='grow-1' />
         <Column dateList={minutesList} value={valueTime.current.minutes}
           onChange={(v) => {
             valueTime.current.minutes = v
             update({})
           }}
-          className="grow-1" />
+          className='grow-1' />
       </div>
     </>
   )
@@ -106,7 +106,7 @@ export const Column = (props: ColumnProps) => {
   }
 
   return (
-    <div className={className} h="50vh" overflow-hidden relative
+    <div className={className} h='50vh' overflow-hidden relative
       onTouchStart={(e) => {
         setIsTouching(true)
         setLastY(e.touches[0].clientY)
@@ -149,9 +149,9 @@ export const Column = (props: ColumnProps) => {
     //   setIsTouching(false)
     // }}
     >
-      <div border-b-1 border-t-1 b-t-solid b-b-solid b="red" absolute top="50%" w-full
+      <div border-b-1 border-t-1 b-t-solid b-b-solid b='red' absolute top='50%' w-full
         style={{ height: itemHeight, transform: `transLateY(${itemHeight / 2}px)` }} />
-      <div absolute top="50%" w-full style={{ transform: `transLateY(${itemHeight / 2}px)` }}>
+      <div absolute top='50%' w-full style={{ transform: `transLateY(${itemHeight / 2}px)` }}>
         <ol children-flex children-justify-center children-items-center text-center
           style={{ transform: `translateY(${translateY}px)` }} >
           {dateList.map(date => <li key={date} style={{ height: itemHeight }} >{date}</li>)}

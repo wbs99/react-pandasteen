@@ -45,11 +45,11 @@ export const SmsCodeInput = (props: Props) => {
 
   return (
     <div flex gap-x-16px>
-      <input max-w='[calc(40%-8px)]' p-input-text type="text" placeholder={placeholder}
+      <input max-w='[calc(40%-8px)]' p-input-text type='text' placeholder={placeholder}
         value={value} onChange={e => onChange?.(e.target.value)} />
       {
         started
-          ? <button type="button" max-w="[calc(60%-8px)]" shrink-0 p-btn disabled text-gray>{count}秒后可重发</button>
+          ? <button type='button' max-w='[calc(60%-8px)]' shrink-0 p-btn disabled text-gray>{count}秒后可重发</button>
           : <button type='button' max-w='[calc(60%-8px)]' p-btn onClick={onClick}>发送验证码</button>
       }
     </div>

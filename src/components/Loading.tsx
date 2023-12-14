@@ -49,7 +49,7 @@ export const Loading = (props: Props) => {
   return (
     <CenterDiv>
       <Div>
-        <div className="spinner"></div>
+        <div className='spinner'></div>
         <p className='pt-16px text-lg'>{message || '加载中……'}</p>
       </Div>
     </CenterDiv>

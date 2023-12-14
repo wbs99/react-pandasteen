@@ -35,7 +35,7 @@ export const Popup = (props: Props) => {
   })
   return (
     <div touch-none>
-      <animated.div fixed top-0 left-0 h-full w-full className="bg-black:75"
+      <animated.div fixed top-0 left-0 h-full w-full className='bg-black:75'
         onClick={() => onClickMask?.()}
         style={{ ...maskStyles, zIndex: `calc(${zIndex} - 1)` }} />
       {position === 'bottom'
@@ -46,8 +46,8 @@ export const Popup = (props: Props) => {
           </animated.div>
           )
         : (
-          <animated.div fixed bg-white left="[50%]" top="[50%]"
-            translate-x="-50%" translate-y="-50%"
+          <animated.div fixed bg-white left='[50%]' top='[50%]'
+            translate-x='-50%' translate-y='-50%'
             style={{ ...wrapperStyles, zIndex }} rounded-8px overflow-hidden>
             {children}
           </animated.div>

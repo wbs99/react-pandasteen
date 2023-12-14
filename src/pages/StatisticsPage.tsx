@@ -13,8 +13,15 @@ import { useAjax } from '../lib/ajax'
 import type { Time } from '../lib/time'
 import { time } from '../lib/time'
 
-type Groups = { happen_at: string; amount: number }[]
-type Groups2 = { tag_id: number; tag: Tag; amount: number }[]
+type Groups = {
+  happen_at: string
+  amount: number
+}[]
+type Groups2 = {
+  tag_id: number
+  tag: Tag
+  amount: number
+}[]
 type GetKeyParams = {
   start: Time
   end: Time
@@ -46,7 +53,7 @@ export const StatisticsPage = () => {
   const defaultItems = generateDefaultItems()
   const { data: items } = useSWR(getKey({ start, end, kind, group_by: 'happen_at' }),
     async (path) => {
-      const response = await get<{ groups: Groups; total: number }>(path)
+      const response = await get<{ groups: Groups, total: number }>(path)
       return response.data.groups
         .map(({ happen_at, amount }) => ({ x: happen_at, y: (amount / 100).toFixed(2) }))
     }
@@ -57,7 +64,7 @@ export const StatisticsPage = () => {
 
   const { data: items2 } = useSWR(getKey({ start, end, kind, group_by: 'tag_id' }),
     async (path) => {
-      const response = await get<{ groups: Groups2; total: number }>(path)
+      const response = await get<{ groups: Groups2, total: number }>(path)
       return response.data.groups
         .map(({ tag, amount }) =>
           ({ name: tag.name, value: (amount / 100).toFixed(2), sign: tag.sign }))
@@ -67,7 +74,7 @@ export const StatisticsPage = () => {
   return (
     <div>
       <Gradient>
-        <TopNav title="统计图表" icon={<BackIcon />} />
+        <TopNav title='统计图表' icon={<BackIcon />} />
       </Gradient>
       <TimeRangePicker selected={timeRange} onSelect={setTimeRange}
         timeRanges={[
@@ -91,15 +98,15 @@ export const StatisticsPage = () => {
       <div className='flex p-16px items-center gap-x-16px'>
         <span className='grow-0 shrink-0'>类型</span>
         <div className='grow-1 shrink-1'>
-          <Input type="select" options={[
+          <Input type='select' options={[
             { text: '支出', value: 'expenses' },
             { text: '收入', value: 'income' },
           ]} value={kind} onChange={value => setKind(value)} disableError />
         </div>
       </div>
-      <LineChart className="h-120px" dataSource={normalizedItems} />
-      <PieChart className="h-260px m-t-16px" dataSource={items2} />
-      <RankChart className="m-t-8px" dataSource={items2} />
+      <LineChart className='h-120px' dataSource={normalizedItems} />
+      <PieChart className='h-260px m-t-16px' dataSource={items2} />
+      <RankChart className='m-t-8px' dataSource={items2} />
     </div>
   )
 }

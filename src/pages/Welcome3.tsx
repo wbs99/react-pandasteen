@@ -10,7 +10,7 @@ export const Welcome3 = () => {
         收支一目了然
       </h2>
       <div className='mt-64px'>
-        <Link className='text-32px color-#6035BF font-bold' to="/welcome/4">下一页</Link>
+        <Link className='text-32px color-#6035BF font-bold' to='/welcome/4'>下一页</Link>
       </div>
     </div>
   )
