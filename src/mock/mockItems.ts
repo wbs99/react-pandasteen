@@ -32,7 +32,7 @@ const createItem = (attrs?: Partial<Item>): Item => {
   return {
     id: createId(),
     user_id: 1,
-    amount: faker.datatype.number({ min: 99, max: 1000_00 }),
+    amount: faker.number.int({ min: 99, max: 100000 }),
     tags: [{
       id: 1,
       name: faker.lorem.word(),
