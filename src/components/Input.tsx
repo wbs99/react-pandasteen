@@ -1,4 +1,5 @@
 import type { ChangeEvent, ReactNode } from 'react'
+import { cn } from '../utils/cn'
 import { DateInput } from './Input/DateInput'
 import { EmojiInput } from './Input/EmojiInput'
 import { SmsCodeInput } from './Input/SmsCodeInput'
@@ -30,11 +31,11 @@ export const Input = <T extends string>(props: Props<T>) => {
     switch (props.type) {
       case undefined:
       case 'text':
-        return <input p-input-text type='text' {...common} />
+        return <input type='text' className='w-input-text' {...common} />
       case 'emoji':
         return <EmojiInput value={value} onChange={value => onChange?.(value)} />
       case 'select':
-        return <select className='h-36px' {...common}>
+        return <select className='h-8' {...common}>
           {props.options.map(option =>
             <option key={option.value} value={option.value}>{option.text}</option>)
           }
@@ -49,10 +50,10 @@ export const Input = <T extends string>(props: Props<T>) => {
   }
 
   return (
-    <div flex flex-col gap-y-8px className={className}>
-      {label ? <span text-18px>{label}</span> : null}
+    <div className={cn(className, 'flex flex-col gap-y-2')}>
+      {label ? <span className='text-lg'>{label}</span> : null}
       {renderInput()}
-      {disableError ? null : <span text-red text-12px>{errorMessage || '　'}</span>}
+      {disableError ? null : <span className='text-red-400 text-lg'>{errorMessage || '　'}</span>}
     </div>
   )
 }

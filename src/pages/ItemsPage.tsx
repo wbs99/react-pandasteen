@@ -8,7 +8,7 @@ import { LeftMenu } from '../components/LeftMenu'
 import type { TimeRange } from '../components/TimeRangePicker'
 import { TimeRangePicker } from '../components/TimeRangePicker'
 import { TopNav } from '../components/TopNav'
-import { Time, time } from '../lib/time'
+import { Time, time } from '../utils/time'
 import { useMenuStore } from '../stores/menuStore'
 
 export const ItemsPage = () => {
@@ -42,12 +42,12 @@ export const ItemsPage = () => {
       <Gradient>
         <TopNav
           title='账目列表'
-          icon={<Icon name='menu' className='w-24px h-24px' onClick={onClick} />}
+          icon={<Icon name='menu' className='w-6 h-6' onClick={onClick} />}
         />
       </Gradient>
       <TimeRangePicker selected={timeRange} onSelect={setTimeRange} />
       {outOfRange
-        ? <div className='text-center p-32px'>
+        ? <div className='text-center p-8'>
           自定义时间跨度不能超过 365 天
         </div>
         : <>

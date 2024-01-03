@@ -1,7 +1,7 @@
 import { DatePicker } from '../../components/DatePicker'
 import { Icon } from '../../components/Icon'
 import { usePopup } from '../../hooks/usePopup'
-import { time } from '../../lib/time'
+import { time } from '../../utils/time'
 
 type Props = {
   value?: string | Date
@@ -18,9 +18,9 @@ export const ItemDate = (props: Props) => {
   return (
     <>
       {popup}
-      <span className='flex items-center gap-x-8px' onClick={toggle}>
-        <Icon name='calendar' className='w-24px h-24px grow-0 shrink-0' />
-        <span className='grow-0 shrink-0 color-#999'>{time(value).format('yyyy-MM-dd HH:mm')}</span>
+      <span className='flex items-center gap-x-2' onClick={toggle}>
+        <Icon name='calendar' className='w-6 h-6 grow-0 shrink-0' />
+        <span className='grow-0 shrink-0 text-[#999999]'>{time(value).format('yyyy-MM-dd HH:mm')}</span>
       </span>
     </>
   )

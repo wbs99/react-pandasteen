@@ -7,9 +7,9 @@ import { Gradient } from '../components/Gradient'
 import { Icon } from '../components/Icon'
 import { Input } from '../components/Input'
 import { TopNav } from '../components/TopNav'
-import { setJwt, setRefreshJwt } from '../lib/storage'
-import type { FormError } from '../lib/validate'
-import { hasError, validate } from '../lib/validate'
+import { setJwt, setRefreshJwt } from '../utils/storage'
+import type { FormError } from '../utils/validate'
+import { hasError, validate } from '../utils/validate'
 import { useLoginStore } from '../stores/loginStore'
 import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
 
@@ -59,18 +59,18 @@ export const LoginPage = () => {
       <Gradient>
         <TopNav title='登录' icon={<BackIcon />} />
       </Gradient>
-      <div className='pt-40px pb-16px flex flex-col items-center'>
-        <Icon name='panda' className='w-64px h-68px' />
-        <h1 className='text-32px text-#7878FF font-bold'>熊猫</h1>
+      <div className='pt-10 pb-4 flex flex-col items-center'>
+        <Icon name='panda' className='w-16 h-16' />
+        <h1 className='text-3xl text-[#7878FF] font-bold'>熊猫</h1>
       </div>
-      <form className='p-form' onSubmit={onSubmit}>
-        <Input type='text' label='邮箱地址' placeholder='请输入' value={loginForm.email}
+      <form className='w-form' onSubmit={onSubmit}>
+        <Input className='flex flex-col' type='text' label='邮箱地址' placeholder='请输入' value={loginForm.email}
           onChange={email => setLoginForm({ email })} errorMessage={loginError.email?.[0]} />
-        <Input type='sms_code' label='验证码' placeholder='六位数字' value={loginForm.code}
+        <Input className='flex flex-col' type='sms_code' label='验证码' placeholder='六位数字' value={loginForm.code}
           onChange={code => setLoginForm({ code })} errorMessage={loginError.code?.[0]} request={sendSmsCode} />
-        <div className='mt-100px'>
-          <button disabled={buttonLoading} className='p-btn' type='submit'>
-            {buttonLoading && <Icon name='loading' className='animate-spin animate-1s mr-12px' />}
+        <div className='mt-24'>
+          <button disabled={buttonLoading} className='w-btn' type='submit'>
+            {buttonLoading && <Icon name='loading' className='animate-spin animate-1s mr-3' />}
             登录
           </button>
         </div>

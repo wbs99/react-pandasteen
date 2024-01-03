@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { usePopup } from '../hooks/usePopup'
-import type { Time } from '../lib/time'
-import { time } from '../lib/time'
+import type { Time } from '../utils/time'
+import { time } from '../utils/time'
 import { Input } from './Input'
 import { Tabs } from './Tabs'
 
@@ -53,14 +53,14 @@ export const TimeRangePicker = (props: Props) => {
   const { popup, show, hide } = usePopup({
     zIndex: 'var(--dialog)',
     children: <div>
-      <header text-18px bg='[var(--color-purple)]' text-white py-13px p-l-16px>请选择时间</header>
-      <main p-16px>
+      <header className='bg-[var(--color-purple)] text-white text-lg py-3 pl-4'>请选择时间</header>
+      <main className='p-4'>
         <Input type='date' disableError label='开始时间' value={start} onChange={d => setStart(d)} />
-        <Input type='date' className='mt-8px' disableError label='结束时间' value={end} onChange={d => setEnd(d)} />
+        <Input type='date' disableError label='结束时间' value={end} onChange={d => setEnd(d)} className='mt-2'/>
       </main>
-      <footer text-right>
-        <button border-none bg-transparent px-16px py-8px onClick={() => hide()}>取消</button>
-        <button border-none bg-transparent px-16px py-8px onClick={onConfirm}>确认</button>
+      <footer className='text-right'>
+        <button className='border-none bg-transparent px-4 py-2' onClick={() => hide()}>取消</button>
+        <button className='border-none bg-transparent px-4 py-2' onClick={onConfirm}>确认</button>
       </footer>
     </div>,
     position: 'center'

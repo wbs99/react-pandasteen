@@ -1,8 +1,8 @@
-import c from 'classnames'
 import { Link, useLocation } from 'react-router-dom'
 import { getMeApi } from '../../api'
-import { comfirmable } from '../../lib/comfirmable'
-import { removeJwt } from '../../lib/storage'
+import { comfirmable } from '../../utils/comfirmable'
+import { removeJwt } from '../../utils/storage'
+import { cn } from '../../utils/cn'
 
 type Props = {
   className?: string
@@ -20,15 +20,15 @@ export const CurrentUser = (props: Props) => {
   })
 
   return (
-    <div className={c(className, 'block bg-#5C33BE text-white w-100% pt-32px pb-44px px-16px')}>
+    <div className={cn(className, 'block bg-primary text-white w-full pt-8 pb-11 px-4')}>
       {error
         ? <Link to={`/login?return=${return_to}`} >
-            <h2 className='text-24px'>未登录用户</h2>
-            <div className='text-#CEA1FF'>点击这里登录</div>
+            <h2 className='text-2xl'>未登录用户</h2>
+            <div className='text-[#CEA1FF]'>点击这里登录</div>
           </Link>
         : <div onClick={signOut}>
-            <h2 title={name} className='text-24px truncate'>{name}</h2>
-            <div className='text-#CEA1FF'>点击这里退出登录</div>
+            <h2 title={name} className='text-2xl truncate'>{name}</h2>
+            <div className='text-[#CEA1FF]'>点击这里退出登录</div>
           </div>
       }
     </div>

@@ -26,12 +26,10 @@ export const Tags = (props: Props) => {
   else {
     return (
       <div>
-        <ol className='grid grid-cols-[repeat(auto-fit,48px)] justify-center gap-x-32px
-          gap-y-16px py-16px px-8px'>
+        <ol className='grid grid-cols-[repeat(auto-fit,48px)] justify-center gap-x-8 gap-y-4 py-4 px-2'>
           <li>
             <Link to={`/tags/new?kind=${kind}`}>
-              <span className='block w-48px h-48px rounded-24px bg-#EFEFEF
-                flex justify-center items-center text-24px text-#8F4CD7'>
+              <span className='w-12 h-12 rounded-3xl flex justify-center items-center text-2xl text-[#8F4CD7] bg-[#EFEFEF]'>
                 <Icon name='add' />
               </span>
             </Link>
@@ -40,14 +38,12 @@ export const Tags = (props: Props) => {
             return resources.map((tag, index) =>
               <li key={index}
                 onClick={() => { props.onChange?.([tag.id]) }}>
-                <LongPressable onEnd={() => { nav(`/tags/${tag.id}`) }} className='w-48px flex justify-center items-center flex-col gap-y-8px'>
+                <LongPressable onEnd={() => { nav(`/tags/${tag.id}`) }} className='w-12 flex flex-col justify-center items-center gap-y-2'>
                   {props.value?.includes(tag.id)
-                    ? <span className='block w-48px h-48px rounded-24px bg-#EFEFEF
-                      flex justify-center items-center text-24px b-1 b-solid b-#8F4CD7'>{tag.sign}</span>
-                    : <span className='block w-48px h-48px rounded-24px bg-#EFEFEF
-                      flex justify-center items-center text-24px b-1 b-solid b-transparent'>{tag.sign}</span>
+                    ? <span className='w-12 h-12 rounded-3xl flex justify-center items-center text-2xl border border-solid border-[#8F4CD7] bg-[#EFEFEF]'>{tag.sign}</span>
+                    : <span className='w-12 h-12 rounded-3xl flex justify-center items-center text-2xl border border-solid border-transparent bg-[#EFEFEF]'>{tag.sign}</span>
                   }
-                  <span className='text-12px text-#666'>{tag.name}</span>
+                  <span className='text-xs text-[#666666]'>{tag.name}</span>
                 </LongPressable>
               </li>
             )
@@ -58,7 +54,7 @@ export const Tags = (props: Props) => {
           ? last.pager.page === 1 && last.resources.length === 0 ? <CenterDiv>点击加号，创建新标签</CenterDiv> : <CenterDiv>没有更多数据了</CenterDiv>
           : isLoadingMore
             ? <CenterDiv><LoadMoreLoading /></CenterDiv>
-            : <CenterDiv><button className='p-btn' onClick={onLoadMore}>加载更多</button></CenterDiv>}
+            : <CenterDiv><button className='w-btn' onClick={onLoadMore}>加载更多</button></CenterDiv>}
       </div>
     )
   }

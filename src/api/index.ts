@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 import useSWRInfinite from 'swr/infinite'
-import { http } from '../lib/http'
-import type { Time } from '../lib/time'
+import { http } from '../utils/http'
+import type { Time } from '../utils/time'
 
 export const sendSmsCodeApi = (data: { email: string }) => http.post('/api/v1/validation_codes', data)
 

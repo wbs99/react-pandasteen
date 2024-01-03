@@ -3,7 +3,7 @@ import { deleteTagApi } from '../api'
 import { BackIcon } from '../components/BackIcon'
 import { Gradient } from '../components/Gradient'
 import { TopNav } from '../components/TopNav'
-import { comfirmable } from '../lib/comfirmable'
+import { comfirmable } from '../utils/comfirmable'
 import { TagForm } from './TagsNewPage/TagForm'
 
 export const TagEditPage = () => {
@@ -26,8 +26,8 @@ export const TagEditPage = () => {
         <TopNav title='查看标签' icon={<BackIcon />} />
       </Gradient>
       <TagForm type='edit' />
-      <div className='px-16px p-b-32px'>
-        <button className='p-btn bg-#E10505' onClick={onDelete}>删除</button>
+      <div className='px-4 pb-8'>
+        <button className='w-btn bg-[#E10505]' onClick={onDelete}>删除</button>
       </div>
     </>
   )

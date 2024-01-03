@@ -12,13 +12,13 @@ export const Welcome4 = () => {
 
   return (
     <div className='text-center'>
-      <Icon name='welcome4' className='w-129px h-83px' />
-      <h2 className='text-32px mt-48px'>
+      <Icon name='welcome4' className='w-32 h-20' />
+      <h2 className='text-3xl mt-12'>
         云备份 <br />
         再也不怕数据丢失
       </h2>
-      <div className='mt-64px'>
-        <span className='text-32px color-#6035BF font-bold' onClick={onSkip}>开启应用</span>
+      <div className='mt-16'>
+        <span className='text-3xl text-[#6035BF] font-bold' onClick={onSkip}>开启应用</span>
       </div>
     </div>
   )

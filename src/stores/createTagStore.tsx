@@ -1,4 +1,4 @@
-import type { FormError } from '../lib/validate'
+import type { FormError } from '../utils/validate'
 import { createImmerStore } from './createImmerStore'
 
 type Data = Tag

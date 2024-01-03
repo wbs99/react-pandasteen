@@ -1,15 +1,13 @@
 import react from '@vitejs/plugin-react'
-import Unocss from 'unocss/vite'
 import { defineConfig } from 'vite'
 import { viteMockServe } from 'vite-plugin-mock'
-import { svgsprites } from './vite_plugins/svgsprites'
+import { svgsprites } from './src/vite_plugins/svgsprites'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
   return {
     server: {
       host: true,
-      open: true,
       proxy: {
         '/api/v1': {
           target: 'http://127.0.0.1:3688/',
@@ -18,7 +16,6 @@ export default defineConfig(({ command }) => {
       }
     },
     plugins: [
-      Unocss(),
       react(),
       viteMockServe({
         mockPath: 'src/mock',

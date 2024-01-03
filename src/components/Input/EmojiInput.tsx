@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { emojis } from '../../lib/emojis'
+import { emojis } from '../../utils/emojis'
+import { cn } from '../../utils/cn'
 import s from './EmojiInput.module.scss'
 
 type Props = {
@@ -11,21 +12,20 @@ export const EmojiInput = (props: Props) => {
   const [emojiKind, setEmojiKind] = useState('表情')
 
   return (
-    <div className={s.wrapper} b-1 b-solid b='#5C33BE' rounded-8px>
-      <div flex p-8px gap-x-16px overflow-auto text='#999'>
+    <div className={cn(s.wrapper, 'border border-primary rounded-lg')}>
+      <div className='flex p-2 gap-x-4 overflow-auto text-[#999999]'>
         {emojis.map(emoji =>
-          <span whitespace-nowrap key={emoji.name}
-            className={emoji.name === emojiKind ? s.selectedTab : ''}
+          <span key={emoji.name}
+            className={cn(emoji.name === emojiKind ? s.selectedTab : '','whitespace-nowrap')}
             onClick={() => setEmojiKind(emoji.name)}>{emoji.name}
           </span>)}
       </div>
-      <div text-24px p-t-8px p-b-16px h-300px overflow-auto text-center>
+      <div className='text-2xl pt-2 pb-4 h-[300px] overflow-auto text-center'>
         {emojis.map(emoji =>
           <div key={emoji.name} style={{ display: emoji.name === emojiKind ? '' : 'none' }}
-            grid grid-cols='[repeat(auto-fit,34px)]' grid-rows='[repeat(auto-fit,34px)]'
-            justify-center>
-            {emoji.chars.map(char => <span b-1 b-solid b-transparent rounded-4px
-              className={char === value ? s.selected : ''} key={char}
+            className='grid grid-cols-[repeat(auto-fit,34px)] grid-rows-[repeat(auto-fit,34px)] justify-center'>
+            {emoji.chars.map(char => <span key={char}
+              className={cn(char === value ? s.selected : '', 'border border-transparent rounded')}
               onClick={() => value !== char && onChange?.(char)}>{char}
             </span>)}
           </div>)}

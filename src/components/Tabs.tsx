@@ -1,5 +1,5 @@
-import cs from 'classnames'
 import type { ReactNode } from 'react'
+import { cn } from '../utils/cn'
 import s from './Tabs.module.scss'
 
 type Props<T> = {
@@ -30,13 +30,13 @@ export const Tabs = <T extends string | { name: string }>(props: Props<T>) => {
   const { tabItems, value, onChange, className, classPrefix } = props
 
   return (
-    <div className={cs(className, classPrefix)} flex flex-col>
+    <div className={cn(className, classPrefix, 'flex flex-col')}>
       <ol
-        className={cs('flex text-white children-px-24px children-py-12px grow-0 shrink-0 bg-[rgb(143,76,215)]', classPrefix ? `${classPrefix}-tabs` : '')}
+        className={cn('flex text-white child:px-6 child:py-3 grow-0 shrink-0 bg-[rgb(143,76,215)]', classPrefix ? `${classPrefix}-tabs` : '')}
         >
         {
           tabItems.map(item => <li key={typeof item.key === 'string' ? item.key : item.key.name} className={
-            cs(
+            cn(
               compareKey(item.key, value) ? s.selected : '',
               classPrefix ? `${classPrefix}-menu-item` : ''
             )
@@ -46,7 +46,7 @@ export const Tabs = <T extends string | { name: string }>(props: Props<T>) => {
           </li>)
         }
       </ol>
-      <div className={cs('grow-1 shrink-1 overflow-auto', classPrefix ? `${classPrefix}-pane` : '')}
+      <div className={cn('grow shrink overflow-auto', classPrefix ? `${classPrefix}-pane` : '')}
       >
         {tabItems.find(item => compareKey(item.key, value))?.element}
       </div>

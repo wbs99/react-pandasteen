@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { createTagApi, getTagApi, updateTagApi } from '../../api'
 import { Input } from '../../components/Input'
-import type { FormError } from '../../lib/validate'
-import { hasError, validate } from '../../lib/validate'
+import type { FormError } from '../../utils/validate'
+import { hasError, validate } from '../../utils/validate'
 import { useCreateTagStore } from '../../stores/createTagStore'
 
 type Props = {
@@ -75,7 +75,7 @@ export const TagForm = (props: Props) => {
   }
 
   return (
-    <form onSubmit={onSubmit} className='p-16px p-t-32px flex flex-col gap-y-8px'>
+    <form onSubmit={onSubmit} className='p-4 pt-8 flex flex-col gap-y-2'>
       <Input
         type='text'
         label='标签名'
@@ -89,11 +89,11 @@ export const TagForm = (props: Props) => {
         errorMessage={error.sign?.[0]}
         value={data.sign}
         onChange={sign => setData({ sign })}
-        label={<span>图标 <span text-20px>{data.sign}</span> </span>}
+        label={<span>图标 <span className='text-xl'>{data.sign}</span> </span>}
         />
-      <p className='text-center p-b-24px'>记账时长按标签，即可进行编辑</p>
+      <p className='text-center pb-6'>记账时长按标签，即可进行编辑</p>
       <div>
-        <button className='p-btn'>确定</button>
+        <button className='w-btn'>确定</button>
       </div>
     </form>
   )

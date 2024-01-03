@@ -4,9 +4,9 @@ import { Icon } from './Icon'
 export const AddItemFloatButton = () => {
   return (
     <Link to='/items/new'>
-      <button w-56px h-56px bg='#5C33BE' rounded='50%' b-none text-white
-        fixed bottom-16px right-16px flex justify-center items-center>
-        <Icon name='add' className='w-36px h-36px' />
+      <button className='w-14 h-14 bg-primary rounded-full border-none text-white
+        fixed bottom-4 right-4 flex justify-center items-center'>
+        <Icon name='add' className='w-9 h-9' />
       </button>
     </Link>
   )

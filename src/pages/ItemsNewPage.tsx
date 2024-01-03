@@ -5,9 +5,9 @@ import { BackIcon } from '../components/BackIcon'
 import { Gradient } from '../components/Gradient'
 import { Tabs } from '../components/Tabs'
 import { TopNav } from '../components/TopNav'
-import { useAjax } from '../lib/ajax'
-import { time } from '../lib/time'
-import { hasError, validate } from '../lib/validate'
+import { useAjax } from '../utils/ajax'
+import { time } from '../utils/time'
+import { hasError, validate } from '../utils/validate'
 import { useCreateItemStore } from '../stores/createItemStore'
 import s from './ItemsNewPage.module.scss'
 import { ItemAmount } from './ItemsNewPage/ItemAmount'
@@ -53,13 +53,13 @@ export const ItemsNewPage = () => {
   }
   // flex 布局之后
   // 高度固定的区域可以写  grow-0 shrink-0
-  // 高度不固定的区域可以写  grow-1 shrink-1 配合 overflow
+  // 高度不固定的区域可以写  grow shrink 配合 overflow
   return (
     <div className={c(s.wrapper, 'h-screen flex flex-col')} onSubmit={onSubmit}>
       <Gradient className='grow-0 shrink-0'>
         <TopNav title='记一笔' icon={<BackIcon />} />
       </Gradient>
-      <Tabs value={data.kind!} onChange={tabItem => setData({ kind: tabItem })} tabItems={tabItems} className='text-center grow-1 shrink-1 overflow-hidden' classPrefix='items-new-page' />
+      <Tabs value={data.kind!} onChange={tabItem => setData({ kind: tabItem })} tabItems={tabItems} className='text-center grow shrink overflow-hidden' classPrefix='items-new-page' />
       <ItemAmount className='grow-0 shrink-0' itemDate={
         <ItemDate value={data.happen_at} onChange={happen_at => setData({ happen_at })} />
       } value={data.amount} onChange={amount => setData({ amount })} onSubmit={onSubmit} />

@@ -6,6 +6,7 @@ export const BackIcon = () => {
   const onBack = () => {
     nav(-1)
   }
+
   return (
     <Icon name='back' onClick={onBack} />
   )

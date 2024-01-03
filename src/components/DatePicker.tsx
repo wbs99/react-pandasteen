@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { time } from '../lib/time'
+import { time } from '../utils/time'
+import { cn } from '../utils/cn'
 
 type Props = {
   start?: Date
@@ -31,49 +32,49 @@ export const DatePicker = (props: Props) => {
 
   return (
     <>
-      <div flex justify-between p-8px border-b-1 b-b-solid b='#f3f3f3' children-p-8px>
+      <div className='flex justify-between p-2 border-b border-b-solid border-[#f3f3f3] child:p-8px'>
         <span onClick={onCancel}>取消</span>
         <span>时间选择</span>
         <span onClick={() => onConfirm?.(valueTime.current.date)}>确定</span>
       </div>
-      <div flex children-grow-1 text-center children-p-16px>
+      <div className='flex child:grow text-center child:p-4'>
         <span>年</span>
         <span>月</span>
         <span>日</span>
         <span>时</span>
         <span>分</span>
       </div>
-      <div flex >
+      <div className='flex'>
         <Column dateList={yearList} value={valueTime.current.year}
           onChange={(v) => {
             valueTime.current.year = v
             update({})
           }}
-          className='grow-1' />
+          className='grow' />
         <Column dateList={monthList} value={valueTime.current.month}
           onChange={(v) => {
             valueTime.current.month = v
             update({})
           }}
-          className='grow-1' />
+          className='grow' />
         <Column dateList={dayList} value={valueTime.current.day}
           onChange={(v) => {
             valueTime.current.day = v
             update({})
           }}
-          className='grow-1' />
+          className='grow' />
         <Column dateList={hoursList} value={valueTime.current.hours}
           onChange={(v) => {
             valueTime.current.hours = v
             update({})
           }}
-          className='grow-1' />
+          className='grow' />
         <Column dateList={minutesList} value={valueTime.current.minutes}
           onChange={(v) => {
             valueTime.current.minutes = v
             update({})
           }}
-          className='grow-1' />
+          className='grow' />
       </div>
     </>
   )
@@ -106,7 +107,7 @@ export const Column = (props: ColumnProps) => {
   }
 
   return (
-    <div className={className} h='50vh' overflow-hidden relative
+    <div className={cn(className, ' h-[50vh] overflow-hidden relative')}
       onTouchStart={(e) => {
         setIsTouching(true)
         setLastY(e.touches[0].clientY)
@@ -149,10 +150,10 @@ export const Column = (props: ColumnProps) => {
     //   setIsTouching(false)
     // }}
     >
-      <div border-b-1 border-t-1 b-t-solid b-b-solid b='red' absolute top='50%' w-full
+      <div className='border-y border-solid border-red-300 absolute top-1/2 w-full'
         style={{ height: itemHeight, transform: `transLateY(${itemHeight / 2}px)` }} />
-      <div absolute top='50%' w-full style={{ transform: `transLateY(${itemHeight / 2}px)` }}>
-        <ol children-flex children-justify-center children-items-center text-center
+      <div className='absolute top-1/2 w-full' style={{ transform: `transLateY(${itemHeight / 2}px)` }}>
+        <ol className='child:flex child:justify-center child:items-center text-center'
           style={{ transform: `translateY(${translateY}px)` }} >
           {dateList.map(date => <li key={date} style={{ height: itemHeight }} >{date}</li>)}
         </ol>

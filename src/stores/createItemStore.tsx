@@ -1,5 +1,5 @@
-import { time } from '../lib/time'
-import type { FormError } from '../lib/validate'
+import { time } from '../utils/time'
+import type { FormError } from '../utils/validate'
 import { createImmerStore } from './createImmerStore'
 
 type Data = Item

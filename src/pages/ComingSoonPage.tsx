@@ -5,10 +5,10 @@ export const ComingSoonPage = () => {
   const nav = useNavigate()
 
   return (
-    <div className='flex justify-center items-center flex-col gap-y-24px py-48px h-screen px-48px'>
-      <Icon name='panda' className='w-128px h-128px' />
+    <div className='flex flex-col justify-center items-center gap-y-6 p-12 h-screen'>
+      <Icon name='panda' className='w-32 h-32' />
       <h1>敬请期待</h1>
-      <button className='p-btn' onClick={() => nav(-1)}>返回</button>
+      <button className='w-btn' onClick={() => nav(-1)}>返回</button>
     </div>
   )
 }

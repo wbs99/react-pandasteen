@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { getItemListApi } from '../api'
-import type { Time } from '../lib/time'
-import { time } from '../lib/time'
+import type { Time } from '../utils/time'
+import { time } from '../utils/time'
 import { LoadMoreLoading } from './LoadMoreLoading'
 import { Loading } from './Loading'
 
@@ -30,18 +30,18 @@ export const ItemsList = (props: Props) => {
     return <>
       <ol>
         {data.map(({ resources }) => resources.map(item => <li key={item.id}
-          className='grid grid-cols-[auto_1fr_auto] grid-rows-2 px-16px py-8px gap-x-12px border-b-1'>
-          <div className='row-start-1 col-start-1 row-end-3 col-end-2 text-24px w-48px h-48px
-            bg-#D8D8D8 rounded-50% flex justify-center items-center'>
+          className='grid grid-cols-[auto_1fr_auto] grid-rows-2 px-4 py-2 gap-x-3 border-b-1'>
+          <div className='row-start-1 col-start-1 row-end-3 col-end-2 text-2xl w-12 h-12
+            bg-[#D8D8D8] rounded-full flex justify-center items-center'>
             😘
           </div>
           <div className='row-start-1 col-start-2 row-end-2 col-end-3'>
             {item.tags?.[0].name}
           </div>
-          <div className='row-start-2 col-start-2 row-end-3 col-end-4 text-#999999'>
+          <div className='row-start-2 col-start-2 row-end-3 col-end-4 text-[#999999]'>
             {time(item.happen_at).format('yyyy-MM-dd HH:mm')}
           </div>
-          <div className='row-start-1 col-start-3 row-end-2 col-end-4 text-#53A867'>
+          <div className='row-start-1 col-start-3 row-end-2 col-end-4 text-[#53A867]'>
             <span>￥{item.kind === 'expenses' ? '-' : ''} {item.amount / 100}</span>
           </div>
         </li>)
@@ -52,7 +52,7 @@ export const ItemsList = (props: Props) => {
         ? <CenterDiv>没有更多数据了</CenterDiv>
         : isLoadingMore
           ? <CenterDiv><LoadMoreLoading /></CenterDiv>
-          : <CenterDiv><button className='p-btn' onClick={onLoadMore}>加载更多</button></CenterDiv>
+          : <CenterDiv><button className='w-btn' onClick={onLoadMore}>加载更多</button></CenterDiv>
       }
     </>
   }

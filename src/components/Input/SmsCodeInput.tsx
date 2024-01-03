@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { cn } from '../../utils/cn'
 
 type Props = {
   value?: string
@@ -44,13 +45,13 @@ export const SmsCodeInput = (props: Props) => {
   }, [started])
 
   return (
-    <div flex gap-x-16px>
-      <input max-w='[calc(40%-8px)]' p-input-text type='text' placeholder={placeholder}
+    <div className='flex gap-x-4'>
+      <input className='max-w-[calc(40%-8px)] w-input-text' type='text' placeholder={placeholder}
         value={value} onChange={e => onChange?.(e.target.value)} />
       {
         started
-          ? <button type='button' max-w='[calc(60%-8px)]' shrink-0 p-btn disabled text-gray>{count}秒后可重发</button>
-          : <button type='button' max-w='[calc(60%-8px)]' p-btn onClick={onClick}>发送验证码</button>
+          ? <button type='button' className='disabled text-gray shrink-0 max-w-[calc(60%-8px)] w-btn'>{count}秒后可重发</button>
+          : <button type='button' className='max-w-[calc(60%-8px)] w-btn' onClick={onClick}>发送验证码</button>
       }
     </div>
   )

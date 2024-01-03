@@ -54,16 +54,15 @@ export const WelcomeLayout = () => {
   }
 
   return (
-    <div className='bg-#5f34bf' h-screen flex flex-col items-stretch pb-16px>
-      <span fixed text-white top-16px right-16px text-32px onClick={onSkip}>跳过</span>
-      <header shrink-0 text-center pt-64px>
-        <Icon name='panda' className='w-64px' />
-        <h1 text='#D4D4EE' text-32px>熊猫记账</h1>
+    <div className='bg-[#5f34bf] h-screen flex flex-col items-stretch pb-4' >
+      <span className='fixed top-4 right-4 text-3xl text-white' onClick={onSkip}>跳过</span>
+      <header className='shrink-0 text-center pt-16'>
+        <h1 className='text-[#D4D4EE] text-3xl'>熊猫记账</h1>
       </header>
-      <main shrink-1 grow-1 relative ref={mainRef}>
+      <main className='shrink grow relative' ref={mainRef}>
         {transitions((style, pathname) =>
-          <animated.div key={pathname} style={{ ...style, ...extraStyle }} w='100%' h='100%' p-16px flex>
-            <div grow-1 bg-white flex justify-center items-center rounded-8px>
+          <animated.div key={pathname} style={{ ...style, ...extraStyle }} className='w-full h-full p-4 flex'>
+            <div className='flex justify-center items-center grow rounded-lg bg-white'>
               {map.current[pathname]}
             </div>
           </animated.div>)}

@@ -9,9 +9,9 @@ import { RankChart } from '../components/RankChart'
 import type { TimeRange } from '../components/TimeRangePicker'
 import { TimeRangePicker } from '../components/TimeRangePicker'
 import { TopNav } from '../components/TopNav'
-import { useAjax } from '../lib/ajax'
-import type { Time } from '../lib/time'
-import { time } from '../lib/time'
+import { useAjax } from '../utils/ajax'
+import type { Time } from '../utils/time'
+import { time } from '../utils/time'
 
 type Groups = {
   happen_at: string
@@ -95,18 +95,18 @@ export const StatisticsPage = () => {
             key: { name: 'threeMonthsAgo', start: time().add(-3, 'month').firstDayOfMonth, end: time().add(-3, 'month').lastDayOfMonth.add(1, 'day') },
           },
         ]} />
-      <div className='flex p-16px items-center gap-x-16px'>
+      <div className='flex items-center p-4 gap-x-4'>
         <span className='grow-0 shrink-0'>类型</span>
-        <div className='grow-1 shrink-1'>
+        <div className='grow shrink'>
           <Input type='select' options={[
             { text: '支出', value: 'expenses' },
             { text: '收入', value: 'income' },
           ]} value={kind} onChange={value => setKind(value)} disableError />
         </div>
       </div>
-      <LineChart className='h-120px' dataSource={normalizedItems} />
-      <PieChart className='h-260px m-t-16px' dataSource={items2} />
-      <RankChart className='m-t-8px' dataSource={items2} />
+      <LineChart className='h-32' dataSource={normalizedItems} />
+      <PieChart className='h-64 mt-4' dataSource={items2} />
+      <RankChart className='mt-2' dataSource={items2} />
     </div>
   )
 }

@@ -19,7 +19,7 @@ import { Welcome1 } from '../pages/Welcome1'
 import { Welcome2 } from '../pages/Welcome2'
 import { Welcome3 } from '../pages/Welcome3'
 import { Welcome4 } from '../pages/Welcome4'
-import { setJwt, setRefreshJwt } from '../lib/storage'
+import { setJwt, setRefreshJwt } from '../utils/storage'
 
 // 页面资源较大时，使用 lazy import 即可
 const StatisticsPage = lazy(() => import('../pages/StatisticsPage'))

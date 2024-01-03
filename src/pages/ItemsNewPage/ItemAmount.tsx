@@ -38,12 +38,11 @@ export const ItemAmount = (props: Props) => {
 
   return (
     <div className={className}>
-      <div className='flex p-t-15px p-b-16px px-16px border-t-1px b-t-solid border-t-#ddd gap-x-8px items-center'>
+      <div className='flex items-center py-4 px-4 border-t border-solid border-t-[#ddd] gap-x-2'>
         {itemDate}
-        <code className='grow-1 shrink-1 text-right color-#53A867'>{output}</code>
+        <code className='grow shrink text-right text-[#53A867]'>{output}</code>
       </div>
-      <div className='grid grid-cols-[repeat(4,1fr)] grid-rows-[repeat(4,48px)]
-        children-b-none children-bg-white bg-#ddd gap-1px p-1px'>
+      <div className='grid grid-cols-[repeat(4,1fr)] grid-rows-[repeat(4,48px)] child:border-none child:bg-white bg-[#ddd] gap-[1px] p-[1px]'>
         <button type='button' className='row-start-1 col-start-1 row-end-2 col-end-2' onClick={() => append('1')}>1</button>
         <button type='button' className='row-start-1 col-start-2 row-end-2 col-end-3' onClick={() => append('2')}>2</button>
         <button type='button' className='row-start-1 col-start-3 row-end-2 col-end-4' onClick={() => append('3')}>3</button>
@@ -56,7 +55,7 @@ export const ItemAmount = (props: Props) => {
         <button type='button' className='row-start-4 col-start-1 row-end-5 col-end-3' onClick={() => append('0')}>0</button>
         <button type='button' className='row-start-4 col-start-3 row-end-5 col-end-4' onClick={() => append('.')}>.</button>
         <button type='button' className='row-start-1 col-start-4 row-end-3 col-end-5' onClick={clear}>清空</button>
-        <button onClick={onSubmit} type='submit' className='bg-#5C33BE text-#5C33BE row-start-3 col-start-4 row-end-5 col-end-5 ' >确定</button>
+        <button onClick={onSubmit} type='submit' className='row-start-3 col-start-4 row-end-5 col-end-5 bg-primary text-primary'>确定</button>
       </div>
     </div>
   )
