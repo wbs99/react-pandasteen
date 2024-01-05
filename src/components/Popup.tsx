@@ -33,9 +33,10 @@ export const Popup = (props: Props) => {
       ? (visible ? 'translateY(0%)' : 'translateY(100%)')
       : '',
   })
+  
   return (
     <div className='touch-none'>
-      <animated.div className='fixed top-0 left-0 h-full w-full bg-black bg-opacity-50'
+      <animated.div className='fixed top-0 left-0 h-full w-full bg-opacity-50 bg-black'
         onClick={() => onClickMask?.()}
         style={{ ...maskStyles, zIndex: `calc(${zIndex} - 1)` }} />
       {position === 'bottom'

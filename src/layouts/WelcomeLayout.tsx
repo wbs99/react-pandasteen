@@ -55,7 +55,7 @@ export const WelcomeLayout = () => {
   }
 
   return (
-    <div className='flex flex-col items-stretch h-screen pb-4 bg-[#5f34bf]' >
+    <div className='flex flex-col items-stretch h-screen pb-4 bg-[#5f34bf]'>
       <span className='fixed top-4 right-4 text-3xl text-white' onClick={onSkip}>跳过</span>
       <header className='shrink-0 text-center pt-16'>
         <h1 className='text-3xl text-[#D4D4EE]'>熊猫</h1>

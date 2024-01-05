@@ -21,13 +21,13 @@ export const ItemsNewPage = () => {
       key: 'expenses',
       text: '支出',
       element:
-        <Tags kind='expenses' value={data.tag_ids} onChange={ids => setData({ tag_ids: ids })} />
+        <Tags kind='expenses' value={data.tag_ids} onChange={ids => setData({ tag_ids: ids })}/>
     },
     {
       key: 'income',
       text: '收入',
       element:
-        <Tags kind='income' value={data.tag_ids} onChange={ids => setData({ tag_ids: ids })} />
+        <Tags kind='income' value={data.tag_ids} onChange={ids => setData({ tag_ids: ids })}/>
     }
   ]
   const { post } = useAjax({ showLoading: true, handleError: true })
@@ -57,12 +57,12 @@ export const ItemsNewPage = () => {
   return (
     <div className={c(s.wrapper, 'h-screen flex flex-col')} onSubmit={onSubmit}>
       <Gradient className='grow-0 shrink-0'>
-        <TopNav title='记一笔' icon={<BackIcon />} />
+        <TopNav title='记一笔' icon={<BackIcon/>}/>
       </Gradient>
-      <Tabs value={data.kind!} onChange={tabItem => setData({ kind: tabItem })} tabItems={tabItems} className='text-center grow shrink overflow-hidden' classPrefix='items-new-page' />
+      <Tabs value={data.kind!} onChange={tabItem => setData({ kind: tabItem })} tabItems={tabItems} className='text-center grow shrink overflow-hidden' classPrefix='items-new-page'/>
       <ItemAmount className='grow-0 shrink-0' itemDate={
-        <ItemDate value={data.happen_at} onChange={happen_at => setData({ happen_at })} />
-      } value={data.amount} onChange={amount => setData({ amount })} onSubmit={onSubmit} />
+        <ItemDate value={data.happen_at} onChange={happen_at => setData({ happen_at })}/>
+      } value={data.amount} onChange={amount => setData({ amount })} onSubmit={onSubmit}/>
     </div>
   )
 }

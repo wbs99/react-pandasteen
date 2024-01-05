@@ -38,11 +38,11 @@ export const ItemAmount = (props: Props) => {
 
   return (
     <div className={className}>
-      <div className='flex items-center py-4 px-4 border-t border-solid border-t-[#ddd] gap-x-2'>
+      <div className='flex items-center py-4 px-4 gap-x-2 border-t border-solid border-t-[#ddd]'>
         {itemDate}
         <code className='grow shrink text-right text-[#53A867]'>{output}</code>
       </div>
-      <div className='grid grid-cols-[repeat(4,1fr)] grid-rows-[repeat(4,48px)] child:border-none child:bg-white bg-[#ddd] gap-[1px] p-[1px]'>
+      <div className='grid grid-cols-4 grid-rows-[repeat(4,48px)] gap-[1px] p-[1px] child:border-none child:bg-white bg-[#ddd]'>
         <button type='button' className='row-start-1 col-start-1 row-end-2 col-end-2' onClick={() => append('1')}>1</button>
         <button type='button' className='row-start-1 col-start-2 row-end-2 col-end-3' onClick={() => append('2')}>2</button>
         <button type='button' className='row-start-1 col-start-3 row-end-2 col-end-4' onClick={() => append('3')}>3</button>

@@ -23,9 +23,9 @@ export const TagEditPage = () => {
   return (
     <>
       <Gradient className='grow-0 shrink-0'>
-        <TopNav title='查看标签' icon={<BackIcon />} />
+        <TopNav title='查看标签' icon={<BackIcon />}/>
       </Gradient>
-      <TagForm type='edit' />
+      <TagForm type='edit'/>
       <div className='px-4 pb-8'>
         <button className='w-btn bg-[#E10505]' onClick={onDelete}>删除</button>
       </div>

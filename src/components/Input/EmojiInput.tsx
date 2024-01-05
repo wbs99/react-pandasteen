@@ -12,7 +12,7 @@ export const EmojiInput = (props: Props) => {
   const [emojiKind, setEmojiKind] = useState('表情')
 
   return (
-    <div className={cn(s.wrapper, 'border border-primary rounded-lg')}>
+    <div className={cn(s.wrapper, 'rounded-lg border border-primary')}>
       <div className='flex p-2 gap-x-4 overflow-auto text-[#999999]'>
         {emojis.map(emoji =>
           <span key={emoji.name}

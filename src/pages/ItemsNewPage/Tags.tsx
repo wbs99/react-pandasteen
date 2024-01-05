@@ -29,8 +29,8 @@ export const Tags = (props: Props) => {
         <ol className='grid grid-cols-[repeat(auto-fit,48px)] justify-center gap-x-8 gap-y-4 py-4 px-2'>
           <li>
             <Link to={`/tags/new?kind=${kind}`}>
-              <span className='w-12 h-12 rounded-3xl flex justify-center items-center text-2xl text-[#8F4CD7] bg-[#EFEFEF]'>
-                <Icon name='add' />
+              <span className='flex justify-center items-center w-12 h-12 rounded-3xl text-2xl text-[#8F4CD7] bg-[#EFEFEF]'>
+                <Icon name='add'/>
               </span>
             </Link>
           </li>
@@ -38,10 +38,10 @@ export const Tags = (props: Props) => {
             return resources.map((tag, index) =>
               <li key={index}
                 onClick={() => { props.onChange?.([tag.id]) }}>
-                <LongPressable onEnd={() => { nav(`/tags/${tag.id}`) }} className='w-12 flex flex-col justify-center items-center gap-y-2'>
+                <LongPressable onEnd={() => { nav(`/tags/${tag.id}`) }} className='flex flex-col justify-center items-center w-12 gap-y-2'>
                   {props.value?.includes(tag.id)
-                    ? <span className='w-12 h-12 rounded-3xl flex justify-center items-center text-2xl border border-solid border-[#8F4CD7] bg-[#EFEFEF]'>{tag.sign}</span>
-                    : <span className='w-12 h-12 rounded-3xl flex justify-center items-center text-2xl border border-solid border-transparent bg-[#EFEFEF]'>{tag.sign}</span>
+                    ? <span className='flex justify-center items-center w-12 h-12 rounded-3xl text-2xl border border-[#8F4CD7] bg-[#EFEFEF]'>{tag.sign}</span>
+                    : <span className='flex justify-center items-center w-12 h-12 rounded-3xl text-2xl border border-transparent bg-[#EFEFEF]'>{tag.sign}</span>
                   }
                   <span className='text-xs text-[#666666]'>{tag.name}</span>
                 </LongPressable>

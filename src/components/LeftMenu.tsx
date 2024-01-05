@@ -37,8 +37,8 @@ export const LeftMenu = (props: Props) => {
     <>
       <animated.div onClick={onClickMask} style={markStyle} className='fixed top-0 left-0 w-full h-screen z-[calc(var(--z-menu)-1)] bg-black bg-opacity-75'/>
       <animated.div style={menuStyle} className='fixed top-0 left-0 w-[70vw] max-w-[20em] h-screen flex flex-col z-[var(--z-menu)]'>
-        <CurrentUser className='grow-0 shrink-0' />
-        <Menu className='grow shrink' />
+        <CurrentUser className='grow-0 shrink-0'/>
+        <Menu className='grow shrink'/>
       </animated.div>
     </>
   )

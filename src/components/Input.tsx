@@ -31,9 +31,9 @@ export const Input = <T extends string>(props: Props<T>) => {
     switch (props.type) {
       case undefined:
       case 'text':
-        return <input type='text' className='w-input-text' {...common} />
+        return <input type='text' className='w-input-text' {...common}/>
       case 'emoji':
-        return <EmojiInput value={value} onChange={value => onChange?.(value)} />
+        return <EmojiInput value={value} onChange={value => onChange?.(value)}/>
       case 'select':
         return <select className='h-8' {...common}>
           {props.options.map(option =>
@@ -41,9 +41,9 @@ export const Input = <T extends string>(props: Props<T>) => {
           }
         </select>
       case 'sms_code':
-        return <SmsCodeInput request={props.request} {...common} />
+        return <SmsCodeInput request={props.request} {...common}/>
       case 'date':
-        return <DateInput {...common} />
+        return <DateInput {...common}/>
       default:
         return null
     }
@@ -53,7 +53,7 @@ export const Input = <T extends string>(props: Props<T>) => {
     <div className={cn(className, 'flex flex-col gap-y-2')}>
       {label ? <span className='text-lg'>{label}</span> : null}
       {renderInput()}
-      {disableError ? null : <span className='text-red-400 text-lg'>{errorMessage || '　'}</span>}
+      {disableError ? null : <span className='text-lg text-red-400'>{errorMessage || '　'}</span>}
     </div>
   )
 }

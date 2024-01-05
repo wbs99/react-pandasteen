@@ -42,21 +42,21 @@ export const ItemsPage = () => {
       <Gradient>
         <TopNav
           title='账目列表'
-          icon={<Icon name='menu' className='w-6 h-6' onClick={onClick} />}
+          icon={<Icon name='menu' onClick={onClick} className='w-6 h-6'/>}
         />
       </Gradient>
-      <TimeRangePicker selected={timeRange} onSelect={setTimeRange} />
+      <TimeRangePicker selected={timeRange} onSelect={setTimeRange}/>
       {outOfRange
         ? <div className='text-center p-8'>
           自定义时间跨度不能超过 365 天
         </div>
         : <>
-          <ItemsSummary start={start} end={end} />
-          <ItemsList start={start} end={end} />
+          <ItemsSummary start={start} end={end}/>
+          <ItemsList start={start} end={end}/>
         </>
       }
-      <AddItemFloatButton />
-      <LeftMenu visible={visible} onClickMask={() => setVisible(false)} />
+      <AddItemFloatButton/>
+      <LeftMenu visible={visible} onClickMask={() => setVisible(false)}/>
     </div>
   )
 }

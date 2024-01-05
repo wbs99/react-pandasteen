@@ -1,19 +1,13 @@
 import type { ReactNode } from 'react'
-import styled from 'styled-components'
 
 type Props = {
   children: ReactNode
 }
-const CenterDivWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`
+
 export const CenterDiv = (props: Props) => {
   const { children } = props
 
   return (
-    <CenterDivWrapper>{children} </CenterDivWrapper>
+    <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>{children}</div>
   )
 }

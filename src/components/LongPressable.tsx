@@ -35,6 +35,7 @@ export const LongPressable = (props: Props) => {
       touchTimer.current = undefined
     }
   }
+  
   return (
     <div className={className}
       onTouchStart={onTouchStart}

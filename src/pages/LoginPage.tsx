@@ -57,20 +57,20 @@ export const LoginPage = () => {
   return (
     <>
       <Gradient>
-        <TopNav title='登录' icon={<BackIcon />} />
+        <TopNav title='登录' icon={<BackIcon/>}/>
       </Gradient>
-      <div className='pt-10 pb-4 flex flex-col items-center'>
-        <Icon name='panda' className='w-16 h-16' />
+      <div className='flex flex-col items-center pt-10 pb-4'>
+        <Icon name='panda' className='w-16 h-16'/>
         <h1 className='text-3xl text-[#7878FF] font-bold'>熊猫</h1>
       </div>
       <form className='w-form' onSubmit={onSubmit}>
         <Input className='flex flex-col' type='text' label='邮箱地址' placeholder='请输入' value={loginForm.email}
-          onChange={email => setLoginForm({ email })} errorMessage={loginError.email?.[0]} />
+          onChange={email => setLoginForm({ email })} errorMessage={loginError.email?.[0]}/>
         <Input className='flex flex-col' type='sms_code' label='验证码' placeholder='六位数字' value={loginForm.code}
-          onChange={code => setLoginForm({ code })} errorMessage={loginError.code?.[0]} request={sendSmsCode} />
+          onChange={code => setLoginForm({ code })} errorMessage={loginError.code?.[0]} request={sendSmsCode}/>
         <div className='mt-24'>
           <button disabled={buttonLoading} className='w-btn' type='submit'>
-            {buttonLoading && <Icon name='loading' className='animate-spin animate-1s mr-3' />}
+            {buttonLoading && <Icon name='loading' className='animate-spin mr-3'/>}
             登录
           </button>
         </div>

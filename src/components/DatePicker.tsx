@@ -150,7 +150,7 @@ export const Column = (props: ColumnProps) => {
     //   setIsTouching(false)
     // }}
     >
-      <div className='border-y border-solid border-red-300 absolute top-1/2 w-full'
+      <div className='absolute top-1/2 w-full border-y border-red-300'
         style={{ height: itemHeight, transform: `transLateY(${itemHeight / 2}px)` }} />
       <div className='absolute top-1/2 w-full' style={{ transform: `transLateY(${itemHeight / 2}px)` }}>
         <ol className='child:flex child:justify-center child:items-center text-center'

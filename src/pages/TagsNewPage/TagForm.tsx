@@ -75,7 +75,7 @@ export const TagForm = (props: Props) => {
   }
 
   return (
-    <form onSubmit={onSubmit} className='p-4 pt-8 flex flex-col gap-y-2'>
+    <form onSubmit={onSubmit} className='flex flex-col p-4 pt-8 gap-y-2'>
       <Input
         type='text'
         label='标签名'

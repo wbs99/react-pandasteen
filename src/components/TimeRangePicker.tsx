@@ -78,6 +78,6 @@ export const TimeRangePicker = (props: Props) => {
   return (
     <>
       {popup}
-      <Tabs tabItems={timeRanges} value={selected} onChange={onSelect} />
+      <Tabs tabItems={timeRanges} value={selected} onChange={onSelect}/>
     </>)
 }

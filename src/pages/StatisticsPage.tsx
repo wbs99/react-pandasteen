@@ -74,7 +74,7 @@ export const StatisticsPage = () => {
   return (
     <div>
       <Gradient>
-        <TopNav title='统计图表' icon={<BackIcon />} />
+        <TopNav title='统计图表' icon={<BackIcon/>}/>
       </Gradient>
       <TimeRangePicker selected={timeRange} onSelect={setTimeRange}
         timeRanges={[
@@ -101,12 +101,12 @@ export const StatisticsPage = () => {
           <Input type='select' options={[
             { text: '支出', value: 'expenses' },
             { text: '收入', value: 'income' },
-          ]} value={kind} onChange={value => setKind(value)} disableError />
+          ]} value={kind} onChange={value => setKind(value)} disableError/>
         </div>
       </div>
-      <LineChart className='h-32' dataSource={normalizedItems} />
-      <PieChart className='h-64 mt-4' dataSource={items2} />
-      <RankChart className='mt-2' dataSource={items2} />
+      <LineChart className='h-32' dataSource={normalizedItems}/>
+      <PieChart className='h-64 mt-4' dataSource={items2}/>
+      <RankChart className='mt-2' dataSource={items2}/>
     </div>
   )
 }

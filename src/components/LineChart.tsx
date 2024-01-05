@@ -5,6 +5,7 @@ type Props = {
   className?: string
   dataSource?: { x: number | string; y: number | string }[]
 }
+
 export const LineChart = (props: Props) => {
   const { className, dataSource } = props
   const div = useRef<HTMLDivElement>(null)
@@ -74,6 +75,7 @@ export const LineChart = (props: Props) => {
     }
     myChart.current?.setOption(option)
   }, [dataSource])
+  
   return (
     <div ref={div} className={className}></div>
   )

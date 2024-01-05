@@ -8,6 +8,6 @@ export const BackIcon = () => {
   }
 
   return (
-    <Icon name='back' onClick={onBack} />
+    <Icon name='back' onClick={onBack}/>
   )
 }
