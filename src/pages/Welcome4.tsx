@@ -11,10 +11,10 @@ export const Welcome4 = () => {
   }
 
   return (
-    <div className='text-center'>
-      <Icon name='welcome4' className='w-32 h-20' />
+    <div className='flex flex-col items-center text-center'>
+      <Icon name='welcome4' className='w-32 h-32'/>
       <h2 className='text-3xl mt-12'>
-        云备份 <br />
+        云备份 <br/>
         再也不怕数据丢失
       </h2>
       <div className='mt-16'>

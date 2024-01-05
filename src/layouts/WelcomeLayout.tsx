@@ -2,7 +2,6 @@ import { animated, useTransition } from '@react-spring/web'
 import type { ReactNode } from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate, useOutlet } from 'react-router-dom'
-import { Icon } from '../components/Icon'
 import { useSwiper } from '../hooks/useSwiper'
 import { useLocalStore } from '../stores/useLocalStore'
 
@@ -17,9 +16,9 @@ export const WelcomeLayout = () => {
   const animating = useRef(false)
   const nav = useNavigate()
   const [extraStyle, setExtraStyle] = useState<{ position: 'relative' | 'absolute' }>({ position: 'relative' })
-  const map = useRef<Record<string, ReactNode>>({})
-  const location = useLocation()
   const outlet = useOutlet()
+  const location = useLocation()
+  const map = useRef<Record<string, ReactNode>>({})
   map.current[location.pathname] = outlet
   const transitions = useTransition(location.pathname, {
     from: { transform: location.pathname === '/welcome/1' ? 'translateX(0%)' : 'translateX(100%)' },
@@ -47,6 +46,8 @@ export const WelcomeLayout = () => {
       nav(linkMap[location.pathname])
     }
   }, [direction, location.pathname, linkMap])
+
+  // 跳过广告
   const { setHadReadWelcome } = useLocalStore()
   const onSkip = () => {
     setHadReadWelcome(true)
@@ -54,10 +55,10 @@ export const WelcomeLayout = () => {
   }
 
   return (
-    <div className='bg-[#5f34bf] h-screen flex flex-col items-stretch pb-4' >
+    <div className='flex flex-col items-stretch h-screen pb-4 bg-[#5f34bf]' >
       <span className='fixed top-4 right-4 text-3xl text-white' onClick={onSkip}>跳过</span>
       <header className='shrink-0 text-center pt-16'>
-        <h1 className='text-[#D4D4EE] text-3xl'>熊猫记账</h1>
+        <h1 className='text-3xl text-[#D4D4EE]'>熊猫</h1>
       </header>
       <main className='shrink grow relative' ref={mainRef}>
         {transitions((style, pathname) =>

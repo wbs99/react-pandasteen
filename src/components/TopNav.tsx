@@ -6,7 +6,7 @@ type Props = {
 }
 
 export const TopNav = (props: Props) => {
-  const { title = '熊猫记账', icon } = props
+  const { title = '熊猫', icon } = props
 
   return (
     <div className='flex items-center text-white pt-6 pb-2 px-6'>
