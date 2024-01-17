@@ -18,7 +18,7 @@ export const Welcome4 = () => {
         再也不怕数据丢失
       </h2>
       <div className='mt-16'>
-        <span className='text-3xl text-[#6035BF] font-bold' onClick={onSkip}>开启应用</span>
+        <span className='font-bold text-3xl text-[#757de8]' onClick={onSkip}>开启应用</span>
       </div>
     </div>
   )

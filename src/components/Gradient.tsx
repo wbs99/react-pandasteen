@@ -1,5 +1,17 @@
-import styled from 'styled-components'
+import type { ReactNode } from 'react'
+import { cn } from '../utils/cn'
 
-export const Gradient = styled.div`
-  background: linear-gradient(0deg, rgba(143,76,215,1) 0%, rgba(92,51,190,1) 100%);
-`
+type Props = {
+  children: ReactNode
+  className?: string
+}
+
+export const Gradient = (props: Props) => {
+  const { children, className } = props
+
+  return (
+    <div className={cn(className, 'bg-gradient-to-r from-[#4052b6] to-[#747ce7]')}>
+      {children}
+    </div>
+  )
+}

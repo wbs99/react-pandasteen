@@ -10,7 +10,7 @@ export const Welcome2 = () => {
         不会遗漏每一笔账单
       </h2>
       <div className='mt-16'>
-        <Link className='text-3xl text-[#6035BF] font-bold' to='/welcome/3'>下一页</Link>
+        <Link className='font-bold text-3xl text-[#757de8]' to='/welcome/3'>下一页</Link>
       </div>
     </div>
   )

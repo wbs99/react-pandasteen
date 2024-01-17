@@ -58,7 +58,7 @@ export const router = createBrowserRouter([
           setRefreshJwt(response.data.refresh_jwt)
         }
       }
-      await fetchMe().catch(onFetchMeError)
+      return await fetchMe().catch(onFetchMeError)
     },
     children: [
       {

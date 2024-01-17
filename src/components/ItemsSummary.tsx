@@ -13,7 +13,7 @@ export const ItemsSummary = (props: Props) => {
   const { balance, expenses, income } = data ?? { balance: 0, expenses: 0, income: 0 }
 
   return (
-    <ol className='flex justify-between items-center rounded-lg py-3 px-6 m-4 child:px-2 text-center bg-[#252A43]'>
+    <ol className='flex justify-between items-center rounded-lg py-3 px-6 m-4 child:px-2 text-center bg-[#2c2e30]'>
       <li className='text-[#FE7275]'>
         <div>收入</div>
         <div><Money value={income}/></div>
