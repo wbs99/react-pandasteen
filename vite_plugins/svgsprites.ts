@@ -1,7 +1,7 @@
-import path from 'node:path'
 import fs from 'node:fs'
-import store from 'svgstore'
+import path from 'node:path'
 import { optimize } from 'svgo'
+import store from 'svgstore'
 import type { Plugin, ViteDevServer } from 'vite'
 
 interface Options {
@@ -10,6 +10,7 @@ interface Options {
   inline?: boolean
   noOptimizeList?: string[]
 }
+
 export const svgsprites = (options: Options = {}): Plugin => {
   const virtualModuleId = `virtual:svgsprites${options.id ? `-${options.id}` : ''}`
   const resolvedVirtualModuleId = `\0${virtualModuleId}`
