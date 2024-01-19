@@ -2,8 +2,8 @@ import { Link, Navigate } from 'react-router-dom'
 import { getItemsApi, getMeApi } from '../api'
 import { AddItemFloatButton } from '../components/AddItemFloatButton'
 import { CenterDiv } from '../components/CenterDiv'
-import { Icon } from '../components/Icon'
 import { Loading } from '../components/Loading'
+import { MyIcon } from '../components/MyIcon'
 import { useTitle } from '../hooks/useTitle'
 
 type Props = {
@@ -26,7 +26,7 @@ export const HomePage = (props: Props) => {
   return (
     <>
       <div className='flex justify-center items-center'>
-        <Icon name='panda' className='my-[20vh] w-32 h-32'/>
+        <MyIcon name='panda' className='my-[20vh] w-32 h-32'/>
       </div>
       <div className='px-4'>
         <Link to='/items/new'>

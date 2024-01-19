@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import { Icon } from '../components/Icon'
+import { MyIcon } from '../components/MyIcon'
 
 export const Welcome1 = () => {
   return (
     <div className='flex flex-col items-center text-center'>
-      <Icon name='panda' className='w-32 h-32'/>
+      <MyIcon name='panda' className='w-32 h-32'/>
       <h2 className='text-3xl mt-12'>
         会挣钱 <br/>
         还要会省钱

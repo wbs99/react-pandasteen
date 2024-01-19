@@ -1,14 +1,13 @@
 import type { AxiosError } from 'axios'
 import { Suspense, lazy } from 'react'
 import { Outlet, createBrowserRouter } from 'react-router-dom'
-import { fetchMe, getRefreshJwt } from '../api'
+import { fetchMe } from '../api'
 import { Loading } from '../components/Loading'
 import { Root } from '../components/Root'
 import { WelcomeLayout } from '../layouts/WelcomeLayout'
 import { ComingSoonPage } from '../pages/ComingSoonPage'
 import { ErrorUnauthorized } from '../pages/Errors'
 import { ErrorPage } from '../pages/Errors/ErrorPage'
-import { ItemsPageError } from '../pages/Errors/ItemsPageError'
 import { HomePage } from '../pages/HomePage'
 import { ItemsNewPage } from '../pages/ItemsNewPage'
 import { ItemsPage } from '../pages/ItemsPage'
@@ -19,7 +18,6 @@ import { Welcome1 } from '../pages/Welcome1'
 import { Welcome2 } from '../pages/Welcome2'
 import { Welcome3 } from '../pages/Welcome3'
 import { Welcome4 } from '../pages/Welcome4'
-import { setJwt, setRefreshJwt } from '../utils/storage'
 
 // 页面资源较大时，使用 lazy import 即可
 const StatisticsPage = lazy(() => import('../pages/StatisticsPage'))
@@ -45,18 +43,11 @@ export const router = createBrowserRouter([
     element: <Outlet />,
     errorElement: <ErrorPage />,
     loader: async () => {
-      const onGetFreshJwtError = (error: AxiosError) => {
+      const onFetchMeError = async (error: AxiosError) => {
         if (error.response?.status === 401) {
           throw new ErrorUnauthorized()
         }
         throw error
-      }
-      const onFetchMeError = async (error: AxiosError) => {
-        if (error.response?.status === 401) {
-          const response = await getRefreshJwt().catch(onGetFreshJwtError)
-          setJwt(response.data.jwt)
-          setRefreshJwt(response.data.refresh_jwt)
-        }
       }
       return await fetchMe().catch(onFetchMeError)
     },
@@ -64,7 +55,7 @@ export const router = createBrowserRouter([
       {
         path: '/items',
         element: <ItemsPage />,
-        errorElement: <ItemsPageError />,
+        // errorElement: <ItemsPageError />,
         // loader: async () => {
         //   const onError = (error: AxiosError) => {
         //     if (error.response?.status === 401) { throw new ErrorUnauthorized() }

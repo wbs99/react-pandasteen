@@ -4,14 +4,14 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { loginApi, sendSmsCodeApi } from '../api'
 import { BackIcon } from '../components/BackIcon'
 import { Gradient } from '../components/Gradient'
-import { Icon } from '../components/Icon'
 import { Input } from '../components/Input'
 import { TopNav } from '../components/TopNav'
+import { MyIcon } from '../components/MyIcon'
+import { useLoginStore } from '../stores/loginStore'
+import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
 import { setJwt, setRefreshJwt } from '../utils/storage'
 import type { FormError } from '../utils/validate'
 import { hasError, validate } from '../utils/validate'
-import { useLoginStore } from '../stores/loginStore'
-import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
 
 export const LoginPage = () => {
   const { buttonLoading } = useButtonLoadingStore()
@@ -60,7 +60,7 @@ export const LoginPage = () => {
         <TopNav title='登录' icon={<BackIcon/>}/>
       </Gradient>
       <div className='flex flex-col items-center pt-10 pb-4'>
-        <Icon name='panda' className='w-16 h-16'/>
+        <MyIcon name='panda' className='w-16 h-16'/>
         <h1 className='text-3xl text-[#7878FF] font-bold'>熊猫</h1>
       </div>
       <form className='w-form' onSubmit={onSubmit}>
@@ -70,7 +70,7 @@ export const LoginPage = () => {
           onChange={code => setLoginForm({ code })} errorMessage={loginError.code?.[0]} request={sendSmsCode}/>
         <div className='mt-24'>
           <button disabled={buttonLoading} className='w-btn' type='submit'>
-            {buttonLoading && <Icon name='loading' className='animate-spin mr-3'/>}
+            {buttonLoading && <MyIcon name='loading' className='animate-spin mr-3'/>}
             登录
           </button>
         </div>

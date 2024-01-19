@@ -1,7 +1,7 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
 import axios from 'axios'
 import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
-import { getJwt, getRefreshJwt } from './storage'
+import { getJwt } from './storage'
 
 type GetConfig = Omit<AxiosRequestConfig, 'params' | 'url' | 'method'>
 type PostConfig = Omit<AxiosRequestConfig, 'url' | 'data' | 'method'>
@@ -36,12 +36,9 @@ export const http = new Http(baseURL)
 
 // set header
 http.instance.interceptors.request.use((config) => {
-  const isUrlIncludeRefreshJwt = config.url?.includes('/refresh_jwt')
   config.headers = config.headers || {}
-  if (getJwt() || getRefreshJwt()) {
-    isUrlIncludeRefreshJwt
-      ? config.headers.Authorization = `Bearer ${getRefreshJwt()}`
-      : config.headers.Authorization = `Bearer ${getJwt()}`
+  if (getJwt()) {
+    config.headers.Authorization = `Bearer ${getJwt()}`
   }
   if (config._buttonLoading === true) {
     useButtonLoadingStore.getState().starButtonLoading()
@@ -70,7 +67,7 @@ http.instance.interceptors.response.use(
   (response) => {
     return response
   },
-  (error: AxiosError) => {
+  async (error: AxiosError) => {
     if (error.response) {
       const { status } = error.response
       const fn = table[status]
@@ -82,7 +79,7 @@ http.instance.interceptors.response.use(
 
 const table: Record<string, undefined | (() => void)> = {
   401: () => {
-    console.log('http 401')
+    console.log('登录状态过期，请重新登录')
   },
   402: () => {
     console.log('请付费后观看')

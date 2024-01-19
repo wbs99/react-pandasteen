@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { AddItemFloatButton } from '../components/AddItemFloatButton'
 import { Gradient } from '../components/Gradient'
-import { Icon } from '../components/Icon'
 import { ItemsList } from '../components/ItemsList'
 import { ItemsSummary } from '../components/ItemsSummary'
 import { LeftMenu } from '../components/LeftMenu'
 import type { TimeRange } from '../components/TimeRangePicker'
 import { TimeRangePicker } from '../components/TimeRangePicker'
 import { TopNav } from '../components/TopNav'
-import { Time, time } from '../utils/time'
+import { MyIcon } from '../components/MyIcon'
 import { useMenuStore } from '../stores/menuStore'
+import { Time, time } from '../utils/time'
 
 export const ItemsPage = () => {
   const [timeRange, _setTimeRange] = useState<TimeRange>({
@@ -42,7 +42,7 @@ export const ItemsPage = () => {
       <Gradient>
         <TopNav
           title='账目列表'
-          icon={<Icon name='menu' onClick={onClick} className='w-6 h-6'/>}
+          icon={<MyIcon name='menu' onClick={onClick} className='w-6 h-6'/>}
         />
       </Gradient>
       <TimeRangePicker selected={timeRange} onSelect={setTimeRange}/>

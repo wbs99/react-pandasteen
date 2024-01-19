@@ -10,7 +10,7 @@ export const loginApi = (data: LoginForm) => http.post<{ jwt: string; refresh_jw
 // 用来在 router 中判断是否已登录
 export const fetchMe = () => http.get<Resource<User>>('/api/v1/me')
 
-export const getRefreshJwt = () => http.get<{ jwt: string; refresh_jwt: string }>('/api/v1/refresh_jwt')
+export const getRefreshJwtApi = () => http.get<{ jwt: string; refresh_jwt: string }>('/api/v1/refresh_jwt')
 
 export const getMeApi = () => {
   const { data, error, isLoading } = useSWR('/api/v1/me', async (path) => {

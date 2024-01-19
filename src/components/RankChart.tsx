@@ -32,7 +32,7 @@ export const RankChart = (props: Props) => {
     <div className={className}>{
       dataSource?.[0]
         ? renderItems()
-        : <div text-center>暂无数据</div>
+        : <div className='text-center'>暂无数据</div>
     }</div>
   )
 }

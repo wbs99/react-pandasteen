@@ -7,7 +7,7 @@ type Props = {
   onClick?: (e: React.MouseEvent) => void
 }
 
-export const Icon = (props: Props) => {
+export const MyIcon = (props: Props) => {
   const { className, name, onClick } = props
 
   return (

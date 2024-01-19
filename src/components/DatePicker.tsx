@@ -37,7 +37,7 @@ export const DatePicker = (props: Props) => {
         <span>时间选择</span>
         <span onClick={() => onConfirm?.(valueTime.current.date)}>确定</span>
       </div>
-      <div className='flex child:grow text-center child:p-4'>
+      <div className='flex child:grow child:p-4 text-center'>
         <span>年</span>
         <span>月</span>
         <span>日</span>

@@ -1,10 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { getTagsApi } from '../../api'
-import { Icon } from '../../components/Icon'
 import { LoadMoreLoading } from '../../components/LoadMoreLoading'
 import { Loading } from '../../components/Loading'
 import { LongPressable } from '../../components/LongPressable'
+import { MyIcon } from '../../components/MyIcon'
 
 type Props = {
   kind: Item['kind']
@@ -30,7 +30,7 @@ export const Tags = (props: Props) => {
           <li>
             <Link to={`/tags/new?kind=${kind}`}>
               <span className='flex justify-center items-center w-12 h-12 rounded-3xl text-2xl text-[#8F4CD7] bg-[#EFEFEF]'>
-                <Icon name='add'/>
+                <MyIcon name='add'/>
               </span>
             </Link>
           </li>

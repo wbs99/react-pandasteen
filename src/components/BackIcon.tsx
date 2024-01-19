@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { Icon } from './Icon'
+import { MyIcon } from './MyIcon'
 
 export const BackIcon = () => {
   const nav = useNavigate()
@@ -8,6 +8,6 @@ export const BackIcon = () => {
   }
 
   return (
-    <Icon name='back' onClick={onBack}/>
+    <MyIcon name='back' onClick={onBack}/>
   )
 }
