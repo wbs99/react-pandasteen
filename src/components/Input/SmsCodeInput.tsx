@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { cn } from '../../utils/cn'
 
 type Props = {
   value?: string

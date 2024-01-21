@@ -16,7 +16,7 @@ export const EmojiInput = (props: Props) => {
       <div className='flex p-2 gap-x-4 overflow-auto text-[#999999]'>
         {emojis.map(emoji =>
           <span key={emoji.name}
-            className={cn(emoji.name === emojiKind ? s.selectedTab : '','whitespace-nowrap')}
+            className={cn(emoji.name === emojiKind ? s.selectedTab : '', 'whitespace-nowrap')}
             onClick={() => setEmojiKind(emoji.name)}>{emoji.name}
           </span>)}
       </div>

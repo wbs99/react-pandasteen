@@ -75,7 +75,7 @@ export const LineChart = (props: Props) => {
     }
     myChart.current?.setOption(option)
   }, [dataSource])
-  
+
   return (
     <div ref={div} className={className}></div>
   )
