@@ -2,11 +2,11 @@ import type { AxiosError } from 'axios'
 import type { FormEventHandler } from 'react'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { createTagApi, getTagApi, updateTagApi } from '../../api'
+import { createTagApi, getTagApi, updateTagApi } from '../../apis/tagApi'
 import { Input } from '../../components/Input'
+import { useCreateTagStore } from '../../stores/createTagStore'
 import type { FormError } from '../../utils/validate'
 import { hasError, validate } from '../../utils/validate'
-import { useCreateTagStore } from '../../stores/createTagStore'
 
 type Props = {
   type: 'create' | 'edit'

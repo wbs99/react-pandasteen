@@ -1,8 +1,8 @@
 import { Link, useLocation } from 'react-router-dom'
-import { getMeApi } from '../../api'
+import { getMeApi } from '../../apis/meApi'
+import { cn } from '../../utils/cn'
 import { comfirmable } from '../../utils/comfirmable'
 import { removeJwt } from '../../utils/storage'
-import { cn } from '../../utils/cn'
 
 type Props = {
   className?: string

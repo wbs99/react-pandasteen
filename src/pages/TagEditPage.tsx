@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import { deleteTagApi } from '../api'
+import { deleteTagApi } from '../apis/tagApi'
 import { BackIcon } from '../components/BackIcon'
 import { Gradient } from '../components/Gradient'
 import { TopNav } from '../components/TopNav'

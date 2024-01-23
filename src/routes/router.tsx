@@ -1,7 +1,7 @@
 import type { AxiosError } from 'axios'
 import { Suspense, lazy } from 'react'
 import { Outlet, createBrowserRouter } from 'react-router-dom'
-import { fetchMe } from '../api'
+import { fetchMe } from '../apis/meApi'
 import { Loading } from '../components/Loading'
 import { Root } from '../components/Root'
 import { WelcomeLayout } from '../layouts/WelcomeLayout'

@@ -1,5 +1,6 @@
 import { Link, Navigate } from 'react-router-dom'
-import { getItemsApi, getMeApi } from '../api'
+import { getItemsApi } from '../apis/itemApi'
+import { getMeApi } from '../apis/meApi'
 import { AddItemFloatButton } from '../components/AddItemFloatButton'
 import { CenterDiv } from '../components/CenterDiv'
 import { Loading } from '../components/Loading'

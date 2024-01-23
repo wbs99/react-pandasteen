@@ -1,7 +1,7 @@
 import type { AxiosError } from 'axios'
 import type { FormEventHandler } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { loginApi, sendSmsCodeApi } from '../api'
+import { loginApi, sendSmsCodeApi } from '../apis/loginApi'
 import { BackIcon } from '../components/BackIcon'
 import { Gradient } from '../components/Gradient'
 import { Input } from '../components/Input'

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { getItemListApi } from '../api'
+import { getItemListApi } from '../apis/itemApi'
 import type { Time } from '../utils/time'
 import { time } from '../utils/time'
 import { LoadMoreLoading } from './LoadMoreLoading'

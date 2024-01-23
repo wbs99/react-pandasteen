@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import { getTagsApi } from '../../api'
+import { getTagsApi } from '../../apis/tagApi'
 import { LoadMoreLoading } from '../../components/LoadMoreLoading'
 import { Loading } from '../../components/Loading'
 import { LongPressable } from '../../components/LongPressable'
