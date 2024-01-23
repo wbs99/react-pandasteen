@@ -45,7 +45,6 @@ export const getTagsApi = (tagKind: string) => {
 
 export const createTagApi = (data: Partial<Tag>) => http.post<Resource<Tag>>('/api/v1/tags', data)
 
-export const updateTagApi = (tagId: string, data: Partial<Tag>) =>
-  http.patch<Resource<Tag>>(`/api/v1/tags/${tagId}`, data)
+export const updateTagApi = (tagId: string, data: Partial<Tag>) => http.patch<Resource<Tag>>(`/api/v1/tags/${tagId}`, data)
 
 export const deleteTagApi = (tagId: string) => http.delete(`/api/v1/tags/${tagId}`)
