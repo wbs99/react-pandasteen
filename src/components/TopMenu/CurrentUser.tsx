@@ -1,6 +1,6 @@
+import c from 'classnames'
 import { Link, useLocation } from 'react-router-dom'
 import { getMeApi } from '../../apis/meApi'
-import { cn } from '../../utils/cn'
 import { comfirmable } from '../../utils/comfirmable'
 import { removeJwt } from '../../utils/storage'
 
@@ -20,7 +20,7 @@ export const CurrentUser = (props: Props) => {
   })
 
   return (
-    <div className={cn(className, 'block w-full pt-8 pb-11 px-4 bg-primary text-white')}>
+    <div className={c(className, 'block w-full pt-8 pb-11 px-4 bg-primary text-white')}>
       {error
         ? <Link to={`/login?return=${return_to}`} >
             <h2 className='text-2xl'>未登录用户</h2>

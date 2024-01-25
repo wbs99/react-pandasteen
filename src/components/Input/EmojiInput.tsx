@@ -1,6 +1,6 @@
+import c from 'classnames'
 import { useState } from 'react'
 import { emojis } from '../../utils/emojis'
-import { cn } from '../../utils/cn'
 import s from './EmojiInput.module.scss'
 
 type Props = {
@@ -12,11 +12,11 @@ export const EmojiInput = (props: Props) => {
   const [emojiKind, setEmojiKind] = useState('表情')
 
   return (
-    <div className={cn(s.wrapper, 'rounded-lg border border-primary')}>
+    <div className={c(s.wrapper, 'rounded-lg border border-primary')}>
       <div className='flex p-2 gap-x-4 overflow-auto text-[#999999]'>
         {emojis.map(emoji =>
           <span key={emoji.name}
-            className={cn(emoji.name === emojiKind ? s.selectedTab : '', 'whitespace-nowrap')}
+            className={c(emoji.name === emojiKind ? s.selectedTab : '', 'whitespace-nowrap')}
             onClick={() => setEmojiKind(emoji.name)}>{emoji.name}
           </span>)}
       </div>
@@ -25,7 +25,7 @@ export const EmojiInput = (props: Props) => {
           <div key={emoji.name} style={{ display: emoji.name === emojiKind ? '' : 'none' }}
             className='grid grid-cols-[repeat(auto-fit,34px)] grid-rows-[repeat(auto-fit,34px)] justify-center'>
             {emoji.chars.map(char => <span key={char}
-              className={cn(char === value ? s.selected : '', 'border border-transparent rounded')}
+              className={c(char === value ? s.selected : '', 'border border-transparent rounded')}
               onClick={() => value !== char && onChange?.(char)}>{char}
             </span>)}
           </div>)}

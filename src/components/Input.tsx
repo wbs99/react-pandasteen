@@ -1,5 +1,5 @@
+import c from 'classnames'
 import type { ChangeEvent, ReactNode } from 'react'
-import { cn } from '../utils/cn'
 import { DateInput } from './Input/DateInput'
 import { EmojiInput } from './Input/EmojiInput'
 import { SmsCodeInput } from './Input/SmsCodeInput'
@@ -50,7 +50,7 @@ export const Input = <T extends string>(props: Props<T>) => {
   }
 
   return (
-    <div className={cn(className, 'flex flex-col gap-y-2')}>
+    <div className={c(className, 'flex flex-col gap-y-2')}>
       {label ? <span className='text-lg'>{label}</span> : null}
       {renderInput()}
       {disableError ? null : <span className='text-lg text-red-400'>{errorMessage || '　'}</span>}

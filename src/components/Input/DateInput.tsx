@@ -1,5 +1,5 @@
+import c from 'classnames'
 import { usePopup } from '../../hooks/usePopup'
-import { cn } from '../../utils/cn'
 import { time } from '../../utils/time'
 import { DatePicker } from '../DatePicker'
 
@@ -24,7 +24,7 @@ export const DateInput = (props: Props) => {
   return (
     <>
       {popup}
-      <input className={cn(className, 'w-input-text')} type='text' readOnly placeholder={placeholder}
+      <input className={c(className, 'w-input-text')} type='text' readOnly placeholder={placeholder}
         value={time(value).format()} onChange={e => onChange?.(e.target.value)} onClick={toggle} />
     </>
   )

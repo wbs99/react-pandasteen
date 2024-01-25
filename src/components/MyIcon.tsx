@@ -1,5 +1,5 @@
+import c from 'classnames'
 import React from 'react'
-import { cn } from '../utils/cn'
 
 type Props = {
   className?: string
@@ -11,7 +11,7 @@ export const MyIcon = (props: Props) => {
   const { className, name, onClick } = props
 
   return (
-    <svg className={cn(className, 'w-icon')} onClick={onClick}>
+    <svg className={c(className, 'w-icon')} onClick={onClick}>
       <use xlinkHref={`#${name}`}></use>
     </svg>
   )

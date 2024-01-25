@@ -1,6 +1,6 @@
+import c from 'classnames'
 import { useEffect, useRef, useState } from 'react'
 import { time } from '../utils/time'
-import { cn } from '../utils/cn'
 
 type Props = {
   start?: Date
@@ -107,7 +107,7 @@ export const Column = (props: ColumnProps) => {
   }
 
   return (
-    <div className={cn(className, ' h-[50vh] overflow-hidden relative')}
+    <div className={c(className, 'h-[50vh] overflow-hidden relative')}
       onTouchStart={(e) => {
         setIsTouching(true)
         setLastY(e.touches[0].clientY)
