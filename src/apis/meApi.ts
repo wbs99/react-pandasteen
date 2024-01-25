@@ -2,12 +2,15 @@ import useSWR from 'swr'
 import { http } from '../utils/http'
 
 export const getMeApi = () => {
-  const { data, error, isLoading } = useSWR('/api/v1/me', async (path) => {
-    const response = await http.get<Resource<User>>(path)
-    return response.data.resource
-  })
+  const { data, error, isLoading } = useSWR(
+    '/api/v1/me',
+    async (path) => {
+      const response = await http.get<Resource<User>>(path)
+      return response.data.resource
+    }
+  )
 
-  return { meData:data, meError:error, isLoadingMe:isLoading }
+  return { meData: data, meError: error, isLoadingMe: isLoading }
 }
 
 // 用来在 router 中判断是否已登录

@@ -4,10 +4,13 @@ import { http } from '../utils/http'
 import type { Time } from '../utils/time'
 
 export const getItemsApi = (meData?: User) => {
-  const { data, error, isLoading } = useSWR(meData ? '/api/v1/items' : null, async (path) => {
-    const response = await http.get<Resources<Item>>(path)
-    return response.data
-  })
+  const { data, error, isLoading } = useSWR(
+    meData ? '/api/v1/items' : null,
+    async (path) => {
+      const response = await http.get<Resources<Item>>(path)
+      return response.data
+    }
+  )
 
   return { itemsData: data, itemsError: error, isLoadingItems: isLoading }
 }
@@ -45,13 +48,15 @@ export const getItemListApi = (start: Time, end: Time) => {
 
 // 收入 支出 净收入
 export const getItemsBalanceApi = (start: Time, end: Time) => {
-  const { data } = useSWR(start && end && `/api/v1/items/balance?happened_after=${start.isoString}&happened_before=${end.isoString}`,
+  const { data } = useSWR(
+    start && end && `/api/v1/items/balance?happened_after=${start.isoString}&happened_before=${end.isoString}`,
     async (path) => {
       const response = await http.get<{ balance: number; expenses: number; income: number }>(path)
       return response.data
-    })
+    }
+  )
 
-  return { itemsBalanceData:data }
+  return { itemsBalanceData: data }
 }
 
 // type GetKeyParams = {

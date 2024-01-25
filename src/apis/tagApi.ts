@@ -3,11 +3,15 @@ import useSWRInfinite from 'swr/infinite'
 import { http } from '../utils/http'
 
 export const getTagApi = (tagId: string) => {
-  const { data } = useSWR(tagId ? `/api/v1/tags/${tagId}` : null, async (path) => {
-    const response = await http.get<Resource<Tag>>(path)
-    return response.data.resource
-  })
-  return { tagData:data }
+  const { data } = useSWR(
+    tagId ? `/api/v1/tags/${tagId}` : null,
+    async (path) => {
+      const response = await http.get<Resource<Tag>>(path)
+      return response.data.resource
+    }
+  )
+
+  return { tagData: data }
 }
 
 export const getTagsApi = (tagKind: string) => {
