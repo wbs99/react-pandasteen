@@ -9,7 +9,7 @@ export const getItemsApi = (meData?: User) => {
     return response.data
   })
 
-  return { data, error, isLoading }
+  return { itemsData: data, itemsError: error, isLoadingItems: isLoading }
 }
 
 export const getItemListApi = (start: Time, end: Time) => {
@@ -51,7 +51,7 @@ export const getItemsBalanceApi = (start: Time, end: Time) => {
       return response.data
     })
 
-  return { data }
+  return { itemsBalanceData:data }
 }
 
 // type GetKeyParams = {

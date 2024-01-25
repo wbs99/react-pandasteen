@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@react-spring/web": "9.7.3",
-    "axios": "1.6.5",
+    "axios": "1.6.6",
     "classnames": "2.5.1",
     "clsx": "2.1.0",
     "echarts": "5.4.3",
@@ -23,7 +23,7 @@
     "sass": "1.70.0",
     "styled-components": "6.1.8",
     "swr": "2.2.4",
-    "tailwind-merge": "2.2.0",
+    "tailwind-merge": "2.2.1",
     "vh-check": "2.0.5",
     "zustand": "4.5.0"
   },

@@ -9,8 +9,8 @@ type Props = {
 
 export const ItemsSummary = (props: Props) => {
   const { start, end } = props
-  const { data } = getItemsBalanceApi(start, end)
-  const { balance, expenses, income } = data ?? { balance: 0, expenses: 0, income: 0 }
+  const { itemsBalanceData } = getItemsBalanceApi(start, end)
+  const { balance, expenses, income } = itemsBalanceData ?? { balance: 0, expenses: 0, income: 0 }
 
   return (
     <ol className='flex justify-between items-center rounded-lg py-3 px-6 m-4 child:px-2 text-center bg-[#2c2e30]'>

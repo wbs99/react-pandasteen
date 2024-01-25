@@ -10,8 +10,8 @@ type Props = {
 
 export const CurrentUser = (props: Props) => {
   const { className } = props
-  const { data: me, error } = getMeApi()
-  const name = me?.name ?? me?.email
+  const { meData, meError } = getMeApi()
+  const name = meData?.name ?? meData?.email
   const loc = useLocation()
   const return_to = encodeURIComponent(`${loc.pathname}${loc.search}`)
   const signOut = comfirmable('确定要退出登录吗？', () => {
@@ -21,7 +21,7 @@ export const CurrentUser = (props: Props) => {
 
   return (
     <div className={c(className, 'block w-full pt-8 pb-11 px-4 bg-primary text-white')}>
-      {error
+      {meError
         ? <Link to={`/login?return=${return_to}`} >
             <h2 className='text-2xl'>未登录用户</h2>
             <div className='text-[#CEA1FF]'>点击这里登录</div>

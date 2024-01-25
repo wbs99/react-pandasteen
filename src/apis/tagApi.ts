@@ -7,7 +7,7 @@ export const getTagApi = (tagId: string) => {
     const response = await http.get<Resource<Tag>>(path)
     return response.data.resource
   })
-  return { data }
+  return { tagData:data }
 }
 
 export const getTagsApi = (tagKind: string) => {

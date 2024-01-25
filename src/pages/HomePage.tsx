@@ -15,8 +15,8 @@ export const HomePage = (props: Props) => {
   const { title } = props
   useTitle(title)
 
-  const { data: meData, isLoading: isLoadingMe } = getMeApi()
-  const { data: itemsData, isLoading: isLoadingItems } = getItemsApi(meData)
+  const { meData, isLoadingMe } = getMeApi()
+  const { itemsData, isLoadingItems } = getItemsApi(meData)
   if (isLoadingMe || isLoadingItems) {
     return <CenterDiv><Loading /></CenterDiv>
   }

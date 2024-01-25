@@ -7,7 +7,7 @@ export const getMeApi = () => {
     return response.data.resource
   })
 
-  return { data, error, isLoading }
+  return { meData:data, meError:error, isLoadingMe:isLoading }
 }
 
 // 用来在 router 中判断是否已登录

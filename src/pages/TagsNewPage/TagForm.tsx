@@ -33,13 +33,13 @@ export const TagForm = (props: Props) => {
   }, [searchParams])
 
   const [tagId, setTagId] = useState('')
-  const { data: tag } = getTagApi(tagId)
+  const { tagData } = getTagApi(tagId)
   useEffect(() => {
     params.id && setTagId(params.id)
-    if (tag) {
-      setData(tag)
+    if (tagData) {
+      setData(tagData)
     }
-  }, [tag])
+  }, [tagData])
 
   const onSubmit: FormEventHandler = async (e) => {
     e.preventDefault()
