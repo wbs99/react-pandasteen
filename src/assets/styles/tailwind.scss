@@ -16,3 +16,17 @@
     @apply h-12 pl-4 leading-8 py-2 rounded-lg text-lg border border-primary;
   }
 }
+
+@layer utilities {
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; // IE and Edge
+    scrollbar-width: none; // Firefox
+  }
+}
