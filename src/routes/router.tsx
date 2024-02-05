@@ -19,8 +19,21 @@ import { Welcome2 } from '../pages/Welcome2'
 import { Welcome3 } from '../pages/Welcome3'
 import { Welcome4 } from '../pages/Welcome4'
 
+function lazyImport<
+  T extends React.ComponentType<any>,
+  I extends { [K2 in K]: T },
+  K extends keyof I,
+>(
+  factory: () => Promise<I>,
+  name: K,
+): I {
+  return Object.create({
+    [name]: lazy(() => factory().then(module => ({ default: module[name] }))),
+  })
+}
+
 // 页面资源较大时，使用 lazy import 即可
-const StatisticsPage = lazy(() => import('../pages/StatisticsPage'))
+const { StatisticsPage } = lazyImport(() => import('../pages/StatisticsPage'), 'StatisticsPage')
 
 export const router = createBrowserRouter([
   // 访问 / 路径，在 Root 中判断跳转哪个页面

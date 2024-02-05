@@ -110,5 +110,3 @@ export const StatisticsPage = () => {
     </div>
   )
 }
-
-export default StatisticsPage
