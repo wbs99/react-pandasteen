@@ -20,14 +20,12 @@ export const ItemsNewPage = () => {
     {
       key: 'expenses',
       text: '支出',
-      element:
-        <Tags kind='expenses' value={data.tag_ids} onChange={ids => setData({ tag_ids: ids })}/>
+      element: <Tags kind='expenses' value={data.tag_ids} onChange={ids => setData({ tag_ids: ids })}/>
     },
     {
       key: 'income',
       text: '收入',
-      element:
-        <Tags kind='income' value={data.tag_ids} onChange={ids => setData({ tag_ids: ids })}/>
+      element: <Tags kind='income' value={data.tag_ids} onChange={ids => setData({ tag_ids: ids })}/>
     }
   ]
   const { post } = useAjax({ showLoading: true, handleError: true })
