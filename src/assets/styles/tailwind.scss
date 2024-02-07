@@ -6,9 +6,6 @@
   .w-icon {
     @apply fill-current w-5 h-5;
   }
-  .w-form {
-    @apply px-4 flex flex-col gap-y-4;
-  }
   .w-btn {
     @apply h-12 w-full border-none rounded-lg px-3 flex justify-center items-center text-lg text-white bg-primary;
   }

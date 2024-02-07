@@ -2,11 +2,8 @@ import type { AxiosError } from 'axios'
 import type { FormEventHandler } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { loginApi, sendSmsCodeApi } from '../apis/loginApi'
-import { BackIcon } from '../components/BackIcon'
-import { Gradient } from '../components/Gradient'
 import { Input } from '../components/Input'
 import { MyIcon } from '../components/MyIcon'
-import { TopNav } from '../components/TopNav'
 import { useLoginStore } from '../stores/loginStore'
 import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
 import { setJwt, setRefreshJwt } from '../utils/storage'
@@ -56,25 +53,28 @@ export const LoginPage = () => {
 
   return (
     <>
-      <Gradient>
-        <TopNav title='登录' icon={<BackIcon/>}/>
-      </Gradient>
-      <div className='flex flex-col items-center pt-10 pb-4'>
-        <MyIcon name='panda' className='w-16 h-16'/>
-        <h1 className='text-3xl text-[#7878FF] font-bold'>熊猫</h1>
+      <div className='flex items-center p-4'>
+        <MyIcon name='panda' className='w-[36px] h-[36px] mr-2'/>
+        <span className='text-primary font-bold'>Panda</span>
       </div>
-      <form className='w-form' onSubmit={onSubmit}>
-        <Input className='flex flex-col' type='text' label='邮箱地址' placeholder='请输入' value={loginForm.email}
-          onChange={email => setLoginForm({ email })} errorMessage={loginError.email?.[0]}/>
-        <Input className='flex flex-col' type='sms_code' label='验证码' placeholder='六位数字' value={loginForm.code}
-          onChange={code => setLoginForm({ code })} errorMessage={loginError.code?.[0]} request={sendSmsCode}/>
-        <div className='mt-24'>
-          <button disabled={buttonLoading} className='w-btn' type='submit'>
-            {buttonLoading && <MyIcon name='loading' className='animate-spin mr-3'/>}
-            登录
-          </button>
+      <div className='p-8 mt-12'>
+        <div className='font-bold text-2xl text-primary'>
+          <h3>探索侠</h3>
+          <h3>欢迎回来👋</h3>
         </div>
-      </form>
+        <form className='mt-16' onSubmit={onSubmit}>
+          <Input className='flex flex-col' type='text' label='邮箱' placeholder='请输入' value={loginForm.email}
+            onChange={email => setLoginForm({ email })} errorMessage={loginError.email?.[0]} />
+          <Input className='flex flex-col' type='sms_code' label='验证码' placeholder='六位数字' value={loginForm.code}
+            onChange={code => setLoginForm({ code })} errorMessage={loginError.code?.[0]} request={sendSmsCode} />
+          <div className='mt-8'>
+            <button disabled={buttonLoading} className='w-btn' type='submit'>
+              {buttonLoading && <MyIcon name='loading' className='animate-spin mr-3' />}
+              登录
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   )
 }

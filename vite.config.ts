@@ -27,6 +27,7 @@ export default defineConfig(({ command }) => {
         output: {
           manualChunks(id: any) {
             if (id.includes('echarts')) { return 'echarts' }
+            if (id.includes('mock') || id.includes('faker')) { return 'mock' }
             if (id.includes('node_modules')) { return 'vendor' }
           }
         }
