@@ -42,8 +42,7 @@ export const ItemsNewPage = () => {
     if (hasError(error)) {
       const message = Object.values(error).flat().join('\n')
       window.alert(message)
-    }
-    else {
+    } else {
       await post<Resource<Item>>('/api/v1/items', data)
       setData({ amount: 0, happen_at: time().isoString })
       nav('/items')
@@ -58,9 +57,9 @@ export const ItemsNewPage = () => {
         <TopNav title='记一笔' icon={<BackIcon/>}/>
       </Gradient>
       <Tabs value={data.kind!} onChange={tabItem => setData({ kind: tabItem })} tabItems={tabItems} className='text-center grow shrink overflow-hidden' classPrefix='items-new-page'/>
-      <ItemAmount className='grow-0 shrink-0' itemDate={
-        <ItemDate value={data.happen_at} onChange={happen_at => setData({ happen_at })}/>
-      } value={data.amount} onChange={amount => setData({ amount })} onSubmit={onSubmit}/>
+      <ItemAmount className='grow-0 shrink-0'
+        itemDate={<ItemDate value={data.happen_at} onChange={happen_at => setData({ happen_at })}/>}
+        value={data.amount} onChange={amount => setData({ amount })} onSubmit={onSubmit}/>
     </div>
   )
 }
