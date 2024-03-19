@@ -29,7 +29,7 @@ export default antfu({
     'ts/consistent-type-definitions': 'off',
     'ts/comma-dangle': 'off',
     'ts/no-unused-vars': 'off',
-    'ts/method-signature-style':'off',
+    'ts/method-signature-style': 'off',
     'react-hooks/exhaustive-deps': 'off'
   },
 })

@@ -6,7 +6,7 @@ const createId = () => {
   id += 1
   return id
 }
-const create = (attrs?: Partial<Tag>): Tag => {
+const createTag = (attrs?: Partial<Tag>): Tag => {
   return {
     id: createId(),
     name: faker.lorem.word(),
@@ -20,15 +20,15 @@ const create = (attrs?: Partial<Tag>): Tag => {
   }
 }
 
-const createList = (n: number, attrs?: Partial<Tag>): Tag[] => {
-  return Array.from({ length: n }).map(() => create(attrs))
+const createTagList = (n: number, attrs?: Partial<Tag>): Tag[] => {
+  return Array.from({ length: n }).map(() => createTag(attrs))
 }
 
 const createResponse = ({ count = 10, perPage = 10, page = 1 }, attrs?: Partial<Tag>,): Resources<Tag> => {
   const sendCount = (page - 1) * perPage
   const left = count - sendCount
   return {
-    resources: left > 0 ? createList(Math.min(left, perPage), attrs) : [],
+    resources: left > 0 ? createTagList(Math.min(left, perPage), attrs) : [],
     pager: {
       page,
       per_page: perPage,
@@ -36,7 +36,7 @@ const createResponse = ({ count = 10, perPage = 10, page = 1 }, attrs?: Partial<
     }
   }
 }
-export const tagsMock: MockMethod[] = [
+export const mockTags: MockMethod[] = [
   {
     url: '/api/v1/tags',
     method: 'get',
@@ -51,7 +51,7 @@ export const tagsMock: MockMethod[] = [
     statusCode: 200,
     response: (): Resource<Tag> => {
       return {
-        resource: create()
+        resource: createTag()
       }
     }
   },
@@ -61,7 +61,7 @@ export const tagsMock: MockMethod[] = [
     statusCode: 200,
     response: (): Resource<Tag> => {
       return {
-        resource: create()
+        resource: createTag()
       }
     }
   },
@@ -71,7 +71,7 @@ export const tagsMock: MockMethod[] = [
     statusCode: 200,
     response: (): Resource<Tag> => {
       return {
-        resource: create()
+        resource: createTag()
       }
     }
   },

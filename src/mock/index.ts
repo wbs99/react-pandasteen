@@ -1,10 +1,10 @@
 import type { MockMethod } from 'vite-plugin-mock'
-import { MockItems } from './mockItems'
-import { MockMe } from './mockMe'
-import { MockSession } from './mockSession'
-import { summaryMock } from './mockSummary'
-import { tagsMock } from './mockTags'
+import { mockItems } from './mockItems'
+import { mockMe } from './mockMe'
+import { mockSession } from './mockSession'
+import { mockSummary } from './mockSummary'
+import { mockTags } from './mockTags'
 
 export default [
-  ...MockMe, ...MockItems, ...MockSession, ...tagsMock, ...summaryMock
+  ...mockMe, ...mockItems, ...mockSession, ...mockTags, ...mockSummary
 ] as MockMethod[]

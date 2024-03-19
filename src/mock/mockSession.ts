@@ -1,6 +1,6 @@
 import type { MockMethod } from 'vite-plugin-mock'
 
-export const MockSession: MockMethod[] = [
+export const mockSession: MockMethod[] = [
   {
     url: '/api/v1/session',
     method: 'post',
