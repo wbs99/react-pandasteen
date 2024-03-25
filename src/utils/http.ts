@@ -31,8 +31,7 @@ export class Http {
   }
 }
 
-const baseURL = import.meta.env.MODE === 'development' ? '/' : import.meta.env.VITE_APP_API_BASEURL
-export const http = new Http(baseURL)
+export const http = new Http(import.meta.env.VITE_APP_API_BASEURL)
 
 // set header
 http.instance.interceptors.request.use((config) => {
