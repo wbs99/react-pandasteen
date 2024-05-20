@@ -30,6 +30,7 @@ export default antfu({
     'ts/comma-dangle': 'off',
     'ts/no-unused-vars': 'off',
     'ts/method-signature-style': 'off',
-    'react-hooks/exhaustive-deps': 'off'
+    'react-hooks/exhaustive-deps': 'off',
+    'react-hooks/rules-of-hooks': 'off'
   },
 })

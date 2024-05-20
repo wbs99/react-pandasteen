@@ -13,7 +13,7 @@ type Props = {
 }
 
 export const Tags = (props: Props) => {
-  const { kind } = props
+  const { kind, onChange, value } = props
   const nav = useNavigate()
   const { data, error, isLoading, onLoadMore, isLoadingMore, hasMore, last } = getTagsApi(kind)
 
@@ -35,11 +35,11 @@ export const Tags = (props: Props) => {
             </Link>
           </li>
           {data.map(({ resources }) => {
-            return resources.map((tag, index) =>
-              <li key={index}
-                onClick={() => { props.onChange?.([tag.id]) }}>
+            return resources.map(tag =>
+              <li key={tag.id}
+                onClick={() => { onChange?.([tag.id]) }}>
                 <LongPressable onEnd={() => { nav(`/tags/${tag.id}`) }} className='flex flex-col justify-center items-center w-12 gap-y-2'>
-                  {props.value?.includes(tag.id)
+                  {value?.includes(tag.id)
                     ? <span className='flex justify-center items-center w-12 h-12 rounded-3xl text-2xl border border-[#8F4CD7] bg-[#EFEFEF]'>{tag.sign}</span>
                     : <span className='flex justify-center items-center w-12 h-12 rounded-3xl text-2xl border border-transparent bg-[#EFEFEF]'>{tag.sign}</span>
                   }
@@ -54,7 +54,7 @@ export const Tags = (props: Props) => {
           ? last.pager.page === 1 && last.resources.length === 0 ? <CenterDiv>点击加号，创建新标签</CenterDiv> : <CenterDiv>没有更多数据了</CenterDiv>
           : isLoadingMore
             ? <CenterDiv><LoadMoreLoading /></CenterDiv>
-            : <CenterDiv><button className='w-btn' onClick={onLoadMore}>加载更多</button></CenterDiv>}
+            : <CenterDiv><button type='button' className='w-btn' onClick={onLoadMore}>加载更多</button></CenterDiv>}
       </div>
     )
   }

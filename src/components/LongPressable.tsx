@@ -6,10 +6,15 @@ type Props = {
   className?: string
   onEnd?: () => void
 }
+type Position = {
+  x?: number
+  y?: number
+}
+
 export const LongPressable = (props: Props) => {
   const { children, className, onEnd } = props
   const touchTimer = useRef<number>()
-  const touchPosition = useRef<{ x?: number; y?: number }>({ x: undefined, y: undefined })
+  const touchPosition = useRef<Position>({ x: undefined, y: undefined })
   const onTouchStart = (e: TouchEvent) => {
     touchTimer.current = window.setTimeout(() => {
       onEnd?.()
