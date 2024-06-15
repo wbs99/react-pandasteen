@@ -15,6 +15,43 @@ export const getItemsApi = (meData?: User) => {
   return { itemsData: data, itemsError: error, isLoadingItems: isLoading }
 }
 
+// let itemsParams = {}
+
+// export const getItemListApi = (start: Time, end: Time) => {
+//   const { data, error, size, setSize, isLoading } = useSWRInfinite(
+//     (pageIndex: number, prev: Resources<Item>) => {
+//       const { pager, resources } = prev || {}
+//       if (pager && (pager.page - 1) * pager.per_page + resources.length >= pager.count) {
+//         return null
+//       }
+
+//       itemsParams = {
+//         page: pageIndex + 1,
+//         happened_after: start.removeTime().isoString,
+//         happened_before: end.removeTime().isoString
+//       }
+//       return ['/api/v1/items', itemsParams]
+//     },
+//     async ([path, itemsParams]) => {
+//       const response = await http.get<Resources<Item>>(path, itemsParams)
+//       return response.data
+//     },
+//     { revalidateAll: true }
+//   )
+//   let hasMore
+//   const onLoadMore = () => setSize(size + 1)
+//   const isLoadingMore = data?.[size - 1] === undefined && !error
+//   if (data) {
+//     const last = data[data.length - 1]
+//     const { page, per_page, count } = last.pager
+//     hasMore = (page - 1) * per_page + last.resources.length < count
+//   }
+
+//   return {
+//     data, error, isLoading, onLoadMore, isLoadingMore, hasMore
+//   }
+// }
+
 export const getItemListApi = (start: Time, end: Time) => {
   const getKey = (pageIndex: number, prev: Resources<Item>) => {
     const { pager, resources } = prev || {}

@@ -31,6 +31,7 @@ export default antfu({
     'ts/no-unused-vars': 'off',
     'ts/method-signature-style': 'off',
     'react-hooks/exhaustive-deps': 'off',
-    'react-hooks/rules-of-hooks': 'off'
+    'react-hooks/rules-of-hooks': 'off',
+    'antfu/if-newline': 'off'
   },
 })

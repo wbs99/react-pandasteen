@@ -12,7 +12,7 @@ import { HomePage } from '../pages/HomePage'
 import { ItemsNewPage } from '../pages/ItemsNewPage'
 import { ItemsPage } from '../pages/ItemsPage'
 import { LoginPage } from '../pages/LoginPage'
-import { TagEditPage } from '../pages/TagEditPage'
+import { TagDetailPage } from '../pages/TagDetailPage'
 import { TagsNewPage } from '../pages/TagsNewPage'
 import { Welcome1 } from '../pages/Welcome1'
 import { Welcome2 } from '../pages/Welcome2'
@@ -89,7 +89,7 @@ export const router = createBrowserRouter([
           <StatisticsPage />
         </Suspense>
       },
-      { path: '/tags/:id', element: <TagEditPage /> },
+      { path: '/tags/:id', element: <TagDetailPage /> },
       { path: '/tags/new', element: <TagsNewPage /> },
       { path: '/export', element: <ComingSoonPage /> },
       { path: '/remind', element: <ComingSoonPage /> }

@@ -6,7 +6,7 @@ import { TopNav } from '../components/TopNav'
 import { comfirmable } from '../utils/comfirmable'
 import { TagForm } from './TagsNewPage/TagForm'
 
-export const TagEditPage = () => {
+export const TagDetailPage = () => {
   const { id } = useParams()
   const nav = useNavigate()
   const onDelete = comfirmable('确定要删除吗', async () => {

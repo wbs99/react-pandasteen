@@ -47,8 +47,6 @@ export const PieChart = (props: Props) => {
   }, [dataSource])
 
   return (
-    <>
-      <div ref={div} className={className}></div>
-    </>
+    <div ref={div} className={className}></div>
   )
 }

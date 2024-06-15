@@ -55,10 +55,10 @@ export const LoginPage = () => {
     <>
       <div className='flex items-center p-4'>
         <MyIcon name='panda' className='w-[36px] h-[36px] mr-2'/>
-        <span className='text-primary font-bold'>Panda</span>
+        <span className='font-bold text-primary'>Panda</span>
       </div>
       <div className='p-8 mt-12'>
-        <div className='font-bold text-2xl text-primary'>
+        <div className='text-2xl font-bold text-primary'>
           <h3>探索侠</h3>
           <h3>欢迎回来👋</h3>
         </div>
@@ -69,7 +69,7 @@ export const LoginPage = () => {
             onChange={code => setLoginForm({ code })} errorMessage={loginError.code?.[0]} request={sendSmsCode} />
           <div className='mt-8'>
             <button disabled={buttonLoading} className='w-btn' type='submit'>
-              {buttonLoading && <MyIcon name='loading' className='animate-spin mr-3' />}
+              {buttonLoading && <MyIcon name='loading' className='mr-3 animate-spin' />}
               登录
             </button>
           </div>
