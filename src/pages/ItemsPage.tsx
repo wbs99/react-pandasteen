@@ -49,11 +49,11 @@ export const ItemsPage = () => {
       {outOfRange
         ? <div className='text-center p-8'>
           自定义时间跨度不能超过 365 天
-        </div>
+          </div>
         : <>
-          <ItemsSummary start={start} end={end}/>
-          <ItemsList start={start} end={end}/>
-        </>
+            <ItemsSummary start={start} end={end}/>
+            <ItemsList start={start} end={end}/>
+          </>
       }
       <AddItemFloatButton/>
       <LeftMenu visible={visible} onClickMask={() => setVisible(false)}/>

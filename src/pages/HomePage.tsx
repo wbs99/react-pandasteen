@@ -26,7 +26,7 @@ export const HomePage = (props: Props) => {
 
   return (
     <>
-      <div className='flex justify-center items-center'>
+      <div className='flex items-center justify-center'>
         <MyIcon name='panda' className='my-[20vh] w-32 h-32'/>
       </div>
       <div className='px-4'>

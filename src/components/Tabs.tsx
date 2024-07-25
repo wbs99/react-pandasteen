@@ -33,7 +33,7 @@ export const Tabs = <T extends string | { name: string }>(props: Props<T>) => {
     <div className={c(className, classPrefix, 'flex flex-col')}>
       <ol
         className={c('flex grow-0 shrink-0 child:px-6 child:py-3 text-white bg-gradient-to-r from-[#4052b6] to-[#747ce7]', classPrefix ? `${classPrefix}-tabs` : '')}
-        >
+      >
         {tabItems.map(item => <li key={typeof item.key === 'string' ? item.key : item.key.name}
           className={c(
             compareKey(item.key, value) ? s.selected : '',

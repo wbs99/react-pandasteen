@@ -32,6 +32,7 @@ export default antfu({
     'ts/method-signature-style': 'off',
     'react-hooks/exhaustive-deps': 'off',
     'react-hooks/rules-of-hooks': 'off',
-    'antfu/if-newline': 'off'
+    'antfu/if-newline': 'off',
+    'react-dom/no-missing-button-type': 'off'
   },
 })
