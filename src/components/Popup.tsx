@@ -41,16 +41,16 @@ export const Popup = (props: Props) => {
         style={{ ...maskStyles, zIndex: `calc(${zIndex} - 1)` }} />
       {position === 'bottom'
         ? (
-          <animated.div className='fixed bottom-0 left-0 w-full min-h-[100px] rounded-t-lg overflow-hidden bg-white'
-            style={{ ...wrapperStyles, zIndex }} >
-            {children}
-          </animated.div>
+            <animated.div className='fixed bottom-0 left-0 w-full min-h-[100px] rounded-t-lg overflow-hidden bg-white'
+              style={{ ...wrapperStyles, zIndex }} >
+              {children}
+            </animated.div>
           )
         : (
-          <animated.div className='fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg overflow-hidden bg-white'
-            style={{ ...wrapperStyles, zIndex }} >
-            {children}
-          </animated.div>
+            <animated.div className='fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg overflow-hidden bg-white'
+              style={{ ...wrapperStyles, zIndex }} >
+              {children}
+            </animated.div>
           )
       }
     </div>

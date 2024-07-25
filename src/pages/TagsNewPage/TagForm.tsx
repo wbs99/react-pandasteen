@@ -83,14 +83,14 @@ export const TagForm = (props: Props) => {
         errorMessage={error.name?.[0]}
         value={data.name}
         onChange={name => setData({ name })}
-        />
+      />
       <Input
         type='emoji'
         errorMessage={error.sign?.[0]}
         value={data.sign}
         onChange={sign => setData({ sign })}
         label={<span>图标 <span className='text-xl'>{data.sign}</span> </span>}
-        />
+      />
       <p className='text-center pb-6'>记账时长按标签，即可进行编辑</p>
       <div>
         <button className='w-btn'>确定</button>

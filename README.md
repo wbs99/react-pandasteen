@@ -19,7 +19,7 @@ pnpm dev
 ```tsx
 import { Icon } from '@iconify/react'
 
-  <Icon icon='line-md:arrow-left' className='w-[1.2em] h-[1.2em]'/>
+<Icon icon='line-md:arrow-left' className='w-[1.2em] h-[1.2em]'/>
 ```
 使用方式二：
 在 src/assets/icons 中添加自己喜欢的 svg ，填入到 name 属性中，重新运行 `pnpm dev`
