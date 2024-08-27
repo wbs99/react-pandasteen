@@ -5,6 +5,7 @@ import { LoadMoreLoading } from '../../components/LoadMoreLoading'
 import { Loading } from '../../components/Loading'
 import { LongPressable } from '../../components/LongPressable'
 import { MyIcon } from '../../components/MyIcon'
+import type { Item } from '../../apis/itemApi'
 
 type Props = {
   kind: Item['kind']

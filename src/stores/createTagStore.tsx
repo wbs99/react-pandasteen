@@ -1,3 +1,4 @@
+import type { Tag } from '../apis/tagApi'
 import type { FormError } from '../utils/validate'
 import { createImmerStore } from './createImmerStore'
 

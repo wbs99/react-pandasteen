@@ -91,7 +91,7 @@ export const TagForm = (props: Props) => {
         onChange={sign => setData({ sign })}
         label={<span>图标 <span className='text-xl'>{data.sign}</span> </span>}
       />
-      <p className='text-center pb-6'>记账时长按标签，即可进行编辑</p>
+      <p className='pb-6 text-center'>记账时长按标签，即可进行编辑</p>
       <div>
         <button className='w-btn'>确定</button>
       </div>

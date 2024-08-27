@@ -2,6 +2,24 @@ import useSWR from 'swr'
 import useSWRInfinite from 'swr/infinite'
 import { http } from '../utils/http'
 import type { Time } from '../utils/time'
+import type { User } from './meApi'
+import type { Tag } from './tagApi'
+
+export type Item = {
+  id: number
+  user_id: number
+  amount: number
+  note?: string
+  tag_ids: number[]
+  tags?: Tag[]
+  happen_at: string
+  created_at: string
+  updated_at: string
+  kind: 'expenses' | 'income'
+  deleted_at?: string
+}
+
+export type ItemParams = Partial<Item>
 
 export const getItemsApi = (meData?: User) => {
   const { data, error, isLoading } = useSWR(

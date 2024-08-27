@@ -27,14 +27,14 @@ export const HomePage = (props: Props) => {
   return (
     <>
       <div className='flex items-center justify-center'>
-        <MyIcon name='panda' className='my-[20vh] w-32 h-32'/>
+        <MyIcon name='panda' className='my-[20vh] size-32' />
       </div>
       <div className='px-4'>
         <Link to='/items/new'>
           <button className='w-btn'>开始记账</button>
         </Link>
       </div>
-      <AddItemFloatButton/>
+      <AddItemFloatButton />
     </>
   )
 }

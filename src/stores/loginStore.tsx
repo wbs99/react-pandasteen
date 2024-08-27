@@ -1,7 +1,8 @@
+import type { LoginParams } from '../apis/loginApi'
 import type { FormError } from '../utils/validate'
 import { createImmerStore } from './createImmerStore'
 
-type Data = LoginForm
+type Data = LoginParams
 type LoginStore = {
   loginForm: Data
   setLoginForm: (data: Partial<Data>) => void

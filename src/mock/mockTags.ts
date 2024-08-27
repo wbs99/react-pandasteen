@@ -1,12 +1,13 @@
 import { faker } from '@faker-js/faker'
 import type { MockMethod } from 'vite-plugin-mock'
+import type { Tag, TagParams } from '../apis/tagApi'
 
 let id = 0
 const createId = () => {
   id += 1
   return id
 }
-const createTag = (attrs?: Partial<Tag>): Tag => {
+const createTag = (attrs?: TagParams): Tag => {
   return {
     id: createId(),
     name: faker.lorem.word(),
@@ -20,11 +21,11 @@ const createTag = (attrs?: Partial<Tag>): Tag => {
   }
 }
 
-const createTagList = (n: number, attrs?: Partial<Tag>): Tag[] => {
+const createTagList = (n: number, attrs?: TagParams): Tag[] => {
   return Array.from({ length: n }).map(() => createTag(attrs))
 }
 
-const createResponse = ({ count = 10, perPage = 10, page = 1 }, attrs?: Partial<Tag>,): Resources<Tag> => {
+const createResponse = ({ count = 10, perPage = 10, page = 1 }, attrs?: TagParams,): Resources<Tag> => {
   const sendCount = (page - 1) * perPage
   const left = count - sendCount
   return {

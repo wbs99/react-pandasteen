@@ -1,8 +1,9 @@
+import type { User, UserParams } from '../apis/meApi'
 import { createImmerStore } from './createImmerStore'
 
 type UserStore = {
   user: User
-  updateUser: (user: Partial<User>) => void
+  updateUser: (user: UserParams) => void
 }
 
 export const useUserStore = createImmerStore<UserStore>(set => ({

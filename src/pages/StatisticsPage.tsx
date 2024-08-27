@@ -12,6 +12,8 @@ import { TopNav } from '../components/TopNav'
 import { useAjax } from '../utils/ajax'
 import type { Time } from '../utils/time'
 import { time } from '../utils/time'
+import type { Tag } from '../apis/tagApi'
+import type { Item } from '../apis/itemApi'
 
 type Groups = {
   happen_at: string

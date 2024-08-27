@@ -1,6 +1,16 @@
 import useSWR from 'swr'
 import { http } from '../utils/http'
 
+export type User = {
+  id: number
+  email: string
+  name?: string
+  created_at: string
+  updated_at: string
+}
+
+export type UserParams = Partial<User>
+
 export const getMeApi = () => {
   const { data, error, isLoading } = useSWR(
     '/api/v1/me',

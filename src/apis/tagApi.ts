@@ -1,6 +1,20 @@
 import useSWR from 'swr'
 import useSWRInfinite from 'swr/infinite'
 import { http } from '../utils/http'
+import type { Item } from './itemApi'
+
+export type Tag = {
+  id: number
+  kind: Item['kind']
+  user_id: number
+  name: string
+  sign: string
+  created_at: string
+  updated_at: string
+  deleted_at: string | null
+}
+
+export type TagParams = Partial<Tag>
 
 export const getTagApi = (tagId: string) => {
   const { data } = useSWR(
@@ -47,8 +61,8 @@ export const getTagsApi = (tagKind: string) => {
   }
 }
 
-export const createTagApi = (data: Partial<Tag>) => http.post<Resource<Tag>>('/api/v1/tags', data)
+export const createTagApi = (data: TagParams) => http.post<Resource<Tag>>('/api/v1/tags', data)
 
-export const updateTagApi = (tagId: string, data: Partial<Tag>) => http.patch<Resource<Tag>>(`/api/v1/tags/${tagId}`, data)
+export const updateTagApi = (tagId: string, data: TagParams) => http.patch<Resource<Tag>>(`/api/v1/tags/${tagId}`, data)
 
 export const deleteTagApi = (tagId: string) => http.delete(`/api/v1/tags/${tagId}`)

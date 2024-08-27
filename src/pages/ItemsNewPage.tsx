@@ -9,6 +9,7 @@ import { useCreateItemStore } from '../stores/createItemStore'
 import { useAjax } from '../utils/ajax'
 import { time } from '../utils/time'
 import { hasError, validate } from '../utils/validate'
+import type { Item } from '../apis/itemApi'
 import s from './ItemsNewPage.module.scss'
 import { ItemAmount } from './ItemsNewPage/ItemAmount'
 import { ItemDate } from './ItemsNewPage/ItemDate'
@@ -56,7 +57,7 @@ export const ItemsNewPage = () => {
       <Gradient className='grow-0 shrink-0'>
         <TopNav title='记一笔' icon={<BackIcon/>}/>
       </Gradient>
-      <Tabs value={data.kind!} onChange={tabItem => setData({ kind: tabItem })} tabItems={tabItems} className='text-center grow shrink overflow-hidden' classPrefix='items-new-page'/>
+      <Tabs value={data.kind!} onChange={tabItem => setData({ kind: tabItem })} tabItems={tabItems} className='overflow-hidden text-center grow shrink' classPrefix='items-new-page'/>
       <ItemAmount className='grow-0 shrink-0'
         itemDate={<ItemDate value={data.happen_at} onChange={happen_at => setData({ happen_at })}/>}
         value={data.amount} onChange={amount => setData({ amount })} onSubmit={onSubmit}/>
