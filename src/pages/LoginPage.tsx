@@ -3,7 +3,7 @@ import type { FormEventHandler } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { loginApi, sendSmsCodeApi } from '../apis/loginApi'
 import { Input } from '../components/Input'
-import { MyIcon } from '../components/MyIcon'
+import { SvgIcon } from '../components/SvgIcon'
 import { useLoginStore } from '../stores/loginStore'
 import { useButtonLoadingStore } from '../stores/useButtonLoadingStore'
 import { setJwt, setRefreshJwt } from '../utils/storage'
@@ -54,7 +54,7 @@ export const LoginPage = () => {
   return (
     <>
       <div className='flex items-center p-4'>
-        <MyIcon name='panda' className='mr-2 size-9'/>
+        <SvgIcon name='panda' className='mr-2 size-9'/>
         <span className='font-bold text-primary'>Panda</span>
       </div>
       <div className='p-8 mt-12'>
@@ -69,7 +69,7 @@ export const LoginPage = () => {
             onChange={code => setLoginForm({ code })} errorMessage={loginError.code?.[0]} request={sendSmsCode} />
           <div className='mt-8'>
             <button disabled={buttonLoading} className='w-btn' type='submit'>
-              {buttonLoading && <MyIcon name='loading' className='mr-3 animate-spin' />}
+              {buttonLoading && <SvgIcon name='loading' className='mr-3 animate-spin' />}
               登录
             </button>
           </div>

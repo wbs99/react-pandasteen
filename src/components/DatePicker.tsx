@@ -32,12 +32,12 @@ export const DatePicker = (props: Props) => {
 
   return (
     <>
-      <div className='flex justify-between p-2 border-b border-b-solid border-[#f3f3f3] child:p-8px'>
+      <div className='flex justify-between p-2 border-b border-b-solid border-[#f3f3f3] child:p-2'>
         <span onClick={onCancel}>取消</span>
         <span>时间选择</span>
         <span onClick={() => onConfirm?.(valueTime.current.date)}>确定</span>
       </div>
-      <div className='flex child:grow child:p-4 text-center'>
+      <div className='flex text-center child:grow child:p-4'>
         <span>年</span>
         <span>月</span>
         <span>日</span>
@@ -150,10 +150,10 @@ export const Column = (props: ColumnProps) => {
     //   setIsTouching(false)
     // }}
     >
-      <div className='absolute top-1/2 w-full border-y border-red-300'
+      <div className='absolute w-full border-red-300 top-1/2 border-y'
         style={{ height: itemHeight, transform: `transLateY(${itemHeight / 2}px)` }} />
-      <div className='absolute top-1/2 w-full' style={{ transform: `transLateY(${itemHeight / 2}px)` }}>
-        <ol className='child:flex child:justify-center child:items-center text-center'
+      <div className='absolute w-full top-1/2' style={{ transform: `transLateY(${itemHeight / 2}px)` }}>
+        <ol className='text-center child:flex child:justify-center child:items-center'
           style={{ transform: `translateY(${translateY}px)` }} >
           {dateList.map(date => <li key={date} style={{ height: itemHeight }} >{date}</li>)}
         </ol>

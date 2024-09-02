@@ -26,7 +26,7 @@ export const ItemsList = (props: Props) => {
     <ol>
       {data?.map(({ resources }) => resources.map(item => <li key={item.id}
         className='grid grid-cols-[auto_1fr_auto] grid-rows-2 px-4 py-2 gap-x-3 border-b'>
-        <div className='row-start-1 col-start-1 row-end-3 col-end-2 flex justify-center items-center text-2xl w-12 h-12 rounded-full bg-[#D8D8D8]'>
+        <div className='row-start-1 col-start-1 row-end-3 col-end-2 flex justify-center items-center text-2xl size-12 rounded-full bg-[#D8D8D8]'>
           😘
         </div>
         <div className='col-start-2 col-end-3 row-start-1 row-end-2'>

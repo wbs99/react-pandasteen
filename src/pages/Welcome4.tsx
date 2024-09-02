@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { MyIcon } from '../components/MyIcon'
+import { SvgIcon } from '../components/SvgIcon'
 import { useLocalStore } from '../stores/useLocalStore'
 
 export const Welcome4 = () => {
@@ -12,7 +12,7 @@ export const Welcome4 = () => {
 
   return (
     <div className='flex flex-col items-center text-center'>
-      <MyIcon name='welcome4' className='size-32'/>
+      <SvgIcon name='welcome4' className='size-32'/>
       <h2 className='mt-12 text-3xl'>
         云备份 <br/>
         再也不怕数据丢失

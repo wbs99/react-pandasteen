@@ -56,14 +56,14 @@ export const WelcomeLayout = () => {
 
   return (
     <div className='flex flex-col items-stretch h-screen pb-4 bg-primary'>
-      <span className='fixed top-4 right-4 text-3xl text-white' onClick={onSkip}>跳过</span>
-      <header className='shrink-0 text-center pt-16'>
+      <span className='fixed text-3xl text-white top-4 right-4' onClick={onSkip}>跳过</span>
+      <header className='pt-16 text-center shrink-0'>
         <h1 className='text-3xl text-[#D4D4EE]'>熊猫</h1>
       </header>
-      <main className='shrink grow relative' ref={mainRef}>
+      <main className='relative shrink grow' ref={mainRef}>
         {transitions((style, pathname) =>
-          <animated.div key={pathname} style={{ ...style, ...extraStyle }} className='w-full h-full p-4 flex'>
-            <div className='flex justify-center items-center grow rounded-lg bg-white'>
+          <animated.div key={pathname} style={{ ...style, ...extraStyle }} className='flex p-4 size-full'>
+            <div className='flex items-center justify-center bg-white rounded-lg grow'>
               {map.current[pathname]}
             </div>
           </animated.div>)}

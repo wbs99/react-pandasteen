@@ -59,8 +59,8 @@ export const TimeRangePicker = (props: Props) => {
         <Input type='date' disableError label='结束时间' value={end} onChange={d => setEnd(d)} className='mt-2'/>
       </main>
       <footer className='text-right'>
-        <button className='border-none bg-transparent px-4 py-2' onClick={() => hide()}>取消</button>
-        <button className='border-none bg-transparent px-4 py-2' onClick={onConfirm}>确认</button>
+        <button className='px-4 py-2 bg-transparent border-none' onClick={() => hide()}>取消</button>
+        <button className='px-4 py-2 bg-transparent border-none' onClick={onConfirm}>确认</button>
       </footer>
     </div>,
     position: 'center'

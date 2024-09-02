@@ -4,7 +4,7 @@ import { getTagsApi } from '../../apis/tagApi'
 import { LoadMoreLoading } from '../../components/LoadMoreLoading'
 import { Loading } from '../../components/Loading'
 import { LongPressable } from '../../components/LongPressable'
-import { MyIcon } from '../../components/MyIcon'
+import { SvgIcon } from '../../components/SvgIcon'
 import type { Item } from '../../apis/itemApi'
 
 type Props = {
@@ -26,7 +26,7 @@ export const Tags = (props: Props) => {
         <li>
           <Link to={`/tags/new?kind=${kind}`}>
             <span className='flex justify-center items-center size-12 rounded-3xl text-2xl text-[#8F4CD7] bg-[#EFEFEF]'>
-              <MyIcon name='add' />
+              <SvgIcon name='add' />
             </span>
           </Link>
         </li>

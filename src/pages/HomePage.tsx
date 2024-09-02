@@ -4,7 +4,7 @@ import { getMeApi } from '../apis/meApi'
 import { AddItemFloatButton } from '../components/AddItemFloatButton'
 import { CenterDiv } from '../components/CenterDiv'
 import { Loading } from '../components/Loading'
-import { MyIcon } from '../components/MyIcon'
+import { SvgIcon } from '../components/SvgIcon'
 import { useTitle } from '../hooks/useTitle'
 
 type Props = {
@@ -27,7 +27,7 @@ export const HomePage = (props: Props) => {
   return (
     <>
       <div className='flex items-center justify-center'>
-        <MyIcon name='panda' className='my-[20vh] size-32' />
+        <SvgIcon name='panda' className='my-[20vh] size-32' />
       </div>
       <div className='px-4'>
         <Link to='/items/new'>

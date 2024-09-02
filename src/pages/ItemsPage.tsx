@@ -7,7 +7,7 @@ import { LeftMenu } from '../components/LeftMenu'
 import type { TimeRange } from '../components/TimeRangePicker'
 import { TimeRangePicker } from '../components/TimeRangePicker'
 import { TopNav } from '../components/TopNav'
-import { MyIcon } from '../components/MyIcon'
+import { SvgIcon } from '../components/SvgIcon'
 import { useMenuStore } from '../stores/menuStore'
 import { Time, time } from '../utils/time'
 
@@ -42,7 +42,7 @@ export const ItemsPage = () => {
       <Gradient>
         <TopNav
           title='账目列表'
-          icon={<MyIcon name='menu' onClick={onClick} className='size-6'/>}
+          icon={<SvgIcon name='menu' onClick={onClick} className='size-6'/>}
         />
       </Gradient>
       <TimeRangePicker selected={timeRange} onSelect={setTimeRange}/>

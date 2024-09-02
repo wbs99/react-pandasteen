@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { MyIcon } from './MyIcon'
+import { SvgIcon } from './SvgIcon'
 
 export const BackIcon = () => {
   const nav = useNavigate()
@@ -8,6 +8,6 @@ export const BackIcon = () => {
   }
 
   return (
-    <MyIcon name='back' onClick={onBack}/>
+    <SvgIcon name='back' onClick={onBack}/>
   )
 }

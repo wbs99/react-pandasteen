@@ -1,6 +1,6 @@
 import c from 'classnames'
 import { NavLink } from 'react-router-dom'
-import { MyIcon } from '../MyIcon'
+import { SvgIcon } from '../SvgIcon'
 
 type Props = {
   className?: string
@@ -21,7 +21,7 @@ export const Menu = (props: Props) => {
       {items.map(item =>
         <li key={item.to}>
           <NavLink className='flex items-center px-4 py-2 mb-1' to={item.to}>
-            <MyIcon name={item.icon} className='w-8 h-8 mr-4'/>{item.text}
+            <SvgIcon name={item.icon} className='mr-4 size-8'/>{item.text}
           </NavLink>
         </li>)}
     </ul>
