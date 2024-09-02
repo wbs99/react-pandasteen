@@ -12,8 +12,8 @@ export const Welcome4 = () => {
 
   return (
     <div className='flex flex-col items-center text-center'>
-      <MyIcon name='welcome4' className='w-32 h-32'/>
-      <h2 className='text-3xl mt-12'>
+      <MyIcon name='welcome4' className='size-32'/>
+      <h2 className='mt-12 text-3xl'>
         云备份 <br/>
         再也不怕数据丢失
       </h2>

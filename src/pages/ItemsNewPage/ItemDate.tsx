@@ -19,7 +19,7 @@ export const ItemDate = (props: Props) => {
     <>
       {popup}
       <span className='flex items-center gap-x-2' onClick={toggle}>
-        <MyIcon name='calendar' className='grow-0 shrink-0 w-6 h-6'/>
+        <MyIcon name='calendar' className='grow-0 shrink-0 size-6'/>
         <span className='grow-0 shrink-0 text-[#999999]'>{time(value).format('yyyy-MM-dd HH:mm')}</span>
       </span>
     </>

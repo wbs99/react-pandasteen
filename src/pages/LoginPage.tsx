@@ -54,7 +54,7 @@ export const LoginPage = () => {
   return (
     <>
       <div className='flex items-center p-4'>
-        <MyIcon name='panda' className='w-[36px] h-[36px] mr-2'/>
+        <MyIcon name='panda' className='mr-2 size-9'/>
         <span className='font-bold text-primary'>Panda</span>
       </div>
       <div className='p-8 mt-12'>

@@ -38,24 +38,24 @@ export const ItemAmount = (props: Props) => {
 
   return (
     <div className={className}>
-      <div className='flex items-center py-4 px-4 gap-x-2 border-t border-solid border-t-[#ddd]'>
+      <div className='flex items-center p-4 gap-x-2 border-t border-solid border-t-[#ddd]'>
         {itemDate}
         <code className='grow shrink text-right text-[#53A867]'>{output}</code>
       </div>
       <div className='grid grid-cols-4 grid-rows-[repeat(4,48px)] gap-[1px] p-[1px] child:border-none child:bg-white bg-[#ddd]'>
-        <button type='button' className='row-start-1 col-start-1 row-end-2 col-end-2' onClick={() => append('1')}>1</button>
-        <button type='button' className='row-start-1 col-start-2 row-end-2 col-end-3' onClick={() => append('2')}>2</button>
-        <button type='button' className='row-start-1 col-start-3 row-end-2 col-end-4' onClick={() => append('3')}>3</button>
-        <button type='button' className='row-start-2 col-start-1 row-end-3 col-end-2' onClick={() => append('4')}>4</button>
-        <button type='button' className='row-start-2 col-start-2 row-end-3 col-end-3' onClick={() => append('5')}>5</button>
-        <button type='button' className='row-start-2 col-start-3 row-end-3 col-end-4' onClick={() => append('6')}>6</button>
-        <button type='button' className='row-start-3 col-start-1 row-end-4 col-end-2' onClick={() => append('7')}>7</button>
-        <button type='button' className='row-start-3 col-start-2 row-end-4 col-end-3' onClick={() => append('8')}>8</button>
-        <button type='button' className='row-start-3 col-start-3 row-end-4 col-end-4' onClick={() => append('9')}>9</button>
-        <button type='button' className='row-start-4 col-start-1 row-end-5 col-end-3' onClick={() => append('0')}>0</button>
-        <button type='button' className='row-start-4 col-start-3 row-end-5 col-end-4' onClick={() => append('.')}>.</button>
-        <button type='button' className='row-start-1 col-start-4 row-end-3 col-end-5' onClick={clear}>清空</button>
-        <button onClick={onSubmit} type='submit' className='row-start-3 col-start-4 row-end-5 col-end-5 bg-primary text-primary'>确定</button>
+        <button type='button' className='col-start-1 col-end-2 row-start-1 row-end-2' onClick={() => append('1')}>1</button>
+        <button type='button' className='col-start-2 col-end-3 row-start-1 row-end-2' onClick={() => append('2')}>2</button>
+        <button type='button' className='col-start-3 col-end-4 row-start-1 row-end-2' onClick={() => append('3')}>3</button>
+        <button type='button' className='col-start-1 col-end-2 row-start-2 row-end-3' onClick={() => append('4')}>4</button>
+        <button type='button' className='col-start-2 col-end-3 row-start-2 row-end-3' onClick={() => append('5')}>5</button>
+        <button type='button' className='col-start-3 col-end-4 row-start-2 row-end-3' onClick={() => append('6')}>6</button>
+        <button type='button' className='col-start-1 col-end-2 row-start-3 row-end-4' onClick={() => append('7')}>7</button>
+        <button type='button' className='col-start-2 col-end-3 row-start-3 row-end-4' onClick={() => append('8')}>8</button>
+        <button type='button' className='col-start-3 col-end-4 row-start-3 row-end-4' onClick={() => append('9')}>9</button>
+        <button type='button' className='col-start-1 col-end-3 row-start-4 row-end-5' onClick={() => append('0')}>0</button>
+        <button type='button' className='col-start-3 col-end-4 row-start-4 row-end-5' onClick={() => append('.')}>.</button>
+        <button type='button' className='col-start-4 col-end-5 row-start-1 row-end-3' onClick={clear}>清空</button>
+        <button onClick={onSubmit} type='submit' className='col-start-4 col-end-5 row-start-3 row-end-5 bg-primary text-primary'>确定</button>
       </div>
     </div>
   )

@@ -4,8 +4,8 @@ import { MyIcon } from '../components/MyIcon'
 export const Welcome1 = () => {
   return (
     <div className='flex flex-col items-center text-center'>
-      <MyIcon name='panda' className='w-32 h-32'/>
-      <h2 className='text-3xl mt-12'>
+      <MyIcon name='panda' className='size-32'/>
+      <h2 className='mt-12 text-3xl'>
         会挣钱 <br/>
         还要会省钱
       </h2>
