@@ -4,7 +4,7 @@
 
 @layer components {
   .w-icon {
-    @apply fill-current w-5 h-5;
+    @apply fill-current size-[1em];
   }
   .w-btn {
     @apply h-12 w-full border-none rounded-lg px-3 flex justify-center items-center text-lg text-white bg-primary;

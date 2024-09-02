@@ -18,7 +18,7 @@ pnpm dev
 在 https://yesicon.app/ 找到喜欢的 `icon` ，复制 `icon` 名称 ，填入到 `name` 中
 
 使用方式二:
-在 `src/assets/icons` 中添加自己喜欢的 `svg` ，填入到 `name` 中，重新运行 `pnpm dev`
+在 `src/assets/icons` 中添加自己喜欢的 `svg` ，填入到 `name` 中
 
 ```tsx
 <SvgIcon name='panda' className='size-8'/>

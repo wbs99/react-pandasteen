@@ -13,7 +13,7 @@ export const SvgIcon = (props: Props) => {
   return (
     name.includes(':')
       ? <Icon icon={name} className={c(className, 'w-icon')} onClick={onClick} />
-      : <svg className={c(className, 'w-icon')} onClick={onClick}>
+      : <svg className={c(className, 'w-icon')} onClick={onClick} aria-hidden='true'>
           <use xlinkHref={`#${name}`}></use>
         </svg>
 

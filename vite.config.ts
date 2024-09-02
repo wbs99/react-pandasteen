@@ -1,7 +1,9 @@
+import path from 'node:path'
+import process from 'node:process'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { viteMockServe } from 'vite-plugin-mock'
-import { svgsprites } from './vite_plugins/svgsprites'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
@@ -20,7 +22,10 @@ export default defineConfig(({ command }) => {
       viteMockServe({
         mockPath: 'src/mock',
       }),
-      svgsprites({ noOptimizeList: ['panda', 'chart', 'category', 'export', 'remind', 'calendar', 'welcome2', 'welcome3', 'welcome4'] })
+      createSvgIconsPlugin({
+        iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
+        symbolId: '[name]',
+      }),
     ],
     build: {
       rollupOptions: {
