@@ -1,3 +1,7 @@
+import type { Item } from '../apis/itemApi'
+import type { Tag } from '../apis/tagApi'
+import type { TimeRange } from '../components/TimeRangePicker'
+import type { Time } from '../utils/time'
 import { useState } from 'react'
 import useSWR from 'swr'
 import { BackIcon } from '../components/BackIcon'
@@ -6,14 +10,10 @@ import { Input } from '../components/Input'
 import { LineChart } from '../components/LineChart'
 import { PieChart } from '../components/PieChart'
 import { RankChart } from '../components/RankChart'
-import type { TimeRange } from '../components/TimeRangePicker'
 import { TimeRangePicker } from '../components/TimeRangePicker'
 import { TopNav } from '../components/TopNav'
 import { useAjax } from '../utils/ajax'
-import type { Time } from '../utils/time'
 import { time } from '../utils/time'
-import type { Tag } from '../apis/tagApi'
-import type { Item } from '../apis/itemApi'
 
 type Groups = {
   happen_at: string

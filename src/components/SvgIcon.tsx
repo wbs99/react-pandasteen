@@ -1,5 +1,5 @@
-import c from 'classnames'
 import { Icon } from '@iconify/react'
+import c from 'classnames'
 
 type Props = {
   className?: string

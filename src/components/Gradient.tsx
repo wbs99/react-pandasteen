@@ -1,5 +1,5 @@
-import c from 'classnames'
 import type { ReactNode } from 'react'
+import c from 'classnames'
 
 type Props = {
   children: ReactNode

@@ -1,5 +1,5 @@
-import c from 'classnames'
 import type { ChangeEvent, ReactNode } from 'react'
+import c from 'classnames'
 import { DateInput } from './Input/DateInput'
 import { EmojiInput } from './Input/EmojiInput'
 import { SmsCodeInput } from './Input/SmsCodeInput'

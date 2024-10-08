@@ -1,6 +1,6 @@
+import type { Time } from '../utils/time'
 import { useState } from 'react'
 import { usePopup } from '../hooks/usePopup'
-import type { Time } from '../utils/time'
 import { time } from '../utils/time'
 import { Input } from './Input'
 import { Tabs } from './Tabs'

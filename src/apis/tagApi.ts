@@ -1,7 +1,7 @@
+import type { Item } from './itemApi'
 import useSWR from 'swr'
 import useSWRInfinite from 'swr/infinite'
 import { http } from '../utils/http'
-import type { Item } from './itemApi'
 
 export type Tag = {
   id: number
