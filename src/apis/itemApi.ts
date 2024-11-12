@@ -18,7 +18,6 @@ export type Item = {
   kind: 'expenses' | 'income'
   deleted_at?: string
 }
-
 export type ItemParams = Partial<Item>
 
 export const getItemsApi = (meData?: User) => {

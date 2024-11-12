@@ -13,7 +13,6 @@ export type Tag = {
   updated_at: string
   deleted_at: string | null
 }
-
 export type TagParams = Partial<Tag>
 
 export const getTagApi = (tagId: string) => {
