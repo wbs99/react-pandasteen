@@ -1,7 +1,7 @@
 import type { AxiosError } from 'axios'
 import type { FormEventHandler } from 'react'
-import type { FormError } from '../utils/validate'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import type { FormError } from '../utils/validate'
 import { loginApi, sendSmsCodeApi } from '../apis/loginApi'
 import { Input } from '../components/Input'
 import { SvgIcon } from '../components/SvgIcon'

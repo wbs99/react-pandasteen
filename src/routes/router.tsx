@@ -1,6 +1,6 @@
 import type { AxiosError } from 'axios'
-import { lazy, Suspense } from 'react'
-import { createBrowserRouter, Outlet } from 'react-router-dom'
+import { Suspense, lazy } from 'react'
+import { Outlet, createBrowserRouter } from 'react-router-dom'
 import { fetchMe } from '../apis/meApi'
 import { Loading } from '../components/Loading'
 import { Root } from '../components/Root'
@@ -35,6 +35,13 @@ function lazyImport<
 // 页面资源较大时，使用 lazy import 即可
 const { StatisticsPage } = lazyImport(() => import('../pages/StatisticsPage'), 'StatisticsPage')
 
+const onFetchMeError = async (error: AxiosError) => {
+  if (error.response?.status === 401) {
+    throw new ErrorUnauthorized()
+  }
+  throw error
+}
+
 export const router = createBrowserRouter([
   // 访问 / 路径，在 Root 中判断跳转哪个页面
   { path: '/', element: <Root /> },
@@ -55,15 +62,7 @@ export const router = createBrowserRouter([
     path: '/',
     element: <Outlet />,
     errorElement: <ErrorPage />,
-    loader: async () => {
-      const onFetchMeError = async (error: AxiosError) => {
-        if (error.response?.status === 401) {
-          throw new ErrorUnauthorized()
-        }
-        throw error
-      }
-      return await fetchMe().catch(onFetchMeError)
-    },
+    loader: async () => await fetchMe().catch(onFetchMeError),
     children: [
       {
         path: '/items',
