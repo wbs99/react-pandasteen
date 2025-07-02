@@ -1,6 +1,6 @@
 import type { MockMethod } from 'vite-plugin-mock'
-import { faker } from '@faker-js/faker'
 import type { Tag, TagParams } from '../apis/tagApi'
+import { faker } from '@faker-js/faker'
 
 let id = 0
 const createId = () => {

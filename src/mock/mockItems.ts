@@ -1,6 +1,6 @@
 import type { MockMethod } from 'vite-plugin-mock'
-import { faker } from '@faker-js/faker'
 import type { Item, ItemParams } from '../apis/itemApi'
+import { faker } from '@faker-js/faker'
 
 export const mockItems: MockMethod[] = [
   {

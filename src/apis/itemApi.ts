@@ -1,9 +1,9 @@
-import useSWR from 'swr'
-import useSWRInfinite from 'swr/infinite'
 import type { Time } from '../utils/time'
-import { http } from '../utils/http'
 import type { User } from './meApi'
 import type { Tag } from './tagApi'
+import useSWR from 'swr'
+import useSWRInfinite from 'swr/infinite'
+import { http } from '../utils/http'
 
 export type Item = {
   id: number
