@@ -1,5 +1,4 @@
-import { animated, useSpring } from '@react-spring/web'
-import { useState } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
 import { CurrentUser } from './TopMenu/CurrentUser'
 import { Menu } from './TopMenu/Menu'
 
@@ -8,38 +7,31 @@ type Props = {
   visible?: boolean
 }
 
-export const LeftMenu = (props: Props) => {
-  const { onClickMask, visible } = props
-  const [maskVisible, setMaskVisible] = useState(visible)
-  // 打开动画 0 => 1
-  // 关闭动画 1 => 0
-  const markStyle = useSpring({
-    visibility: (maskVisible ? 'visible' : 'hidden') as 'visible' | 'hidden',
-    opacity: visible ? 1 : 0,
-    onStart: ({ value }) => {
-      if (value.opacity < 0.1) {
-        setMaskVisible(true)
-      }
-    },
-    onRest: ({ value }) => {
-      if (value.opacity < 0.1) {
-        setMaskVisible(false)
-      }
-    }
-  })
-  const menuStyle = useSpring({
-    visibility: (maskVisible ? 'visible' : 'hidden') as 'visible' | 'hidden',
-    opacity: visible ? 1 : 0,
-    transform: visible ? 'translateX(0%)' : 'translateX(-100%)'
-  })
-
-  return (
-    <>
-      <animated.div onClick={onClickMask} style={markStyle} className='fixed top-0 left-0 w-full h-screen z-[calc(var(--z-menu)-1)] bg-black bg-opacity-75'/>
-      <animated.div style={menuStyle} className='fixed top-0 left-0 w-[70vw] max-w-[20em] h-screen flex flex-col z-[var(--z-menu)]'>
-        <CurrentUser className='grow-0 shrink-0'/>
-        <Menu className='grow shrink'/>
-      </animated.div>
-    </>
-  )
-}
+export const LeftMenu = ({ onClickMask, visible }: Props) => (
+  <AnimatePresence>
+    {visible && (
+      <>
+        <motion.div
+          key='mask'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          onClick={onClickMask}
+          className='fixed inset-0 z-[calc(var(--z-menu)-1)] bg-black/75'
+        />
+        <motion.div
+          key='drawer'
+          initial={{ x: '-100%' }}
+          animate={{ x: 0 }}
+          exit={{ x: '-100%' }}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          className='fixed top-0 left-0 w-[70vw] max-w-[20em] h-screen flex flex-col z-[var(--z-menu)]'
+        >
+          <CurrentUser className='grow-0 shrink-0' />
+          <Menu className='grow shrink' />
+        </motion.div>
+      </>
+    )}
+  </AnimatePresence>
+)
