@@ -1,54 +1,55 @@
 import type { RefObject } from 'react'
 import { useEffect, useRef, useState } from 'react'
 
-type Point = {
-  x: number
-  y: number
-}
+type Point = { x: number; y: number }
 
 export const useSwiper = (elementRef: RefObject<HTMLElement>) => {
-  const point = useRef<Point>({ x: -1, y: -1 })
-  const [direction, setDirection] = useState<'' | 'left' | 'right' | 'up' | 'down'>('')
+  const startPoint = useRef<Point>({ x: -1, y: -1 })
+  const [direction, setDirection] = useState<
+    '' | 'left' | 'right' | 'up' | 'down'
+  >('')
 
   const onTouchStart = (e: TouchEvent) => {
-    // e.preventDefault()
-    point.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+    // 如果想阻止滚动，可取消下一行注释
+    // if (e.cancelable) e.preventDefault()
+    startPoint.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
   }
+
   const onMoving = (e: TouchEvent) => {
-    // e.preventDefault()
-    const newPoint = { x: e.touches[0].clientX, y: e.touches[0].clientY }
-    const d = { x: newPoint.x - point.current.x, y: newPoint.y - point.current.y }
-    const { x, y } = d
-    if (Math.abs(x) < 3 || Math.abs(y) < 3) {
+    // if (e.cancelable) e.preventDefault()
+    const { clientX, clientY } = e.touches[0]
+    const dx = clientX - startPoint.current.x
+    const dy = clientY - startPoint.current.y
+
+    if (Math.abs(dx) < 3 && Math.abs(dy) < 3) {
       setDirection('')
-    }
-    else if (Math.abs(x) > Math.abs(y)) {
-      return x > 0 ? setDirection('right') : setDirection('left')
-    }
-    else {
-      return y > 0 ? setDirection('down') : setDirection('up')
+    } else if (Math.abs(dx) > Math.abs(dy)) {
+      setDirection(dx > 0 ? 'right' : 'left')
+    } else {
+      setDirection(dy > 0 ? 'down' : 'up')
     }
   }
+
   const onTouchEnd = (e: TouchEvent) => {
-    e.preventDefault()
+    /* 只在可取消时调用，避免控制台报错 */
+    if (e.cancelable) e.preventDefault()
     setDirection('')
   }
 
   useEffect(() => {
-    if (!elementRef.current) {
-      return
-    }
-    elementRef.current.addEventListener('touchstart', onTouchStart)
-    elementRef.current.addEventListener('touchmove', onMoving)
-    elementRef.current.addEventListener('touchend', onTouchEnd)
+    const el = elementRef.current
+    if (!el) return
+
+    el.addEventListener('touchstart', onTouchStart, { passive: true })
+    el.addEventListener('touchmove', onMoving, { passive: true })
+    el.addEventListener('touchend', onTouchEnd)
+
     return () => {
-      if (!elementRef.current) {
-        return
-      }
-      elementRef.current.removeEventListener('touchstart', onTouchStart)
-      elementRef.current.removeEventListener('touchmove', onMoving)
-      elementRef.current.removeEventListener('touchend', onTouchEnd)
+      el.removeEventListener('touchstart', onTouchStart)
+      el.removeEventListener('touchmove', onMoving)
+      el.removeEventListener('touchend', onTouchEnd)
     }
-  }, [])
+  }, [elementRef])
+
   return { direction }
 }
