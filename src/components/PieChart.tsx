@@ -6,12 +6,14 @@ type Props = {
   className?: string
   dataSource?: { name: number | string; value: number | string }[]
 }
+
+const EMPTY_ARRAY: Props['dataSource'] = []
+
 export const PieChart = (props: Props) => {
-  const { className, dataSource = [] } = props
+  const { className, dataSource = EMPTY_ARRAY } = props
   const div = useRef<HTMLDivElement>(null)
   const initialized = useRef(false)
-  const myChart = useRef<echarts.ECharts>()
-
+  const myChart = useRef<echarts.ECharts>(null!)
   useEffect(() => {
     if (!div.current) {
       return
