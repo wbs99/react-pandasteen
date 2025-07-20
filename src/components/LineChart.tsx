@@ -12,7 +12,7 @@ export const LineChart = (props: Props) => {
   const xItems = dataSource?.map(item => item.x)
   const yItems = dataSource?.map(item => item.y)
   const initialized = useRef(false)
-  const myChart = useRef<echarts.ECharts>()
+  const myChart = useRef<echarts.ECharts>(null!)
   useEffect(() => {
     if (!div.current) {
       return
