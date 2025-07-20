@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { SvgIcon } from '../components/SvgIcon'
+import { SvgIcon } from '../../components/SvgIcon'
 
 export const Welcome2 = () => {
   return (

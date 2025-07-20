@@ -27,7 +27,7 @@ export const HomePage = (props: Props) => {
   return (
     <>
       <div className='flex items-center justify-center'>
-        <SvgIcon name='panda' className='my-[20vh] size-32' />
+        <SvgIcon name='panda-icon' className='my-[20vh] size-32' />
       </div>
       <div className='px-4'>
         <Link to='/items/new'>

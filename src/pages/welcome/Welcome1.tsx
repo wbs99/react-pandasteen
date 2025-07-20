@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import { SvgIcon } from '../components/SvgIcon'
+import { SvgIcon } from '../../components/SvgIcon'
 
 export const Welcome1 = () => {
   return (
     <div className='flex flex-col items-center text-center'>
-      <SvgIcon name='panda' className='size-32'/>
+      <SvgIcon name='panda-icon' className='size-32'/>
       <h2 className='mt-12 text-3xl'>
         会挣钱 <br/>
         还要会省钱

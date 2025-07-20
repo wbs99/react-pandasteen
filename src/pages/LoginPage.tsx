@@ -54,7 +54,7 @@ export const LoginPage = () => {
   return (
     <>
       <div className='flex items-center p-4'>
-        <SvgIcon name='panda' className='mr-2 size-9'/>
+        <SvgIcon name='panda-icon' className='mr-2 size-9'/>
         <span className='font-bold text-primary'>Panda</span>
       </div>
       <div className='p-8 mt-12'>

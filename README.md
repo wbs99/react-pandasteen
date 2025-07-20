@@ -21,5 +21,5 @@ pnpm dev
 在 `src/assets/icons` 中添加自己喜欢的 `svg` ，填入到 `name` 中
 
 ```tsx
-<SvgIcon name='panda' className='size-8'/>
+<SvgIcon name='panda-icon' className='size-8'/>
 ```
