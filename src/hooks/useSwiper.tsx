@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from 'react'
 
 type Point = { x: number; y: number }
 
-export const useSwiper = (elementRef: RefObject<HTMLElement>) => {
+export const useSwiper = <T extends HTMLElement = HTMLElement>(
+  elementRef: RefObject<T | null>
+) => {
   const startPoint = useRef<Point>({ x: -1, y: -1 })
   const [direction, setDirection] = useState<
     '' | 'left' | 'right' | 'up' | 'down'
@@ -11,7 +13,6 @@ export const useSwiper = (elementRef: RefObject<HTMLElement>) => {
 
   const onTouchStart = (e: TouchEvent) => {
     // 如果想阻止滚动，可取消下一行注释
-    // if (e.cancelable) e.preventDefault()
     startPoint.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
   }
 
@@ -31,7 +32,6 @@ export const useSwiper = (elementRef: RefObject<HTMLElement>) => {
   }
 
   const onTouchEnd = (e: TouchEvent) => {
-    /* 只在可取消时调用，避免控制台报错 */
     if (e.cancelable) e.preventDefault()
     setDirection('')
   }

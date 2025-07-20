@@ -2,6 +2,13 @@ import antfu from '@antfu/eslint-config'
 
 export default antfu({
   react: true,
+  ignores: [
+    'public',
+    'dist*',
+    '**/*.md',
+    '**/*.d.ts',
+    'dist', // 前端打包目录
+  ],
   rules: {
     'style/semi': ['error', 'never'],
     'style/max-statements-per-line': ['off'],

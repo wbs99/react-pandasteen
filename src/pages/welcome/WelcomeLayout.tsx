@@ -18,31 +18,26 @@ export const WelcomeLayout = () => {
   const outlet = useOutlet()
   const location = useLocation()
 
-  /* 缓存节点 */
   const pageCache = useRef<Record<string, ReactNode>>({})
   pageCache.current[location.pathname] = outlet
 
-  /* 手势 */
   const mainRef = useRef<HTMLDivElement>(null)
   const { direction } = useSwiper(mainRef)
 
-  /* 方向 & 是否首次渲染 */
   const [slideDir, setSlideDir] = useState<'left' | 'right'>('left')
-  const [isFirst, setIsFirst] = useState(location.pathname === '/welcome/1')
-
-  useEffect(() => {
-    if (direction === 'left' && !animating.current) {
-      animating.current = true
-      nav(linkMap[location.pathname])
-      setIsFirst(false) // 离开第一屏后，后续全部启用动画
-    }
-  }, [direction, location.pathname])
-
   useEffect(() => {
     setSlideDir(direction === 'right' ? 'right' : 'left')
   }, [location.pathname])
 
-  /* 动画变量 */
+  const [isFirst, setIsFirst] = useState(location.pathname === '/welcome/1')
+  useEffect(() => {
+    if (direction === 'left' && !animating.current) {
+      animating.current = true
+      nav(linkMap[location.pathname])
+      setIsFirst(false)
+    }
+  }, [direction, location.pathname])
+
   const variants = {
     left: {
       initial: { x: '100%' },
@@ -55,7 +50,6 @@ export const WelcomeLayout = () => {
   }
   const v = variants[slideDir]
 
-  /* 跳过广告 */
   const { setHadReadWelcome } = useLocalStore()
   const onSkip = () => {
     setHadReadWelcome(true)
@@ -78,12 +72,11 @@ export const WelcomeLayout = () => {
       <main ref={mainRef} className='relative shrink grow'>
         <AnimatePresence
           mode='wait'
-          initial={false} // 防止首次整体动画
+          initial={false}
           onExitComplete={() => (animating.current = false)}
         >
           <motion.div
             key={location.pathname}
-            /* 第一屏无进入动画 */
             initial={isFirst ? false : v.initial}
             animate={{ x: 0 }}
             exit={v.exit}
