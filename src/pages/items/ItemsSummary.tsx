@@ -1,6 +1,6 @@
-import type { Time } from '../utils/time'
-import { getItemsBalanceApi } from '../apis/itemApi'
-import { Money } from './Money'
+import type { Time } from '../../utils/time'
+import { getItemsBalanceApi } from '../../apis/itemApi'
+import { Money } from '../../components/Money'
 
 type Props = {
   start: Time

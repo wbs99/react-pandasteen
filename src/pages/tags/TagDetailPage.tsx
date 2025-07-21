@@ -1,10 +1,10 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import { deleteTagApi } from '../apis/tagApi'
-import { BackIcon } from '../components/BackIcon'
-import { Gradient } from '../components/Gradient'
-import { TopNav } from '../components/TopNav'
-import { comfirmable } from '../utils/comfirmable'
-import { TagForm } from './TagsNewPage/TagForm'
+import { deleteTagApi } from '../../apis/tagApi'
+import { BackIcon } from '../../components/BackIcon'
+import { Gradient } from '../../components/Gradient'
+import { TopNav } from '../../components/TopNav'
+import { comfirmable } from '../../utils/comfirmable'
+import { TagForm } from './TagForm'
 
 export const TagDetailPage = () => {
   const { id } = useParams()

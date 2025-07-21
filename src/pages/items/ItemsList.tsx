@@ -1,9 +1,9 @@
-import type { Time } from '../utils/time'
+import type { Time } from '../../utils/time'
 import styled from 'styled-components'
-import { getItemListApi } from '../apis/itemApi'
-import { time } from '../utils/time'
-import { Loading } from './Loading'
-import { LoadMoreLoading } from './LoadMoreLoading'
+import { getItemListApi } from '../../apis/itemApi'
+import { Loading } from '../../components/Loading'
+import { LoadMoreLoading } from '../../components/LoadMoreLoading'
+import { time } from '../../utils/time'
 
 type Props = {
   start: Time
