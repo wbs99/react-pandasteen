@@ -13,7 +13,7 @@ type Position = {
 
 export const LongPressable = (props: Props) => {
   const { children, className, onEnd } = props
-  const touchTimer = useRef<number>()
+  const touchTimer = useRef<number | undefined>(undefined)
   const touchPosition = useRef<Position>({ x: undefined, y: undefined })
   const onTouchStart = (e: TouchEvent) => {
     touchTimer.current = window.setTimeout(() => {
