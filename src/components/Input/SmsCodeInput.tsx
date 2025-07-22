@@ -12,7 +12,7 @@ export const SmsCodeInput = (props: Props) => {
   const { value, placeholder, onChange, request } = props
   const [started, setStarted] = useState<Date>()
   const [count, setCount] = useState(maxCount)
-  const timer = useRef<number>()
+  const timer = useRef<number | undefined>(undefined)
 
   const onClick = async () => {
     if (!request) {
